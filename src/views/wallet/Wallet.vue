@@ -71,8 +71,8 @@ export default {
     const perPage =  ref(5)
     const balanceActions = [
       { icon: "Money-Withdraw", name: "Retirar", route: 'withdraw' },
-      { icon: "Money-Deposit", name: "Depositar" },
-      { icon: "create", name: "Create" },
+      { icon: "Money-Deposit", name: "Depositar", route: 'deposit'  },
+      { icon: "create", name: "Create", route: 'new'},
       { icon: "trash-delete", name: "Delete" },
     ];
     return {

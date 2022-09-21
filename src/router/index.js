@@ -16,6 +16,11 @@ const routes = [
         component: () => import ('@/views/tokens/Index.vue')
       },
       {
+        path: '/commissions',
+        name:'Commissions',
+        component: () => import ('@/views/commissions/Index.vue')
+      },
+      {
         path: '/wallet',
         name:'Wallet',
         component: () => import ('@/views/wallet/Index.vue'),
@@ -29,6 +34,38 @@ const routes = [
             path: '/wallet/withdraw',
             name:'Withdraw',
             component: () => import ('@/views/wallet/WithDraw.vue')
+          },
+          {
+            path: '/wallet/new',
+            name:'NewWallet',
+            component: () => import ('@/views/wallet/NewWallet.vue')
+          },
+          {
+            path: '/wallet/deposit',
+            name:'Deposit',
+            component: () => import ('@/views/wallet/Deposit.vue')
+          },
+        ]
+      },
+      {
+        path: '/acciones',
+        name:'Acciones',
+        component: () => import ('@/views/acciones/Index.vue'),
+        children: [
+          {
+            path: '',
+            name:'Acciones',
+            component: () => import ('@/views/acciones/acciones.vue')
+          },
+          {
+            path: '/acciones/withdraw',
+            name:'Withdraw',
+            component: () => import ('@/views/acciones/WithDraw.vue')
+          },
+          {
+            path: '/acciones/deposit',
+            name:'Deposit',
+            component: () => import ('@/views/acciones/Deposit.vue')
           },
         ]
       },

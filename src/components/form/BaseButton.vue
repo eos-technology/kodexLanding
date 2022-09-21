@@ -31,5 +31,9 @@ export default {
       background: rgba(0, 0, 0, 0.829);
       transition: all 1s;
     }
+    &.transparent{
+      background: none;
+      color: black;
+    }
   }
 </style>

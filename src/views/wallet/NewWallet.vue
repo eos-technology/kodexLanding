@@ -1,33 +1,29 @@
 <template>
-  <section class="withdraw">
+  <section class="newWallet">
     <BtnBack></BtnBack>
-    <section class="withdraw__container">
-      <h3>Retirar dinero</h3>
-      <article class="withdraw__container__select">
+    <section class="newWallet__container">
+      <h3>Añadir wallet</h3>
+      <article class="newWallet__container__select">
         <h4>Seleccione Wallet</h4>
-        <article class="withdraw__container__select__contain">
+        <article class="newWallet__container__select__contain">
           <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
         </article>
       </article>
-      <article class="withdraw__container__balance">
+      <article class="newWallet__container__balance">
         <h4>Wallet Balance</h4>
         <h3>$0.00</h3>
-        <article class="withdraw__container__balance__contain">
-          <label for=""><span>*</span> Amount</label>
-          <BaseInput placeholder="$0.0"></BaseInput>
-          <p>Amount to transfer example: $0.00</p>
-          <label for=""><span>*</span> Destination wallet</label>
-          <BaseInput placeholder="Wallet"></BaseInput>
-          <article class="withdraw__container__balance__contain__actions">
+        <article class="newWallet__container__balance__contain">
+          <label for=""><span>*</span> Nombre de la Wallet</label>
+          <BaseInput placeholder="Nombre"></BaseInput>
+          <article class="newWallet__container__balance__contain__actions">
               <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton label="Enviar" @click="sendData"></BaseButton>
-          </article>  
+              <BaseButton label="Enviar"  @click="sendData"> </BaseButton>
+          </article>
         </article>
       </article>
     </section>
   </section>
-  <PopUpSuccess title="Envio realizado con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
-  
+  <PopUpSuccess title="Wallet creada con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
 </template>
 
 <script>
@@ -35,8 +31,9 @@ import BtnBack from "@/components/form/BtnBack.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
-import { ref } from '@vue/reactivity';
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
+
+import { ref } from '@vue/reactivity';
 export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
   setup() {
@@ -46,8 +43,8 @@ export default {
       { name: "trx" },
       { name: "USDT" },
     ];
-    const showPopUp =  ref(false)
     const coin = ref("coin")
+    const showPopUp =  ref(false)
     const sendData = () => {
       showPopUp.value = true
     }
@@ -62,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.withdraw {
+.newWallet {
   margin-top: 30px;
   padding: 40px;
   border-radius: 8px;

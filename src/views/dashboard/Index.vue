@@ -11,7 +11,6 @@
         <h2>Métodos de pago más utilizado</h2>
         <article class="dasboard__main__data-chart">
           <apexchart
-            type="donut"
             :options="chartOptions"
             :series="series"
             :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"
@@ -85,7 +84,7 @@ export default {
     const series = [44, 55, 41, 17, 15];
     const chartOptions = {
       chart: {
-        type: "donut",
+        type: "pie",
         toolbar: {
           show: false,
         },
