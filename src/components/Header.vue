@@ -8,8 +8,8 @@
       <article class="header__container-tab">
         <img src="/src/assets/icons/bell-not.svg" alt="" />
       </article>
-      <article class="header__container-tab">
-        <img src="/src/assets/icons/avatar.png" class="avatar" alt="" />
+      <article class="header__container-tab avatar">
+        <img src="/src/assets/icons/avatar.png"  alt="" />
         <div>
           <p>UserName</p>
           <h5>VERIFIED</h5>
@@ -32,28 +32,49 @@ export default {};
   padding: 16px;
   border-radius: 16px;
   background: white;
+  @media (max-width: 700px) {
+    justify-content: center;
+    max-height: 100%;
+    flex-wrap: wrap;
+  }
   h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 700px) {
+      margin-bottom: 20px;
+    }
   }
   &__container {
     display: flex;
+    @media (max-width: 700px){
+      
+      align-items: center;
+    }
     &-tab {
       display: flex;
       align-items: center;
+      justify-content: center;
       margin-right: 15px;
       padding: 16px;
       border-radius: 12px;
       background: #f6f8fa;
-      img {
-        width: 20px;
-        height: 20px;
-        &.avatar {
+      @media (max-width: 700px){
+        width: 40px;
+        height: 40px;
+      }
+      &.avatar{
+        width: auto;
+        height: auto;
+        img{
           width: 40px;
           height: 40px;
           margin-right: 15px;
         }
+      }
+      img {
+        width: 20px;
+        height: 20px;
       }
       p {
         color: #647188;

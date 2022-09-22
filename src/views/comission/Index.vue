@@ -5,7 +5,10 @@
       <article class="commissions__aside__total">
         <p>Total balance</p>
         <h2>$ 7,610.00</h2>
-        <BaseButton label="Retirar" @click="$router.push(({ path: '/commissions/withdraw' }))"></BaseButton>
+        <BaseButton
+          label="Retirar"
+          @click="$router.push({ path: '/commissions/withdraw' })"
+        ></BaseButton>
       </article>
       <article class="commissions__aside__total">
         <p>Total USD</p>
@@ -52,7 +55,11 @@
           </article>
         </article>
       </article>
-      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+      ></b-pagination>
     </section>
   </section>
 </template>
@@ -113,16 +120,17 @@ export default {
           },
         },
       },
+
     };
-    const currentPage =  ref(1)
-    const rows =  ref(50)
-    const perPage =  ref(5)
+    const currentPage = ref(1);
+    const rows = ref(50);
+    const perPage = ref(5);
     return {
       chartOptions,
       series,
       currentPage,
       rows,
-      perPage
+      perPage,
     };
   },
   components: { Header, BaseButton, InputSearch, BaseInput },
@@ -138,6 +146,9 @@ export default {
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-gap: 20px;
+  @media (max-width: 700px){
+    grid-template-columns: 1fr;
+  }
   &__aside {
     padding: 16px;
     border-radius: 8px;
@@ -201,54 +212,57 @@ export default {
       }
     }
   }
-  &__table{
+  &__table {
     overflow: hidden;
-    &__actions{
+    &__actions {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      input{
+      input {
         width: 250px;
+        @media (max-width: 700px){
+          margin-top: 15px;
+        }
       }
     }
     margin-top: 20px;
     @include Table(5);
-    .Aprobado{
+    .Aprobado {
       position: relative;
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         width: 5px;
         height: 5px;
-        background: #0EC564;
+        background: #0ec564;
         top: 50%;
         left: 30%;
         transform: translate(0%, -50%);
         border-radius: 100%;
       }
     }
-    .Pendiente{
+    .Pendiente {
       position: relative;
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         width: 5px;
         height: 5px;
-        background: #FFAB1B;
+        background: #ffab1b;
         top: 50%;
         left: 30%;
         transform: translate(0%, -50%);
         border-radius: 100%;
       }
     }
-    .Rechazado{
+    .Rechazado {
       position: relative;
-      &::before{
-        content: '';
+      &::before {
+        content: "";
         position: absolute;
         width: 5px;
         height: 5px;
-        background: #FF4E78;
+        background: #ff4e78;
         top: 50%;
         left: 30%;
         transform: translate(0%, -50%);
@@ -260,25 +274,25 @@ export default {
     margin-top: 20px;
     justify-content: center !important;
 
-    .page-item{
+    .page-item {
       width: 40px;
       height: 40px;
       border-radius: 100%;
-      .page-link{
+      .page-link {
         display: inline-block;
         width: 40px;
         height: 40px;
         border: none;
         border-radius: 100%;
         color: #000000;
-        &:focus{
+        &:focus {
           box-shadow: none;
         }
       }
-      &.active > .page-link{
-      color: white;
-      background: #000000;
-    }
+      &.active > .page-link {
+        color: white;
+        background: #000000;
+      }
     }
   }
 }

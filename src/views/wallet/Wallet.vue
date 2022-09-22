@@ -6,7 +6,11 @@
         <h2>$ 7,610.00</h2>
         <p>BTC 0.0003213</p>
         <article class="wallet__balance__total__actions">
-          <div v-for="e in balanceActions" :key="e.name" @click="$router.push({ path: `/wallet/${e.route}` })">
+          <div
+            v-for="e in balanceActions"
+            :key="e.name"
+            @click="$router.push({ path: `/wallet/${e.route}` })"
+          >
             <img :src="`src/assets/icons/${e.icon}.svg`" alt="" />
             <p>{{ e.name }}</p>
           </div>
@@ -53,7 +57,11 @@
           </article>
         </article>
       </article>
-      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+      ></b-pagination>
     </section>
   </section>
 </template>
@@ -61,25 +69,25 @@
 <script>
 import CardCoin from "../../components/CardCoin.vue";
 import InputSearch from "../../components/form/InputSearch.vue";
-import { ref } from '@vue/reactivity';
+import { ref } from "@vue/reactivity";
 
 export default {
   components: { CardCoin, InputSearch },
   setup() {
-    const currentPage =  ref(1)
-    const rows =  ref(50)
-    const perPage =  ref(5)
+    const currentPage = ref(1);
+    const rows = ref(50);
+    const perPage = ref(5);
     const balanceActions = [
-      { icon: "Money-Withdraw", name: "Retirar", route: 'withdraw' },
-      { icon: "Money-Deposit", name: "Depositar", route: 'deposit'  },
-      { icon: "create", name: "Create", route: 'new'},
+      { icon: "Money-Withdraw", name: "Retirar", route: "withdraw" },
+      { icon: "Money-Deposit", name: "Depositar", route: "deposit" },
+      { icon: "create", name: "Create", route: "new" },
       { icon: "trash-delete", name: "Delete" },
     ];
     return {
       balanceActions,
       currentPage,
       rows,
-      perPage
+      perPage,
     };
   },
 };
@@ -98,6 +106,9 @@ export default {
     grid-template-columns: 30% 1fr;
     grid-gap: 40px;
     border-radius: 24px;
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr;
+    }
     &__total {
       margin-bottom: 20px;
       text-align: center;
@@ -116,6 +127,9 @@ export default {
         margin-top: 20px;
         display: flex;
         justify-content: space-between;
+        @media (max-width: 700px) {
+          flex-wrap: wrap;
+        }
         div {
           width: 65px;
           height: 65px;
@@ -123,6 +137,9 @@ export default {
           padding: 8px 16px;
           background: white;
           cursor: pointer;
+          @media (max-width: 700px) {
+            margin-bottom: 15px;
+          }
           img {
             width: 24px;
           }
@@ -143,15 +160,21 @@ export default {
     }
   }
   &__table {
-    &__container{
+    &__container {
       overflow: hidden;
     }
     margin-top: 20px;
     &__title {
       display: flex;
       justify-content: space-between;
+      @media (max-width: 700px) {
+        flex-wrap: wrap;
+      }
       input {
         max-width: 300px;
+        @media (max-width: 700px) {
+          margin-top: 15px;
+        }
       }
     }
     @include Table(5);
@@ -160,25 +183,25 @@ export default {
     margin-top: 20px;
     justify-content: center !important;
 
-    .page-item{
+    .page-item {
       width: 40px;
       height: 40px;
       border-radius: 100%;
-      .page-link{
+      .page-link {
         display: inline-block;
         width: 40px;
         height: 40px;
         border: none;
         border-radius: 100%;
         color: #000000;
-        &:focus{
+        &:focus {
           box-shadow: none;
         }
       }
-      &.active > .page-link{
-      color: white;
-      background: #000000;
-    }
+      &.active > .page-link {
+        color: white;
+        background: #000000;
+      }
     }
   }
 }

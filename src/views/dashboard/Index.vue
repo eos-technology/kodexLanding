@@ -33,7 +33,10 @@
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
-              <img src="/src/assets/icons/hand-coins-currency-color.svg" alt="" />
+              <img
+                src="/src/assets/icons/hand-coins-currency-color.svg"
+                alt=""
+              />
             </div>
             <div class="aside__chart__price__tab__name">
               <p>Comercios</p>
@@ -137,6 +140,23 @@ export default {
           },
         },
       },
+      responsive: [
+        {
+          chart: {
+            width: 250,
+          },
+          breakpoint: 700,
+          options: {
+            legend: {
+              position: "bottom",
+            },
+            itemMargin: {
+              horizontal: 5,
+              vertical: 10,
+            },
+          },
+        },
+      ],
     };
     const series2 = [
       {
@@ -161,14 +181,14 @@ export default {
         categories: ["2021-02-04", "2021-02-05", "2021-02-06", "2021-02-09"],
       },
       stroke: {
-              curve: 'smooth'
-            },
+        curve: "smooth",
+      },
       legend: {
         show: false,
       },
       markers: {
-              size: 5
-            },
+        size: 5,
+      },
       colors: ["#02C9FD", "#1F78B4"],
       dataLabels: {
         enabled: false,
@@ -193,6 +213,9 @@ export default {
   grid-template-columns: 70% 1fr;
   grid-gap: 25px;
   margin-top: 30px;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
   &__main {
     &__img {
       padding: 16px;
@@ -223,6 +246,10 @@ export default {
       }
       &-chart {
         width: 450px;
+        @media (max-width: 700px){
+        width: 100%;
+
+        }
       }
     }
   }
