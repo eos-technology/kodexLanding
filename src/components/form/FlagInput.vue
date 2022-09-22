@@ -51,9 +51,9 @@ export default {
   border: none;
   outline: none;
   box-shadow: none !important;
+  font-size: 14px;
   > div {
     border-radius: 8px;
-
     padding: 14px;
     margin-right: 20px;
     background-color: #f6f8fa;

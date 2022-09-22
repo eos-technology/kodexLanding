@@ -5,7 +5,7 @@
       <article class="commissions__aside__total">
         <p>Total balance</p>
         <h2>$ 7,610.00</h2>
-        <BaseButton label="Retirar"></BaseButton>
+        <BaseButton label="Retirar" @click="$router.push(({ path: '/commissions/withdraw' }))"></BaseButton>
       </article>
       <article class="commissions__aside__total">
         <p>Total USD</p>
@@ -28,6 +28,31 @@
         <InputSearch></InputSearch>
         <BaseInput type="date"></BaseInput>
       </article>
+      <article class="commissions__table__container">
+        <article class="commissions__table__table">
+          <article class="commissions__table__table-header">
+            <p>ID</p>
+            <p>Type</p>
+            <p>Description</p>
+            <p>Date</p>
+            <p>Status</p>
+            <p>Quantity</p>
+          </article>
+          <article
+            class="commissions__table__table-row"
+            v-for="element in 5"
+            :key="element"
+          >
+            <p>0</p>
+            <p>Type Comissions</p>
+            <p>Description</p>
+            <p>06/07/2022 18:21</p>
+            <p class="Aprobado">Aprobado</p>
+            <p>$0.00</p>
+          </article>
+        </article>
+      </article>
+      <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage"></b-pagination>
     </section>
   </section>
 </template>
@@ -89,9 +114,15 @@ export default {
         },
       },
     };
+    const currentPage =  ref(1)
+    const rows =  ref(50)
+    const perPage =  ref(5)
     return {
       chartOptions,
       series,
+      currentPage,
+      rows,
+      perPage
     };
   },
   components: { Header, BaseButton, InputSearch, BaseInput },
@@ -168,6 +199,86 @@ export default {
         font-size: 16px;
         font-weight: 800 !important;
       }
+    }
+  }
+  &__table{
+    overflow: hidden;
+    &__actions{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      input{
+        width: 250px;
+      }
+    }
+    margin-top: 20px;
+    @include Table(5);
+    .Aprobado{
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #0EC564;
+        top: 50%;
+        left: 30%;
+        transform: translate(0%, -50%);
+        border-radius: 100%;
+      }
+    }
+    .Pendiente{
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #FFAB1B;
+        top: 50%;
+        left: 30%;
+        transform: translate(0%, -50%);
+        border-radius: 100%;
+      }
+    }
+    .Rechazado{
+      position: relative;
+      &::before{
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: #FF4E78;
+        top: 50%;
+        left: 30%;
+        transform: translate(0%, -50%);
+        border-radius: 100%;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 20px;
+    justify-content: center !important;
+
+    .page-item{
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      .page-link{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 100%;
+        color: #000000;
+        &:focus{
+          box-shadow: none;
+        }
+      }
+      &.active > .page-link{
+      color: white;
+      background: #000000;
+    }
     }
   }
 }

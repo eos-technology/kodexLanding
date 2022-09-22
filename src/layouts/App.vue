@@ -4,8 +4,8 @@
       <h1>PayKodex</h1>
       <article class="appLayout__sideBar__container">
         <h3>overview</h3>
-        <div class="tabsContainer" :class="$route.path == element.path ? 'active' : '' " v-for="element in tabs" :key="element.name" @click="$router.push({ path: element.path })">
-          <img :src="`/src/assets/icons/${$route.path == element.path ? 'white' : 'black'}/${element.icon}.svg`" alt="">
+        <div class="tabsContainer" :class="$route.path.includes(element.path) ? 'active' : '' " v-for="element in tabs" :key="element.name" @click="$router.push({ path: element.path })">
+          <img :src="`/src/assets/icons/${$route.path.includes(element.path) ? 'white' : 'black'}/${element.icon}.svg`" alt="">
           <h4>{{element.name}}</h4>
         </div>
       </article>
@@ -22,7 +22,7 @@ import { useRoute } from 'vue-router'
 export default {
   setup(){
     const tabs = [
-      {name: 'Dashboard', icon: 'dash' , path: '/'},
+      {name: 'Dashboard', icon: 'dash' , path: '/dashboard'},
       {name: 'Token', icon: 'token' , path: '/token'},
       {name: 'Wallet', icon: 'wallet' , path: '/wallet'},
       {name: 'Comissions', icon: 'comissions' , path: '/commissions'},

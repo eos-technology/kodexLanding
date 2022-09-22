@@ -46,7 +46,7 @@
           <p>Mes</p>
           <p>0/6</p>
         </div>
-        <BaseButton label="Invertir ahora"></BaseButton>
+        <BaseButton label="Invertir ahora" @click="$router.push(({ path: '/acciones/deposit' }))"></BaseButton>
       </article>
     </section>
     <article class="acciones__container">
@@ -87,7 +87,7 @@
             <p>Mes</p>
             <p>0/6</p>
           </div>
-          <BaseButton label="Retirar"></BaseButton>
+          <BaseButton label="Retirar" @click="$router.push(({ path: '/acciones/withdraw' }))"></BaseButton>
         </article>
       </section>
     </article>

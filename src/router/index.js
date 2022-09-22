@@ -2,11 +2,16 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
+    path: '/dashboard',
     component: () => import('@/layouts/App.vue'),
     children: [
       {
-        path: '',
+        path: '/profile',
+        name: 'Profile',
+        component: () => import('@/views/profile/Index.vue'),
+      },
+      {
+        path: '/dashboard',
         name:'Dashboard',
         component: () => import ('@/views/dashboard/Index.vue')
       },
@@ -17,8 +22,13 @@ const routes = [
       },
       {
         path: '/commissions',
-        name:'Commissions',
-        component: () => import ('@/views/commissions/Index.vue')
+        name:'comission',
+        component: () => import ('@/views/comission/Index.vue')
+      },
+      {
+        path: '/commissions/withdraw',
+        name:'comissionWithDraw',
+        component: () => import ('@/views/comission/WithDraw.vue')
       },
       {
         path: '/wallet',
@@ -42,7 +52,7 @@ const routes = [
           },
           {
             path: '/wallet/deposit',
-            name:'Deposit',
+            name:'DepositWallet',
             component: () => import ('@/views/wallet/Deposit.vue')
           },
         ]
@@ -55,23 +65,50 @@ const routes = [
           {
             path: '',
             name:'Acciones',
-            component: () => import ('@/views/acciones/acciones.vue')
+            component: () => import ('@/views/acciones/Acciones.vue')
           },
           {
             path: '/acciones/withdraw',
-            name:'Withdraw',
+            name:'Withdraw Actions',
             component: () => import ('@/views/acciones/WithDraw.vue')
           },
           {
             path: '/acciones/deposit',
-            name:'Deposit',
+            name:'Deposit Actions',
             component: () => import ('@/views/acciones/Deposit.vue')
           },
         ]
       },
     ],
   },
-  
+  {
+    path: '/',
+    component: () => import('@/layouts/Auth.vue'),
+    children: [
+      {
+        path: '/',
+        name:'Login',
+        component: () => import ('@/views/auth/Index.vue')
+      },
+      {
+        path: '/verification',
+        name:'Verification',
+        component: () => import ('@/views/auth/Verification.vue')
+      },
+      {
+        path: '/recover',
+        name:'Recover',
+        component: () => import ('@/views/auth/Recover.vue')
+      },
+      {
+        path: '/newpass',
+        name:'NewPass',
+        component: () => import ('@/views/auth/NewPass.vue')
+      },
+
+    ],
+  },
+
 ];
 
 const router = createRouter({
