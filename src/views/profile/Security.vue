@@ -37,17 +37,19 @@
           />
         </div>
       </div>
-      <div class="btnF">
-        <button class="btnF--C">Cancelar</button>
-        <button class="btnF--G">Guardar</button>
-      </div>
+      <section class="data__actions">
+      <BaseButton label="Cancel" class="transparent"></BaseButton>
+      <BaseButton label="Save"></BaseButton>
+    </section>
     </div>
   </div>
 </template>
 <script>
   import BaseInput from '@/components/form/BaseInput.vue';
+import BaseButton from "@/components/form/BaseButton.vue";
+
     export default {
-      components: { BaseInput },
+      components: { BaseInput,BaseButton },
       setup(){
   
       }
@@ -166,6 +168,14 @@
       padding: 12px 27px;
       font-weight: 500;
       color: white;
+    }
+  }
+  &__actions{
+    display: flex;
+    justify-content: end;
+    button{
+      width: auto;
+      margin-left: 20px;
     }
   }
 }

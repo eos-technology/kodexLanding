@@ -2,60 +2,98 @@
   <div class="data">
     <h2 class="data--Title">Datos Personales</h2>
     <div class="frame">
-      <img class="frame--avatar" src="@/assets/images/avatar.png" alt="">
+      <img class="frame--avatar" src="@/assets/images/avatar.png" alt="" />
       <button class="frame--upButton">Subir Foto</button>
     </div>
     <div class="info">
       <h2 class="info--title">Editar información personal</h2>
       <div class="grid">
         <div class="grid--item">
-          <label for="name" class="grid--title"><span class="grid--span">*</span>Nombres</label>
-          <BaseInput class="grid--btn" type="text" placeholder="John" id="name" />
-
+          <label for="name" class="grid--title"
+            ><span class="grid--span">*</span>Nombres</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="text"
+            placeholder="John"
+            id="name"
+          />
         </div>
         <div class="grid--itemD">
-          <label for="lastName" class="grid--title"><span class="grid--span">*</span>Apellidos</label>
-          <BaseInput class="grid--btn" type="text" placeholder="Doe" id="lastName" />
+          <label for="lastName" class="grid--title"
+            ><span class="grid--span">*</span>Apellidos</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="text"
+            placeholder="Doe"
+            id="lastName"
+          />
         </div>
         <div class="grid--item">
-          <label for="user" class="grid--title"><span class="grid--span">*</span>Usuario</label>
-          <BaseInput class="grid--btn" type="text" placeholder="Gasca" id="user" />
+          <label for="user" class="grid--title"
+            ><span class="grid--span">*</span>Usuario</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="text"
+            placeholder="Gasca"
+            id="user"
+          />
         </div>
         <div class="grid--itemD">
-          <label for="email" class="grid--title"><span class="grid--span">*</span>Correo electronico</label>
-          <BaseInput class="grid--btn" type="email" placeholder="email@example.com" id="email" />
+          <label for="email" class="grid--title"
+            ><span class="grid--span">*</span>Correo electronico</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="email"
+            placeholder="email@example.com"
+            id="email"
+          />
         </div>
         <div class="grid--item">
-          <label for="country" class="grid--title"><span class="grid--span">*</span>País de residencia</label>
-          <select id="country" name="country" class="grid--btn grid--flag grid--pad grid--select">
+          <label for="country" class="grid--title"
+            ><span class="grid--span">*</span>País de residencia</label
+          >
+          <select
+            id="country"
+            name="country"
+            class="grid--btn grid--flag grid--pad grid--select"
+          >
             <option value="colombia">Colombia</option>
             <option value="argentina">Argentina</option>
             <option value="panama">Panama</option>
             <option value="brazil">Brazil</option>
           </select>
-
         </div>
         <div class="grid--itemD">
-          <label for="phone" class="grid--title"><span class="grid--span">*</span>Número telefónico</label>
-          <BaseInput class="grid--btn" type="tel" placeholder="+57 320 000 22 33" id="phone" />
+          <label for="phone" class="grid--title"
+            ><span class="grid--span">*</span>Número telefónico</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="tel"
+            placeholder="+57 320 000 22 33"
+            id="phone"
+          />
         </div>
-
       </div>
-      <div class="btnF">
-        <button class="btnF--C">Cancelar</button>
-        <button class="btnF--G">Guardar</button>
-      </div>
+      <section class="data__actions">
+        <BaseButton label="Cancel" class="transparent"></BaseButton>
+        <BaseButton label="Save"></BaseButton>
+      </section>
     </div>
   </div>
 </template>
 <script>
-import BaseInput from '@/components/form/BaseInput.vue';
-  export default {
-    components: { BaseInput },
-    setup(){
+import BaseInput from "@/components/form/BaseInput.vue";
+import BaseButton from "@/components/form/BaseButton.vue";
 
-    }
-  }
+export default {
+  components: { BaseInput, BaseButton },
+  setup() {},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -72,13 +110,13 @@ import BaseInput from '@/components/form/BaseInput.vue';
   .frame {
     display: flex;
     align-items: center;
-    @media (max-width:576px) {
+    @media (max-width: 576px) {
       flex-direction: column;
       gap: 20px;
     }
 
     &--avatar {
-      background: #DCD7FB;
+      background: #dcd7fb;
       border-radius: 100%;
       border: 3px solid #000;
     }
@@ -113,7 +151,7 @@ import BaseInput from '@/components/form/BaseInput.vue';
       margin-top: 32px;
       margin-bottom: 24px;
       color: #000;
-      @media (max-width:576px) {
+      @media (max-width: 576px) {
         width: 90%;
       }
     }
@@ -122,41 +160,39 @@ import BaseInput from '@/components/form/BaseInput.vue';
   .grid {
     display: grid;
     grid-template-columns: auto auto;
-    @media (max-width:910px) {
+    @media (max-width: 910px) {
       grid-template-columns: auto;
       width: 100%;
     }
-    @media (max-width:576px) {
-
+    @media (max-width: 576px) {
       width: 100%;
     }
-
 
     &--item {
       display: flex;
       flex-direction: column;
       margin-right: 10px;
-      @media (max-width:910px) {
-      margin-right: 0;
-      width: 100%;
-      margin: 0 auto;
-    }
+      @media (max-width: 910px) {
+        margin-right: 0;
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
     &--itemD {
       display: flex;
       flex-direction: column;
       margin-left: 10px;
-      @media (max-width:910px) {
-      margin-left: 0;
-      width: 100%;
-      margin: 0 auto;
-    }
+      @media (max-width: 910px) {
+        margin-left: 0;
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
     &--span {
       font-weight: 500;
-      color: #D00573;
+      color: #d00573;
       font-size: 16px;
       line-height: 24px;
       margin-right: 5px;
@@ -171,7 +207,7 @@ import BaseInput from '@/components/form/BaseInput.vue';
     }
 
     &--btn {
-      background: #EEF0F1;
+      background: #eef0f1;
       border-radius: 16px;
       margin-bottom: 20px;
       color: #000;
@@ -181,13 +217,12 @@ import BaseInput from '@/components/form/BaseInput.vue';
       border: none;
       outline: none;
     }
-
   }
 
   .btnF {
     display: flex;
     justify-content: flex-end;
-    @media (max-width:576px) {
+    @media (max-width: 576px) {
       flex-direction: column;
       align-items: center;
     }
@@ -213,8 +248,13 @@ import BaseInput from '@/components/form/BaseInput.vue';
       color: white;
     }
   }
-
-
-
+  &__actions {
+    display: flex;
+    justify-content: end;
+    button {
+      width: auto;
+      margin-left: 20px;
+    }
+  }
 }
 </style>

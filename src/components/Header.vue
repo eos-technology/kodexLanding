@@ -2,6 +2,10 @@
   <section class="header">
     <h2>{{ $route.name }}</h2>
     <article class="header__container">
+      <article class="header__container-tab copy" @click="copyURL('TJXoCK3EMxGWPqi2niklfBF7y0865kCrT')">
+        <img src="/src/assets/icons/24-circle.svg" alt="" />
+        <h5>Copiar link de referido</h5>
+      </article>
       <article class="header__container-tab">
         <img src="/src/assets/icons/24-circle.svg" alt="" />
       </article>
@@ -20,7 +24,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    const copyURL = async (mytext) => {
+      try {
+        await navigator.clipboard.writeText(mytext);
+        alert("Copied");
+      } catch ($e) {
+        alert("Cannot copy");
+      }
+    };
+    return {
+      copyURL,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -59,6 +77,13 @@ export default {};
       padding: 16px;
       border-radius: 12px;
       background: #f6f8fa;
+      cursor: pointer;
+      &.copy{
+        h5{
+          margin-left: 10px;
+          font-weight: 400;
+        }
+      }
       @media (max-width: 700px){
         width: 40px;
         height: 40px;

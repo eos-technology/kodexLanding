@@ -37,7 +37,7 @@ export default {
       { name: "Token", icon: "token", path: "/token" },
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
-      { name: "Red", icon: "red", path: "/red" },
+      { name: "Red", icon: "red", path: "/team" },
       { name: "Acciones", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
     ];

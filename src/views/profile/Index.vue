@@ -69,8 +69,9 @@ import Security from "./Security.vue";
 import ValidationVue from "./Validation.vue";
 import { ref } from "@vue/reactivity";
 import Header from "@/components/Header.vue";
+import Auth from "./Auth.vue";
 export default {
-  components: { Header },
+  components: { Header, Auth },
   setup() {
     const tabsComissions = [
       {
@@ -89,6 +90,12 @@ export default {
         name: "validation",
         title: "Verificación KYC",
         component: ValidationVue,
+        icon: "checklist",
+      },
+      {
+        name: "uthentication",
+        title: "Two-factor Authentication",
+        component: Auth,
         icon: "checklist",
       },
     ];
