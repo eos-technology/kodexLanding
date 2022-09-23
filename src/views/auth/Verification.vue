@@ -8,7 +8,7 @@
       <BaseInput type="number" maxlength="1" />
       <BaseInput type="number" maxlength="1" />
     </section>
-    <BaseButton label="Check code"></BaseButton>
+    <BaseButton label="Check code" @click="$router.push(({ path: '/dashboard' }))"></BaseButton>
     <div>
       <router-link to="/">Reenviar code</router-link>
     </div>

@@ -4,9 +4,9 @@
     <BaseInput placeholder="example@mail.com"></BaseInput>
     <label for=""><span>*</span> Contraseña</label>
     <InputPass placeholder="Password" v-model="form.pass"></InputPass>
-    <BaseButton label="Button" @click="$router.push(({ path: '/dashboard' }))"></BaseButton>
+    <BaseButton label="Button" @click="$router.push(({ path: '/verification' }))"></BaseButton>
     <div>
-      <router-link to="/about">Olvide mi clave</router-link>
+      <router-link to="/recover">Olvide mi clave</router-link>
     </div>
   </section>
 </template>
