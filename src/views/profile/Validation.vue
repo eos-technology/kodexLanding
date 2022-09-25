@@ -2,7 +2,12 @@
   <div class="data">
     <h2 class="data--Title">Datos Personlaes</h2>
     <div class="info">
-      <div class="grid">
+      <div v-if="kycInfo.id">
+        <h3>
+          Verificación en proceso
+        </h3>
+      </div>
+      <div class="grid" v-else>
         <div class="grid--item">
           <label for="id" class="grid--title"
             ><span class="grid--span">*</span>Numero de identificación</label
@@ -12,6 +17,7 @@
             type="number"
             placeholder="El: 1 075 000 444"
             id="id"
+            v-model="form.document"
           />
         </div>
         <div class="grid--item">
@@ -23,6 +29,7 @@
             type="text"
             placeholder="Colombia"
             id="country"
+            v-model="form.country"
           />
         </div>
         <div class="grid--item">
@@ -34,6 +41,19 @@
             type="text"
             placeholder="Ej: Medellín"
             id="city"
+            v-model="form.city"
+          />
+        </div>
+        <div class="grid--item">
+          <label for="city" class="grid--title"
+            ><span class="grid--span">*</span>Dirección de residencia</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="text"
+            placeholder="Ej: Medellín"
+            id="city"
+            v-model="form.address"
           />
         </div>
         <div class="grid--item">
@@ -60,22 +80,60 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
-
-import { ref } from "@vue/reactivity";
+import { mapActions, mapState } from 'vuex'
 export default {
   components: {
     BaseInput,
     BaseButton
   },
-  setup() {
-    const showSuccesUser = ref(false);
-    return {
-      showSuccesUser,
-    };
-  },
-};
-</script>
+    data () {
+        return {
+            loading: false,
+            form: {
+                document: null,
+                country: null,
+                city: null,
+                address: null,
+                image: null
+            },
+            kycInfo: {}
+        }
+    },
+    created () {
+        this.getVerificateKyc().then(response => {
+            this.kycInfo = response
+        })
+    },
+    methods: {
+        ...mapActions('auth', ['verificateKyc', 'getUserInfo', 'getVerificateKyc']),
+        changeFiles(){
+            this.form.image = this.$refs.image.files[0]
+        },
+        onSubmit() {
+            this.loading = true
 
+            const formData = new FormData()
+            formData.append('document', this.form.document)
+            formData.append('country', this.form.country)
+            formData.append('city', this.form.city)
+            formData.append('address', this.form.address)
+            formData.append('image', this.form.image)
+
+            this.verificateKyc(formData).then(() => {
+                this.getUserInfo()
+                this.getVerificateKyc().then(response => {
+                    this.kycInfo = response
+                })
+                openNotification()
+                this.loading = false
+            })
+        }
+    },
+    computed: {
+        ...mapState('auth', ['user'])
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .data {

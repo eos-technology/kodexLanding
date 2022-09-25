@@ -6,7 +6,7 @@
       <article class="withdraw__container__select">
         <h4>Seleccione Wallet</h4>
         <article class="withdraw__container__select__contain">
-          <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
+          <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
@@ -14,13 +14,13 @@
         <h3>$0.00</h3>
         <article class="withdraw__container__balance__contain">
           <label for=""><span>*</span> Amount</label>
-          <BaseInput placeholder="$0.0"></BaseInput>
+          <BaseInput v-model="form.quantity" placeholder="$0.0"></BaseInput>
           <p>Amount to transfer example: $0.00</p>
           <label for=""><span>*</span> Destination wallet</label>
-          <BaseInput placeholder="Wallet"></BaseInput>
+          <BaseInput v-model="form.to" placeholder="Wallet"></BaseInput>
           <article class="withdraw__container__balance__contain__actions">
               <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton label="Enviar" @click="sendData"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.to == null" label="Enviar" @click="sendData"></BaseButton>
           </article>  
         </article>
       </article>
@@ -37,6 +37,7 @@ import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import { ref } from '@vue/reactivity';
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
+import { mapActions, mapGetters } from 'vuex';
 export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
   setup() {
@@ -58,6 +59,27 @@ export default {
       sendData
     };
   },
+  data () {
+    return {
+      form: {
+        wallet_id: null,
+        quantity: null,
+        to: null
+      }
+    }
+  },
+  created () {
+    this.getWallets()
+  },
+  methods: {
+    ...mapActions('wallet', ['getWallets']),
+    selectWallet(asset){
+      this.form.wallet_id = asset
+    }
+  },
+  computed: {
+    ...mapGetters('wallet', ['withdrawals'])
+  }
 };
 </script>
 

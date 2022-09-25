@@ -4,15 +4,16 @@
     <section class="commissions__aside">
       <article class="commissions__aside__total">
         <p>Total balance</p>
-        <h2>$ 7,610.00</h2>
+        <h2>$ {{ comissions.data.reduce((a, b) => a + b, 0) }}</h2>
         <BaseButton
           label="Retirar"
+          :disabled="comissions.data.reduce((a, b) => a + b, 0) <= 0"
           @click="$router.push({ path: '/commissions/withdraw' })"
         ></BaseButton>
       </article>
       <article class="commissions__aside__total">
         <p>Total USD</p>
-        <h2>$ 18,310.00</h2>
+        <h2>$ {{ coinFormat(comissions.total) }}</h2>
       </article>
       <article class="commissions__aside__chart">
         <h2>Comissions</h2>
@@ -29,7 +30,7 @@
     <section class="commissions__table">
       <article class="commissions__table__actions">
         <InputSearch></InputSearch>
-        <BaseInput type="date"></BaseInput>
+        <BaseInput type="date" v-model="payload.date"></BaseInput>
       </article>
       <article class="commissions__table__container">
         <article class="commissions__table__table">
@@ -43,97 +44,121 @@
           </article>
           <article
             class="commissions__table__table-row"
-            v-for="element in 5"
-            :key="element"
+            v-for="trx in transactions.data"
+            :key="trx.id"
           >
-            <p>0</p>
-            <p>Type Comissions</p>
-            <p>Description</p>
-            <p>06/07/2022 18:21</p>
-            <p class="Aprobado">Aprobado</p>
-            <p>$0.00</p>
+            <p>{{ trx.id }}</p>
+            <p>{{ trx.category ? trx.category.name : '' }}</p>
+            <p>{{ trx.description }}</p>
+            <p>{{ formatDate(trx.created_at) }}</p>
+            <p class="Aprobado">{{ trx.type == 1 ? 'Income' : 'Outcome' }}</p>
+            <p>${{ coinFormat(trx.quantity) }}</p>
           </article>
         </article>
       </article>
       <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
+        v-model="transactions.meta.current_page"
+        :total-rows="transactions.meta.total"
+        :per-page="transactions.meta.per_page"
       ></b-pagination>
     </section>
   </section>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
 import Header from "@/components/Header.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import VueApexCharts from "vue3-apexcharts";
 import InputSearch from "@/components/form/InputSearch.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
+import { mapActions, mapState } from 'vuex';
 
 export default {
   components: { apexchart: VueApexCharts },
-  setup() {
-    const series = [44, 55, 41, 17, 15];
-    const chartOptions = {
-      chart: {
-        type: "pie",
-        toolbar: {
-          show: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      labels: ["Bitcoin", "Eleven", "Lightcoin", "Etherium", "BitcoinCash"],
-      fill: {
-        type: "gradient",
-      },
-      stroke: {
-        show: false,
-      },
-      legend: {
-        position: "bottom",
-        horizontalAlign: "start",
-        labels: {
-          useSeriesColors: true,
-        },
-        itemMargin: {
-          horizontal: 5,
-          vertical: 10,
-        },
-        formatter: function (seriesName, opts) {
-          return [
-            seriesName,
-            `<span class="porcentaje">${
-              opts.w.globals.series[opts.seriesIndex]
-            }</span>`,
-          ];
-        },
-      },
-      plotOptions: {
-        pie: {
-          expandOnClick: false,
-          pie: {
-            size: "100%",
-          },
-        },
-      },
-
-    };
-    const currentPage = ref(1);
-    const rows = ref(50);
-    const perPage = ref(5);
+  data () {
     return {
-      chartOptions,
-      series,
-      currentPage,
-      rows,
-      perPage,
-    };
+      payload: {
+        page: 1,
+        type: null,
+        date: null
+      },
+      series: [44, 55, 41, 17, 15, 0],
+       chartOptions: {
+          chart: {
+            type: "pie",
+            toolbar: {
+              show: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          labels: ["Directs", "Pro Bonus", "Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4"],
+          fill: {
+            type: "gradient",
+          },
+          stroke: {
+            show: false,
+          },
+          legend: {
+            position: "bottom",
+            horizontalAlign: "start",
+            labels: {
+              useSeriesColors: true,
+            },
+            itemMargin: {
+              horizontal: 5,
+              vertical: 10,
+            },
+            formatter: function (seriesName, opts) {
+              return [
+                seriesName,
+                `<span class="porcentaje">${
+                  opts.w.globals.series[opts.seriesIndex]
+                }</span>`,
+              ];
+            },
+          },
+          plotOptions: {
+            pie: {
+              expandOnClick: false,
+              pie: {
+                size: "100%",
+              },
+            },
+          },
+
+        }
+    }
   },
   components: { Header, BaseButton, InputSearch, BaseInput },
+  created () {
+    this.getData()
+    this.getTransactionsData()
+  },
+  methods: {
+    ...mapActions('comission', ['getComissions', 'getTransactions']),
+    getData() {
+      this.getComissions().then(() => {
+        this.updateChart()
+      })
+    },
+    getTransactionsData () {
+      this.getTransactions(this.payload)
+    },
+    updateChart() {
+      this.series = this.comissions.data
+      console.log(this.series)
+    }
+  },
+  computed: {
+    ...mapState('comission', ['comissions', 'transactions'])
+  },
+  watch: {
+    'payload.date': function () {
+      this.getTransactionsData()
+    }
+  }
 };
 </script>
 

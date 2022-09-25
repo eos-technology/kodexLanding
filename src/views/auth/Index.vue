@@ -5,7 +5,7 @@
   </section>
   <h2>Bienvenidos</h2>
   <Login v-if="active"></Login>
-  <Register v-if="!active"></Register>
+  <Register :username="username" v-if="!active" @ready="active = true"></Register>
 </template>
 <script>
 import BaseInput from '@/components/form/BaseInput.vue';
@@ -16,12 +16,15 @@ import Login from './Login.vue';
 import Register from './Register.vue';
   export default {
     components: { BaseInput, InputPass, BaseButton, Login, Register },
-    setup(){
-      const form = ref({})
-      const active = ref(true)
-      return{
-        form,
-        active
+    props: ['register', 'username'],
+    data () {
+      return {
+        active: true
+      }
+    },
+    created () {
+      if(this.register) {
+        this.active = false
       }
     }
   }

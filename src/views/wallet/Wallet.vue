@@ -3,22 +3,26 @@
     <section class="wallet__balance">
       <article class="wallet__balance__total">
         <p>Total balance</p>
-        <h2>$ 7,610.00</h2>
-        <p>BTC 0.0003213</p>
+        <h2>{{ walletActive.asset ? walletActive.asset.currency : '' }} {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}</h2>
+        <p>$ {{ walletActive.balance_usd ? coinFormat(walletActive.balance_usd) : 0 }}</p>
         <article class="wallet__balance__total__actions">
-          <div
-            v-for="e in balanceActions"
-            :key="e.name"
-            @click="$router.push({ path: `/wallet/${e.route}` })"
-          >
-            <img :src="`src/assets/icons/${e.icon}.svg`" alt="" />
-            <p>{{ e.name }}</p>
+          <div @click="$router.push({ name: `Withdraw` })" >
+            <img :src="`@/assets/icons/Money-Withdraw.svg`" alt="" />
+            <p>Retirar</p>
+          </div>
+          <div @click="$router.push({ name: `DepositWallet`, params: { address: walletActive.address ? walletActive.address : '' } })" >
+            <img :src="`@/assets/icons/Money-Deposit.svg`" alt="" />
+            <p>Depositar</p>
+          </div>
+          <div @click="$router.push({ name: `NewWallet`})" >
+            <img :src="`@/assets/icons/create.svg`" alt="" />
+            <p>Crear</p>
           </div>
         </article>
       </article>
       <article class="wallet__balance__cards">
         <article class="wallet__balance__cards__container">
-          <CardCoin v-for="x in 5" :key="x"></CardCoin>
+          <CardCoin :isActive="walletActive.id" @click="walletActive = wallet" :wallet="wallet" v-for="wallet in wallets" :key="wallet.id" />
         </article>
       </article>
     </section>
@@ -28,34 +32,33 @@
         <InputSearch placeholder="Buscar"></InputSearch>
       </article>
       <article class="wallet__table__container">
-        <article class="wallet__table__table">
-          <article class="wallet__table__table-header">
-            <p>ID</p>
-            <p>NAME</p>
-            <p>TIME</p>
-            <p>FROM</p>
-            <p>TO</p>
-            <p>QUANTITY</p>
-          </article>
-          <article
-            class="wallet__table__table-row"
-            v-for="element in 5"
-            :key="element"
-          >
-            <p>0</p>
-            <div>
-              <img src="/src/assets/icons/Bitcoin.png" alt="" />
-              <div>
-                <h4>Bitcoin</h4>
-                <p>0xbnas8sas0fasdj1a5slkasd4k1</p>
-              </div>
-            </div>
-            <p>06/07/2022 18:21</p>
-            <p>From</p>
-            <p>To</p>
-            <p class="row-status succes">$0.00</p>
-          </article>
-        </article>
+        <b-table responsive striped hover :items="transactions" :fields="fields">
+          <template #cell(hash)="row">
+                <div class="ultralimited">
+                  {{ row.item.txHash }}
+                </div>
+            </template>
+            <template #cell(time)="row">
+                <div class="limited">
+                  {{ row.item.time }}
+                </div>
+            </template>
+            <template #cell(from)="row">
+                <div class="ultralimited">
+                  {{ row.item.from }}
+                </div>
+            </template>
+            <template #cell(to)="row">
+                <div class="ultralimited">
+                  {{ row.item.to }}
+                </div>
+            </template>
+            <template #cell(quantity)="row">
+                <div class="limited">
+                  {{ row.item.quantity }}
+                </div>
+            </template>
+        </b-table>
       </article>
       <b-pagination
         v-model="currentPage"
@@ -67,33 +70,89 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import CardCoin from "../../components/CardCoin.vue";
 import InputSearch from "../../components/form/InputSearch.vue";
-import { ref } from "@vue/reactivity";
 
 export default {
   components: { CardCoin, InputSearch },
-  setup() {
-    const currentPage = ref(1);
-    const rows = ref(50);
-    const perPage = ref(5);
-    const balanceActions = [
-      { icon: "Money-Withdraw", name: "Retirar", route: "withdraw" },
-      { icon: "Money-Deposit", name: "Depositar", route: "deposit" },
-      { icon: "create", name: "Create", route: "new" },
-      { icon: "trash-delete", name: "Delete" },
-    ];
+  data () {
     return {
-      balanceActions,
-      currentPage,
-      rows,
-      perPage,
-    };
+      fields: [
+        {
+          key: 'hash',
+          label: 'Hash'
+        },
+        {
+          key: 'time',
+          label: 'Time'
+        },
+        {
+          key: 'from',
+          label: 'From'
+        },
+        {
+          key: 'to',
+          label: 'To'
+        },
+        {
+          key: 'value',
+          label: 'Value'
+        }
+      ],
+      balanceActions: [
+        { icon: "Money-Withdraw", name: "Retirar", route: "withdraw" },
+        { icon: "Money-Deposit", name: "Depositar", route: "deposit" },
+        { icon: "create", name: "Create", route: "new" },
+        /* { icon: "trash-delete", name: "Delete" }, */
+      ],
+      walletActive: {
+        id: null
+      }
+    }
   },
+  created () {
+    this.getData()
+  },
+  methods: {
+    ...mapActions('wallet', ['getWallets', 'getTransactions']),
+    getData () {
+        this.loading = true
+        this.getWallets().then(() => {
+            this.loading = false
+        })
+    },
+    selectWallet (data) {
+        this.cardActive = data
+    },
+    selectedWallet (wallet) {
+      this.walletActive = wallet
+    }
+  },
+  computed: {
+      ...mapState('wallet', ['wallets', 'transactions'])
+  },
+  watch: {
+    'walletActive.address': function () {
+      this.getTransactions({ address: this.walletActive.address, currency: this.walletActive.currency})
+  }
+  }
 };
 </script>
 
 <style lang="scss">
+/* .ultralimited{
+  width: 50%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.limited{
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+} */
 .wallet {
   margin-top: 30px;
   padding: 40px;

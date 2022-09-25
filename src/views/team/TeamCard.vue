@@ -1,12 +1,17 @@
 <template>
-  <article class="TeamCard">
-    <img src="@/assets/images/Avatar.png" alt="" />
+  <article class="TeamCard" @click="$emit('search', user.username)">
+    <img :src="apiUrl + '/uploads/users/' + user.image" alt="" />
     <div>
-      <h2>Ryan Griffin</h2>
-      <p>Brazil</p>
+      <h2>{{ user.names }}</h2>
+      <p>{{ user.username }}</p>
     </div>
   </article>
 </template>
+<script>
+export default {
+  props: ['user']
+}
+</script>
 <style lang="scss" scoped>
 .TeamCard {
   width: 200px;

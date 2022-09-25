@@ -1,16 +1,20 @@
 <template>
   <section class="RegisterContainer">
+    <label for=""><span>*</span> Referido por</label>
+    <BaseInput v-model="form.user_parent" placeholder="Ariel Camacho"></BaseInput>
     <label for=""><span>*</span> Nombre completo</label>
-    <BaseInput placeholder="Ariel Camacho"></BaseInput>
+    <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
+    <label for=""><span>*</span> Nombre de usuario</label>
+    <BaseInput v-model="form.username" placeholder="ArielCamacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
-    <BaseInput placeholder="example@mail.com"></BaseInput>
+    <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
     <label for=""><span>*</span> Celular</label>
     <FlagInput v-model="form.phone"></FlagInput>
     <label for=""><span>*</span> Contraseña</label>
-    <InputPass placeholder="Password" v-model="form.pass"></InputPass>
-    <BaseButton label="Button" @click="$router.push(({ path: '/verification' }))"></BaseButton>
+    <InputPass v-model="form.password" placeholder="Password"></InputPass>
+    <BaseButton label="Registrarme" @click="onSubmit()"></BaseButton>
     <div>
-      <router-link to="/recover">Olvide mi clave</router-link>
+      <router-link to="/recover">Olvidé mi clave</router-link>
     </div>
   </section>
   
@@ -22,15 +26,37 @@ import InputPass from "@/components/form/InputPass.vue";
 import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import FlagInput from '@/components/form/FlagInput.vue';
+import { mapActions } from 'vuex';
 
 export default {
   components: { BaseInput, InputPass, BaseButton, FlagInput },
-  setup() {
-    const form = ref({});
+  props: ['username'],
+  data () {
     return {
-      form,
-    };
+      form: {
+        names: null,
+        username: null,
+        phone: null,
+        email: null,
+        password: null,
+        user_parent: null
+      }
+    }
   },
+  created () {
+    if(this.username) {
+      this.form.user_parent = this.username
+    }
+  },
+  methods: {
+    ...mapActions('auth',['register']),
+    onSubmit() {
+      this.register(this.form).then(() => {
+        openNotification()
+        this.$emit('ready')
+      })
+    }
+  }
 };
 </script>
 

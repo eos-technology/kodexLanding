@@ -4,7 +4,7 @@
     <section class="token__main">
       <article class="token__main__img">
         <article class="token__main__img__r">
-          <img src="/src/assets/icons/imgMain.png" alt="" />
+          <Distribution class="mb-4"/>
           <p>Oportunidad para adquirir</p>
           <h2>Token KodexPay</h2>
         </article>
@@ -19,12 +19,17 @@
           <article class="token__main__img__l__count">
             <Count></Count>
           </article>
+          <div class="text-center mt-3">
+            <h2>
+              <b>1 KXP</b> = <b>0.5 USD</b>
+            </h2>
+          </div>
           <article class="token__main__img__l__progress">
             <b-progress
               :value="valueProgress"
               :max="100"
               animated
-              variant="dark"
+              variant="primary"
             ></b-progress>
             <span>{{ valueProgress }}%</span>
           </article>
@@ -35,13 +40,13 @@
             </h4>
           </article>
           <article>
-            <BaseButton label="Buy Token"></BaseButton>
+            <BaseButton @click="$router.push({ name: 'Purchase-Token' })" label="Buy Token"></BaseButton>
           </article>
         </article>
       </article>
       <TimeLine></TimeLine>
       <article class="token__main__quarter">
-        <article class="token__main__quarter__card" v-for="x in 4" :key="x">
+        <article class="token__main__quarter__card" v-for="x in 6" :key="x">
           <div>PK</div>
           <ul>
             <li>Texto</li>
@@ -61,10 +66,11 @@ import Count from "@/components/Count.vue";
 import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import TimeLine from "../../components/TimeLine.vue";
+import Distribution from './Distribution.vue'
 export default {
-  components: { Header, Count, BaseButton, TimeLine },
+  components: { Header, Count, BaseButton, TimeLine, Distribution },
   setup() {
-    const valueProgress = ref(45);
+    const valueProgress = ref(2);
     return {
       valueProgress,
     };

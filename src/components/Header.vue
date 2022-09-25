@@ -1,21 +1,21 @@
 <template>
   <section class="header">
-    <h2>{{ $route.name }}</h2>
+    <h2 style="color:#132D7C; text-transform: capitalize">{{ $route.name }}</h2>
     <article class="header__container">
-      <article class="header__container-tab copy" @click="copyURL('TJXoCK3EMxGWPqi2niklfBF7y0865kCrT')">
-        <img src="/src/assets/icons/24-circle.svg" alt="" />
+      <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/auth/login/register/${user.username}`)">
+        <img src="@/assets/icons/copy.svg" alt="" />
         <h5>Copiar link de referido</h5>
       </article>
       <article class="header__container-tab">
-        <img src="/src/assets/icons/24-circle.svg" alt="" />
+        <img src="@/assets/icons/24-circle.svg" alt="" />
       </article>
-      <article class="header__container-tab">
-        <img src="/src/assets/icons/bell-not.svg" alt="" />
-      </article>
+      <!-- <article class="header__container-tab">
+        <img src="@/assets/icons/bell-not.svg" alt="" />
+      </article> -->
       <article class="header__container-tab avatar">
-        <img src="/src/assets/icons/avatar.png"  alt="" />
+        <img src="@/assets/icons/avatar.png"  alt="" />
         <div>
-          <p>UserName</p>
+          <p>{{ user.username }}</p>
           <h5>VERIFIED</h5>
         </div>
       </article>
@@ -24,20 +24,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   setup() {
     const copyURL = async (mytext) => {
       try {
         await navigator.clipboard.writeText(mytext);
-        alert("Copied");
+        openNotification('Copiado exitosamente')
       } catch ($e) {
-        alert("Cannot copy");
+        openNotification('En estos momentos no es posible copiar')
       }
     };
     return {
       copyURL,
     };
   },
+  computed: {
+    ...mapState('auth', ['user'])
+  }
 };
 </script>
 

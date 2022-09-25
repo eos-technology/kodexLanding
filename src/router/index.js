@@ -1,42 +1,54 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from '../store'
 
 const routes = [
   {
-    path: '/dashboard',
+    path: '/',
     component: () => import('@/layouts/App.vue'),
     children: [
       {
-        path: '/profile',
+        path: 'profile',
         name: 'Profile',
         component: () => import('@/views/profile/Index.vue'),
       },
       {
-        path: '/team',
+        path: 'team',
         name: 'Team',
         component: () => import('@/views/team/Index.vue'),
       },
       {
-        path: '/dashboard',
+        path: '',
         name:'Dashboard',
         component: () => import ('@/views/dashboard/Index.vue')
       },
       {
-        path: '/token',
+        path: 'cart/:id/payment',
+        name:'Cart',
+        component: () => import ('@/views/cart/Index.vue'),
+        props: true
+      },
+      {
+        path: 'token',
         name:'Tokens',
         component: () => import ('@/views/tokens/Index.vue')
       },
       {
-        path: '/commissions',
+        path: 'token/purchase',
+        name:'Purchase-Token',
+        component: () => import ('@/views/tokens/Purchase.vue')
+      },
+      {
+        path: 'commissions',
         name:'comission',
         component: () => import ('@/views/comission/Index.vue')
       },
       {
-        path: '/commissions/withdraw',
+        path: 'commissions/withdraw',
         name:'comissionWithDraw',
         component: () => import ('@/views/comission/WithDraw.vue')
       },
       {
-        path: '/wallet',
+        path: 'wallet',
         name:'Wallet',
         component: () => import ('@/views/wallet/Index.vue'),
         children: [
@@ -56,9 +68,10 @@ const routes = [
             component: () => import ('@/views/wallet/NewWallet.vue')
           },
           {
-            path: '/wallet/deposit',
+            path: '/wallet/deposit/:address',
             name:'DepositWallet',
-            component: () => import ('@/views/wallet/Deposit.vue')
+            component: () => import ('@/views/wallet/Deposit.vue'),
+            props: true
           },
         ]
       },
@@ -87,13 +100,14 @@ const routes = [
     ],
   },
   {
-    path: '/',
+    path: '/auth',
     component: () => import('@/layouts/Auth.vue'),
     children: [
       {
-        path: '/',
+        path: 'login/:register?/:username?',
         name:'Login',
-        component: () => import ('@/views/auth/Index.vue')
+        component: () => import ('@/views/auth/Index.vue'),
+        props: true
       },
       {
         path: '/verification',
@@ -106,9 +120,10 @@ const routes = [
         component: () => import ('@/views/auth/Recover.vue')
       },
       {
-        path: '/newpass',
+        path: '/newpass/:id/:hash',
         name:'NewPass',
-        component: () => import ('@/views/auth/NewPass.vue')
+        component: () => import ('@/views/auth/NewPass.vue'),
+        props: true
       },
 
     ],
@@ -120,5 +135,22 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = store.state.auth.user
+
+  const publicPages = ['Login', 'Verification', 'Recover', 'NewPass']
+
+  const authRequired = !publicPages.includes(to.name)
+
+  if (authRequired && loggedIn === null) {
+    next({
+      name: 'Login',
+      replace: true
+    })
+  } else {
+    next()
+  }
+})
 
 export default router;

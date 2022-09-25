@@ -1,32 +1,63 @@
 <template>
-  <article class="walletCard">
-    <h2>Juan Lizcano</h2>
-    <p>Eleven (Elv)</p>
-    <h3>**** **** **** 1923</h3>
-    <div class="walletCard-balance">
-      <p>USDT: $1,000.00</p>
-      <p>USD: $1,000.00</p>
+  <article class="walletCard" :id="wallet.currency">
+    <h2>{{ wallet.name }}</h2>
+    <p> {{ wallet.asset.name }} ({{ wallet.asset.currency }})</p>
+    <h3 class="address"> {{ wallet.address }}</h3>
+    <div class="row">
+      <div class="col-6 walletCard-balance">
+        <p>USDT: ${{ coinFormat(wallet.balance_usdt) }}</p>
+        <p>{{ wallet.asset.currency }}: ${{ coinFormat(wallet.balance) }}</p>
+      </div>
+      <div class="col-6 text-right">
+        <img style="max-width:50px" :src="wallet.asset.icon" alt="">
+      </div>
     </div>
   </article>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   props: {
-    card: Object,
+    wallet: Object,
+    isActive: {
+      default: null
+    }
   },
   setup() {
     return {};
   },
+  methods: {
+    ...mapActions('wallet', ['getBalance'])
+  },
+  watch: {
+    isActive: function (val) {
+      if(val == this.wallet.id) {
+        this.getBalance({address: this.wallet.address, currency: this.wallet.currency}).then(response => {
+          this.wallet.balance = response[0]
+          this.wallet.balance_usd = response[1]
+          this.bsc = response[2]
+        })
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
+.text-right{
+  text-align: right;
+}
+.address{
+  width: 230px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .walletCard {
   min-width: 290px;
   padding: 25px;
   border-radius: 25px;
   color: white;
-  background-image: url("@/assets/images/WalletFull.png");
   background-position: center;
   background-size: cover;
   h2 {
@@ -46,5 +77,26 @@ export default {
       margin-bottom: 0;
     }
   }
+}
+#usdt{
+  background: url('/images/wallets/usdt.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+}
+
+#bsc, #bnb{
+  background: url('/images/wallets/bsc.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+}
+#btc{
+  background: url('/images/wallets/bitcoin.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+}
+#kxp{
+  background: url('/images/wallets/kxp.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <section class="loginContainer">
     <label for=""><span>*</span> Email</label>
-    <BaseInput placeholder="example@mail.com"></BaseInput>
+    <BaseInput placeholder="example@mail.com" v-model="form.email"></BaseInput>
     <label for=""><span>*</span> Contraseña</label>
-    <InputPass placeholder="Password" v-model="form.pass"></InputPass>
-    <BaseButton label="Button" @click="$router.push(({ path: '/verification' }))"></BaseButton>
+    <InputPass placeholder="Password" v-model="form.password"></InputPass>
+    <BaseButton label="Iniciar sesión" @click="onSumbit()"></BaseButton>
     <div>
       <router-link to="/recover">Olvide mi clave</router-link>
     </div>
@@ -13,16 +13,29 @@
 
 <script>
   
-  import BaseInput from '@/components/form/BaseInput.vue';
+import BaseInput from '@/components/form/BaseInput.vue';
 import InputPass from '@/components/form/InputPass.vue';
 import { ref } from '@vue/reactivity';
 import BaseButton from '../../components/form/BaseButton.vue';
+import { mapActions } from 'vuex';
 export default {
     components: { BaseInput, InputPass, BaseButton },
-    setup(){
-      const form = ref({})
-      return{
-        form,
+    data () {
+      return {
+        form: {
+          email: null,
+          password: null
+        }
+      }
+    },
+    methods: {
+      ...mapActions('auth', ['login']),
+      onSumbit() {
+        this.login(this.form).then(() => {
+          this.$router.push({
+            name: 'Dashboard'
+          })
+        })
       }
     }
   }

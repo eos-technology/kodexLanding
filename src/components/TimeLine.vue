@@ -4,7 +4,7 @@
       class="timeLine-dot"
       :class="x <= q ? 'active' : ''"
       :style="`--tableWidth: ${tableWidth}px;`"
-      v-for="x in 5"
+      v-for="x in 6"
       :key="x"
     >
       <div class="btnDot">

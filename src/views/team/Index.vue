@@ -3,31 +3,14 @@
   <section class="team">
     <section class="team__title">
       <BtnBack></BtnBack>
-      <InputSearch placeholder="Buscar"></InputSearch>
+      <InputSearch v-model="search" v-on:keyup.enter="searchUser(search)" placeholder="Buscar por usuario"></InputSearch>
     </section>
     <section class="team__container">
       <article class="team__container__lead">
-        <TeamCard></TeamCard>
+        <TeamCard @search="searchUser" :user="team"></TeamCard>
       </article>
       <article class="team__container__workers first">
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-      </article>
-      <article class="team__container__workers">
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-      </article>
-      <article class="team__container__workers">
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
-        <TeamCard class="worker"></TeamCard>
+        <TeamCard @search="searchUser" class="worker" :user="user" v-for="user in team.users" :key="user.id" />
       </article>
     </section>
   </section>
@@ -38,8 +21,31 @@ import Header from '@/components/Header.vue';
 import BtnBack from '@/components/form/BtnBack.vue';
 import InputSearch from '@/components/form/InputSearch.vue';
 import TeamCard from './TeamCard.vue';
+import { mapActions, mapState } from 'vuex';
 export default {
-  components:{ Header, BtnBack, InputSearch, TeamCard }
+  components:{ Header, BtnBack, InputSearch, TeamCard },
+  created () {
+    this.getData(this.user.username)
+  },
+  data () {
+    return {
+      search: null
+    }
+  },
+  methods: {
+    ...mapActions('user', ['getTeamUnilevel']),
+    getData(username) {
+      this.getTeamUnilevel(username)
+    },
+    searchUser (data) {
+      console.log("HOLA", data)
+      this.getData(data)
+    }
+  },
+  computed: {
+    ...mapState('auth', ['user']),
+    ...mapState('user', ['team'])
+  }
 }
 </script>
 

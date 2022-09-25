@@ -7,11 +7,11 @@
         <h4>Seleccione Wallet</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
-            <img src="/src/assets/icons/qr.png" alt="">
+            <qrcode-vue :value="address" size="200" level="M"/>
           </div>
           <div class="newWallet__container__select__contain-copy">
             <h4>Dirección de wallet</h4>
-            <Copy></Copy>
+            <Copy :text="address"></Copy>
             <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p>
           </div>
         </article>
@@ -25,10 +25,12 @@ import BtnBack from "@/components/form/BtnBack.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
+import QrcodeVue from 'qrcode.vue'
 import { ref } from '@vue/reactivity';
 import Copy from "@/components/base/Copy.vue";
 export default {
-  components: { BtnBack, BaseInput, BaseButton, SelectCoin, Copy },
+  props: ['address'],
+  components: { QrcodeVue, BtnBack, BaseInput, BaseButton, SelectCoin, Copy },
   setup() {
     const coins = [
       { name: "btc" },

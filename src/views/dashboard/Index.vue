@@ -5,7 +5,7 @@
       <article class="dasboard__main__img">
         <h2>Nombre_Pasarela</h2>
         <h3>Description</h3>
-        <img src="/src/assets/icons/imgMain.png" alt="" />
+        <img src="@/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
         <h2>Métodos de pago más utilizado</h2>
@@ -34,7 +34,7 @@
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
               <img
-                src="/src/assets/icons/hand-coins-currency-color.svg"
+                src="@/assets/icons/hand-coins-currency-color.svg"
                 alt=""
               />
             </div>
@@ -45,7 +45,7 @@
           </article>
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
-              <img src="/src/assets/icons/hand-coins-currency.svg" alt="" />
+              <img src="@/assets/icons/hand-coins-currency.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
               <p>Comercios</p>
@@ -65,7 +65,7 @@
         <h3>Comercios recientes</h3>
         <article class="aside__list__tab" v-for="x in 5" :key="x">
           <div class="aside__list__tab__contain">
-            <img src="/src/assets/icons/hand-coins-currency-black.svg" alt="" />
+            <img src="@/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
             <p>Comercios</p>

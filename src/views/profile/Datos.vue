@@ -2,7 +2,7 @@
   <div class="data">
     <h2 class="data--Title">Datos Personales</h2>
     <div class="frame">
-      <img class="frame--avatar" src="@/assets/images/avatar.png" alt="" />
+      <img class="frame--avatar" :src="apiUrl + '/uploads/users/' + user.image" alt="" />
       <button class="frame--upButton">Subir Foto</button>
     </div>
     <div class="info">
@@ -17,17 +17,19 @@
             type="text"
             placeholder="John"
             id="name"
+            v-model="user.names"
           />
         </div>
         <div class="grid--itemD">
-          <label for="lastName" class="grid--title"
-            ><span class="grid--span">*</span>Apellidos</label
+          <label for="phone" class="grid--title"
+            ><span class="grid--span">*</span>Número telefónico</label
           >
           <BaseInput
             class="grid--btn"
-            type="text"
-            placeholder="Doe"
-            id="lastName"
+            type="tel"
+            placeholder="+57 320 000 22 33"
+            id="phone"
+            v-model="user.phone"
           />
         </div>
         <div class="grid--item">
@@ -39,6 +41,8 @@
             type="text"
             placeholder="Gasca"
             id="user"
+            :disabled="true"
+            v-model="user.username"
           />
         </div>
         <div class="grid--itemD">
@@ -50,38 +54,14 @@
             type="email"
             placeholder="email@example.com"
             id="email"
-          />
-        </div>
-        <div class="grid--item">
-          <label for="country" class="grid--title"
-            ><span class="grid--span">*</span>País de residencia</label
-          >
-          <select
-            id="country"
-            name="country"
-            class="grid--btn grid--flag grid--pad grid--select"
-          >
-            <option value="colombia">Colombia</option>
-            <option value="argentina">Argentina</option>
-            <option value="panama">Panama</option>
-            <option value="brazil">Brazil</option>
-          </select>
-        </div>
-        <div class="grid--itemD">
-          <label for="phone" class="grid--title"
-            ><span class="grid--span">*</span>Número telefónico</label
-          >
-          <BaseInput
-            class="grid--btn"
-            type="tel"
-            placeholder="+57 320 000 22 33"
-            id="phone"
+            :disabled="true"
+            v-model="user.email"
           />
         </div>
       </div>
       <section class="data__actions">
         <BaseButton label="Cancel" class="transparent"></BaseButton>
-        <BaseButton label="Save"></BaseButton>
+        <BaseButton label="Update information" @click="onSubmit"></BaseButton>
       </section>
     </div>
   </div>
@@ -89,10 +69,37 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
+import { mapActions, mapState } from 'vuex';
 
 export default {
   components: { BaseInput, BaseButton },
-  setup() {},
+  created () {
+    this.getUserInfo()
+  },
+  methods: {
+    ...mapActions('auth', ['getUserInfo', 'updateUser']),
+    changeFiles(){
+        this.user.image = this.$refs.image.files[0]
+    },
+    onSubmit() {
+      const formData = new FormData()
+      formData.append('id', this.user.id)
+      formData.append('username', this.user.username)
+      formData.append('image', this.user.image)
+      formData.append('names', this.user.names)
+      formData.append('email', this.user.email)
+      formData.append('phone', this.user.phone)
+
+      this.updateUser({data: formData, id: this.user.id}).then(() => {
+          this.getUserInfo()
+          openNotification()
+          this.loading = false
+      })
+    }
+  },
+  computed: {
+    ...mapState('auth', ['user'])
+  }
 };
 </script>
 
@@ -119,6 +126,7 @@ export default {
       background: #dcd7fb;
       border-radius: 100%;
       border: 3px solid #000;
+      max-width: 100px;
     }
 
     &--upButton {
@@ -131,7 +139,7 @@ export default {
     }
 
     &--deleteButton {
-      background-image: url("@/assets/img/trash.svg");
+      background-image: url("@/assets/images/trash.svg");
       background-position: 5% center;
       background-repeat: no-repeat;
       outline: none;

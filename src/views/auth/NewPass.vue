@@ -5,10 +5,13 @@
   </p>
   <section class="recover">
     <label for=""><span>*</span> Nueva contraseña</label>
-    <InputPass></InputPass>
-    <label for=""><span>*</span> Nueva contraseña</label>
-    <InputPass></InputPass>
-    <BaseButton label="Enviar"></BaseButton>
+    <InputPass v-model="form.password"></InputPass>
+    <label for=""><span>*</span> Confirmar contraseña</label>
+    <InputPass v-model="r_password"></InputPass>
+    <div class="text" v-if="message">
+      {{message}}
+    </div>
+    <BaseButton :disabled="message != null" @click="onSubmit" label="Recuperar contraseña"></BaseButton>
   </section>
 </template>
 <script>
@@ -18,16 +21,48 @@ import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
+import { mapActions } from 'vuex';
 export default {
   components: { BaseInput, InputPass, BaseButton, Login, Register },
-  setup() {
-    const form = ref({});
-    const active = ref(true);
-    return {
-      form,
-      active,
-    };
+  props: ['id', 'hash'],
+  data () {
+      return {
+          form: {
+              id: null,
+              password: null
+          },
+          r_password: null,
+          loading: false,
+          message: null
+      }
   },
+  created (){
+      this.form.id = this.id
+  },
+  methods: {
+    ...mapActions('interceptors', ['setError']),
+    ...mapActions('auth', ['passwordReset']),
+    onSubmit () {
+        this.loading = true
+        this.passwordReset(this.form).then(response => {
+            this.loading = false
+            openNotification('Password changed, please signIn')
+            this.$router.push({
+                name: 'Signin'
+            })
+        })
+        this.loading = false
+    },
+  },
+  watch: {
+    r_password: function (val) {
+      if(val != this.form.password) {
+          this.message = 'Passwords not match'
+      } else {
+          this.message = null
+      }
+    }
+    }
 };
 </script>
 

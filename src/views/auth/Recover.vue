@@ -6,8 +6,11 @@
   </p>
   <section class="recover">
     <label for=""><span>*</span> Email</label>
-    <BaseInput placeholder="example@mail.com"></BaseInput>
-    <BaseButton label="Enviar"></BaseButton>
+    <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
+    <BaseButton @click="onSubmit" label="Enviar correo"></BaseButton>
+    {{
+      form
+    }}
   </section>
 </template>
 <script>
@@ -17,16 +20,29 @@ import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
+import { mapActions } from 'vuex';
 export default {
   components: { BaseInput, InputPass, BaseButton, Login, Register },
-  setup() {
-    const form = ref({});
-    const active = ref(true);
-    return {
-      form,
-      active,
-    };
+  data () {
+      return {
+          form: {
+            email: null
+          },
+          loading: false
+      }
   },
+  methods: {
+      ...mapActions('auth', ['resetPassword']),
+      onSubmit () {
+        this.resetPassword(this.form).then(response => {
+            openNotification('Verifica tu correo para recuperar la contraseña', null)
+            this.$router.push({
+                name: 'Login'
+            })
+        })
+        this.loading = false
+      }
+  }
 };
 </script>
 

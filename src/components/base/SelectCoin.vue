@@ -2,13 +2,13 @@
   <section class="selectCoin">
     <div
       class="selectCoin__coin"
-      v-for="coin in coins"
-      :key="coin.name"
-      @click="selectCoin(coin.name)"
-      :class="coinSelected == coin.name ? 'active' : ''"
+      v-for="asset in coins"
+      :key="asset.id"
+      @click="selectCoin(asset.id)"
+      :class="coinSelected == asset.id ? 'active' : ''"
     >
-      <img src="/src/assets/icons/Crypto.svg" alt="" />
-      <p>{{ coin.name }}</p>
+      <img style="max-width:50px" :src="asset.icon" alt="" />
+      <p>{{ asset.name }}</p>
     </div>
   </section>
 </template>
@@ -64,7 +64,7 @@ export default {
     font-size: 16px;
   }
   &.active {
-    background: #000000;
+    background: linear-gradient(0deg, #0F215C, #0F215C), #040E2C;
     color: white;
   }
 }

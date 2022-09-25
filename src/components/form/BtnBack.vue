@@ -1,7 +1,7 @@
 <template>
   <article class="btnBack" @click="$router.go(-1)">
     <div>
-      <img src="/src/assets/iconBase/arrow.svg" alt="">
+      <img src="@/assets/iconBase/arrow.svg" alt="">
     </div>
     <p>Regresar</p>
   </article>

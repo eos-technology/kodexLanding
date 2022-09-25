@@ -6,7 +6,7 @@
       <article class="newWallet__container__select">
         <h4>Seleccione Wallet</h4>
         <article class="newWallet__container__select__contain">
-          <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
+          <SelectCoin :coins="uniqueAssets" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
         </article>
       </article>
       <article class="newWallet__container__balance">
@@ -14,10 +14,10 @@
         <h3>$0.00</h3>
         <article class="newWallet__container__balance__contain">
           <label for=""><span>*</span> Nombre de la Wallet</label>
-          <BaseInput placeholder="Nombre"></BaseInput>
+          <BaseInput v-model="form.name" placeholder="Nombre"></BaseInput>
           <article class="newWallet__container__balance__contain__actions">
               <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton label="Enviar"  @click="sendData"> </BaseButton>
+              <BaseButton :disabled="form.name == null || form.currency_id == null" label="Crear wallet"  @click="onSubmit"> </BaseButton>
           </article>
         </article>
       </article>
@@ -34,27 +34,40 @@ import SelectCoin from "@/components/base/SelectCoin.vue";
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
 
 import { ref } from '@vue/reactivity';
+import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
-  setup() {
-    const coins = [
-      { name: "btc" },
-      { name: "usdt" },
-      { name: "trx" },
-      { name: "USDT" },
-    ];
-    const coin = ref("coin")
-    const showPopUp =  ref(false)
-    const sendData = () => {
-      showPopUp.value = true
-    }
+  data () {
     return {
-      coins,
-      coin,
-      showPopUp,
-      sendData
-    };
+      form: {
+        currency_id: null,
+        name: null
+      },
+      showPopUp: false
+    }
   },
+  created () {
+    this.getData()
+  },
+  methods: {
+        ...mapActions('wallet', ['getAssets', 'storeWallet']),
+        getData () {
+          this.getAssets()
+        },
+        onSubmit () {
+          this.storeWallet(this.form).then(() => {
+              this.showPopUp = true
+          })
+        },
+        selectAsset(asset) {
+          console.log("HOA", asset)
+          this.form.currency_id = asset
+        }
+    },
+    computed: {
+      ...mapState('wallet', ['assets']),
+      ...mapGetters('wallet', ['uniqueAssets'])
+    }
 };
 </script>
 

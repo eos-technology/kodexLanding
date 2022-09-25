@@ -1,19 +1,19 @@
 <template>
   <section class="appLayout">
     <section class="appLayout__sideBar">
-      <h1>PayKodex</h1>
-      <h3>overview</h3>
+      <img class="mb-5" src="@/assets/images/KodexMini.png" style="max-width:100%" alt="">
+      <h3 style="color:#647188">overview</h3>
       <article class="appLayout__sideBar__container">
         <div
           class="tabsContainer"
-          :class="$route.path.includes(element.path) ? 'active' : ''"
+          :class="$route.path == element.path ? 'active' : ''"
           v-for="element in tabs"
           :key="element.name"
           @click="$router.push({ path: element.path })"
         >
           <img
-            :src="`/src/assets/icons/${
-              $route.path.includes(element.path) ? 'white' : 'black'
+            :src="`@/assets/icons/${
+              $route.path == element.path ? 'white' : 'black'
             }/${element.icon}.svg`"
             alt=""
           />
@@ -33,7 +33,7 @@ import { useRoute } from "vue-router";
 export default {
   setup() {
     const tabs = [
-      { name: "Dashboard", icon: "dash", path: "/dashboard" },
+      { name: "Dashboard", icon: "dash", path: "/" },
       { name: "Token", icon: "token", path: "/token" },
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
@@ -66,13 +66,13 @@ export default {
   }
   &__sideBar {
     padding: 40px;
-    background-color: white;
+    background: linear-gradient(0deg, #0F215C, #0F215C), #040E2C;
     text-align: center;
     @media (max-width: 700px) {
       overflow: hidden;
     }
     h1 {
-      color: black;
+      color: white;
       font-family: "Kanit", sans-serif;
       font-weight: 500;
       margin-bottom: 60px;
@@ -94,7 +94,8 @@ export default {
         margin-bottom: 20px;
         padding: 14px;
         border-radius: 10px;
-        background: #f6f8fa;
+        background: rgba(255, 255, 255, 0.03);
+        color: white;
         text-align: center;
         cursor: pointer;
         @media (max-width: 700px) {
@@ -107,9 +108,9 @@ export default {
           font-weight: 300;
         }
         &.active {
-          background: #000000;
+          background: white;
           h4 {
-            color: white;
+            color: #132D7C;
           }
         }
       }

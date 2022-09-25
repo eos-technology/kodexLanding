@@ -3,6 +3,7 @@
     :value="modelValue"
     :placeholder="label"
     v-bind="$attrs"
+    :disabled="disabled"
     @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
@@ -18,6 +19,9 @@ export default {
       type: [String, Number],
       default: "",
     },
+    disabled: {
+      default: false
+    }
   },
 };
 </script>

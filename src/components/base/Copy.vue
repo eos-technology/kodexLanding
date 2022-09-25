@@ -1,19 +1,24 @@
 <template>
-  <div class="copy" @click="copyURL('TJXoCK3EMxGWPqi2niklfBF7y0865kCrT')">
-    TJXoCK3EMxGWPqi2niklfBF7y0865kCrT
+  <div class="copy" @click="copyURL(text)">
+    {{ text }}
     <img src="@/assets/iconBase/paste.svg" alt="">
   </div>
 </template>
 <script>
 export default {
   components: {},
+  props: {
+    text: {
+      default: ''
+    }
+  },
   setup() {
     const copyURL = async (mytext) => {
       try {
         await navigator.clipboard.writeText(mytext);
-        alert("Copied");
+        openNotification('Copiado exitosamente')
       } catch ($e) {
-        alert("Cannot copy");
+        openNotification('En estos momentos no es posible copiar')
       }
     };
     return {

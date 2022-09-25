@@ -4,17 +4,6 @@
     <div class="info">
       <div class="grid">
         <div class="grid--item">
-          <label for="oldPass" class="grid--title"
-            ><span class="grid--span">*</span>Contraseña anterior</label
-          >
-          <BaseInput
-            class="grid--btn"
-            type="password"
-            placeholder="********"
-            id="oldPass"
-          />
-        </div>
-        <div class="grid--item">
           <label for="newPass" class="grid--title"
             ><span class="grid--span">*</span>Nueva contraseña</label
           >
@@ -23,6 +12,7 @@
             type="password"
             placeholder="********"
             id="newPass"
+            v-model="form.password"
           />
         </div>
         <div class="grid--item">
@@ -34,28 +24,76 @@
             type="password"
             placeholder="********"
             id="Pass"
+            v-model="r_password"
           />
         </div>
       </div>
+      <div v-if="message">
+        {{ message }}
+      </div>
       <section class="data__actions">
       <BaseButton label="Cancel" class="transparent"></BaseButton>
-      <BaseButton label="Save"></BaseButton>
+      <BaseButton label="Update password" @click="onSubmit"></BaseButton>
     </section>
     </div>
   </div>
 </template>
 <script>
-  import BaseInput from '@/components/form/BaseInput.vue';
+import { mapActions, mapState } from 'vuex'
+import BaseInput from '@/components/form/BaseInput.vue';
 import BaseButton from "@/components/form/BaseButton.vue";
+export default {
+  components: { BaseInput,BaseButton },
+    data () {
+        return {
+            loading: false,
+            r_password: null,
+            r_pin: null,
+            form: {
+                id: null,
+                password: null,
+                pin: null
+            },
+            message: null
+        }
+    },
+    methods: {
+        ...mapActions('interceptors', ['setError']),
+        ...mapActions('auth', ['password']),
+        onSubmit() {
+            this.loading = true
+            this.form.id = this.user.id
 
-    export default {
-      components: { BaseInput,BaseButton },
-      setup(){
-  
-      }
+            this.password(this.form).then(() => {
+                openNotification()
+                this.loading = false
+            })
+        },
+        validateAuth() {
+            this.$router.push({ name: 'Dashboard' })
+        }
+    },
+    computed: {
+        ...mapState('auth', ['user'])
+    },
+    watch: {
+        r_password: function (val) {
+            if(val != this.form.password) {
+                this.message = 'Password do not match'
+            } else {
+                this.message = null
+            }
+        },
+        r_pin: function (val) {
+            if(val != this.form.pin) {
+                this.message = 'Pin do not match'
+            } else {
+                this.message = null
+            }
+        }
     }
-  </script>
- 22px;
+}
+</script>
 
 <style lang="scss" scoped>
 .data {
