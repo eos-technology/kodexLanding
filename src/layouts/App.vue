@@ -40,6 +40,7 @@ export default {
       { name: "Red", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
+      { name: "Support", icon: "support", path: "/support" },
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -64,6 +65,9 @@ export default {
     grid-template-columns: 1fr;
     padding: 10px;
   }
+  &__logo {
+    margin-bottom: 60px;
+  }
   &__sideBar {
     padding: 40px;
     background: linear-gradient(0deg, #0F215C, #0F215C), #040E2C;
@@ -82,6 +86,8 @@ export default {
       font-size: 15px;
       font-family: "Jost", sans-serif;
       margin-bottom: 15px;
+      color: $secondary-color;
+      text-transform: uppercase;
     }
     &__container {
       text-align: start;
@@ -89,7 +95,6 @@ export default {
         display: flex;
         overflow: scroll;
       }
-
       .tabsContainer {
         margin-bottom: 20px;
         padding: 14px;
@@ -100,12 +105,14 @@ export default {
         cursor: pointer;
         @media (max-width: 700px) {
           min-width: 100px;
-        margin-bottom: 0;
-        margin-right: 20px;
-      }
+          margin-bottom: 0;
+          margin-right: 20px;
+        }
         h4 {
           font-size: 14px;
           font-weight: 300;
+          line-height: 16px;
+          color: $white;
         }
         &.active {
           background: white;

@@ -77,8 +77,7 @@ export default {
   }
   &__container {
     display: flex;
-    @media (max-width: 700px){
-      
+    @media (max-width: 700px) {
       align-items: center;
     }
     &-tab {
@@ -90,20 +89,20 @@ export default {
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;
-      &.copy{
-        h5{
+      &.copy {
+        h5 {
           margin-left: 10px;
           font-weight: 400;
         }
       }
-      @media (max-width: 700px){
+      @media (max-width: 700px) {
         width: 40px;
         height: 40px;
       }
-      &.avatar{
+      &.avatar {
         width: auto;
         height: auto;
-        img{
+        img {
           width: 40px;
           height: 40px;
           margin-right: 15px;
@@ -123,6 +122,15 @@ export default {
         font-weight: 400;
       }
     }
+  }
+}
+
+.active {
+  background: linear-gradient(180deg, #0d1c4e 0%, #000406 100%);
+  &__text > h5, p{
+    color: $white;
+    margin-left: 12px;
+    line-height: 14px;
   }
 }
 </style>

@@ -68,7 +68,7 @@
             <img src="/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
-            <p>Comercios</p>
+            <p>Trade</p>
             <h5>$0.00</h5>
           </div>
         </article>
@@ -217,6 +217,9 @@ export default {
     grid-template-columns: 1fr;
   }
   &__main {
+    &__text{
+      margin-bottom: 16px;
+    }
     &__img {
       padding: 16px;
       border-radius: 8px;
