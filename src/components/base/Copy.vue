@@ -1,7 +1,7 @@
 <template>
   <div class="copy" @click="copyURL(text)">
     {{ text }}
-    <img src="@/assets/iconBase/paste.svg" alt="">
+    <img src="/assets/iconBase/paste.svg" alt="">
   </div>
 </template>
 <script>

@@ -2,9 +2,9 @@
   <section class="newWallet">
     <BtnBack></BtnBack>
     <section class="newWallet__container">
-      <h3>Añadir wallet</h3>
+      <h3>Create wallet</h3>
       <article class="newWallet__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>Select asset to create</h4>
         <article class="newWallet__container__select__contain">
           <SelectCoin :coins="uniqueAssets" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
         </article>
@@ -13,17 +13,17 @@
         <h4>Wallet Balance</h4>
         <h3>$0.00</h3>
         <article class="newWallet__container__balance__contain">
-          <label for=""><span>*</span> Nombre de la Wallet</label>
-          <BaseInput v-model="form.name" placeholder="Nombre"></BaseInput>
+          <label for=""><span>*</span> Wallet name</label>
+          <BaseInput v-model="form.name" placeholder="Name"></BaseInput>
           <article class="newWallet__container__balance__contain__actions">
-              <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.name == null || form.currency_id == null" label="Crear wallet"  @click="onSubmit"> </BaseButton>
+              <BaseButton label="Cancel" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.name == null || form.currency_id == null" label="Create wallet"  @click="onSubmit"> </BaseButton>
           </article>
         </article>
       </article>
     </section>
   </section>
-  <PopUpSuccess title="Wallet creada con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
+  <PopUpSuccess title="Wallet created successfilly" img="check" :showPopUp="showPopUp"></PopUpSuccess>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
         },
         onSubmit () {
           this.storeWallet(this.form).then(() => {
-              this.showPopUp = true
+            openNotification('Wallet created successfully')
           })
         },
         selectAsset(asset) {

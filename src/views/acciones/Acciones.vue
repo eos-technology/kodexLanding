@@ -3,7 +3,7 @@
     <ToggleButton v-model:show="show"></ToggleButton>
     <section class="acciones__card" v-if="show">
       <article class="acciones__card__img">
-        <img src="@/assets/images/btc.jpg" alt="" />
+        <img src="/assets/images/btc.jpg" alt="" />
       </article>
       <article class="acciones__card__text">
         <h2>Bitcoin</h2>
@@ -52,7 +52,7 @@
     <article class="acciones__container">
       <section class="acciones__card acciones__move" v-if="!show">
         <article class="acciones__card__img">
-          <img src="@/assets/images/btc.jpg" alt="" />
+          <img src="/assets/images/btc.jpg" alt="" />
         </article>
         <article class="acciones__card__text">
           <h2>Bitcoin</h2>

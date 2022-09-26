@@ -1,16 +1,16 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Datos Personales</h2>
+    <h2 class="data--Title">Personal information</h2>
     <div class="frame">
       <img class="frame--avatar" :src="apiUrl + '/uploads/users/' + user.image" alt="" />
-      <button class="frame--upButton">Subir Foto</button>
+      <button class="frame--upButton">Upload Photo</button>
     </div>
     <div class="info">
-      <h2 class="info--title">Editar información personal</h2>
+      <h2 class="info--title">Edit personal Information</h2>
       <div class="grid">
         <div class="grid--item">
           <label for="name" class="grid--title"
-            ><span class="grid--span">*</span>Nombres</label
+            ><span class="grid--span">*</span>Names</label
           >
           <BaseInput
             class="grid--btn"
@@ -22,7 +22,7 @@
         </div>
         <div class="grid--itemD">
           <label for="phone" class="grid--title"
-            ><span class="grid--span">*</span>Número telefónico</label
+            ><span class="grid--span">*</span>Number phone</label
           >
           <BaseInput
             class="grid--btn"
@@ -34,7 +34,7 @@
         </div>
         <div class="grid--item">
           <label for="user" class="grid--title"
-            ><span class="grid--span">*</span>Usuario</label
+            ><span class="grid--span">*</span>Username</label
           >
           <BaseInput
             class="grid--btn"
@@ -47,7 +47,7 @@
         </div>
         <div class="grid--itemD">
           <label for="email" class="grid--title"
-            ><span class="grid--span">*</span>Correo electronico</label
+            ><span class="grid--span">*</span>Email</label
           >
           <BaseInput
             class="grid--btn"
@@ -139,7 +139,7 @@ export default {
     }
 
     &--deleteButton {
-      background-image: url("@/assets/images/trash.svg");
+      background-image: url("/assets/images/trash.svg");
       background-position: 5% center;
       background-repeat: no-repeat;
       outline: none;

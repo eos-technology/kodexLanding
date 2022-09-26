@@ -1,16 +1,16 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Datos Personlaes</h2>
+    <h2 class="data--Title">KYC Verification</h2>
     <div class="info">
       <div v-if="kycInfo.id">
         <h3>
-          Verificación en proceso
+          Verification in progress
         </h3>
       </div>
       <div class="grid" v-else>
         <div class="grid--item">
           <label for="id" class="grid--title"
-            ><span class="grid--span">*</span>Numero de identificación</label
+            ><span class="grid--span">*</span>Identification number</label
           >
           <BaseInput
             class="grid--btn"
@@ -22,7 +22,7 @@
         </div>
         <div class="grid--item">
           <label for="country" class="grid--title"
-            ><span class="grid--span">*</span>Pais de residencia</label
+            ><span class="grid--span">*</span>Residence country</label
           >
           <BaseInput
             class="grid--btn"
@@ -34,7 +34,7 @@
         </div>
         <div class="grid--item">
           <label for="city" class="grid--title"
-            ><span class="grid--span">*</span>Ciudad de residencia</label
+            ><span class="grid--span">*</span>City of residence</label
           >
           <BaseInput
             class="grid--btn"
@@ -46,7 +46,7 @@
         </div>
         <div class="grid--item">
           <label for="city" class="grid--title"
-            ><span class="grid--span">*</span>Dirección de residencia</label
+            ><span class="grid--span">*</span>Address of residence</label
           >
           <BaseInput
             class="grid--btn"
@@ -58,20 +58,20 @@
         </div>
         <div class="grid--item">
           <label for="city" class="grid--title"
-            ><span class="grid--span">*</span>Subir documento</label
+            ><span class="grid--span">*</span>Upload ID photo</label
           >
           <div class="grid--btnDash">
             <p>
-              <b>Arrastra</b> tu imagen aquí, o <b>búscala en tu ordenador</b>
+              <b>Drag</b> your image here, or <b>find it on your computer</b>
             </p>
-            <p>Sube archivos de hasta 8gb</p>
+            <p>Upload files up to 2mb</p>
           </div>
         </div>
       </div>
 
       <section class="data__actions">
       <BaseButton label="Cancel" class="transparent"></BaseButton>
-      <BaseButton label="Enviar verificación"></BaseButton>
+      <BaseButton label="Send verification"></BaseButton>
     </section>
     </div>
   </div>

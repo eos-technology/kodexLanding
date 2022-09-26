@@ -6,7 +6,7 @@
         <p>Total balance</p>
         <h2>$ {{ comissions.data.reduce((a, b) => a + b, 0) }}</h2>
         <BaseButton
-          label="Retirar"
+          label="Withdraw"
           :disabled="comissions.data.reduce((a, b) => a + b, 0) <= 0"
           @click="$router.push({ path: '/commissions/withdraw' })"
         ></BaseButton>
@@ -93,7 +93,7 @@ export default {
           dataLabels: {
             enabled: false,
           },
-          labels: ["Directs", "Pro Bonus", "Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4"],
+          labels: ["Directs", "Pro Bonus", "Level 1", "Level 2", "Level 3", "Level 4"],
           fill: {
             type: "gradient",
           },

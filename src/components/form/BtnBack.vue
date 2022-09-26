@@ -1,9 +1,9 @@
 <template>
   <article class="btnBack" @click="$router.go(-1)">
     <div>
-      <img src="@/assets/iconBase/arrow.svg" alt="">
+      <img src="/assets/iconBase/arrow.svg" alt="">
     </div>
-    <p>Regresar</p>
+    <p>Go Back</p>
   </article>
 </template>
 

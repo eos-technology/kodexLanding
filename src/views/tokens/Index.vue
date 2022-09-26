@@ -5,7 +5,7 @@
       <article class="token__main__img">
         <article class="token__main__img__r">
           <Distribution class="mb-4"/>
-          <p>Oportunidad para adquirir</p>
+          <p>Opportunity to acquire</p>
           <h2>Token KodexPay</h2>
         </article>
         <article class="token__main__img__l">
@@ -13,7 +13,7 @@
             <div class="token__main__img__l__title-logo">PK</div>
             <div class="token__main__img__l__title-text">
               <h3>Tokens sale end in</h3>
-              <p>No vemos la hora de mostrarte lo que tenemos preparado</p>
+              <p>We can't wait to show you what we have prepared</p>
             </div>
           </article>
           <article class="token__main__img__l__count">

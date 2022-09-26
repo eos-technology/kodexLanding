@@ -1,9 +1,9 @@
 <template>
   <section class="loginToggle">
     <a :class="active ? 'active': ''" @click="active = true">Login</a>
-    <a :class="!active ? 'active': ''" @click="active = false">Registrar</a>
+    <a :class="!active ? 'active': ''" @click="active = false">Register</a>
   </section>
-  <h2>Bienvenidos</h2>
+  <h2>Welcome</h2>
   <Login v-if="active"></Login>
   <Register :username="username" v-if="!active" @ready="active = true"></Register>
 </template>

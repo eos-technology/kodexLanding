@@ -7,7 +7,7 @@
         <h4>Seleccione Wallet</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
-            <img src="@/assets/icons/qr.png" alt="">
+            <img src="/assets/icons/qr.png" alt="">
           </div>
           <div class="newWallet__container__select__contain-copy">
             <h4>Dirección de wallet</h4>

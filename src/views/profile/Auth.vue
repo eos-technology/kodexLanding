@@ -10,8 +10,8 @@
         </p>
         <p>Have a smart phone? Use Google Authenticator!</p>
         <div>
-          <img src="@/assets/images/apple.jpg" alt="" />
-          <img src="@/assets/images/andrioid.jpg" alt="" />
+          <img src="/assets/images/apple.jpg" alt="" />
+          <img src="/assets/images/andrioid.jpg" alt="" />
         </div>
         <p class="grey">
           Android, Google Play and the Google Play logo are trademarks of Google
@@ -29,7 +29,7 @@
       </article>
       <article class="auth__container__qr">
         <div class="auth__container__qr--img">
-          <img src="@/assets/images/qr.png" alt="">
+          <img src="/assets/images/qr.png" alt="">
         </div>
         <h4>Secret Key</h4>
         <Copy></Copy>

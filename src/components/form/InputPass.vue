@@ -7,7 +7,7 @@
       @input="$emit('update:modelValue', $event.target.value)"
       :type="show"
     ></BaseInput>
-    <img src="@/assets/images/EyeVisible.svg" alt="" @click="showpass" />
+    <img src="/assets/images/EyeVisible.svg" alt="" @click="showpass" />
   </div>
 </template>
 

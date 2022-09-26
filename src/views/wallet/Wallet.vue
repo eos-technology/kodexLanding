@@ -6,17 +6,17 @@
         <h2>{{ walletActive.asset ? walletActive.asset.currency : '' }} {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}</h2>
         <p>$ {{ walletActive.balance_usd ? coinFormat(walletActive.balance_usd) : 0 }}</p>
         <article class="wallet__balance__total__actions">
-          <div @click="$router.push({ name: `Withdraw` })" >
-            <img :src="`@/assets/icons/Money-Withdraw.svg`" alt="" />
-            <p>Retirar</p>
+          <div v-if="walletActive.asset" @click="$router.push({ name: `Withdraw` })" >
+            <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
+            <p>Withdraw</p>
           </div>
-          <div @click="$router.push({ name: `DepositWallet`, params: { address: walletActive.address ? walletActive.address : '' } })" >
-            <img :src="`@/assets/icons/Money-Deposit.svg`" alt="" />
-            <p>Depositar</p>
+          <div v-if="walletActive.asset" @click="$router.push({ name: `DepositWallet`, params: { address: walletActive.address ? walletActive.address : '' } })" >
+            <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
+            <p>Deposit</p>
           </div>
           <div @click="$router.push({ name: `NewWallet`})" >
-            <img :src="`@/assets/icons/create.svg`" alt="" />
-            <p>Crear</p>
+            <img :src="`/assets/icons/create.svg`" alt="" />
+            <p>Create</p>
           </div>
         </article>
       </article>
@@ -28,8 +28,8 @@
     </section>
     <section class="wallet__table">
       <article class="wallet__table__title">
-        <h2>Movimientos</h2>
-        <InputSearch placeholder="Buscar"></InputSearch>
+        <h2>Transactions</h2>
+        <InputSearch placeholder="Search"></InputSearch>
       </article>
       <article class="wallet__table__container">
         <b-table responsive striped hover :items="transactions" :fields="fields">

@@ -2,17 +2,17 @@
   <section class="newWallet">
     <BtnBack></BtnBack>
     <section class="newWallet__container">
-      <h3>Recibir</h3>
+      <h3>Deposit</h3>
       <article class="newWallet__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>Select wallet</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
             <qrcode-vue :value="address" size="200" level="M"/>
           </div>
           <div class="newWallet__container__select__contain-copy">
-            <h4>Dirección de wallet</h4>
+            <h4>Wallet address</h4>
             <Copy :text="address"></Copy>
-            <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p>
+            <!-- <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p> -->
           </div>
         </article>
       </article>

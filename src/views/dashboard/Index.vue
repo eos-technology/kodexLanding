@@ -3,12 +3,12 @@
   <section class="dasboard">
     <section class="dasboard__main">
       <article class="dasboard__main__img">
-        <h2>Nombre_Pasarela</h2>
-        <h3>Description</h3>
-        <img src="@/assets/icons/imgMain.png" alt="" />
+        <h2>KodexPay</h2>
+        <h3>Accept Cryptocurrencies it's easy!</h3>
+        <img src="/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
-        <h2>Métodos de pago más utilizado</h2>
+        <h2>Most used payment methods</h2>
         <article class="dasboard__main__data-chart">
           <apexchart
             :options="chartOptions"
@@ -21,7 +21,7 @@
     <aside class="aside">
       <article class="aside__card">
         <div class="aside__card__img">
-          <img src="@/assets/icons/bank.svg" alt="" />
+          <img src="/assets/icons/bank.svg" alt="" />
         </div>
         <div class="aside__card__text">
           <p class="aside__card__text__title-card">Wallet Balance</p>
@@ -29,27 +29,27 @@
         </div>
       </article>
       <article class="aside__chart">
-        <h3>Account</h3>
+        <h3>KodexPay Stats</h3>
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
               <img
-                src="@/assets/icons/hand-coins-currency-color.svg"
+                src="/assets/icons/hand-coins-currency-color.svg"
                 alt=""
               />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>Comercios</p>
-              <h5>$0.00</h5>
+              <p>Clients</p>
+              <h5>100+</h5>
             </div>
           </article>
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
-              <img src="@/assets/icons/hand-coins-currency.svg" alt="" />
+              <img src="/assets/icons/hand-coins-currency.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>Comercios</p>
-              <h5>$0.00</h5>
+              <p>Transactions</p>
+              <h5>$2M</h5>
             </div>
           </article>
         </article>
@@ -62,10 +62,10 @@
         </article>
       </article>
       <article class="aside__list">
-        <h3>Comercios recientes</h3>
+        <h3>Recent clients</h3>
         <article class="aside__list__tab" v-for="x in 5" :key="x">
           <div class="aside__list__tab__contain">
-            <img src="@/assets/icons/hand-coins-currency-black.svg" alt="" />
+            <img src="/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
             <p>Comercios</p>

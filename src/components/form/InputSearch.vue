@@ -23,7 +23,7 @@ export default {
 input {
   padding-left: 40px;
   min-width: 300px;
-  background-image: url('@/assets/iconBase/Search.svg');
+  background-image: url('/assets/iconBase/Search.svg');
   background-repeat: no-repeat;
   background-position: 1% center;
 }

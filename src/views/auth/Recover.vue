@@ -1,16 +1,12 @@
 <template>
-  <h2>Recuperar contraseña</h2>
+  <h2>Recover password</h2>
   <p>
-    Ingrese su dirección de correo electrónico a continuación y le enviaremos
-    instrucciones para configurar una nueva
+    Enter your email address below and we'll <br> send you instructions to set up a new one
   </p>
   <section class="recover">
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <BaseButton @click="onSubmit" label="Enviar correo"></BaseButton>
-    {{
-      form
-    }}
+    <BaseButton @click="onSubmit" label="Send Email"></BaseButton>
   </section>
 </template>
 <script>

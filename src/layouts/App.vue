@@ -1,7 +1,7 @@
 <template>
   <section class="appLayout">
     <section class="appLayout__sideBar">
-      <img class="mb-5" src="@/assets/images/KodexMini.png" style="max-width:100%" alt="">
+      <img class="mb-5" src="/assets/images/KodexMini.png" style="max-width:100%" alt="">
       <h3 style="color:#647188">overview</h3>
       <article class="appLayout__sideBar__container">
         <div
@@ -12,7 +12,7 @@
           @click="$router.push({ path: element.path })"
         >
           <img
-            :src="`@/assets/icons/${
+            :src="`/assets/icons/${
               $route.path == element.path ? 'white' : 'black'
             }/${element.icon}.svg`"
             alt=""
@@ -38,7 +38,7 @@ export default {
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
       { name: "Red", icon: "red", path: "/team" },
-      { name: "Acciones", icon: "actions", path: "/acciones" },
+      { name: "Staking", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
     ];
     const route = useRoute();

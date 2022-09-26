@@ -1,20 +1,20 @@
 <template>
   <section class="RegisterContainer">
-    <label for=""><span>*</span> Referido por</label>
+    <label for=""><span>*</span> Referral by</label>
     <BaseInput v-model="form.user_parent" placeholder="Ariel Camacho"></BaseInput>
-    <label for=""><span>*</span> Nombre completo</label>
+    <label for=""><span>*</span> Full names</label>
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
-    <label for=""><span>*</span> Nombre de usuario</label>
+    <label for=""><span>*</span> Username</label>
     <BaseInput v-model="form.username" placeholder="ArielCamacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <label for=""><span>*</span> Celular</label>
-    <FlagInput v-model="form.phone"></FlagInput>
-    <label for=""><span>*</span> Contraseña</label>
+    <!-- <label for=""><span>*</span> Celular</label>
+    <FlagInput v-model="form.phone"></FlagInput> -->
+    <label for=""><span>*</span> Password</label>
     <InputPass v-model="form.password" placeholder="Password"></InputPass>
-    <BaseButton label="Registrarme" @click="onSubmit()"></BaseButton>
+    <BaseButton label="SignUp" @click="onSubmit()"></BaseButton>
     <div>
-      <router-link to="/recover">Olvidé mi clave</router-link>
+      <router-link to="/recover">Forgot my password</router-link>
     </div>
   </section>
   

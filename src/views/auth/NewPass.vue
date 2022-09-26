@@ -1,17 +1,17 @@
 <template>
-  <h2>Nueva contraseña</h2>
+  <h2>New password</h2>
   <p>
     The password must cointain: 1 capital letter, 1 number, 1 special character, minimum characters
   </p>
   <section class="recover">
-    <label for=""><span>*</span> Nueva contraseña</label>
+    <label for=""><span>*</span> New password</label>
     <InputPass v-model="form.password"></InputPass>
-    <label for=""><span>*</span> Confirmar contraseña</label>
+    <label for=""><span>*</span> Confirm password</label>
     <InputPass v-model="r_password"></InputPass>
     <div class="text" v-if="message">
       {{message}}
     </div>
-    <BaseButton :disabled="message != null" @click="onSubmit" label="Recuperar contraseña"></BaseButton>
+    <BaseButton :disabled="message != null" @click="onSubmit" label="Recover my password"></BaseButton>
   </section>
 </template>
 <script>

@@ -1,11 +1,11 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Seguridad</h2>
+    <h2 class="data--Title">Security</h2>
     <div class="info">
       <div class="grid">
         <div class="grid--item">
           <label for="newPass" class="grid--title"
-            ><span class="grid--span">*</span>Nueva contraseña</label
+            ><span class="grid--span">*</span>New password</label
           >
           <BaseInput
             class="grid--btn"
@@ -17,7 +17,7 @@
         </div>
         <div class="grid--item">
           <label for="Pass" class="grid--title"
-            ><span class="grid--span">*</span>Confirmar contraseña</label
+            ><span class="grid--span">*</span>Confirm password</label
           >
           <BaseInput
             class="grid--btn"

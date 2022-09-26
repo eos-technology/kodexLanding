@@ -2,11 +2,11 @@
   <section class="loginContainer">
     <label for=""><span>*</span> Email</label>
     <BaseInput placeholder="example@mail.com" v-model="form.email"></BaseInput>
-    <label for=""><span>*</span> Contraseña</label>
+    <label for=""><span>*</span> Password</label>
     <InputPass placeholder="Password" v-model="form.password"></InputPass>
-    <BaseButton label="Iniciar sesión" @click="onSumbit()"></BaseButton>
+    <BaseButton label="SingIn" @click="onSumbit()"></BaseButton>
     <div>
-      <router-link to="/recover">Olvide mi clave</router-link>
+      <router-link to="/recover">Forgot my password</router-link>
     </div>
   </section>
 </template>

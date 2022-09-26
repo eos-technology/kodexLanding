@@ -2,7 +2,7 @@
   <section class="popUpBillsSucces" v-if="showPopUp">
     <section class="popUpBillsSucces__container">
       <article class="popUpBillsSucces__container__title">
-        <img :src="`@/assets/iconBase/${img}.png`" alt="" />
+        <img :src="`/assets/iconBase/${img}.png`" alt="" />
         <h3>{{ title }}</h3>
       </article>
     </section>

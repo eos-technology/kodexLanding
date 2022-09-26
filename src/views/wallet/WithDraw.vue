@@ -2,9 +2,9 @@
   <section class="withdraw">
     <BtnBack></BtnBack>
     <section class="withdraw__container">
-      <h3>Retirar dinero</h3>
+      <h3>Withdraw money</h3>
       <article class="withdraw__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>Select wallet address</h4>
         <article class="withdraw__container__select__contain">
           <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
@@ -19,8 +19,8 @@
           <label for=""><span>*</span> Destination wallet</label>
           <BaseInput v-model="form.to" placeholder="Wallet"></BaseInput>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.to == null" label="Enviar" @click="sendData"></BaseButton>
+              <BaseButton label="Cancel" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.to == null" label="Send transaction" @click="sendData"></BaseButton>
           </article>  
         </article>
       </article>

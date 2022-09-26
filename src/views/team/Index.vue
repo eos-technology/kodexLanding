@@ -3,7 +3,7 @@
   <section class="team">
     <section class="team__title">
       <BtnBack></BtnBack>
-      <InputSearch v-model="search" v-on:keyup.enter="searchUser(search)" placeholder="Buscar por usuario"></InputSearch>
+      <InputSearch v-model="search" v-on:keyup.enter="searchUser(search)" placeholder="Search by username"></InputSearch>
     </section>
     <section class="team__container">
       <article class="team__container__lead">

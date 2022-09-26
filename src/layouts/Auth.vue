@@ -1,10 +1,10 @@
 <template>
   <section class="authLayout">
     <article class="authLayout__img">
-      <img src="@/assets/images/login.jpg" alt="">
+      <img src="/assets/images/login.jpg" alt="">
     </article>
     <article class="authLayout__contain">
-        <img src="@/assets/images/KodexPay.png" alt="">
+        <img src="/assets/images/KodexPay.png" alt="">
         <router-view />
     </article>
   </section>

@@ -2,18 +2,18 @@
   <section class="header">
     <h2 style="color:#132D7C; text-transform: capitalize">{{ $route.name }}</h2>
     <article class="header__container">
-      <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/auth/login/register/${user.username}`)">
-        <img src="@/assets/icons/copy.svg" alt="" />
-        <h5>Copiar link de referido</h5>
+      <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/#/auth/login/register/${user.username}`)">
+        <img src="/assets/icons/copy.svg" alt="" />
+        <h5>Copy Referral link</h5>
       </article>
       <article class="header__container-tab">
-        <img src="@/assets/icons/24-circle.svg" alt="" />
+        <img src="/assets/icons/24-circle.svg" alt="" />
       </article>
       <!-- <article class="header__container-tab">
-        <img src="@/assets/icons/bell-not.svg" alt="" />
+        <img src="/assets/icons/bell-not.svg" alt="" />
       </article> -->
-      <article class="header__container-tab avatar">
-        <img src="@/assets/icons/avatar.png"  alt="" />
+      <article class="header__container-tab avatar" @click="close">
+        <img src="/assets/icons/avatar.png"  alt="" />
         <div>
           <p>{{ user.username }}</p>
           <h5>VERIFIED</h5>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 export default {
   setup() {
     const copyURL = async (mytext) => {
@@ -38,6 +38,14 @@ export default {
     return {
       copyURL,
     };
+  },
+  methods: {
+    ...mapActions('auth', ['logout']),
+    close () {
+      this.logout().then(() =>{
+        this.$router.push({ name: 'Login' })
+      })
+    },
   },
   computed: {
     ...mapState('auth', ['user'])

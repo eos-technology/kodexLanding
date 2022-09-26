@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap');
+body{
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  background-color: #E5E5E5;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Starwining';
+  src:  url('@/assets/fonts/Starwining.eot?ob7op1');
+  src:  url('@/assets/fonts/Starwining.eot?ob7op1#iefix') format('embedded-opentype'),
+    url('@/assets/fonts/Starwining.ttf?ob7op1') format('truetype'),
+    url('@/assets/fonts/Starwining.woff?ob7op1') format('woff'),
+    url('@/assets/fonts/Starwining.svg?ob7op1#Starwining') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Starwining' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-change-arrow:before {
+  content: "\e913";
+}
+.icon-download-arrow:before {
+  content: "\e905";
+}
+.icon-dots-menu:before {
+  content: "\e914";
+}
+.icon-menu-icon:before {
+  content: "\e915";
+}
+.icon-Search:before {
+  content: "\e916";
+}
+.icon-Money-time:before {
+  content: "\e917";
+}
+.icon-phone-wireless:before {
+  content: "\e918";
+}
+.icon-cash-banknote:before {
+  content: "\e919";
+}
+.icon-Dollar-card:before {
+  content: "\e91a";
+}
+.icon-user-circle:before {
+  content: "\e91b";
+}
+.icon-Earth:before {
+  content: "\e91c";
+}
+.icon-Documents-love:before {
+  content: "\e91d";
+}
+.icon-dollar-send:before {
+  content: "\e906";
+}
+.icon-invoice-checkmark:before {
+  content: "\e91e";
+}
+.icon-dash:before {
+  content: "\e91f";
+}
+.icon-question-loading:before {
+  content: "\e910";
+}
+.icon-checklist:before {
+  content: "\e908";
+}
+.icon-question-checkmark:before {
+  content: "\e909";
+}
+.icon-Eye-Hidden:before {
+  content: "\e90a";
+}
+.icon-Icon-plus:before {
+  content: "\e90b";
+}
+.icon-lock-key:before {
+  content: "\e90c";
+}
+.icon-user-edit:before {
+  content: "\e90d";
+}
+.icon-Bell:before {
+  content: "\e90e";
+}
+.icon-copy-paste:before {
+  content: "\e907";
+}
+.icon-check:before {
+  content: "\e911";
+}
+.icon-Grid-menu:before {
+  content: "\e900";
+}
+.icon-user-profile-window:before {
+  content: "\e901";
+}
+.icon-users-checkmark:before {
+  content: "\e902";
+}
+.icon-courier-hands-package-box:before {
+  content: "\e903";
+}
+.icon-Dollar1:before {
+  content: "\e904";
+}
+.icon-login-ogout:before {
+  content: "\e912";
+}

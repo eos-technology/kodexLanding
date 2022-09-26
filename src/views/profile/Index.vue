@@ -76,19 +76,19 @@ export default {
     const tabsComissions = [
       {
         name: "data",
-        title: "Datos personales",
+        title: "Personal Information",
         component: Datos,
         icon: "user-edit",
       },
       {
         name: "security",
-        title: "Seguridad",
+        title: "Security",
         component: Security,
         icon: "lock-key",
       },
       {
         name: "validation",
-        title: "Verificación KYC",
+        title: "KYC Verification",
         component: ValidationVue,
         icon: "checklist",
       },

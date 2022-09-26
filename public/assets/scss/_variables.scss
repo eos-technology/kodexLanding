@@ -1,0 +1,45 @@
+$white: #ffffff;
+$main-font: 'Jost';
+
+/* --------------Mixin------------------------*/
+
+@mixin pBox {
+  font-size: 16px;
+  color: $white;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+@mixin sBtn {
+  background: linear-gradient(214.22deg, #3d5cc7 14.01%, #0a157d 85.99%);
+  border-radius: 16px;
+  width: 100%;
+  height: 56px;
+  line-height: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  color: $white;
+}
+@mixin oBtn {
+  border:2px solid #3D5CC7;
+  border-radius: 16px;
+  width: 100%;
+  height: 56px;
+  line-height: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  color: $white;
+}
+@import "./mixins";
+
+/* -------------------Variables mixin------------------------*/
+
+.textBox {
+  @include pBox;
+}
+.sBtn {
+  @include sBtn;
+}
+.oBtn {
+  @include oBtn;
+}
