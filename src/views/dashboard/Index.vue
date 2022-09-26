@@ -3,8 +3,8 @@
   <section class="dasboard">
     <section class="dasboard__main">
       <article class="dasboard__main__img">
-        <h2>Nombre_Pasarela</h2>
-        <h3>Description</h3>
+        <h2>Kodex Pay</h2>
+        <p class="dasboard__main__text">Mauris vel nibh cursus, congue quam tincidunt, placerat ex. Praesent imperdiet sem vitae tellus commodo, sed ultricies lorem porttitor. Suspendisse sodales mi dignissim venenatis feugiat. Ut faucibus est eget velit fringilla cursus vitae id metus. Curabitur dui dui, pulvinar in aliquam non, mollis commodo elit. Vestibulum placerat tincidunt lacus, eget imperdiet felis suscipit sed. Suspendisse sit amet congue urna. Proin scelerisque libero in nisi luctus pellentesque</p>
         <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
@@ -33,22 +33,22 @@
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
+              <img src="/src/assets/icons/hand-coins-currency.svg" alt="" />
+            </div>
+            <div class="aside__chart__price__tab__name">
+              <p>Price</p>
+              <h5>$0.00</h5>
+            </div>
+          </article>
+          <article class="aside__chart__price__tab">
+            <div class="aside__chart__price__tab__contain">
               <img
                 src="/src/assets/icons/hand-coins-currency-color.svg"
                 alt=""
               />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>Comercios</p>
-              <h5>$0.00</h5>
-            </div>
-          </article>
-          <article class="aside__chart__price__tab">
-            <div class="aside__chart__price__tab__contain">
-              <img src="/src/assets/icons/hand-coins-currency.svg" alt="" />
-            </div>
-            <div class="aside__chart__price__tab__name">
-              <p>Comercios</p>
+              <p>Trade</p>
               <h5>$0.00</h5>
             </div>
           </article>
@@ -62,13 +62,13 @@
         </article>
       </article>
       <article class="aside__list">
-        <h3>Comercios recientes</h3>
+        <h3>Trade recientes</h3>
         <article class="aside__list__tab" v-for="x in 5" :key="x">
           <div class="aside__list__tab__contain">
             <img src="/src/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
-            <p>Comercios</p>
+            <p>Trade</p>
             <h5>$0.00</h5>
           </div>
         </article>
@@ -217,6 +217,9 @@ export default {
     grid-template-columns: 1fr;
   }
   &__main {
+    &__text{
+      margin-bottom: 16px;
+    }
     &__img {
       padding: 16px;
       border-radius: 8px;

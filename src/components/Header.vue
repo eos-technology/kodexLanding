@@ -2,18 +2,28 @@
   <section class="header">
     <h2>{{ $route.name }}</h2>
     <article class="header__container">
-      <article class="header__container-tab copy" @click="copyURL('TJXoCK3EMxGWPqi2niklfBF7y0865kCrT')">
-        <img src="/src/assets/icons/24-circle.svg" alt="" />
-        <h5>Copiar link de referido</h5>
+      <article class="header__container-tab active">
+        <img src="/src/assets/icons/money.svg" alt="" />
+        <div class="active__text">
+          <h5>BUY KXP</h5>
+          <p>$0.00</p>
+        </div>
       </article>
-      <article class="header__container-tab">
-        <img src="/src/assets/icons/24-circle.svg" alt="" />
+      <article
+        class="header__container-tab copy"
+        @click="copyURL('TJXoCK3EMxGWPqi2niklfBF7y0865kCrT')"
+      >
+        <img src="/src/assets/icons/copy.svg" alt="" />
+        <h5>COPY LINK</h5>
       </article>
-      <article class="header__container-tab">
-        <img src="/src/assets/icons/bell-not.svg" alt="" />
+      <article
+        class="header__container-tab copy"
+      >
+        <img src="/src/assets/icons/support.svg" alt="" />
+        <h5>SUPPORT</h5>
       </article>
       <article class="header__container-tab avatar">
-        <img src="/src/assets/icons/avatar.png"  alt="" />
+        <img src="/src/assets/icons/avatar.png" alt="" />
         <div>
           <p>UserName</p>
           <h5>VERIFIED</h5>
@@ -65,8 +75,7 @@ export default {
   }
   &__container {
     display: flex;
-    @media (max-width: 700px){
-      
+    @media (max-width: 700px) {
       align-items: center;
     }
     &-tab {
@@ -78,20 +87,20 @@ export default {
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;
-      &.copy{
-        h5{
+      &.copy {
+        h5 {
           margin-left: 10px;
           font-weight: 400;
         }
       }
-      @media (max-width: 700px){
+      @media (max-width: 700px) {
         width: 40px;
         height: 40px;
       }
-      &.avatar{
+      &.avatar {
         width: auto;
         height: auto;
-        img{
+        img {
           width: 40px;
           height: 40px;
           margin-right: 15px;
@@ -111,6 +120,15 @@ export default {
         font-weight: 400;
       }
     }
+  }
+}
+
+.active {
+  background: linear-gradient(180deg, #0d1c4e 0%, #000406 100%);
+  &__text > h5, p{
+    color: $white;
+    margin-left: 12px;
+    line-height: 14px;
   }
 }
 </style>

@@ -36,6 +36,11 @@ const routes = [
         component: () => import ('@/views/comission/WithDraw.vue')
       },
       {
+        path: '/support',
+        name:'Support',
+        component: () => import ('@/views/support/Index.vue')
+      },
+      {
         path: '/wallet',
         name:'Wallet',
         component: () => import ('@/views/wallet/Index.vue'),

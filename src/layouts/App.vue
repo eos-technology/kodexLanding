@@ -1,7 +1,11 @@
 <template>
   <section class="appLayout">
     <section class="appLayout__sideBar">
-      <h1>PayKodex</h1>
+      <img
+        class="appLayout__logo"
+        src="@/assets/icons/kodex.svg"
+        alt="Logo Kodex"
+      />
       <h3>overview</h3>
       <article class="appLayout__sideBar__container">
         <div
@@ -13,7 +17,7 @@
         >
           <img
             :src="`/src/assets/icons/${
-              $route.path.includes(element.path) ? 'white' : 'black'
+              $route.path.includes(element.path) ? 'black' : 'white'
             }/${element.icon}.svg`"
             alt=""
           />
@@ -40,6 +44,7 @@ export default {
       { name: "Red", icon: "red", path: "/team" },
       { name: "Acciones", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
+      { name: "Support", icon: "support", path: "/support" },
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -64,9 +69,12 @@ export default {
     grid-template-columns: 1fr;
     padding: 10px;
   }
+  &__logo {
+    margin-bottom: 60px;
+  }
   &__sideBar {
     padding: 40px;
-    background-color: white;
+    background-color: $primary-color;
     text-align: center;
     @media (max-width: 700px) {
       overflow: hidden;
@@ -82,6 +90,8 @@ export default {
       font-size: 15px;
       font-family: "Jost", sans-serif;
       margin-bottom: 15px;
+      color: $secondary-color;
+      text-transform: uppercase;
     }
     &__container {
       text-align: start;
@@ -89,27 +99,28 @@ export default {
         display: flex;
         overflow: scroll;
       }
-
       .tabsContainer {
         margin-bottom: 20px;
         padding: 14px;
         border-radius: 10px;
-        background: #f6f8fa;
+        background: rgba(255, 255, 255, 0.03);
         text-align: center;
         cursor: pointer;
         @media (max-width: 700px) {
           min-width: 100px;
-        margin-bottom: 0;
-        margin-right: 20px;
-      }
+          margin-bottom: 0;
+          margin-right: 20px;
+        }
         h4 {
           font-size: 14px;
           font-weight: 300;
+          line-height: 16px;
+          color: $white;
         }
         &.active {
-          background: #000000;
+          background: $white;
           h4 {
-            color: white;
+            color:$primary-color;
           }
         }
       }

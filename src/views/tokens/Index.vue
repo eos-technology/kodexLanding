@@ -4,9 +4,9 @@
     <section class="token__main">
       <article class="token__main__img">
         <article class="token__main__img__r">
-          <img src="/src/assets/icons/imgMain.png" alt="" />
-          <p>Oportunidad para adquirir</p>
-          <h2>Token KodexPay</h2>
+          <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
+          <h2>Conocer más sobre KodexPay</h2>
+          <p>No vemos la hora de mostrarte lo que tenemos preparado</p>
         </article>
         <article class="token__main__img__l">
           <article class="token__main__img__l__title">
@@ -76,6 +76,9 @@ export default {
 .token {
   display: grid;
   margin-top: 30px;
+  &__img{
+    margin-bottom: 16px;
+  }
   &__main {
     padding: 40px;
     border-radius: 8px;
@@ -86,22 +89,24 @@ export default {
       grid-gap: 20px;
       &__r {
         text-align: center;
+        padding: 30px;
+        background: #f6f8fa;
+        border-radius: 16px;
         img {
           width: 100%;
         }
         p {
-          text-align: center;
-          color: #667089;
-          line-height: 40px;
-          font-size: 35px;
+          font-size: 14px;
           font-weight: 300;
+          line-height: 24px;
+          text-align: center;
+          color: $secondary-color;
         }
         h2 {
-          text-align: center;
-          line-height: 40px;
-          font-size: 40px;
+          font-size: 26px;
           font-weight: 500;
-          color: #000000;
+          line-height: 32px;
+          text-align: center;
         }
       }
       &__l {
@@ -157,7 +162,7 @@ export default {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
-      &__card{
+      &__card {
         min-width: 200px;
         padding: 25px;
         border-radius: 25px;
@@ -175,7 +180,7 @@ export default {
           font-size: 26px;
           font-weight: 500;
         }
-        li{
+        li {
           list-style: circle;
           font-size: 14px;
           margin-bottom: 5px;
