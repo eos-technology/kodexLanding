@@ -31,10 +31,11 @@ export default {
     }
   },
   actions: {
-    async login ({commit, dispatch}, data) {
+    async login (context, data) {
         const response = await axios.post('/api/v1/signin', data)
-        commit('SET_ACCESS_TOKEN', response.data)
-        dispatch('getUserInfo')
+        context.commit('SET_ACCESS_TOKEN', response.data)
+        const accounts = await axios.get('/api/v1/user/getInfo')
+        context.commit('SET_USER_DATA', accounts.data)
         return response.data
     },
     async sendVerification (context, data) {
@@ -56,6 +57,7 @@ export default {
     async getUserInfo (context) {
       const accounts = await axios.get('/api/v1/user/getInfo')
       context.commit('SET_USER_DATA', accounts.data)
+      return accounts.data
     },
     async logout (context) {
       context.commit('CLEAR_USER_DATA')

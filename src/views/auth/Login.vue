@@ -31,7 +31,8 @@ export default {
     methods: {
       ...mapActions('auth', ['login']),
       onSumbit() {
-        this.login(this.form).then(() => {
+        this.login(this.form).then(response => {
+          console.log("RESPONSE")
           this.$router.push({
             name: 'Dashboard'
           })
