@@ -72,8 +72,8 @@ export default {
   padding: 16px;
   border-radius: 16px;
   background: white;
-  @media (max-width: 700px) {
-    justify-content: center;
+  @media (max-width: 900px) {
+    display: block;
     max-height: 100%;
     flex-wrap: wrap;
   }
@@ -89,6 +89,9 @@ export default {
     display: flex;
     @media (max-width: 700px) {
       align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
     &-tab {
       display: flex;
@@ -99,6 +102,9 @@ export default {
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;
+      @media (max-width:700px) {
+        margin-right: 0px;
+      }
       &.copy {
         h5 {
           margin-left: 10px;
@@ -106,11 +112,12 @@ export default {
         }
       }
       @media (max-width: 700px) {
-        width: 40px;
-        height: 40px;
+        height: 80px;
+        width: 100%;
+        margin-bottom: 12px;
       }
       &.avatar {
-        width: auto;
+
         height: auto;
         img {
           width: 40px;
