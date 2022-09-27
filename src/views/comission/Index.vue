@@ -37,7 +37,7 @@
           <article class="commissions__table__table-header">
             <p>ID</p>
             <p>Type</p>
-            <p>Description</p>
+            <p style="width:300px">Description</p>
             <p>Date</p>
             <p>Status</p>
             <p>Quantity</p>
@@ -49,7 +49,7 @@
           >
             <p>{{ trx.id }}</p>
             <p>{{ trx.category ? trx.category.name : '' }}</p>
-            <p>{{ trx.description }}</p>
+            <p class="suspensive">{{ trx.description }}</p>
             <p>{{ formatDate(trx.created_at) }}</p>
             <p class="Aprobado">{{ trx.type == 1 ? 'Income' : 'Outcome' }}</p>
             <p>${{ coinFormat(trx.quantity) }}</p>
@@ -163,6 +163,12 @@ export default {
 </script>
 
 <style lang="scss">
+.suspensive{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+}
 .commissions {
   margin-top: 30px;
   padding: 40px;

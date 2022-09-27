@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-4 text-right d-flex">
                     <div style="margin-right:10px">
-                      <div class="coin-name">KXP</div>
+                      <div class="coin-name">USDT</div>
                       <div class="coin-price">$0.5</div>
                     </div>
                     <img src="/assets/images/usdt.png" />

@@ -12,7 +12,7 @@
           <div class="newWallet__container__select__contain-copy">
             <h4>Wallet address</h4>
             <Copy :text="address"></Copy>
-            <!-- <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p> -->
+            <p>Take into account when making shipments the network rate please.</p>
           </div>
         </article>
       </article>

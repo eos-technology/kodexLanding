@@ -19,7 +19,7 @@
       <article class="wallet__balance__total" v-if="walletActive.balance">
         <div>
           <p>Total balance</p>
-          <h2>
+          <h2 style="text-transform:uppercase">
             {{ walletActive.asset ? walletActive.asset.currency : "" }}
             {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}
           </h2>
@@ -69,7 +69,6 @@
         <article class="wallet__table__container">
         <article class="wallet__table__table">
           <article class="wallet__table__table-header">
-            <p>Id</p>
             <p>Hash</p>
             <p>Time</p>
             <p>from</p>
@@ -78,15 +77,14 @@
           </article>
           <article
             class="wallet__table__table-row"
-            v-for="trx in transactions.data"
+            v-for="trx in transactions"
             :key="trx.id"
           >
-            <p>{{ trx.id }}</p>
-            <p>{{ trx.category ? trx.category.name : '' }}</p>
-            <p>{{ trx.description }}</p>
-            <p>{{ formatDate(trx.created_at) }}</p>
-            <p class="Aprobado">{{ trx.type == 1 ? 'Income' : 'Outcome' }}</p>
-            <p>${{ coinFormat(trx.quantity) }}</p>
+            <p>{{ trx.txHash }}</p>
+            <p>{{ trx.time }}</p>
+            <p>{{ trx.from }}</p>
+            <p>{{ trx.to }}</p>
+            <p>{{ trx.value }}</p>
           </article>
         </article>
       </article>
@@ -191,6 +189,12 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 } */
+.suspensive{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 300px;
+}
 .wallet {
   margin-top: 30px;
   padding: 40px;
