@@ -213,6 +213,9 @@ export default {
   grid-template-columns: 70% 1fr;
   grid-gap: 25px;
   margin-top: 30px;
+  @media (max-width: 100px) {
+    grid-template-columns: 2fr 1fr;
+  }
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
   }
