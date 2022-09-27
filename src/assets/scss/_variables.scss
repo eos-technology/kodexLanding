@@ -1,6 +1,6 @@
 $white: #ffffff;
 $main-font: 'Jost';
-$primary-color:#0F215C;
+$primary-color: #0f215c;
 $secondary-color: #647188;
 
 /* --------------Mixin------------------------*/
@@ -13,9 +13,12 @@ $secondary-color: #647188;
 }
 
 @mixin sBtn {
-  background: linear-gradient(214.22deg, #3d5cc7 14.01%, #0a157d 85.99%);
-  border-radius: 16px;
-  width: 100%;
+  background: linear-gradient(0deg, #132d7c, #132d7c),
+    linear-gradient(180deg, #0f215c 0%, #007bd1 100%), #194ef0;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 26px;
+  gap: 10px;
   height: 56px;
   line-height: 24px;
   font-weight: 500;
@@ -23,16 +26,16 @@ $secondary-color: #647188;
   color: $white;
 }
 @mixin oBtn {
-  border:2px solid #3D5CC7;
+  border: 2px solid $primary-color;
   border-radius: 16px;
-  width: 100%;
   height: 56px;
+  padding: 8px 26px;
   line-height: 24px;
   font-weight: 500;
   font-size: 16px;
-  color: $white;
+  color: $primary-color;
 }
-@import "./mixins";
+@import './mixins';
 
 /* -------------------Variables mixin------------------------*/
 

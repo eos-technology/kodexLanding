@@ -40,6 +40,7 @@ export default {
     font-size: 14px;
     cursor: pointer;
     transition: all 1s;
+    color: white;
     &:hover{
       background: rgba(19, 45, 124, 0.89);
       transition: all 1s;

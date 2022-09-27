@@ -1,23 +1,33 @@
 <template>
-  <section class="newWallet">
+  <section class="withdraw">
     <BtnBack></BtnBack>
-    <section class="newWallet__container">
-      <h3>Recibir</h3>
-      <article class="newWallet__container__select">
+    <section class="withdraw__container">
+      <h3>Wallet</h3>
+      <article class="withdraw__container__select">
         <h4>Seleccione Wallet</h4>
-        <article class="newWallet__container__select__contain">
-          <div class="newWallet__container__select__contain-qr">
-            <img src="/assets/icons/qr.png" alt="">
-          </div>
-          <div class="newWallet__container__select__contain-copy">
-            <h4>Dirección de wallet</h4>
-            <Copy></Copy>
-            <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p>
-          </div>
+        <article class="withdraw__container__select__contain">
+          <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
+        </article>
+      </article>
+      <article class="withdraw__container__balance">
+        <h4>Wallet Balance</h4>
+        <h3>$0.00</h3>
+        <article class="withdraw__container__balance__contain">
+          <label for=""><span>*</span> Amount</label>
+          <BaseInput placeholder="$0.0"></BaseInput>
+          <p>Amount to transfer example: $0.00</p>
+          <label for=""><span>*</span> Destination wallet</label>
+          <BaseInput placeholder="Wallet"></BaseInput>
+          <article class="withdraw__container__balance__contain__actions">
+              <BaseButton label="Cancelar" class="transparent"></BaseButton>
+              <BaseButton label="Enviar" @click="sendData"></BaseButton>
+          </article>  
         </article>
       </article>
     </section>
   </section>
+  <PopUpSuccess title="Envio realizado con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
+  
 </template>
 
 <script>
@@ -26,9 +36,9 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import { ref } from '@vue/reactivity';
-import Copy from "@/components/base/Copy.vue";
+import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
 export default {
-  components: { BtnBack, BaseInput, BaseButton, SelectCoin, Copy },
+  components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
   setup() {
     const coins = [
       { name: "btc" },
@@ -36,17 +46,23 @@ export default {
       { name: "trx" },
       { name: "USDT" },
     ];
+    const showPopUp =  ref(false)
     const coin = ref("coin")
+    const sendData = () => {
+      showPopUp.value = true
+    }
     return {
       coins,
-      coin
+      coin,
+      showPopUp,
+      sendData
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.newWallet {
+.withdraw {
   margin-top: 30px;
   padding: 40px;
   border-radius: 8px;
@@ -70,31 +86,51 @@ export default {
       }
       &__contain {
         display: flex;
-        align-items: center;
-        &-qr{
-          margin-right: 20px;
-          padding: 15px;
-          border-radius: 8px;
-          background: #F6F8FA;
-          img{
-            width: 100%;
+      }
+    }
+    &__balance {
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #ececee;
+      h4 {
+        color: #647188;
+        font-size: 16px;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+      h3 {
+        font-size: 18px;
+        color: black;
+        margin-bottom: 20px;
+      }
+      &__contain {
+        label {
+          display: block;
+          font-size: 16px;
+          font-weight: 400;
+          margin-bottom: 10px;
+          color: #000;
+          span {
+            color: #ff4e78;
           }
         }
-        &-copy{
-          h4{
-            font-weight: 400;
-            font-size: 16px;
-            color: #000000;
-          }
-          p{
-            margin-top: 15px;
-            font-size: 12px;
-            color: #647188;
+        p {
+          font-size: 14px;
+          color: #647188;
+          margin-bottom: 20px;
+        }
+        &__actions{
+          display: flex;
+          justify-content: end;
+          button{
+            width: auto;
+            &:first-of-type{
+              margin-right: 20px;
+            }
           }
         }
       }
     }
-
   }
 }
 </style>

@@ -140,7 +140,7 @@ export default {
           h4{
             font-weight: 400;
             font-size: 16px;
-            color: #000000;
+            color:  #0F215C;
           }
           p{
             margin-top: 15px;

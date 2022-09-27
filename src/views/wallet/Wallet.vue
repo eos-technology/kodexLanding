@@ -1,104 +1,141 @@
 <template>
   <section class="wallet">
+    <article class="wallet__balance__cards">
+      <article class="wallet__balance__cards__container">
+        <CardCoin
+          :isActive="walletActive.id"
+          @click="walletActive = wallet"
+          :wallet="wallet"
+          v-for="wallet in wallets"
+          :key="wallet.id"
+        />
+      </article>
+    </article>
     <section class="wallet__balance">
       <article class="wallet__balance__total">
-        <p>Total balance</p>
-        <h2>{{ walletActive.asset ? walletActive.asset.currency : '' }} {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}</h2>
-        <p>$ {{ walletActive.balance_usd ? coinFormat(walletActive.balance_usd) : 0 }}</p>
+        <div>
+          <p>Total balance</p>
+          <h2>
+            {{ walletActive.asset ? walletActive.asset.currency : "" }}
+            {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}
+          </h2>
+          <p>
+            $
+            {{
+              walletActive.balance_usd
+                ? coinFormat(walletActive.balance_usd)
+                : 0
+            }}
+          </p>
+        </div>
         <article class="wallet__balance__total__actions">
-          <div v-if="walletActive.asset" @click="$router.push({ name: `Withdraw` })" >
+          <div
+            v-if="walletActive.asset"
+            @click="$router.push({ name: `Withdraw` })"
+          >
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
             <p>Withdraw</p>
           </div>
-          <div v-if="walletActive.asset" @click="$router.push({ name: `DepositWallet`, params: { address: walletActive.address ? walletActive.address : '' } })" >
+          <div
+            v-if="walletActive.asset"
+            @click="
+              $router.push({
+                name: `DepositWallet`,
+                params: {
+                  address: walletActive.address ? walletActive.address : '',
+                },
+              })
+            "
+          >
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
             <p>Deposit</p>
           </div>
-          <div @click="$router.push({ name: `NewWallet`})" >
+          <div @click="$router.push({ name: `NewWallet` })">
             <img :src="`/assets/icons/create.svg`" alt="" />
             <p>Create</p>
           </div>
         </article>
       </article>
-      <article class="wallet__balance__cards">
-        <article class="wallet__balance__cards__container">
-          <CardCoin :isActive="walletActive.id" @click="walletActive = wallet" :wallet="wallet" v-for="wallet in wallets" :key="wallet.id" />
+      <section class="wallet__table">
+        <article class="wallet__table__title">
+          <h2>Transactions</h2>
+          <InputSearch placeholder="Search"></InputSearch>
         </article>
-      </article>
-    </section>
-    <section class="wallet__table">
-      <article class="wallet__table__title">
-        <h2>Transactions</h2>
-        <InputSearch placeholder="Search"></InputSearch>
-      </article>
-      <article class="wallet__table__container">
-        <b-table responsive striped hover :items="transactions" :fields="fields">
-          <template #cell(hash)="row">
-                <div class="ultralimited">
-                  {{ row.item.txHash }}
-                </div>
+        <article class="wallet__table__container">
+          <b-table
+            responsive
+            striped
+            hover
+            :items="transactions"
+            :fields="fields"
+          >
+            <template #cell(hash)="row">
+              <div class="ultralimited">
+                {{ row.item.txHash }}
+              </div>
             </template>
             <template #cell(time)="row">
-                <div class="limited">
-                  {{ row.item.time }}
-                </div>
+              <div class="limited">
+                {{ row.item.time }}
+              </div>
             </template>
             <template #cell(from)="row">
-                <div class="ultralimited">
-                  {{ row.item.from }}
-                </div>
+              <div class="ultralimited">
+                {{ row.item.from }}
+              </div>
             </template>
             <template #cell(to)="row">
-                <div class="ultralimited">
-                  {{ row.item.to }}
-                </div>
+              <div class="ultralimited">
+                {{ row.item.to }}
+              </div>
             </template>
             <template #cell(quantity)="row">
-                <div class="limited">
-                  {{ row.item.quantity }}
-                </div>
+              <div class="limited">
+                {{ row.item.quantity }}
+              </div>
             </template>
-        </b-table>
-      </article>
-      <b-pagination
-        v-model="currentPage"
-        :total-rows="rows"
-        :per-page="perPage"
-      ></b-pagination>
+          </b-table>
+        </article>
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+        ></b-pagination>
+      </section>
     </section>
   </section>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
 import CardCoin from "../../components/CardCoin.vue";
 import InputSearch from "../../components/form/InputSearch.vue";
 
 export default {
   components: { CardCoin, InputSearch },
-  data () {
+  data() {
     return {
       fields: [
         {
-          key: 'hash',
-          label: 'Hash'
+          key: "hash",
+          label: "Hash",
         },
         {
-          key: 'time',
-          label: 'Time'
+          key: "time",
+          label: "Time",
         },
         {
-          key: 'from',
-          label: 'From'
+          key: "from",
+          label: "From",
         },
         {
-          key: 'to',
-          label: 'To'
+          key: "to",
+          label: "To",
         },
         {
-          key: 'value',
-          label: 'Value'
-        }
+          key: "value",
+          label: "Value",
+        },
       ],
       balanceActions: [
         { icon: "Money-Withdraw", name: "Retirar", route: "withdraw" },
@@ -107,36 +144,39 @@ export default {
         /* { icon: "trash-delete", name: "Delete" }, */
       ],
       walletActive: {
-        id: null
-      }
-    }
+        id: null,
+      },
+    };
   },
-  created () {
-    this.getData()
+  created() {
+    this.getData();
   },
   methods: {
-    ...mapActions('wallet', ['getWallets', 'getTransactions']),
-    getData () {
-        this.loading = true
-        this.getWallets().then(() => {
-            this.loading = false
-        })
+    ...mapActions("wallet", ["getWallets", "getTransactions"]),
+    getData() {
+      this.loading = true;
+      this.getWallets().then(() => {
+        this.loading = false;
+      });
     },
-    selectWallet (data) {
-        this.cardActive = data
+    selectWallet(data) {
+      this.cardActive = data;
     },
-    selectedWallet (wallet) {
-      this.walletActive = wallet
-    }
+    selectedWallet(wallet) {
+      this.walletActive = wallet;
+    },
   },
   computed: {
-      ...mapState('wallet', ['wallets', 'transactions'])
+    ...mapState("wallet", ["wallets", "transactions"]),
   },
   watch: {
-    'walletActive.address': function () {
-      this.getTransactions({ address: this.walletActive.address, currency: this.walletActive.currency})
-  }
-  }
+    "walletActive.address": function () {
+      this.getTransactions({
+        address: this.walletActive.address,
+        currency: this.walletActive.currency,
+      });
+    },
+  },
 };
 </script>
 
@@ -158,20 +198,28 @@ export default {
   padding: 40px;
   border-radius: 8px;
   background: white;
+  display: grid;
+  grid-template-columns: 35% 1fr;
+  grid-gap: 20px;
   &__balance {
     padding: 25px;
-    background: #f6f8fa;
-    display: grid;
-    grid-template-columns: 30% 1fr;
     grid-gap: 40px;
     border-radius: 24px;
-    @media (max-width: 700px) {
-      grid-template-columns: 1fr;
-    }
     &__total {
+      display: grid;
+      padding: 25px;
+      border-radius: 24px;
+      height: 150px;
+      background: #f6f8fa;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
       margin-bottom: 20px;
       text-align: center;
+      > div {
+        text-align: center;
+      }
       p {
+        text-align: center;
         font-weight: 300;
         color: #647188;
         &:last-of-type {
@@ -179,7 +227,7 @@ export default {
         }
       }
       h2 {
-        color: #000000;
+        color: #0f215c;
         font-size: 40px;
       }
       &__actions {
@@ -190,12 +238,13 @@ export default {
           flex-wrap: wrap;
         }
         div {
-          width: 65px;
+          width: 95px;
           height: 65px;
           border-radius: 8px;
           padding: 8px 16px;
           background: white;
           cursor: pointer;
+          margin-right: 10px;
           @media (max-width: 700px) {
             margin-bottom: 15px;
           }
@@ -206,14 +255,15 @@ export default {
       }
     }
     &__cards {
+      max-height: calc(100vh - 200px);
       overflow: hidden;
       &__container {
-        display: flex;
-        overflow-x: scroll;
-        padding-bottom: 20px;
+        height: 100%;
+        overflow: scroll;
+        padding: 20px;
         @include scroll;
         .walletCard {
-          margin-right: 20px;
+          margin-bottom: 20px;
         }
       }
     }
@@ -252,14 +302,14 @@ export default {
         height: 40px;
         border: none;
         border-radius: 100%;
-        color: #000000;
+        color: #0f215c;
         &:focus {
           box-shadow: none;
         }
       }
       &.active > .page-link {
         color: white;
-        background: #000000;
+        background: #0f215c;
       }
     }
   }

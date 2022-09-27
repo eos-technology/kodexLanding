@@ -1,7 +1,7 @@
 <template>
   <section class="appLayout">
     <section class="appLayout__sideBar">
-      <img class="mb-5" src="/assets/images/KodexMini.png" style="max-width:100%" alt="">
+      <img class="mb-5" src="@/assets/icons/kodex.svg" style="max-width:100%" alt="">
       <h3 style="color:#647188">overview</h3>
       <article class="appLayout__sideBar__container">
         <div
@@ -40,7 +40,7 @@ export default {
       { name: "Red", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
-      { name: "Support", icon: "support", path: "/support" },
+      { name: "Support", icon: "sup", path: "/support" }
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -59,7 +59,6 @@ export default {
   grid-gap: 30px;
   min-height: 100vh;
   padding-right: 30px;
-  padding-bottom: 30px;
   background: #f7f8fa;
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
