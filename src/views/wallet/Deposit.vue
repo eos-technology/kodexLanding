@@ -12,6 +12,7 @@
           <div class="newWallet__container__select__contain-copy">
             <h4>Wallet address</h4>
             <Copy :text="address"></Copy>
+            <p>Take into account when making shipments the network rate please.</p>
           </div>
         </article>
       </article>
