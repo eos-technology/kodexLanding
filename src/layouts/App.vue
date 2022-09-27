@@ -40,6 +40,7 @@ export default {
       { name: "Red", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
+      { name: "Support", icon: "sup", path: "/support" }
     ];
     const route = useRoute();
     const activeTab = ref(false);
