@@ -3,9 +3,9 @@
   <section class="dasboard">
     <section class="dasboard__main">
       <article class="dasboard__main__img">
-        <h2>KodexPay</h2>
-        <h3>Accept Cryptocurrencies it's easy!</h3>
-        <img src="/assets/icons/imgMain.png" alt="" />
+        <h2>Kodex Pay</h2>
+        <p class="dasboard__main__text">Mauris vel nibh cursus, congue quam tincidunt, placerat ex. Praesent imperdiet sem vitae tellus commodo, sed ultricies lorem porttitor. Suspendisse sodales mi dignissim venenatis feugiat. Ut faucibus est eget velit fringilla cursus vitae id metus. Curabitur dui dui, pulvinar in aliquam non, mollis commodo elit. Vestibulum placerat tincidunt lacus, eget imperdiet felis suscipit sed. Suspendisse sit amet congue urna. Proin scelerisque libero in nisi luctus pellentesque</p>
+        <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
         <h2>Most used payment methods</h2>

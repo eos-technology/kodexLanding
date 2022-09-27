@@ -1,7 +1,7 @@
 <template>
   <section class="appLayout">
     <section class="appLayout__sideBar">
-      <img class="mb-5" src="/assets/images/KodexMini.png" style="max-width:100%" alt="">
+      <img class="mb-5" src="@/assets/icons/kodex.svg" style="max-width:100%" alt="">
       <h3 style="color:#647188">overview</h3>
       <article class="appLayout__sideBar__container">
         <div

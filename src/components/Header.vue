@@ -2,12 +2,22 @@
   <section class="header">
     <h2 style="color:#132D7C; text-transform: capitalize">{{ $route.name }}</h2>
     <article class="header__container" v-if="user && user.username">
+      <article class="header__container-tab active">
+        <img src="/src/assets/icons/money.svg" alt="" />
+        <div class="active__text">
+          <h5>BUY KXP</h5>
+          <p>$0.00</p>
+        </div>
+      </article>
       <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/#/auth/login/register/${user.username}`)">
         <img src="/assets/icons/copy.svg" alt="" />
-        <h5>Copy Referral link</h5>
+        <h5>COPY LINK</h5>
       </article>
-      <article class="header__container-tab">
-        <img src="/assets/icons/24-circle.svg" alt="" />
+      <article
+        class="header__container-tab copy"
+      >
+        <img src="/src/assets/icons/support.svg" alt="" />
+        <h5>SUPPORT</h5>
       </article>
       <!-- <article class="header__container-tab">
         <img src="/assets/icons/bell-not.svg" alt="" />

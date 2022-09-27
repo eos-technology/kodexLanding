@@ -4,9 +4,10 @@
     <section class="token__main">
       <article class="token__main__img">
         <article class="token__main__img__r">
-          <Distribution class="mb-4"/>
-          <p>Opportunity to acquire</p>
-          <h2>Token KodexPay</h2>
+          <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
+          <h2>Conocer más sobre KodexPay</h2>
+          <p>No vemos la hora de mostrarte lo que tenemos preparado</p>
+          <Social/>
         </article>
         <article class="token__main__img__l">
           <article class="token__main__img__l__title">
@@ -26,10 +27,10 @@
           </div>
           <article class="token__main__img__l__progress">
             <b-progress
-              :value="valueProgress"
-              :max="100"
-              animated
-              variant="primary"
+            :value="valueProgress"
+            :max="100"
+            animated
+            variant="primary"
             ></b-progress>
             <span>{{ valueProgress }}%</span>
           </article>
@@ -44,6 +45,9 @@
           </article>
         </article>
       </article>
+      <Distribution class="mb-4"/>
+        <p>Opportunity to acquire</p>
+        <h2>Token KodexPay</h2>
       <TimeLine></TimeLine>
       <article class="token__main__quarter">
         <article class="token__main__quarter__card" v-for="x in 6" :key="x">
