@@ -73,6 +73,10 @@ export default {
       &__contain {
         display: flex;
         align-items: center;
+        @media (max-width: 700px){
+          display: grid;
+          overflow: hidden;
+        }
         &-qr{
           margin-right: 20px;
           padding: 15px;
@@ -92,6 +96,11 @@ export default {
             margin-top: 15px;
             font-size: 12px;
             color: #647188;
+          }
+          .copy{
+            @media (max-width: 700px){
+              width: 50%;
+            }
           }
         }
       }

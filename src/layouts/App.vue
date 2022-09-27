@@ -1,9 +1,17 @@
 <template>
   <section class="appLayout">
-    <section class="appLayout__sideBar">
-      <img class="mb-5" src="@/assets/icons/kodex.svg" style="max-width:100%" alt="">
-      <h3 style="color:#647188">overview</h3>
-      <article class="appLayout__sideBar__container">
+    <section class="appLayout__sideBar" :class="activeBar ? 'active' : ''">
+      <div class="appLayout__sideBar-close">
+        <img
+          class="mb-5"
+          src="@/assets/icons/kodex.svg"
+          style="max-width: 100%"
+          alt=""
+        />
+        <img src="/src/assets/images/cerrar.jpg" alt="" id="close" @click="activeBar = false">
+      </div>
+      <h3 style="color: #647188">overview</h3>
+      <article class="appLayout__sideBar__container " >
         <div
           class="tabsContainer"
           :class="$route.path == element.path ? 'active' : ''"
@@ -30,9 +38,10 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { useRoute } from "vue-router";
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   setup() {
+    const activeBar = ref(false)
     const tabs = [
       { name: "Dashboard", icon: "dash", path: "/" },
       { name: "Token", icon: "token", path: "/token" },
@@ -40,21 +49,22 @@ export default {
       { name: "Comissions", icon: "comissions", path: "/commissions" },
       { name: "Red", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/actions" },
-      { name: "Profile", icon: "profile", path: "/profile" }
+      { name: "Profile", icon: "profile", path: "/profile" },
     ];
     const route = useRoute();
     const activeTab = ref(false);
     return {
       tabs,
       activeTab,
+      activeBar
     };
   },
-  created () {
-    this.getUserInfo()
+  created() {
+    this.getUserInfo();
   },
   methods: {
-    ...mapActions('auth', ['getUserInfo'])
-  }
+    ...mapActions("auth", ["getUserInfo"]),
+  },
 };
 </script>
 
@@ -75,10 +85,38 @@ export default {
   }
   &__sideBar {
     padding: 40px;
-    background: linear-gradient(0deg, #0F215C, #0F215C), #040E2C;
+    background: linear-gradient(0deg, #0f215c, #0f215c), #040e2c;
     text-align: center;
     @media (max-width: 700px) {
       overflow: hidden;
+      position: absolute;
+      top: -200vh;
+      left: 0;
+      width: 100vw;
+      z-index: 5;
+      transition: all 0.5s;
+    }
+    &-close{
+      @media (max-width: 700px){
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+      }
+    }
+    #close{
+      // position: absolute;
+      // top: 10px;
+      // left: 90%;
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      @media (min-width: 700px){
+        display: none;
+      }
+    }
+    &.active{
+      top: 0;
     }
     h1 {
       color: white;
@@ -97,8 +135,7 @@ export default {
     &__container {
       text-align: start;
       @media (max-width: 700px) {
-        display: flex;
-        overflow: scroll;
+        
       }
       .tabsContainer {
         margin-bottom: 20px;
@@ -110,8 +147,7 @@ export default {
         cursor: pointer;
         @media (max-width: 700px) {
           min-width: 100px;
-          margin-bottom: 0;
-          margin-right: 20px;
+          margin-bottom: 15px;
         }
         h4 {
           font-size: 14px;
@@ -122,7 +158,7 @@ export default {
         &.active {
           background: white;
           h4 {
-            color: #132D7C;
+            color: #132d7c;
           }
         }
       }
