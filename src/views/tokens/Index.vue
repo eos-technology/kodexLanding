@@ -5,22 +5,32 @@
       <article class="token__main__img">
         <article class="token__main__img__r">
           <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
-          <h2>Conocer más sobre KodexPay</h2>
-          <p>No vemos la hora de mostrarte lo que tenemos preparado</p>
+          <h2>Learn more about KodexPay</h2>
+          <p>We can't wait to show you what we have prepared</p>
           <div class="token__social">
             <Social />
           </div>
-          <div class="buttons">
-            <button class="sBtn">Whitepapper</button>
-            <button class="oBtn">Whitepapper</button>
+          <div class="token__buttons">
+            <button class="sBtn token__btn">Whitepapper</button>
+            <button class="oBtn token__btn">Contract</button>
+            <button class="oBtn token__btn">FAQ</button>
           </div>
         </article>
         <article class="token__main__img__l">
           <article class="token__main__img__l__title">
-            <div class="token__main__img__l__title-logo">PK</div>
+            <div class="token__main__img__l__title-logo">
+              <img
+                class="token__kodex"
+                src="@/assets/icons/logoKodex.svg"
+                alt=""
+              />
+            </div>
             <div class="token__main__img__l__title-text">
-              <h3>Tokens sale end in</h3>
-              <p>We can't wait to show you what we have prepared</p>
+              <p>
+                Opportunity to acquire
+                <span class="token__bold">KodexPay</span> for a price of
+                <span class="token__bold">$0.05 USD</span>
+              </p>
             </div>
           </article>
           <article class="token__main__img__l__count">
@@ -47,7 +57,7 @@
           <article>
             <BaseButton
               @click="$router.push({ name: 'Purchase-Token' })"
-              label="Buy Token"
+              label="Buy KXP"
             ></BaseButton>
           </article>
         </article>
@@ -97,10 +107,23 @@ export default {
   &__img {
     margin-bottom: 16px;
   }
-  &__social{
-    margin-top: 16px;
+  &__social {
+    margin: 16px 0;
     display: flex;
     justify-content: space-between;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    row-gap: 16px;
+  }
+  &__btn {
+    width: 30%;
+  }
+  &__kodex {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 12px;
   }
   &__main {
     padding: 40px;
@@ -137,26 +160,21 @@ export default {
         background: #f6f8fa;
         border-radius: 16px;
         &__title {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
           margin-bottom: 20px;
           &-logo {
-            display: flex;
-            align-items: center;
-            width: 80px;
-            height: 80px;
-            margin-right: 15px;
-            padding: 16px;
-            border-radius: 12px;
-            background: white;
-            font-size: 36px;
-            font-weight: 500;
           }
           &-text {
             p {
               font-weight: 300;
-              font-size: 14px;
+              font-size: 22px;
+              line-height: 32px;
+              color: $secondary-color;
+              text-align: center;
+            }
+            span{
+              font-weight: 500;
+              font-size: 26px;
+              color: $primary-color;
             }
           }
         }
