@@ -213,10 +213,10 @@ export default {
   grid-template-columns: 70% 1fr;
   grid-gap: 25px;
   margin-top: 30px;
-  @media (max-width: 100px) {
-    grid-template-columns: 2fr 1fr;
+  @media (max-width: 1200px) {
+    grid-template-columns: 50% 1fr;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
   &__main {

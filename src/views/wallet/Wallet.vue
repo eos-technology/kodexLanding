@@ -2,6 +2,26 @@
   <section class="wallet">
     <article class="wallet__balance__cards">
       <article class="wallet__balance__cards__container">
+        <div class="wallet__drag">
+          <img src="@/assets/icons/wallet.svg" alt="" />
+          <p class="wallet__drag-text">
+            <b>Arrastra</b> tu imagen aquí, o <b>búscala en tu ordenador</b>
+          </p>
+        </div>
+        <CardCoin
+          :isActive="walletActive.id"
+          @click="walletActive = wallet"
+          :wallet="wallet"
+          v-for="wallet in wallets"
+          :key="wallet.id"
+        />
+        <CardCoin
+          :isActive="walletActive.id"
+          @click="walletActive = wallet"
+          :wallet="wallet"
+          v-for="wallet in wallets"
+          :key="wallet.id"
+        />
         <CardCoin
           :isActive="walletActive.id"
           @click="walletActive = wallet"
@@ -117,24 +137,28 @@ export default {
     return {
       fields: [
         {
-          key: "hash",
-          label: "Hash",
+          key: "id",
+          label: "ID",
+        },
+        {
+          key: "name",
+          label: "NAME",
         },
         {
           key: "time",
-          label: "Time",
+          label: "TIME",
         },
         {
           key: "from",
-          label: "From",
+          label: "FROM",
         },
         {
           key: "to",
-          label: "To",
+          label: "TO",
         },
         {
-          key: "value",
-          label: "Value",
+          key: "quantity",
+          label: "QUANTITY",
         },
       ],
       balanceActions: [
@@ -201,6 +225,21 @@ export default {
   display: grid;
   grid-template-columns: 35% 1fr;
   grid-gap: 20px;
+  &__drag {
+    border: 2px dashed #007BD1;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    padding: 40px 16px;
+    text-align: center;
+    &-text {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 24px;
+      color: #007BD1;
+    }
+  }
   &__balance {
     padding: 25px;
     grid-gap: 40px;
