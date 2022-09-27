@@ -77,7 +77,7 @@
           </article>
           <article
             class="wallet__table__table-row  noId"
-            v-for="trx in transactions.data"
+            v-for="trx in transactions"
             :key="trx.id"
           >
             <p>{{ trx.txHash }}</p>
