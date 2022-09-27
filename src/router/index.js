@@ -47,11 +47,11 @@ const routes = [
         name:'comissionWithDraw',
         component: () => import ('@/views/comission/WithDraw.vue')
       },
-      {
+/*       {
         path: '/support',
         name:'Support',
         component: () => import ('@/views/support/Index.vue')
-      },
+      }, */
       {
         path: '/wallet',
         name:'Wallet',

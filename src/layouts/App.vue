@@ -40,7 +40,6 @@ export default {
       { name: "Red", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/acciones" },
       { name: "Profile", icon: "profile", path: "/profile" },
-      { name: "Support", icon: "support", path: "/support" },
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -59,7 +58,6 @@ export default {
   grid-gap: 30px;
   min-height: 100vh;
   padding-right: 30px;
-  padding-bottom: 30px;
   background: #f7f8fa;
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
