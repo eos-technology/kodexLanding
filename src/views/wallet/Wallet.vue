@@ -68,7 +68,7 @@
         </article>
         <article class="wallet__table__container">
         <article class="wallet__table__table">
-          <article class="wallet__table__table-header">
+          <article class="wallet__table__table-header noId">
             <p>Hash</p>
             <p>Time</p>
             <p>from</p>
@@ -76,8 +76,8 @@
             <p>Quantity</p>
           </article>
           <article
-            class="wallet__table__table-row"
-            v-for="trx in transactions"
+            class="wallet__table__table-row  noId"
+            v-for="trx in transactions.data"
             :key="trx.id"
           >
             <p>{{ trx.txHash }}</p>
