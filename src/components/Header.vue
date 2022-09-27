@@ -87,11 +87,12 @@ export default {
   }
   &__container {
     display: flex;
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       align-items: center;
       width: 100%;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 12px;
     }
     &-tab {
       display: flex;

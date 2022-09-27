@@ -177,7 +177,6 @@ export default {
 
 <style lang="scss" scoped>
 .token {
-  display: grid;
   margin-top: 30px;
   &__img {
     margin-bottom: 16px;
@@ -186,34 +185,58 @@ export default {
     margin: 16px 0;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   &__buttons {
     display: flex;
     justify-content: space-between;
     row-gap: 16px;
+    @media (max-width:500px) {
+      width: 100%;
+      flex-direction: column;
+    }
   }
   &__btn {
-    width: 30%;
+    width: 100%;
+    &:not(:last-child){
+      margin-right: 12px;
+    }
+    @media (max-width:500px) {
+      width: 100%;
+    }
   }
   &__kodex {
     display: block;
     margin: 0 auto;
     margin-bottom: 12px;
+    @media (max-width:500px) {
+      width: 100%;
+    }
   }
   &__main {
     padding: 40px;
     border-radius: 8px;
     background: white;
+    @media (max-width:500px) {
+      padding: 10px;
+    }
     &__img {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 20px;
       margin-bottom: 48px;
+      @media (max-width: 1200px) {
+        grid-template-columns: 1fr;
+      }
       &__r {
         text-align: center;
         padding: 30px;
         background: #f6f8fa;
         border-radius: 16px;
+        @media (max-width: 800px) {
+          padding: 10px;
+        }
         img {
           width: 100%;
         }
@@ -279,12 +302,18 @@ export default {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
+      @media (max-width:500px) {
+        flex-direction: column;
+      }
       &__card {
         min-width: 200px;
         width: 24%;
         padding: 25px;
         border-radius: 25px;
         background: #f6f8fa;
+        @media (max-width:500px) {
+        width: 100%;
+      }
         div {
           display: flex;
           align-items: center;

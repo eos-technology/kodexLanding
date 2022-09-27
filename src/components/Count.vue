@@ -23,6 +23,11 @@ export default {
   .flip-clock {
     display: flex;
     justify-content: space-between;
+    @media (max-width:500px) {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
   }
   .flip-card {
     font-size: 26px;
@@ -32,7 +37,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100px;
+    width: 100%;
     height: 100px;
     border-radius: 16px;
     background: white;

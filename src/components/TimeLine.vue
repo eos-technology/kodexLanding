@@ -50,6 +50,11 @@ export default {
       height: 50px;
       border: 4px solid black;
       border-radius: 100%;
+      @media (max-width:500px) {
+        width: 14px;
+        height: 14px;
+        border: 1px solid black;
+      }
       &::after {
         content: "";
         position: absolute;

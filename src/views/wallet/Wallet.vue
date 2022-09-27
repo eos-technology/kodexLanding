@@ -225,6 +225,9 @@ export default {
   display: grid;
   grid-template-columns: 35% 1fr;
   grid-gap: 20px;
+  @media (max-width:1300px) {
+      grid-template-columns: 1fr;
+    }
   &__drag {
     border: 2px dashed #007BD1;
     margin-bottom: 20px;
@@ -244,6 +247,9 @@ export default {
     padding: 25px;
     grid-gap: 40px;
     border-radius: 24px;
+    @media (max-width:1200px) {
+      
+    }
     &__total {
       display: grid;
       padding: 25px;
@@ -296,6 +302,10 @@ export default {
     &__cards {
       max-height: calc(100vh - 200px);
       overflow: hidden;
+      max-width: 400px;
+      @media (max-width:500px) {
+        width: 250px;
+    }
       &__container {
         height: 100%;
         overflow: scroll;
