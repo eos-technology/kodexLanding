@@ -2,25 +2,21 @@
   <section class="withdraw">
     <BtnBack></BtnBack>
     <section class="withdraw__container">
-      <h3>Wallet</h3>
+      <h3>Staking investment</h3>
       <article class="withdraw__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>Select payment method</h4>
         <article class="withdraw__container__select__contain">
-          <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
+          <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
-        <h4>Wallet Balance</h4>
-        <h3>$0.00</h3>
         <article class="withdraw__container__balance__contain">
           <label for=""><span>*</span> Amount</label>
-          <BaseInput placeholder="$0.0"></BaseInput>
+          <BaseInput v-model="form.quantity" placeholder="$0.0"></BaseInput>
           <p>Amount to transfer example: $0.00</p>
-          <label for=""><span>*</span> Destination wallet</label>
-          <BaseInput placeholder="Wallet"></BaseInput>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton label="Enviar" @click="sendData"></BaseButton>
+              <BaseButton label="Cancel" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.quantity > comissions.data.reduce((a, b) => a + b, 0) " label="Confirm staking" @click="onSubmit"></BaseButton>
           </article>  
         </article>
       </article>
@@ -37,6 +33,7 @@ import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import { ref } from '@vue/reactivity';
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
+import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
   setup() {
@@ -58,6 +55,32 @@ export default {
       sendData
     };
   },
+  data () {
+    return {
+      form: {
+        wallet_id: null,
+        quantity: null,
+        to: null
+      }
+    }
+  },
+  created () {
+    this.getWallets()
+  },
+  methods: {
+    ...mapActions('wallet', ['getWallets']),
+    selectWallet(asset){
+      this.form.wallet_id = asset
+    },
+    onSubmit () {
+      openNotification('Request created and you will be notified by email')
+      this.$router.push({ name: 'comission' })
+    }
+  },
+  computed: {
+    ...mapGetters('wallet', ['withdrawals']),
+    ...mapState('comission', ['comissions', 'transactions'])
+  }
 };
 </script>
 

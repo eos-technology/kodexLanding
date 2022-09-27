@@ -35,7 +35,7 @@
               <p>
                 Opportunity to acquire
                 <span class="token__bold">KodexPay</span> for a price of
-                <span class="token__bold">$0.05 USD</span>
+                <span class="token__bold">$0.5 USD</span>
               </p>
             </div>
           </article>
@@ -78,12 +78,12 @@
           </div>
 
           <div class="align__right">
-            <h2 class="align__right-title">$0.05 KXP</h2>
-            <p class="align__right-text">00/00/0000</p>
-            <p class="align__right-text">00:00</p>
-            <p class="align__right-text">00:00</p>
+            <h2 class="align__right-title">$0.5 KXP</h2>
+            <p class="align__right-text">$70.000.000</p>
+            <p class="align__right-text">200.000,00</p>
+            <p class="align__right-text">50.000</p>
             <p class="align__right-text">$0.00</p>
-            <p class="align__right-text">00/00/0000 00:00:00</p>
+            <p class="align__right-text">2709/2022 00:00:00</p>
           </div>
         </article>
 
