@@ -2,31 +2,40 @@
   <section class="header">
     <h2 style="color:#132D7C; text-transform: capitalize">{{ $route.name }}</h2>
     <article class="header__container" v-if="user && user.username">
-      <article class="header__container-tab active">
+      <article class="header__container-tab active" @click="$router.push({ name: 'Purchase-Token' })">
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
           <h5>BUY KXP</h5>
-          <p>$0.00</p>
+          <p>$0.5 USD</p>
         </div>
       </article>
       <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/#/auth/login/register/${user.username}`)">
         <img src="/assets/icons/copy.svg" alt="" />
         <h5>COPY LINK</h5>
       </article>
+        <a href="https://support.kodexpay.com" target="_blank" style="text-decoration:none; color:black">
       <article
         class="header__container-tab copy"
       >
-        <img src="/src/assets/icons/support.svg" alt="" />
-        <h5>SUPPORT</h5>
+          <img src="/src/assets/icons/support.svg" alt="" />
+          <h5>SUPPORT</h5>
       </article>
+        </a>
       <!-- <article class="header__container-tab">
         <img src="/assets/icons/bell-not.svg" alt="" />
       </article> -->
-      <article class="header__container-tab avatar" @click="close" v-if="user">
+      <article class="header__container-tab avatar" @click="showClose = !showClose" v-if="user">
         <img src="/assets/icons/avatar.png"  alt="" />
         <div>
           <p>{{ user.username }}</p>
           <h5>VERIFIED</h5>
+        </div>
+        <div @click="close" v-if="showClose == true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 12H3" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.94702 16C5.42002 18.961 8.46802 21 12 21C16.971 21 21 16.971 21 12C21 7.029 16.971 3 12 3C8.46802 3 5.42002 5.039 3.94702 8" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 9L15 12L12 15" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
       </article>
     </article>
@@ -48,6 +57,11 @@ export default {
     return {
       copyURL,
     };
+  },
+  data () {
+    return {
+      showClose: false
+    }
   },
   methods: {
     ...mapActions('auth', ['logout']),

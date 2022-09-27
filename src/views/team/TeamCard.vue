@@ -1,9 +1,9 @@
 <template>
   <article class="TeamCard" @click="$emit('search', user.username)">
     <img :src="apiUrl + '/uploads/users/' + user.image" alt="" />
-    <div>
+    <div class="text-center">
       <h2>{{ user.names }}</h2>
-      <p>{{ user.username }}</p>
+      <div class="subtitle">{{ user.username }}</div>
     </div>
   </article>
 </template>
@@ -14,6 +14,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .TeamCard {
+
   width: 200px;
   min-width: 200px;
   position: relative;
@@ -41,7 +42,7 @@ export default {
     color: #000;
     font-size: 16px;
   }
-  p {
+  .subtitle {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     color: #647188;

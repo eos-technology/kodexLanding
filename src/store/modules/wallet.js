@@ -26,6 +26,13 @@ export default {
       
       return arrayData
     },
+    sumUsd (state) {
+      let total = 0
+      state.wallets.map(element => {
+        total = total + element.balance_usd
+      })
+      return total
+    },
     withdrawals (state) {
       let walletsElv = []
       state.wallets.map(element => {

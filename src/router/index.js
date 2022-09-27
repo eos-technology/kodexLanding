@@ -76,13 +76,13 @@ const routes = [
         ]
       },
       {
-        path: '/acciones',
-        name:'Acciones',
+        path: '/actions',
+        name:'Actions',
         component: () => import ('@/views/acciones/Index.vue'),
         children: [
           {
             path: '',
-            name:'Acciones',
+            name:'Actions',
             component: () => import ('@/views/acciones/Acciones.vue')
           },
           {

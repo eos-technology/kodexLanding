@@ -1,21 +1,33 @@
 <template>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/facebook.svg" alt="" />
+    <a href="https://facebook.com/KodexPay" target="_blank">
+      <img class="social__img" src="@/assets/icons/facebook.svg" alt="" />
+    </a>
   </div>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/instagram.svg" alt="" />
+    <a href="https://facebook.com/KodexPay" target="_blank">
+      <img class="social__img" src="@/assets/icons/instagram.svg" alt="" />
+    </a>
   </div>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/linkedin.svg" alt="" />
+    <a href="https://facebook.com/KodexPay" target="_blank">
+      <img class="social__img" src="@/assets/icons/linkedin.svg" alt="" />
+    </a>
   </div>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/web.svg" alt="" />
+    <a href="http://kodexpay.com" target="_blank">
+      <img class="social__img" src="@/assets/icons/web.svg" alt="" />
+    </a>
   </div>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/rednew.svg" alt="" />
+    <a href="https://facebook.com/KodexPay" target="_blank">
+      <img class="social__img" src="@/assets/icons/rednew.svg" alt="" />
+    </a>
   </div>
   <div class="social">
-    <img class="social__img" src="@/assets/icons/telegram.svg" alt="" />
+    <a href="https://t.me/kodexpayments" target="_blank">
+      <img class="social__img" src="@/assets/icons/telegram.svg" alt="" />
+    </a>
   </div>
 </template>
 

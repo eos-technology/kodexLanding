@@ -2,15 +2,15 @@
   <section class="newWallet">
     <BtnBack></BtnBack>
     <section class="newWallet__container">
-      <h3>Añadir wallet</h3>
+      <h3>Payment method</h3>
       <article class="newWallet__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>Select payment method</h4>
         <article class="newWallet__container__select__contain">
           <SelectCoin :coins="assets" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
         </article>
         <article class="newWallet__container__balance__contain__actions">
-              <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.payment_method == null" label="Continuar al pago"  @click="onSubmit"> </BaseButton>
+              <BaseButton label="Cancel" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.payment_method == null" label="Continue to payment"  @click="onSubmit"> </BaseButton>
           </article>
       </article>
     </section>

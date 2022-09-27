@@ -103,7 +103,7 @@ import ToggleButton from "@/components/base/ToggleButton.vue";
 export default {
   components: { Header, BaseButton, ToggleButton },
   setup() {
-    const show = ref(false)
+    const show = ref(true)
     const valueProgress = ref(45);
     return {
       valueProgress,

@@ -1,11 +1,11 @@
 <template>
-  <article class="walletCard" :id="wallet.currency">
+  <article class="walletCard" :id="wallet.currency" :class="isActive == wallet.id ? '' : 'inactive' ">
     <h2>{{ wallet.name }}</h2>
     <p> {{ wallet.asset.name }} ({{ wallet.asset.currency }})</p>
     <h3 class="address"> {{ wallet.address }}</h3>
     <div class="row">
       <div class="col-6 walletCard-balance">
-        <p>USDT: ${{ coinFormat(wallet.balance_usdt) }}</p>
+        <p>USDT: ${{ coinFormat(wallet.balance_usd) }}</p>
         <p>{{ wallet.asset.currency }}: ${{ coinFormat(wallet.balance) }}</p>
       </div>
       <div class="col-6 text-right">
@@ -44,6 +44,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.inactive{
+  opacity: .5;
+}
 .text-right{
   text-align: right;
 }
@@ -52,6 +55,9 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.walletCard:hover{
+  cursor: pointer;
 }
 .walletCard {
   min-width: 290px;
