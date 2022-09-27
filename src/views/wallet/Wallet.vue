@@ -67,40 +67,29 @@
           <h2>Transactions</h2>
         </article>
         <article class="wallet__table__container">
-          <b-table
-            responsive
-            striped
-            hover
-            :items="transactions"
-            :fields="fields"
+        <article class="wallet__table__table">
+          <article class="wallet__table__table-header">
+            <p>Id</p>
+            <p>Hash</p>
+            <p>Time</p>
+            <p>from</p>
+            <p>To</p>
+            <p>Quantity</p>
+          </article>
+          <article
+            class="wallet__table__table-row"
+            v-for="trx in transactions.data"
+            :key="trx.id"
           >
-            <template #cell(hash)="row">
-              <div class="ultralimited">
-                {{ row.item.txHash }}
-              </div>
-            </template>
-            <template #cell(time)="row">
-              <div class="limited">
-                {{ row.item.time }}
-              </div>
-            </template>
-            <template #cell(from)="row">
-              <div class="ultralimited">
-                {{ row.item.from }}
-              </div>
-            </template>
-            <template #cell(to)="row">
-              <div class="ultralimited">
-                {{ row.item.to }}
-              </div>
-            </template>
-            <template #cell(quantity)="row">
-              <div class="limited">
-                {{ row.item.quantity }}
-              </div>
-            </template>
-          </b-table>
+            <p>{{ trx.id }}</p>
+            <p>{{ trx.category ? trx.category.name : '' }}</p>
+            <p>{{ trx.description }}</p>
+            <p>{{ formatDate(trx.created_at) }}</p>
+            <p class="Aprobado">{{ trx.type == 1 ? 'Income' : 'Outcome' }}</p>
+            <p>${{ coinFormat(trx.quantity) }}</p>
+          </article>
         </article>
+      </article>
         <b-pagination
           v-model="currentPage"
           :total-rows="rows"
@@ -293,9 +282,6 @@ export default {
       max-height: calc(100vh - 200px);
       overflow: hidden;
       max-width: 400px;
-      @media (max-width: 500px) {
-        width: 250px;
-      }
       &__container {
         height: 100%;
         overflow: scroll;
