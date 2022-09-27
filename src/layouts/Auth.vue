@@ -19,7 +19,8 @@ export default {
 
 <style lang="scss" scoped>
   .authLayout{
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     overflow: hidden;
     display: grid;
     grid-template-columns: 60% 40%;
