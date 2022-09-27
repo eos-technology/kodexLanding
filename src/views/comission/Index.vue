@@ -173,6 +173,7 @@ export default {
   grid-gap: 20px;
   @media (max-width: 700px){
     grid-template-columns: 1fr;
+    padding: 0;
   }
   &__aside {
     padding: 16px;
@@ -239,6 +240,9 @@ export default {
   }
   &__table {
     overflow: hidden;
+    @media (max-width: 700px){
+      padding: 20px;
+    }
     &__actions {
       display: flex;
       justify-content: space-between;
@@ -247,6 +251,7 @@ export default {
         width: 250px;
         @media (max-width: 700px){
           margin-top: 15px;
+          width: 100%;
         }
       }
     }

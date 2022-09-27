@@ -108,6 +108,11 @@ export default {
       flex-wrap: wrap;
       gap: 12px;
     }
+    a{
+      @media (max-width: 700px){
+        width: 100%;
+      }
+    }
     &-tab {
       display: flex;
       align-items: center;

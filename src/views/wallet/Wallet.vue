@@ -4,9 +4,7 @@
       <article class="wallet__balance__cards__container">
         <div class="wallet__drag" @click="$router.push({ name: `NewWallet` })">
           <img src="@/assets/icons/wallet.svg" alt="" />
-          <p class="wallet__drag-text">
-            <b>Create</b> new <b>wallet</b>
-          </p>
+          <p class="wallet__drag-text"><b>Create</b> new <b>wallet</b></p>
         </div>
         <CardCoin
           :isActive="walletActive.id"
@@ -58,10 +56,11 @@
           </div>
         </article>
       </article>
-      <article class="wallet__balance__total text-center" v-if="!walletActive.balance" >
-        <h3 class="text-center">
-          Plase select a wallet
-        </h3>
+      <article
+        class="wallet__balance__total text-center"
+        v-if="!walletActive.balance"
+      >
+        <h3 class="text-center">Plase select a wallet</h3>
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">
@@ -211,11 +210,12 @@ export default {
   display: grid;
   grid-template-columns: 35% 1fr;
   grid-gap: 20px;
-  @media (max-width:1300px) {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 1300px) {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
   &__drag {
-    border: 2px dashed #007BD1;
+    border: 2px dashed #007bd1;
     margin-bottom: 20px;
     border-radius: 25px;
     padding: 40px 16px;
@@ -226,16 +226,15 @@ export default {
       font-size: 16px;
       font-weight: 300;
       line-height: 24px;
-      color: #007BD1;
+      color: #007bd1;
     }
   }
   &__balance {
-    width: 70%;
     padding: 25px;
     grid-gap: 40px;
     border-radius: 24px;
-    @media (max-width:1200px) {
-      
+    overflow: hidden;
+    @media (max-width: 1200px) {
     }
     &__total {
       display: grid;
@@ -247,6 +246,10 @@ export default {
       grid-gap: 20px;
       margin-bottom: 20px;
       text-align: center;
+      @media (max-width: 1300px) {
+        height: auto;
+        grid-template-columns: 1fr;
+      }
       > div {
         text-align: center;
       }
@@ -290,9 +293,9 @@ export default {
       max-height: calc(100vh - 200px);
       overflow: hidden;
       max-width: 400px;
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         width: 250px;
-    }
+      }
       &__container {
         height: 100%;
         overflow: scroll;
@@ -306,8 +309,8 @@ export default {
   }
   &__table {
     &__container {
-      overflow: hidden;
     }
+    overflow: hidden;
     margin-top: 20px;
     &__title {
       display: flex;
