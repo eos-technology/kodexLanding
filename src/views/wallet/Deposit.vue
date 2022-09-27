@@ -12,7 +12,6 @@
           <div class="newWallet__container__select__contain-copy">
             <h4>Wallet address</h4>
             <Copy :text="address"></Copy>
-            <!-- <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p> -->
           </div>
         </article>
       </article>
@@ -73,6 +72,10 @@ export default {
       &__contain {
         display: flex;
         align-items: center;
+        @media (max-width: 700px){
+          display: grid;
+          overflow: hidden;
+        }
         &-qr{
           margin-right: 20px;
           padding: 15px;
@@ -92,6 +95,11 @@ export default {
             margin-top: 15px;
             font-size: 12px;
             color: #647188;
+          }
+          .copy{
+            @media (max-width: 700px){
+              width: 50%;
+            }
           }
         }
       }

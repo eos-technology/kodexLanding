@@ -1,6 +1,6 @@
 <template>
   <div class="copy" @click="copyURL(text)">
-    {{ text }}
+    <p>{{ text }}</p>
     <img src="/assets/iconBase/paste.svg" alt="">
   </div>
 </template>
@@ -47,6 +47,14 @@ export default {
   }
   img{
     margin-left: 20px;
+  }
+  p{
+    @media (max-width: 700px){
+      width: 50%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 }
 </style>
