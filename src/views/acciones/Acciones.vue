@@ -123,6 +123,9 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    @media (max-width:1000px) {
+      grid-template-columns: 1fr;
+    }
     &__img {
       img {
         width: 100%;
