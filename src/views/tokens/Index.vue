@@ -7,7 +7,13 @@
           <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
           <h2>Conocer más sobre KodexPay</h2>
           <p>No vemos la hora de mostrarte lo que tenemos preparado</p>
-          <Social/>
+          <div class="token__social">
+            <Social />
+          </div>
+          <div class="buttons">
+            <button class="sBtn">Whitepapper</button>
+            <button class="oBtn">Whitepapper</button>
+          </div>
         </article>
         <article class="token__main__img__l">
           <article class="token__main__img__l__title">
@@ -21,16 +27,14 @@
             <Count></Count>
           </article>
           <div class="text-center mt-3">
-            <h2>
-              <b>1 KXP</b> = <b>0.5 USD</b>
-            </h2>
+            <h2><b>1 KXP</b> = <b>0.5 USD</b></h2>
           </div>
           <article class="token__main__img__l__progress">
             <b-progress
-            :value="valueProgress"
-            :max="100"
-            animated
-            variant="primary"
+              :value="valueProgress"
+              :max="100"
+              animated
+              variant="primary"
             ></b-progress>
             <span>{{ valueProgress }}%</span>
           </article>
@@ -41,13 +45,16 @@
             </h4>
           </article>
           <article>
-            <BaseButton @click="$router.push({ name: 'Purchase-Token' })" label="Buy Token"></BaseButton>
+            <BaseButton
+              @click="$router.push({ name: 'Purchase-Token' })"
+              label="Buy Token"
+            ></BaseButton>
           </article>
         </article>
       </article>
-      <Distribution class="mb-4"/>
-        <p>Opportunity to acquire</p>
-        <h2>Token KodexPay</h2>
+      <Distribution class="mb-4" />
+      <p>Opportunity to acquire</p>
+      <h2>Token KodexPay</h2>
       <TimeLine></TimeLine>
       <article class="token__main__quarter">
         <article class="token__main__quarter__card" v-for="x in 6" :key="x">
@@ -70,9 +77,10 @@ import Count from "@/components/Count.vue";
 import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import TimeLine from "../../components/TimeLine.vue";
-import Distribution from './Distribution.vue'
+import Distribution from "./Distribution.vue";
+import Social from "@/components/base/Social.vue";
 export default {
-  components: { Header, Count, BaseButton, TimeLine, Distribution },
+  components: { Header, Count, BaseButton, TimeLine, Distribution, Social },
   setup() {
     const valueProgress = ref(2);
     return {
@@ -86,8 +94,13 @@ export default {
 .token {
   display: grid;
   margin-top: 30px;
-  &__img{
+  &__img {
     margin-bottom: 16px;
+  }
+  &__social{
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
   }
   &__main {
     padding: 40px;
