@@ -40,6 +40,9 @@
       border-radius: 16px 16px 0 0;
       text-align: center;
       background-color: #F6F8FA;
+      &.noId {
+      grid-template-columns: repeat($cantidad, 1fr);
+      }
       p {
         font-size: 13px;
         font-weight: 400;
@@ -56,10 +59,14 @@
       border: 1px solid rgba(35, 57, 99, 0.05);
       border-top: none;
       text-align: center;
+      
       &:nth-child(2n + 1){
         background-color: #FCFCFC;
       }
       @media (max-width: 800px) {
+      }
+      &.noId {
+        grid-template-columns: repeat($cantidad, 1fr);
       }
       p {
         word-break:break-all;
