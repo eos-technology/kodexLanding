@@ -30,7 +30,7 @@
               :value="valueProgress"
               :max="100"
               animated
-              variant="dark"
+              variant="Primary"
             ></b-progress>
             <span>{{ valueProgress }}%</span>
           </article>
@@ -63,7 +63,7 @@
                 :value="valueProgress"
                 :max="100"
                 animated
-                variant="dark"
+                variant="Primary"
               ></b-progress>
               <span>{{ valueProgress }}%</span>
             </article>

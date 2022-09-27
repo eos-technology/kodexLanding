@@ -309,14 +309,14 @@ export default {
         height: 40px;
         border: none;
         border-radius: 100%;
-        color: #000000;
+        color:  #0F215C;
         &:focus {
           box-shadow: none;
         }
       }
       &.active > .page-link {
         color: white;
-        background: #000000;
+        background:  #0F215C;
       }
     }
   }

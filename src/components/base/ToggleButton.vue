@@ -42,7 +42,7 @@ export default {
     font-weight: 300;
     border: none;
     outline: none;
-    color: #000000;
+    color:  #0F215C;
     font-size: 14px;
     &.active {
       box-shadow: 0px 2px rgba(16, 24, 40, 0.1);
