@@ -4,7 +4,7 @@
     <section class="dasboard__main">
       <article class="dasboard__main__img">
         <h2>Kodex Pay</h2>
-        <p class="dasboard__main__text">Mauris vel nibh cursus, congue quam tincidunt, placerat ex. Praesent imperdiet sem vitae tellus commodo, sed ultricies lorem porttitor. Suspendisse sodales mi dignissim venenatis feugiat. Ut faucibus est eget velit fringilla cursus vitae id metus. Curabitur dui dui, pulvinar in aliquam non, mollis commodo elit. Vestibulum placerat tincidunt lacus, eget imperdiet felis suscipit sed. Suspendisse sit amet congue urna. Proin scelerisque libero in nisi luctus pellentesque</p>
+        <p class="dasboard__main__text">KodexPay was born from the need to allow businesses that only accepted Fiat to enter the new world of cryptocurrencies, we have easy and efficient processes that allow users to convert cryptos into Fiat quickly, we also have high quality standards that allow us to carry out seamless and fast integrations with different programming languages ​​and external platforms</p>
         <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
@@ -25,7 +25,9 @@
         </div>
         <div class="aside__card__text">
           <p class="aside__card__text__title-card">Wallet Balance</p>
-          <p class="aside__card__text__price">$0.00</p>
+          <p class="aside__card__text__price">$
+            {{ coinFormat(sumUsd) }}
+          </p>
         </div>
       </article>
       <article class="aside__chart">
@@ -80,6 +82,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import VueApexCharts from "vue3-apexcharts";
+import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
   components: { Header, apexchart: VueApexCharts },
@@ -95,7 +98,7 @@ export default {
       dataLabels: {
         enabled: false,
       },
-      labels: ["Bitcoin", "Eleven", "Lightcoin", "Etherium", "BitcoinCash"],
+      labels: ["Bitcoin - $2.1M", "USDT (TRC20) - $2M", "USDT (ERC20) - $1M", "Etherium - $800K", "BNB - $240K"],
       fill: {
         type: "gradient",
       },
@@ -204,6 +207,15 @@ export default {
       series2,
     };
   },
+  created () {
+    this.getWallets()
+  },
+  methods: {
+    ...mapActions("wallet", ["getWallets", "getTransactions"]),
+  },
+  computed: {
+    ...mapGetters('wallet', ['sumUsd'])
+  }
 };
 </script>
 

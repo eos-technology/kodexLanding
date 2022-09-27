@@ -11,9 +11,15 @@
             <Social />
           </div>
           <div class="token__buttons">
-            <button class="sBtn token__btn">Whitepapper</button>
-            <button class="oBtn token__btn">Contract</button>
-            <button class="oBtn token__btn">FAQ</button>
+            <a class="sBtn token__btn" href="https://kodexpay.com/whitepaper" target="_blank">
+              Whitepapper
+            </a>
+            <a href="https://bscscan.com/address/0x02a655942Dbb886c77bb22B270060c561300B0E2" target="_blank" class="oBtn token__btn">
+              Contract
+            </a>
+            <a class="oBtn token__btn" href="https://support.kodexpay.com/faq" target="_blank">
+              FAQ
+            </a>
           </div>
         </article>
         <article class="token__main__img__l">
@@ -83,7 +89,16 @@
 
         <article class="token__main__img__r">
           <Distribution class="mb-4" />
-          <h2>Total Tokens KXP</h2>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h2 class="text-left">Total Tokens KXP</h2>
+            </div>
+            <div class="col-12 col-md-6">
+              <h2 class="text-right">
+                $70.000.000
+              </h2>
+            </div>
+          </div>
         </article>
       </article>
 
@@ -176,6 +191,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.text-right{
+  text-align: right !important;
+}
+a{
+  text-decoration: none;
+  padding-top: 15px !important;
+}
 .token {
   display: grid;
   margin-top: 30px;

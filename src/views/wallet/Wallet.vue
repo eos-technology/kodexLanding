@@ -2,26 +2,12 @@
   <section class="wallet">
     <article class="wallet__balance__cards">
       <article class="wallet__balance__cards__container">
-        <div class="wallet__drag">
+        <div class="wallet__drag" @click="$router.push({ name: `NewWallet` })">
           <img src="@/assets/icons/wallet.svg" alt="" />
           <p class="wallet__drag-text">
-            <b>Arrastra</b> tu imagen aquí, o <b>búscala en tu ordenador</b>
+            <b>Create</b> new <b>wallet</b>
           </p>
         </div>
-        <CardCoin
-          :isActive="walletActive.id"
-          @click="walletActive = wallet"
-          :wallet="wallet"
-          v-for="wallet in wallets"
-          :key="wallet.id"
-        />
-        <CardCoin
-          :isActive="walletActive.id"
-          @click="walletActive = wallet"
-          :wallet="wallet"
-          v-for="wallet in wallets"
-          :key="wallet.id"
-        />
         <CardCoin
           :isActive="walletActive.id"
           @click="walletActive = wallet"
@@ -32,7 +18,7 @@
       </article>
     </article>
     <section class="wallet__balance">
-      <article class="wallet__balance__total">
+      <article class="wallet__balance__total" v-if="walletActive.balance">
         <div>
           <p>Total balance</p>
           <h2>
@@ -70,16 +56,16 @@
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
             <p>Deposit</p>
           </div>
-          <div @click="$router.push({ name: `NewWallet` })">
-            <img :src="`/assets/icons/create.svg`" alt="" />
-            <p>Create</p>
-          </div>
         </article>
+      </article>
+      <article class="wallet__balance__total text-center" v-if="!walletActive.balance" >
+        <h3 class="text-center">
+          Plase select a wallet
+        </h3>
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">
           <h2>Transactions</h2>
-          <InputSearch placeholder="Search"></InputSearch>
         </article>
         <article class="wallet__table__container">
           <b-table
@@ -138,27 +124,27 @@ export default {
       fields: [
         {
           key: "id",
-          label: "ID",
+          label: "Id",
         },
         {
-          key: "name",
-          label: "NAME",
+          key: "hash",
+          label: "Hash",
         },
         {
           key: "time",
-          label: "TIME",
+          label: "Time",
         },
         {
           key: "from",
-          label: "FROM",
+          label: "From",
         },
         {
           key: "to",
-          label: "TO",
+          label: "To",
         },
         {
           key: "quantity",
-          label: "QUANTITY",
+          label: "Quantity",
         },
       ],
       balanceActions: [
@@ -241,6 +227,7 @@ export default {
     }
   }
   &__balance {
+    width: 70%;
     padding: 25px;
     grid-gap: 40px;
     border-radius: 24px;

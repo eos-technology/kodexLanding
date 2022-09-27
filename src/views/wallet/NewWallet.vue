@@ -57,6 +57,7 @@ export default {
         onSubmit () {
           this.storeWallet(this.form).then(() => {
             openNotification('Wallet created successfully')
+            this.$router.push({ name: 'Wallet' })
           })
         },
         selectAsset(asset) {

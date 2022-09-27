@@ -2,25 +2,36 @@
   <section class="newWallet">
     <BtnBack></BtnBack>
     <section class="newWallet__container">
-      <h3>Realizar pago</h3>
-      <article class="newWallet__container__select">
-        <h4>Envía la cantidad que desees a esta wallet</h4>
+      <h3>Make payment</h3>
+      <article class="newWallet__container__select" v-if="cart">
+        <h4>Send the amount you want to this wallet</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
             <qrcode-vue :value="cart.wallet" size="200" level="M"/>
           </div>
           <div class="newWallet__container__select__contain-copy">
-            <h4>Dirección de wallet</h4>
-            <Copy :text="cart.wallet"></Copy>
+            <h4>Wallet address</h4>
+            <Copy v-if="cart" :text="cart.wallet"></Copy>
             <div class="row mt-2">
-                <div class="col-6">
-                    <h3>Valor</h3>
+                <div class="col-4 d-flex">
+                    <img src="/assets/images/kodex.png" />
+                    <div style="margin-left:10px">
+                      <div class="coin-name">KXP</div>
+                      <div class="coin-price">$1.00</div>
+                    </div>
                 </div>
-                <div class="col-6 text-right">
-                    1 KXP = 0.5 USD
+                <div class="col-4 text-center pt-2">
+                  <img src="/assets/images/value.png" />
+                </div>
+                <div class="col-4 text-right d-flex">
+                    <div style="margin-right:10px">
+                      <div class="coin-name">KXP</div>
+                      <div class="coin-price">$0.5</div>
+                    </div>
+                    <img src="/assets/images/usdt.png" />
                 </div>
             </div>
-            <p>La transacción se ha creado con éxito, complete el pago para enviar los tokens entre 1 a 24 horas</p>
+            <p>The transaction has been created successfully, complete the payment to send the tokens between 1 to 24 hours</p>
           </div>
         </article>
         <div class="text-center">
@@ -28,8 +39,8 @@
                 message
             }}
         </div>
-        <BaseButton label="Verificar pago" loadingTx="Verificando pago" @click="confirmPayment" />
-        <BaseButton @click="cancelPayment" label="Cancelar" class="transparent"></BaseButton>
+        <BaseButton label="Verify payment" loadingTx="Verifying payment" @click="confirmPayment" />
+        <BaseButton @click="cancelPayment" label="Cancel" class="transparent"></BaseButton>
       </article>
     </section>
   </section>
@@ -85,7 +96,7 @@ export default {
                 this.loading = false
                 if(response == 'success') {
                     this.getUserInfo()
-                    openNotification('Compra realizada exitosamente', 'Los tokens serán enviados a tu billetera en la mayor brevedad')
+                    openNotification('Purchase made successfully', 'The tokens will be sent to your wallet as soon as possible')
                     this.getData()
                     this.$router.push({ name: 'Tokens' })
                 }
@@ -99,6 +110,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.coin-name{
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #647188;
+}
+.coin-price{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
 .text-right{
     text-align: right;
 }

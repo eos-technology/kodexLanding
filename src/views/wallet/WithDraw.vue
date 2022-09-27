@@ -72,9 +72,15 @@ export default {
     this.getWallets()
   },
   methods: {
-    ...mapActions('wallet', ['getWallets']),
+    ...mapActions('wallet', ['getWallets', 'sendTransaction']),
     selectWallet(asset){
       this.form.wallet_id = asset
+    },
+    onsubmit() {
+      this.sendTransaction(this.form).then(() => {
+        openNotification('Withdraw success')
+        this.$router.push({ name: 'Wallet' })
+      })
     }
   },
   computed: {

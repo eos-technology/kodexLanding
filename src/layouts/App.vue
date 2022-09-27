@@ -30,6 +30,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { useRoute } from "vue-router";
+import { mapActions } from 'vuex';
 export default {
   setup() {
     const tabs = [
@@ -38,9 +39,8 @@ export default {
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
       { name: "Red", icon: "red", path: "/team" },
-      { name: "Staking", icon: "actions", path: "/acciones" },
-      { name: "Profile", icon: "profile", path: "/profile" },
-      { name: "Support", icon: "sup", path: "/support" }
+      { name: "Staking", icon: "actions", path: "/actions" },
+      { name: "Profile", icon: "profile", path: "/profile" }
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -49,6 +49,12 @@ export default {
       activeTab,
     };
   },
+  created () {
+    this.getUserInfo()
+  },
+  methods: {
+    ...mapActions('auth', ['getUserInfo'])
+  }
 };
 </script>
 

@@ -16,9 +16,9 @@ export default {
     const copyURL = async (mytext) => {
       try {
         await navigator.clipboard.writeText(mytext);
-        openNotification('Copiado exitosamente')
+        openNotification('Copied successfully')
       } catch ($e) {
-        openNotification('En estos momentos no es posible copiar')
+        openNotification('Sorry, we cant copy this now')
       }
     };
     return {
