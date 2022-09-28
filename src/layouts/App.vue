@@ -1,47 +1,67 @@
 <template>
-  <section class="appLayout">
-    <section class="appLayout__sideBar" :class="activeBar ? 'active' : ''">
-      <div class="appLayout__sideBar-close">
-        <img
-          class="mb-5"
-          src="@/assets/icons/kodex.svg"
-          style="max-width: 100%"
-          alt=""
-        />
-        <img src="/src/assets/images/cerrar.jpg" alt="" id="close" @click="activeBar = false">
-      </div>
-      <h3 style="color: #647188">overview</h3>
-      <article class="appLayout__sideBar__container " >
-        <div
-          class="tabsContainer"
-          :class="$route.path == element.path ? 'active' : ''"
-          v-for="element in tabs"
-          :key="element.name"
-          @click="$router.push({ path: element.path })"
-        >
+  <div class="content">
+    <header-phone class="menu__header"
+      ><img
+        @click="activeBar = true"
+        class="menu__left-icon"
+        src="@/assets/icons/menu.svg"
+        alt=""
+    /></header-phone>
+    <section class="appLayout">
+      <section class="appLayout__sideBar" :class="activeBar ? 'active' : ''">
+        <div class="appLayout__sideBar-close">
           <img
-            :src="`/assets/icons/${
-              $route.path == element.path ? 'white' : 'black'
-            }/${element.icon}.svg`"
+            class="mb-5"
+            src="@/assets/icons/kodex.svg"
+            style="max-width: 100%"
             alt=""
           />
-          <h4>{{ element.name }}</h4>
+          <img
+            src="/src/assets/images/cerrar.jpg"
+            alt=""
+            id="close"
+            @click="activeBar = false"
+          />
         </div>
-      </article>
+        <h3 style="color: #647188">overview</h3>
+        <article class="appLayout__sideBar__container">
+          <div
+            class="tabsContainer"
+            :class="$route.path == element.path ? 'active' : ''"
+            v-for="element in tabs"
+            :key="element.name"
+            @click="
+              () => {
+                $router.push({ path: element.path });
+                activeBar = false;
+              }
+            "
+          >
+            <img
+              :src="`/assets/icons/${
+                $route.path == element.path ? 'white' : 'black'
+              }/${element.icon}.svg`"
+              alt=""
+            />
+            <h4>{{ element.name }}</h4>
+          </div>
+        </article>
+      </section>
+      <section class="sectionApp">
+        <router-view></router-view>
+      </section>
     </section>
-    <section class="sectionApp">
-      <router-view></router-view>
-    </section>
-  </section>
+  </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
 import { useRoute } from "vue-router";
 import { mapActions } from "vuex";
+import HeaderPhone from "../components/HeaderPhone.vue";
 export default {
   setup() {
-    const activeBar = ref(false)
+    const activeBar = ref(false);
     const tabs = [
       { name: "Dashboard", icon: "dash", path: "/" },
       { name: "Token", icon: "token", path: "/token" },
@@ -56,7 +76,7 @@ export default {
     return {
       tabs,
       activeTab,
-      activeBar
+      activeBar,
     };
   },
   created() {
@@ -65,15 +85,20 @@ export default {
   methods: {
     ...mapActions("auth", ["getUserInfo"]),
   },
+  components: { HeaderPhone },
 };
 </script>
 
 <style lang="scss" scoped>
+.content {
+  background-color: #f7f8fa;
+}
 .appLayout {
   display: grid;
   grid-template-columns: 250px 1fr;
   grid-gap: 30px;
   min-height: 100vh;
+  height: 100%;
   padding-right: 30px;
   background: #f7f8fa;
   @media (max-width: 700px) {
@@ -90,32 +115,34 @@ export default {
     @media (max-width: 700px) {
       overflow: hidden;
       position: absolute;
+      min-height: 100vh;
+      height: 100%;
       top: -200vh;
       left: 0;
       width: 100vw;
       z-index: 5;
       transition: all 0.5s;
     }
-    &-close{
-      @media (max-width: 700px){
+    &-close {
+      @media (max-width: 700px) {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 50px;
       }
     }
-    #close{
+    #close {
       // position: absolute;
       // top: 10px;
       // left: 90%;
       width: 30px;
       height: 30px;
       border-radius: 12px;
-      @media (min-width: 700px){
+      @media (min-width: 700px) {
         display: none;
       }
     }
-    &.active{
+    &.active {
       top: 0;
     }
     h1 {
@@ -135,7 +162,6 @@ export default {
     &__container {
       text-align: start;
       @media (max-width: 700px) {
-        
       }
       .tabsContainer {
         margin-bottom: 20px;
@@ -168,5 +194,11 @@ export default {
 .sectionApp {
   width: 100%;
   overflow: hidden;
+}
+
+.menu__header {
+  @media (min-width: 700px) {
+    display: none;
+  }
 }
 </style>

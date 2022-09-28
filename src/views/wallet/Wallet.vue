@@ -213,6 +213,7 @@ export default {
     border-radius: 25px;
     padding: 40px 16px;
     text-align: center;
+    min-width: 250px;
     &-text {
       margin-top: 24px;
       text-align: center;
