@@ -208,6 +208,7 @@ export default {
     padding: 0;
   }
   &__drag {
+    min-width: 300px;
     border: 2px dashed #007bd1;
     margin-bottom: 20px;
     border-radius: 25px;
@@ -288,11 +289,20 @@ export default {
       max-width: 400px;
       &__container {
         height: 100%;
-        overflow: scroll;
+          overflow-y: scroll;
         padding: 20px;
         @include scroll;
+        @media (max-width: 1200px){
+          overflow-y: auto;
+          overflow-x: scroll;
+          display: flex;
+        }
         .walletCard {
+          min-width: 300px;
           margin-bottom: 20px;
+          @media (max-width: 1200px){
+          margin-left: 20px;
+        }
         }
       }
     }

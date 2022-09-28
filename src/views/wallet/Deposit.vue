@@ -73,8 +73,9 @@ export default {
       &__contain {
         display: flex;
         align-items: center;
-        @media (max-width: 700px){
+        @media (max-width: 1200px){
           display: grid;
+          justify-items: center;
           overflow: hidden;
         }
         &-qr{
@@ -99,7 +100,7 @@ export default {
           }
           .copy{
             @media (max-width: 700px){
-              width: 50%;
+              width: 200px;
             }
           }
         }
