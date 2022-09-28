@@ -19,7 +19,7 @@
           alt=""
           v-if="!transactions"
         />
-        <h5>You still have no transactions</h5>
+        <h5>You don’t have referrals yet</h5>
       </section>
       <article class="team__container__workers first">
         <TeamCard
