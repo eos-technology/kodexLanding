@@ -288,7 +288,11 @@ export default {
     &__cards {
       max-height: calc(100vh - 200px);
       overflow: hidden;
-      width: 95%;
+      max-width: 450px;
+      @media (max-width: 1200px){
+        max-width: none;
+        width: 95%;
+      }
       &__container {
         height: 100%;
           overflow-y: scroll;
