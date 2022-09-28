@@ -50,6 +50,19 @@
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
             <p>Deposit</p>
           </div>
+          <div
+            @click="
+              $router.push({
+                name: `Delete`,
+                params: {
+                  address: walletActive.address ? walletActive.address : '',
+                },
+              })
+            "
+          >
+            <img :src="`/assets/icons/trash-delete.svg`" alt="" />
+            <p>Delete</p>
+          </div>
         </article>
       </article>
       <section class="wallet__table">
@@ -80,12 +93,12 @@
           </article>
         </article>
 
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
 
         <b-pagination
           v-model="currentPage"
@@ -291,10 +304,10 @@ export default {
       max-width: 400px;
       &__container {
         height: 100%;
-          overflow-y: scroll;
+        overflow-y: scroll;
         padding: 20px;
         @include scroll;
-        @media (max-width: 1200px){
+        @media (max-width: 1200px) {
           overflow-y: auto;
           overflow-x: scroll;
           display: flex;
@@ -302,16 +315,16 @@ export default {
         .walletCard {
           min-width: 300px;
           margin-bottom: 20px;
-          @media (max-width: 1200px){
-          margin-left: 20px;
-        }
+          @media (max-width: 1200px) {
+            margin-left: 20px;
+          }
         }
       }
     }
   }
   &__table {
     &__container {
-      @media (max-width:700px) {
+      @media (max-width: 700px) {
         display: none;
       }
     }
@@ -329,14 +342,13 @@ export default {
         @media (max-width: 700px) {
           margin-top: 15px;
           max-width: 100%;
-          
         }
       }
     }
     @include Table(5);
-    &__card{
+    &__card {
       margin: 16px 0;
-      @media (min-width:700px) {
+      @media (min-width: 700px) {
         display: none;
       }
     }
