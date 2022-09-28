@@ -25,7 +25,7 @@ loadFonts();
 
 const app = createApp(App)
 
-app.config.globalProperties.mode = 'dev'
+app.config.globalProperties.mode = 'prod'
 
 const prodApi = 'https://kdoex.elvwalletapi.com'
 const devApi = 'http://127.0.0.1:3030'

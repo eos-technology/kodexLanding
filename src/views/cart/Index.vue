@@ -17,7 +17,7 @@
                     <img src="/assets/images/kodex.png" />
                     <div style="margin-left:10px">
                       <div class="coin-name">KXP</div>
-                      <div class="coin-price">$1.00</div>
+                      <div class="coin-price">1.00</div>
                     </div>
                 </div>
                 <div class="col-4 text-center pt-2">

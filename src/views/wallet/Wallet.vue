@@ -16,7 +16,7 @@
       </article>
     </article>
     <section class="wallet__balance">
-      <article class="wallet__balance__total" v-if="walletActive.balance">
+      <article class="wallet__balance__total">
         <div>
           <p>Total balance</p>
           <h2 style="text-transform:uppercase">
@@ -34,14 +34,12 @@
         </div>
         <article class="wallet__balance__total__actions">
           <div
-            v-if="walletActive.asset"
             @click="$router.push({ name: `Withdraw` })"
           >
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
             <p>Withdraw</p>
           </div>
           <div
-            v-if="walletActive.asset"
             @click="
               $router.push({
                 name: `DepositWallet`,
@@ -55,12 +53,6 @@
             <p>Deposit</p>
           </div>
         </article>
-      </article>
-      <article
-        class="wallet__balance__total text-center"
-        v-if="!walletActive.balance"
-      >
-        <h3 class="text-center">Plase select a wallet</h3>
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">

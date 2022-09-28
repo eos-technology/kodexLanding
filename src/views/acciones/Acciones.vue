@@ -3,11 +3,11 @@
     <ToggleButton v-model:show="show"></ToggleButton>
     <section class="acciones__card" v-if="show">
       <article class="acciones__card__img">
-        <img src="/assets/images/btc.jpg" alt="" />
+        <img src="/assets/images/bg-accion.webp" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>Bitcoin</h2>
-        <h3>BTC</h3>
+        <h2>Kodex</h2>
+        <h3>KXP</h3>
         <div>
           <p>Inversión miníma</p>
           <p>1,000.00 KP</p>
@@ -52,11 +52,11 @@
     <article class="acciones__container">
       <section class="acciones__card acciones__move" v-if="!show">
         <article class="acciones__card__img">
-          <img src="/assets/images/btc.jpg" alt="" />
+          <img src="/assets/images/bg-accion.webp" alt="" />
         </article>
         <article class="acciones__card__text">
-          <h2>Bitcoin</h2>
-          <h3>BTC</h3>
+          <h2>Kodex</h2>
+          <h3>KXP</h3>
           <h5>Fondeado</h5>
           <article class="acciones__card__text__progress">
               <b-progress
