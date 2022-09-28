@@ -17,6 +17,7 @@
             alt=""
           />
           <img
+            class="appLayout__close"
             src="/src/assets/images/cerrar.jpg"
             alt=""
             id="close"
@@ -90,9 +91,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .menu__left-icon{
-    margin-right: 12px;
-  }
+.menu__left-icon {
+  margin-right: 12px;
+  cursor: pointer;
+}
 .content {
   background-color: #f7f8fa;
 }
@@ -104,6 +106,9 @@ export default {
   height: 100%;
   padding-right: 30px;
   background: #f7f8fa;
+  &__close{
+    cursor: pointer;
+  }
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
     padding: 10px;
@@ -133,6 +138,9 @@ export default {
         justify-content: space-between;
         margin-bottom: 50px;
       }
+      @media (max-height: 700px) {
+        margin-bottom: 5px;
+      }
     }
     #close {
       // position: absolute;
@@ -149,7 +157,8 @@ export default {
       top: 0;
       position: fixed;
       min-height: 100%;
-
+      @media (max-height: 700px) {
+      }
     }
     h1 {
       color: white;
@@ -180,6 +189,15 @@ export default {
         @media (max-width: 700px) {
           min-width: 100px;
           margin-bottom: 15px;
+        }
+        @media (max-height: 700px) {
+          margin-bottom: 10px;
+          padding: 7px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.03);
+          color: white;
+          text-align: center;
+          cursor: pointer;
         }
         h4 {
           font-size: 14px;

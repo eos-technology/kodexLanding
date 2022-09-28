@@ -141,7 +141,6 @@ export default {
       .nav-link {
         margin-right: 15px;
         color: #647188;
-        font-family: "Roboto", sans-serif;
         font-weight: 500;
         transition: all 0.5;
         background: transparent;
