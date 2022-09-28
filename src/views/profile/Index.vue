@@ -149,7 +149,7 @@ export default {
       }
 
       .nav-link.active {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #040e2c;
         color: black;
         transition: all 0.5;
       }

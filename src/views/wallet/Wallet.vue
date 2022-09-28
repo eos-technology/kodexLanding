@@ -301,7 +301,7 @@ export default {
     &__cards {
       max-height: calc(100vh - 200px);
       overflow: hidden;
-      max-width: 400px;
+      width: 95%;
       &__container {
         height: 100%;
         overflow-y: scroll;

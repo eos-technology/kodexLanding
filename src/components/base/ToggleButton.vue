@@ -44,6 +44,7 @@ export default {
     outline: none;
     color:  #0F215C;
     font-size: 14px;
+    background: transparent;
     &.active {
       box-shadow: 0px 2px rgba(16, 24, 40, 0.1);
       font-weight: 600;
