@@ -83,6 +83,7 @@
               class="wallet__table__table-row noId"
               v-for="trx in transactions"
               :key="trx.id"
+              
             >
               <p>{{ trx.txHash }}</p>
               <p>{{ trx.time }}</p>
@@ -92,18 +93,22 @@
             </article>
           </article>
         </article>
-
-        <CardTableWallet class="wallet__table__card" />
-        <CardTableWallet class="wallet__table__card" />
-        <CardTableWallet class="wallet__table__card" />
-        <CardTableWallet class="wallet__table__card" />
-        <CardTableWallet class="wallet__table__card" />
-        <CardTableWallet class="wallet__table__card" />
+        <section v-if="!transactions" class="vacio">
+          <img src="src\assets\images\vacio\vacioWallet.png" alt="" v-if="!transactions">
+          <h5>You still have no transactions</h5>
+        </section>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
 
         <b-pagination
           v-model="currentPage"
           :total-rows="rows"
           :per-page="perPage"
+          v-if="transactions"
         ></b-pagination>
       </section>
     </section>
@@ -301,7 +306,11 @@ export default {
     &__cards {
       max-height: calc(100vh - 200px);
       overflow: hidden;
-      width: 95%;
+      max-width: 450px;
+      @media (max-width: 1200px){
+        max-width: none;
+        width: 95%;
+      }
       &__container {
         height: 100%;
         overflow-y: scroll;

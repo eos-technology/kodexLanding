@@ -37,23 +37,33 @@
           <article class="commissions__table__table-header">
             <p>ID</p>
             <p>Type</p>
-            <p style="width:300px">Description</p>
+            <p style="width: 300px">Description</p>
             <p>Date</p>
             <p>Status</p>
             <p>Quantity</p>
           </article>
-          <article
-            class="commissions__table__table-row"
-            v-for="trx in transactions.data"
-            :key="trx.id"
-          >
-            <p>{{ trx.id }}</p>
-            <p>{{ trx.category ? trx.category.name : '' }}</p>
-            <p class="suspensive">{{ trx.description }}</p>
-            <p>{{ formatDate(trx.created_at) }}</p>
-            <p class="Aprobado">{{ trx.type == 1 ? 'Income' : 'Outcome' }}</p>
-            <p>${{ coinFormat(trx.quantity) }}</p>
-          </article>
+          <section v-if="!transactions.data" class="vacio">
+            <img
+              src="src\assets\images\vacio\vacioWallet.png"
+              alt=""
+              v-if="!transactions"
+            />
+            <h5>You still have no transactions</h5>
+          </section>
+          <template v-if="transactions">
+            <article
+              class="commissions__table__table-row"
+              v-for="trx in transactions.data"
+              :key="trx.id"
+            >
+              <p>{{ trx.id }}</p>
+              <p>{{ trx.category ? trx.category.name : "" }}</p>
+              <p class="suspensive">{{ trx.description }}</p>
+              <p>{{ formatDate(trx.created_at) }}</p>
+              <p class="Aprobado">{{ trx.type == 1 ? "Income" : "Outcome" }}</p>
+              <p>${{ coinFormat(trx.quantity) }}</p>
+            </article>
+          </template>
         </article>
       </article>
       <b-pagination
@@ -71,99 +81,105 @@ import BaseButton from "@/components/form/BaseButton.vue";
 import VueApexCharts from "vue3-apexcharts";
 import InputSearch from "@/components/form/InputSearch.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: { apexchart: VueApexCharts },
-  data () {
+  data() {
     return {
       payload: {
         page: 1,
         type: null,
-        date: null
+        date: null,
       },
       series: [44, 55, 41, 17, 15, 0],
-       chartOptions: {
-          chart: {
-            type: "pie",
-            toolbar: {
-              show: false,
-            },
-          },
-          dataLabels: {
-            enabled: false,
-          },
-          labels: ["Directs", "Pro Bonus", "Level 1", "Level 2", "Level 3", "Level 4"],
-          fill: {
-            type: "gradient",
-          },
-          stroke: {
+      chartOptions: {
+        chart: {
+          type: "pie",
+          toolbar: {
             show: false,
           },
-          legend: {
-            position: "bottom",
-            horizontalAlign: "start",
-            labels: {
-              useSeriesColors: true,
-            },
-            itemMargin: {
-              horizontal: 5,
-              vertical: 10,
-            },
-            formatter: function (seriesName, opts) {
-              return [
-                seriesName,
-                `<span class="porcentaje">${
-                  opts.w.globals.series[opts.seriesIndex]
-                }</span>`,
-              ];
-            },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        labels: [
+          "Directs",
+          "Pro Bonus",
+          "Level 1",
+          "Level 2",
+          "Level 3",
+          "Level 4",
+        ],
+        fill: {
+          type: "gradient",
+        },
+        stroke: {
+          show: false,
+        },
+        legend: {
+          position: "bottom",
+          horizontalAlign: "start",
+          labels: {
+            useSeriesColors: true,
           },
-          plotOptions: {
+          itemMargin: {
+            horizontal: 5,
+            vertical: 10,
+          },
+          formatter: function (seriesName, opts) {
+            return [
+              seriesName,
+              `<span class="porcentaje">${
+                opts.w.globals.series[opts.seriesIndex]
+              }</span>`,
+            ];
+          },
+        },
+        plotOptions: {
+          pie: {
+            expandOnClick: false,
             pie: {
-              expandOnClick: false,
-              pie: {
-                size: "100%",
-              },
+              size: "100%",
             },
           },
-
-        }
-    }
+        },
+      },
+    };
   },
   components: { Header, BaseButton, InputSearch, BaseInput },
-  created () {
-    this.getData()
-    this.getTransactionsData()
+  created() {
+    this.getData();
+    this.getTransactionsData();
   },
   methods: {
-    ...mapActions('comission', ['getComissions', 'getTransactions']),
+    ...mapActions("comission", ["getComissions", "getTransactions"]),
     getData() {
       this.getComissions().then(() => {
-        this.updateChart()
-      })
+        this.updateChart();
+      });
     },
-    getTransactionsData () {
-      this.getTransactions(this.payload)
+    getTransactionsData() {
+      this.getTransactions(this.payload);
     },
     updateChart() {
-      this.series = this.comissions.data
-      console.log(this.series)
-    }
+      this.series = this.comissions.data;
+      console.log(this.series);
+    },
   },
   computed: {
-    ...mapState('comission', ['comissions', 'transactions'])
+    ...mapState("comission", ["comissions", "transactions"]),
   },
   watch: {
-    'payload.date': function () {
-      this.getTransactionsData()
-    }
-  }
+    "payload.date": function () {
+      this.getTransactionsData();
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-.suspensive{
+.suspensive {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -177,7 +193,7 @@ export default {
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-gap: 20px;
-  @media (max-width: 700px){
+  @media (max-width: 700px) {
     grid-template-columns: 1fr;
     padding: 0;
   }
@@ -246,7 +262,7 @@ export default {
   }
   &__table {
     overflow: hidden;
-    @media (max-width: 700px){
+    @media (max-width: 700px) {
       padding: 20px;
     }
     &__actions {
@@ -255,7 +271,7 @@ export default {
       flex-wrap: wrap;
       input {
         width: 250px;
-        @media (max-width: 700px){
+        @media (max-width: 700px) {
           margin-top: 15px;
           width: 100%;
         }
@@ -320,14 +336,14 @@ export default {
         height: 40px;
         border: none;
         border-radius: 100%;
-        color:  #0F215C;
+        color: #0f215c;
         &:focus {
           box-shadow: none;
         }
       }
       &.active > .page-link {
         color: white;
-        background:  #0F215C;
+        background: #0f215c;
       }
     }
   }
