@@ -79,6 +79,14 @@
             </article>
           </article>
         </article>
+
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card"/>
+
         <b-pagination
           v-model="currentPage"
           :total-rows="rows"
@@ -94,9 +102,10 @@ import { mapActions, mapState } from "vuex";
 import CardCoin from "../../components/CardCoin.vue";
 import InputSearch from "../../components/form/InputSearch.vue";
 import InputSearch1 from "../../components/form/InputSearch.vue";
+import CardTableWallet from "../../components/CardTableWallet.vue";
 
 export default {
-  components: { CardCoin, InputSearch, InputSearch1 },
+  components: { CardCoin, InputSearch, InputSearch1, CardTableWallet },
   data() {
     return {
       fields: [
@@ -292,6 +301,9 @@ export default {
   }
   &__table {
     &__container {
+      @media (max-width:700px) {
+        display: none;
+      }
     }
     overflow: hidden;
     margin-top: 20px;
@@ -312,6 +324,12 @@ export default {
       }
     }
     @include Table(5);
+    &__card{
+      margin: 16px 0;
+      @media (min-width:700px) {
+        display: none;
+      }
+    }
   }
   .pagination {
     margin-top: 20px;
