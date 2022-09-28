@@ -41,7 +41,7 @@ export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
   setup() {
     const coins = [
-      { name: "btc" },
+      { name: "KXP" },
       { name: "usdt" },
       { name: "trx" },
       { name: "USDT" },

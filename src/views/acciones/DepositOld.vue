@@ -31,7 +31,7 @@ export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, Copy },
   setup() {
     const coins = [
-      { name: "btc" },
+      { name: "KXP" },
       { name: "usdt" },
       { name: "trx" },
       { name: "USDT" },

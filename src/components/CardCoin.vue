@@ -60,7 +60,7 @@ export default {
   cursor: pointer;
 }
 .walletCard {
-  min-width: 290px;
+  min-width: 250px;
   padding: 25px;
   border-radius: 25px;
   color: white;

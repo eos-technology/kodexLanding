@@ -86,6 +86,9 @@ export default {
   padding: 16px;
   border-radius: 16px;
   background: white;
+  @media (max-width:700px) {
+    display: none !important;
+  }
   @media (max-width: 900px) {
     display: block;
     max-height: 100%;
