@@ -70,6 +70,7 @@
               class="wallet__table__table-row noId"
               v-for="trx in transactions"
               :key="trx.id"
+              
             >
               <p>{{ trx.txHash }}</p>
               <p>{{ trx.time }}</p>
@@ -79,7 +80,10 @@
             </article>
           </article>
         </article>
-
+        <section v-if="!transactions" class="vacio">
+          <img src="src\assets\images\vacio\vacioWallet.png" alt="" v-if="!transactions">
+          <h5>You still have no transactions</h5>
+        </section>
         <CardTableWallet class="wallet__table__card"/>
         <CardTableWallet class="wallet__table__card"/>
         <CardTableWallet class="wallet__table__card"/>
@@ -91,6 +95,7 @@
           v-model="currentPage"
           :total-rows="rows"
           :per-page="perPage"
+          v-if="transactions"
         ></b-pagination>
       </section>
     </section>

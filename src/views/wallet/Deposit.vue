@@ -15,6 +15,10 @@
             <p>Take into account when making shipments the network rate please.</p>
           </div>
         </article>
+        <article class="newWallet__container__select__actions">
+          <BaseButton label="Cancelar" class="transparent"></BaseButton>
+          <BaseButton label="Verificar pago"></BaseButton>
+        </article>
       </article>
     </section>
   </section>
@@ -102,6 +106,17 @@ export default {
             @media (max-width: 700px){
               width: 200px;
             }
+          }
+        }
+      }
+      &__actions{
+        display: flex;
+        justify-content: flex-end;
+        button{
+          width: 110px;
+          margin-left: 15px;
+          @media (max-width: 700px){
+            font-size: 12px;
           }
         }
       }

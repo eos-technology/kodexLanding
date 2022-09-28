@@ -127,13 +127,18 @@ export default {
       grid-template-columns: 1fr;
     }
     &__img {
+      max-height: 450px;
       img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
     &__text {
       h2 {
+      }
+      button{
+        margin-bottom: 0;
       }
       h3 {
         color: #647188;
