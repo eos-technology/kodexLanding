@@ -67,7 +67,7 @@ export default {
       { name: "Token", icon: "token", path: "/token" },
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
-      { name: "Red", icon: "red", path: "/team" },
+      { name: "Team", icon: "red", path: "/team" },
       { name: "Staking", icon: "actions", path: "/actions" },
       { name: "Profile", icon: "profile", path: "/profile" },
     ];
@@ -90,6 +90,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .menu__left-icon{
+    margin-right: 12px;
+  }
 .content {
   background-color: #f7f8fa;
 }
@@ -144,6 +147,9 @@ export default {
     }
     &.active {
       top: 0;
+      position: fixed;
+      min-height: 100%;
+
     }
     h1 {
       color: white;
@@ -197,6 +203,8 @@ export default {
 }
 
 .menu__header {
+  position: sticky;
+  z-index: 1;
   @media (min-width: 700px) {
     display: none;
   }

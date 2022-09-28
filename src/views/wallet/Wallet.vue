@@ -19,7 +19,7 @@
       <article class="wallet__balance__total">
         <div>
           <p>Total balance</p>
-          <h2 style="text-transform:uppercase">
+          <h2 style="text-transform: uppercase">
             {{ walletActive.asset ? walletActive.asset.currency : "" }}
             {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}
           </h2>
@@ -33,9 +33,7 @@
           </p>
         </div>
         <article class="wallet__balance__total__actions">
-          <div
-            @click="$router.push({ name: `Withdraw` })"
-          >
+          <div @click="$router.push({ name: `Withdraw` })">
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
             <p>Withdraw</p>
           </div>
@@ -57,29 +55,30 @@
       <section class="wallet__table">
         <article class="wallet__table__title">
           <h2>Transactions</h2>
+          <InputSearch class="wallet__table__search" placeholder="Buscar" />
         </article>
         <article class="wallet__table__container">
-        <article class="wallet__table__table">
-          <article class="wallet__table__table-header noId">
-            <p>Hash</p>
-            <p>Time</p>
-            <p>from</p>
-            <p>To</p>
-            <p>Quantity</p>
-          </article>
-          <article
-            class="wallet__table__table-row  noId"
-            v-for="trx in transactions"
-            :key="trx.id"
-          >
-            <p>{{ trx.txHash }}</p>
-            <p>{{ trx.time }}</p>
-            <p>{{ trx.from }}</p>
-            <p>{{ trx.to }}</p>
-            <p>{{ trx.value }}</p>
+          <article class="wallet__table__table">
+            <article class="wallet__table__table-header noId">
+              <p>Hash</p>
+              <p>Time</p>
+              <p>from</p>
+              <p>To</p>
+              <p>Quantity</p>
+            </article>
+            <article
+              class="wallet__table__table-row noId"
+              v-for="trx in transactions"
+              :key="trx.id"
+            >
+              <p>{{ trx.txHash }}</p>
+              <p>{{ trx.time }}</p>
+              <p>{{ trx.from }}</p>
+              <p>{{ trx.to }}</p>
+              <p>{{ trx.value }}</p>
+            </article>
           </article>
         </article>
-      </article>
         <b-pagination
           v-model="currentPage"
           :total-rows="rows"
@@ -94,9 +93,10 @@
 import { mapActions, mapState } from "vuex";
 import CardCoin from "../../components/CardCoin.vue";
 import InputSearch from "../../components/form/InputSearch.vue";
+import InputSearch1 from "../../components/form/InputSearch.vue";
 
 export default {
-  components: { CardCoin, InputSearch },
+  components: { CardCoin, InputSearch, InputSearch1 },
   data() {
     return {
       fields: [
@@ -181,7 +181,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 } */
-.suspensive{
+.suspensive {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -298,13 +298,16 @@ export default {
     &__title {
       display: flex;
       justify-content: space-between;
-      @media (max-width: 700px) {
-        flex-wrap: wrap;
+      @media (max-width: 900px) {
+        display: block;
+        width: 100%;
       }
       input {
-        max-width: 300px;
+        min-width: 300px;
         @media (max-width: 700px) {
           margin-top: 15px;
+          max-width: 100%;
+          
         }
       }
     }
