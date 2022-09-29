@@ -120,6 +120,7 @@ export default {
 
 .dropdown-content a {
   font-size: 15px;
+  height: 100%;
   text-decoration: none;
   border-radius: 8px;
   display: block;

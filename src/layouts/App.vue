@@ -190,7 +190,7 @@ export default {
           min-width: 100px;
           margin-bottom: 15px;
         }
-        @media (max-height: 700px) {
+        @media (max-height: 800px) {
           margin-bottom: 10px;
           padding: 7px;
           border-radius: 10px;
