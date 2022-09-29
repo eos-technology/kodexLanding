@@ -24,44 +24,27 @@
       <!-- <article class="header__container-tab">
         <img src="/assets/icons/bell-not.svg" alt="" />
       </article> -->
-      <article class="header__container-tab avatar" @click="showClose = !showClose" v-if="user">
+      <article class="header__container-tab avatar" @click="show = !show" v-if="user">
         <img src="/assets/icons/avatar.png"  alt="" />
         <div>
           <p>{{ user.username }}</p>
           <h5>VERIFIED</h5>
-        </div>
-        <div @click="close" v-if="showClose == true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 12H3" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3.94702 16C5.42002 18.961 8.46802 21 12 21C16.971 21 21 16.971 21 12C21 7.029 16.971 3 12 3C8.46802 3 5.42002 5.039 3.94702 8" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 9L15 12L12 15" stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        </div>        
+        <div class="dropdown">
+          <div id="myDropdown" class="dropdown-content" :class="show ? 'show' : ''">
+            <a @click="$router.push({ path: `/profile` })" href="#"
+              >Profile</a
+            >
+            <hr>
+            <a href="#"
+              ><img
+                class="dropdown__imgMenu"
+                src="@/assets/icons/logout.svg"
+              />Logout</a
+            >
+          </div>
         </div>
       </article>
-      <div class="dropdown">
-        <img
-          @click="show = !show"
-          class="dropbtn"
-          src="@/assets/icons/Avatar.svg"
-          alt=""
-        />
-  
-        <div id="myDropdown" class="dropdown-content" :class="show ? 'show' : ''">
-          <a @click="$router.push({ path: `/profile` })" href="#"
-            ><img
-              class="dropdown__imgMenu"
-              alt=""
-            />Profile</a
-          >
-          <hr>
-          <a href="#"
-            ><img
-              class="dropdown__imgMenu"
-              src="@/assets/icons/logout.svg"
-            />Logout</a
-          >
-        </div>
-      </div>
     </article>
   </section>
 </template>
@@ -69,9 +52,10 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import { ref } from "vue";
-const show = ref(false);
 export default {
   setup() {
+  const show = ref(false);
+
     const copyURL = async (mytext) => {
       try {
         await navigator.clipboard.writeText(mytext);
@@ -82,6 +66,7 @@ export default {
     };
     return {
       copyURL,
+      show
     };
   },
   data () {
@@ -105,6 +90,7 @@ export default {
 
 <style lang="scss" scoped>
   .dropbtn {
+  position: relative;
   cursor: pointer;
 }
 
@@ -112,16 +98,11 @@ export default {
 .dropbtn:focus {
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  &__imgMenu {
-    margin-right: 10px;
-  }
-}
+
 
 .dropdown-content {
   position: absolute;
+  top: 15px;
   right: 0;
   width: 190px;
   display: none;
@@ -138,6 +119,7 @@ export default {
 }
 
 .dropdown-content a {
+  font-size: 15px;
   text-decoration: none;
   border-radius: 8px;
   display: block;
@@ -215,7 +197,7 @@ export default {
       &.avatar {
 
         height: auto;
-        img {
+        > img {
           width: 40px;
           height: 40px;
           margin-right: 15px;
@@ -237,8 +219,15 @@ export default {
     }
   }
 }
-
-.active {
+.dropdown {
+  position: relative;
+  display: inline-block;
+  &__imgMenu {
+    margin-right: 10px;
+    &.avatar{
+    }
+  }
+}.active {
   background: linear-gradient(180deg, #0d1c4e 0%, #000406 100%);
   &__text > h5, p{
     color: $white;
