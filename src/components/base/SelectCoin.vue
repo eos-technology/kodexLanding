@@ -3,11 +3,11 @@
     <div
       class="selectCoin__coin"
       v-for="asset in coins"
-      :key="asset.id"
-      @click="selectCoin(asset.id)"
-      :class="coinSelected == asset.id ? 'active' : ''"
+      :key="asset.token"
+      @click="selectCoin(asset.token)"
+      :class="coinSelected == asset.token ? 'active' : ''"
     >
-      <img style="max-width:50px" :src="asset.icon" alt="" />
+      <img style="max-width:50px" :src="asset.logo" alt="" />
       <p>{{ asset.name }}</p>
     </div>
   </section>

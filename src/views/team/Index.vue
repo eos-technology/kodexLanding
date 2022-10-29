@@ -13,9 +13,9 @@
       <article class="team__container__lead">
         <TeamCard @search="searchUser" :user="team"></TeamCard>
       </article>
-      <section v-if="team.users" class="vacio">
+      <section v-if="team.users.length <= 0" class="vacio">
         <img
-          src="src\assets\images\vacio\vacioWallet.png"
+          src="@/assets/images/vacio/vacioWallet.png"
           alt=""
           v-if="!transactions"
         />

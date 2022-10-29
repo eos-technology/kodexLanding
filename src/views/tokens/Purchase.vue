@@ -6,7 +6,7 @@
       <article class="newWallet__container__select">
         <h4>Select payment method</h4>
         <article class="newWallet__container__select__contain">
-          <SelectCoin :coins="assets" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
+          <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
         </article>
         <article class="newWallet__container__balance__contain__actions">
               <BaseButton label="Cancel" class="transparent"></BaseButton>
@@ -50,9 +50,10 @@ export default {
     }
   },
   created () {
+    this.getCoins()
   },
   methods: {
-        ...mapActions('cart', ['storeCart']),
+        ...mapActions('cart', ['storeCart', 'getCoins']),
         onSubmit () {
             this.storeCart(this.form).then(response => {
                 this.$router.push({ name: 'Cart', params: { id: response } })
@@ -61,7 +62,10 @@ export default {
         selectAsset(asset) {
           this.form.payment_method = asset
         }
-    }
+  },
+  computed: {
+    ...mapState('cart', ['coins'])
+  }
 };
 </script>
 
