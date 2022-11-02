@@ -5,7 +5,8 @@ export default {
   state: {
     carts: [],
     chart: null,
-    transactions: []
+    transactions: [],
+    coins: []
   },
   getters: {},
   mutations: {
@@ -17,9 +18,12 @@ export default {
       state.carts = data.purchases.data
       state.chart = data.chart
     },
-    GET_CART (state, data) {
-        state.cart = data
+    GET_COINS (state, data) {
+        state.coins = data
     },
+    GET_CART (state, data) {
+      state.cart = data
+  },
     UPDATE_CART (state, data) {
         let objIndex = state.carts.findIndex((obj => obj.id == data.id));
         state.carts[objIndex] = data
@@ -35,6 +39,11 @@ export default {
     }
   },
   actions: {
+    async getCoins (context) {
+      const response = await axios.get('/api/v1/cart/tokens')
+      context.commit('GET_COINS', response.data)
+      return response.data
+    },
     async getCarts (context) {
       const response = await axios.get('/api/v1/cart')
       context.commit('GET_CARTS', response.data)

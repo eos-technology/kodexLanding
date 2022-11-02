@@ -28,7 +28,7 @@ const app = createApp(App)
 app.config.globalProperties.mode = 'prod'
 
 const prodApi = 'https://kdoex.elvwalletapi.com'
-const devApi = 'http://127.0.0.1:3030'
+const devApi = 'http://127.0.0.1:3031'
 
 app.config.globalProperties.apiUrl = app.config.globalProperties.mode == 'dev' ? devApi : prodApi
 

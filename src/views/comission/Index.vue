@@ -44,7 +44,7 @@
           </article>
           <section v-if="!transactions.data" class="vacio">
             <img
-              src="src\assets\images\vacio\vacioWallet.png"
+              src="@/assets/images/vacio/vacioWallet.png"
               alt=""
               v-if="!transactions"
             />

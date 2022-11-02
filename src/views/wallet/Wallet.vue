@@ -71,7 +71,7 @@
           <h2>Transactions</h2>
           <InputSearch class="wallet__table__search" placeholder="Buscar" />
         </article>
-        <article class="wallet__table__container">
+        <article class="wallet__table__container" v-if="transactions.length > 0">
           <article class="wallet__table__table">
             <article class="wallet__table__table-header noId">
               <p>Hash</p>
@@ -93,12 +93,8 @@
             </article>
           </article>
         </article>
-        <section v-if="!transactions" class="vacio">
-          <img
-            src="src\assets\images\vacio\vacioWallet.png"
-            alt=""
-            v-if="!transactions"
-          />
+        <section v-else class="vacio">
+          <img src="@/assets/images/vacio/vacioWallet.png" alt="" v-if="!transactions">
           <h5>You still have no transactions</h5>
         </section>
         <CardTableWallet class="wallet__table__card" />

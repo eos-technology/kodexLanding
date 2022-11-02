@@ -36,7 +36,7 @@
               >Profile</a
             >
             <hr>
-            <a href="#"
+            <a href="#" @click="close()"
               ><img
                 class="dropdown__imgMenu"
                 src="@/assets/icons/logout.svg"
