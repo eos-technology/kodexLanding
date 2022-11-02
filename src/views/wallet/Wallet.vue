@@ -45,6 +45,7 @@
                   address: walletActive.address ? walletActive.address : '',
                 },
               })
+              
             "
           >
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
@@ -83,7 +84,6 @@
               class="wallet__table__table-row noId"
               v-for="trx in transactions"
               :key="trx.id"
-              
             >
               <p>{{ trx.txHash }}</p>
               <p>{{ trx.time }}</p>
@@ -94,15 +94,19 @@
           </article>
         </article>
         <section v-if="!transactions" class="vacio">
-          <img src="src\assets\images\vacio\vacioWallet.png" alt="" v-if="!transactions">
+          <img
+            src="src\assets\images\vacio\vacioWallet.png"
+            alt=""
+            v-if="!transactions"
+          />
           <h5>You still have no transactions</h5>
         </section>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
-        <CardTableWallet class="wallet__table__card"/>
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
+        <CardTableWallet class="wallet__table__card" />
 
         <b-pagination
           v-model="currentPage"
@@ -307,7 +311,7 @@ export default {
       max-height: calc(100vh - 200px);
       overflow: hidden;
       max-width: 450px;
-      @media (max-width: 1200px){
+      @media (max-width: 1200px) {
         max-width: none;
         width: 95%;
       }

@@ -12,7 +12,7 @@
       <article class="withdraw__container__balance">
         <article class="withdraw__container__balance__contain">
           <label for=""><span>*</span> Amount</label>
-          <BaseInput v-model="form.quantity" placeholder="$0.0"></BaseInput>
+          <Basenpm  v-model="form.quantity" placeholder="$0.0"></BaseInput>
           <p>Amount to transfer example: $0.00</p>
           <article class="withdraw__container__balance__contain__actions">
               <BaseButton label="Cancel" class="transparent"></BaseButton>
