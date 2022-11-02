@@ -15,7 +15,7 @@
       </article>
         <a href="https://support.kodexpay.com" target="_blank" style="text-decoration:none; color:black">
       <article
-        class="header__container-tab copy"
+        class="header__container-tab"
       >
           <img src="/src/assets/icons/support.svg" alt="" />
           <h5>SUPPORT</h5>
@@ -186,6 +186,7 @@ export default {
         margin-right: 0px;
       }
       &.copy {
+        height: auto;
         h5 {
           margin-left: 10px;
           font-weight: 400;
