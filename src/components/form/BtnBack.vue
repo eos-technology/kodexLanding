@@ -1,7 +1,7 @@
 <template>
-  <article class="btnBack" @click="$router.go(-1)">
+  <article class="btnBack" @click="$router.push({ path: back })">
     <div>
-      <img src="/assets/iconBase/arrow.svg" alt="">
+      <img src="/assets/iconBase/arrow.svg" alt="" />
     </div>
     <p>Go Back</p>
   </article>
@@ -9,27 +9,32 @@
 
 <script>
 export default {
-
-}
+  props: {
+    back: {
+      Type: String,
+      default: "/",
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.btnBack{
+.btnBack {
   display: flex;
   align-items: center;
   cursor: pointer;
-  div{
+  div {
     display: flex;
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
     width: 32px;
     height: 32px;
     padding: 10px;
     border-radius: 100%;
-    background: #F6F8FA;
+    background: #f6f8fa;
     margin-right: 10px;
   }
-  p{
+  p {
     font-size: 16px;
     font-weight: 400;
   }

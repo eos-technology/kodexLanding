@@ -137,7 +137,7 @@ export default {
 .header {
   display: flex;
   justify-content: space-between;
-  max-height: 80px;
+  flex-wrap: wrap;
   margin-top: 20px;
   padding: 16px;
   border-radius: 16px;
@@ -176,6 +176,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      height: 100%;
       margin-right: 15px;
       padding: 16px;
       border-radius: 12px;

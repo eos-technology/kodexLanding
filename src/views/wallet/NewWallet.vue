@@ -1,12 +1,16 @@
 <template>
   <section class="newWallet">
-    <BtnBack></BtnBack>
+    <BtnBack back="/wallet"></BtnBack>
     <section class="newWallet__container">
       <h3>Create wallet</h3>
       <article class="newWallet__container__select">
         <h4>Select asset to create</h4>
         <article class="newWallet__container__select__contain">
-          <SelectCoin :coins="uniqueAssets" :defaultCoin="coin" @setCoin="selectAsset"></SelectCoin>
+          <SelectCoin
+            :coins="uniqueAssets"
+            :defaultCoin="coin"
+            @setCoin="selectAsset"
+          ></SelectCoin>
         </article>
       </article>
       <article class="newWallet__container__balance">
@@ -16,14 +20,23 @@
           <label for=""><span>*</span> Wallet name</label>
           <BaseInput v-model="form.name" placeholder="Name"></BaseInput>
           <article class="newWallet__container__balance__contain__actions">
-              <BaseButton label="Cancel" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.name == null || form.currency_id == null" label="Create wallet"  @click="onSubmit"> </BaseButton>
+            <BaseButton label="Cancel" class="transparent"></BaseButton>
+            <BaseButton
+              :disabled="form.name == null || form.currency_id == null"
+              label="Create wallet"
+              @click="onSubmit"
+            >
+            </BaseButton>
           </article>
         </article>
       </article>
     </section>
   </section>
-  <PopUpSuccess title="Wallet created successfilly" img="check" :showPopUp="showPopUp"></PopUpSuccess>
+  <PopUpSuccess
+    title="Wallet created successfilly"
+    img="check"
+    :showPopUp="showPopUp"
+  ></PopUpSuccess>
 </template>
 
 <script>
@@ -33,42 +46,42 @@ import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
 
-import { ref } from '@vue/reactivity';
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { ref } from "@vue/reactivity";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
-  data () {
+  data() {
     return {
       form: {
         currency_id: null,
-        name: null
+        name: null,
       },
-      showPopUp: false
-    }
+      showPopUp: false,
+    };
   },
-  created () {
-    this.getData()
+  created() {
+    this.getData();
   },
   methods: {
-        ...mapActions('wallet', ['getAssets', 'storeWallet']),
-        getData () {
-          this.getAssets()
-        },
-        onSubmit () {
-          this.storeWallet(this.form).then(() => {
-            openNotification('Wallet created successfully')
-            this.$router.push({ name: 'Wallet' })
-          })
-        },
-        selectAsset(asset) {
-          console.log("HOA", asset)
-          this.form.currency_id = asset
-        }
+    ...mapActions("wallet", ["getAssets", "storeWallet"]),
+    getData() {
+      this.getAssets();
     },
-    computed: {
-      ...mapState('wallet', ['assets']),
-      ...mapGetters('wallet', ['uniqueAssets'])
-    }
+    onSubmit() {
+      this.storeWallet(this.form).then(() => {
+        openNotification("Wallet created successfully");
+        this.$router.push({ name: "Wallet" });
+      });
+    },
+    selectAsset(asset) {
+      console.log("HOA", asset);
+      this.form.currency_id = asset;
+    },
+  },
+  computed: {
+    ...mapState("wallet", ["assets"]),
+    ...mapGetters("wallet", ["uniqueAssets"]),
+  },
 };
 </script>
 
@@ -130,12 +143,12 @@ export default {
           color: #647188;
           margin-bottom: 20px;
         }
-        &__actions{
+        &__actions {
           display: flex;
           justify-content: end;
-          button{
+          button {
             width: auto;
-            &:first-of-type{
+            &:first-of-type {
               margin-right: 20px;
             }
           }

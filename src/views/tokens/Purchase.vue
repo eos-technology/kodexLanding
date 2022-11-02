@@ -75,6 +75,9 @@ export default {
   padding: 40px;
   border-radius: 8px;
   background: white;
+  @media (max-width:900px) {
+    padding: 20px;
+  }
   &__container {
     max-width: 750px;
     margin: 0 auto;
@@ -93,7 +96,7 @@ export default {
         margin-bottom: 20px;
       }
       &__contain {
-        display: flex;
+        display: grid;
       }
     }
     &__balance {

@@ -48,19 +48,32 @@ export default {
 
 <style lang="scss" scoped>
 .selectCoin{
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  @media (max-width:1060px) {
+    grid-template-columns: repeat(3, 1fr);
+    
+  }
+  @media (max-width:900px) {
+    grid-template-columns: repeat(2, 1fr);
+    
+  }
+  @media (max-width:750px) {
+    grid-template-columns: 1fr;
+    
+  }
 &__coin {
+  text-align: center;
   border-radius: 8px;
   background: #f6f8fa;
-  text-align: center;
   padding: 16px 35px;
-  margin-right: 20px;
   cursor: pointer;
   img {
     margin-bottom: 10px;
   }
   p {
+    text-align: center;
     font-size: 16px;
   }
   &.active {
