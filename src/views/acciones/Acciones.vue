@@ -3,11 +3,113 @@
     <ToggleButton v-model:show="show"></ToggleButton>
     <section class="acciones__card" v-if="show">
       <article class="acciones__card__img">
-        <img src="/assets/images/bg-accion.webp" alt="" />
+        <img src="/src/assets/images/tron.png" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>Kodex</h2>
-        <h3>KXP</h3>
+        <h2>Nodo Tron</h2>
+        <h3>TRX</h3>
+        <div>
+          <p>Inversión miníma</p>
+          <p>1,000.00 KP</p>
+        </div>
+        <div>
+          <p>Porcentaje mensual</p>
+          <p>0,3%</p>
+        </div>
+        <div>
+          <p>Plazo máximo</p>
+          <p>6 Meses</p>
+        </div>
+        <div>
+          <p>Fecha de retiros</p>
+          <p>05 de cada mes</p>
+        </div>
+        <h5>Fondeado</h5>
+        <article class="acciones__card__text__progress">
+          <b-progress
+            :value="valueProgress"
+            :max="100"
+            animated
+            variant="Primary"
+          ></b-progress>
+          <span>{{ valueProgress }}%</span>
+        </article>
+        <div>
+          <p>Recaudo total</p>
+          <p>$0.00</p>
+        </div>
+        <div>
+          <p>Participantes disponibles</p>
+          <p>20/100</p>
+        </div>
+        <div>
+          <p>Mes</p>
+          <p>0/6</p>
+        </div>
+        <BaseButton
+          label="Invertir ahora"
+          @click="$router.push({ path: '/acciones/deposit' })"
+        ></BaseButton>
+      </article>
+    </section>
+    <section class="acciones__card" v-if="show">
+      <article class="acciones__card__img">
+        <img src="/src/assets/images/eth.png" alt="" />
+      </article>
+      <article class="acciones__card__text">
+        <h2>Nodo Etherium</h2>
+        <h3>ETH</h3>
+        <div>
+          <p>Inversión miníma</p>
+          <p>1,000.00 KP</p>
+        </div>
+        <div>
+          <p>Porcentaje mensual</p>
+          <p>0,3%</p>
+        </div>
+        <div>
+          <p>Plazo máximo</p>
+          <p>6 Meses</p>
+        </div>
+        <div>
+          <p>Fecha de retiros</p>
+          <p>05 de cada mes</p>
+        </div>
+        <h5>Fondeado</h5>
+        <article class="acciones__card__text__progress">
+          <b-progress
+            :value="valueProgress"
+            :max="100"
+            animated
+            variant="Primary"
+          ></b-progress>
+          <span>{{ valueProgress }}%</span>
+        </article>
+        <div>
+          <p>Recaudo total</p>
+          <p>$0.00</p>
+        </div>
+        <div>
+          <p>Participantes disponibles</p>
+          <p>20/100</p>
+        </div>
+        <div>
+          <p>Mes</p>
+          <p>0/6</p>
+        </div>
+        <BaseButton
+          label="Invertir ahora"
+          @click="$router.push({ path: '/acciones/deposit' })"
+        ></BaseButton>
+      </article>
+    </section>
+    <section class="acciones__card" v-if="show">
+      <article class="acciones__card__img">
+        <img src="/src/assets/images/binance.png" alt="" />
+      </article>
+      <article class="acciones__card__text">
+        <h2>Nodo Binance</h2>
+        <h3>BNB</h3>
         <div>
           <p>Inversión miníma</p>
           <p>1,000.00 KP</p>
@@ -55,12 +157,84 @@
     <article class="acciones__container">
       <section class="acciones__card acciones__move" v-if="!show">
         <section class="acciones__move__img">
-          <article class="acciones__card__img">
-            <img src="/assets/images/bg-accion.webp" alt="" />
+          <article class="acciones__card__img me-3">
+            <img src="/src/assets/images/tron.png" alt="" />
           </article>
           <article>
-            <h2>Kodex</h2>
-            <h3>KXP</h3>
+            <h2>Nodo Tron</h2>
+            <h3>TRX</h3>
+          </article>
+        </section>
+        <section class="acciones__move__data"> 
+          <h5>Periodo de tiempo</h5>
+          <p>6 Meses</p>
+          <h5>Porcentaje mensual</h5>
+          <p>0,3%</p>
+        </section>
+        <article class="acciones__card__text">
+          <h4>Estado del programa</h4>
+          <div>
+            <p>Total tokens stakes</p>
+            <p>0.00</p>
+          </div>
+          <div>
+            <p>Stake total</p>
+            <p>0.00</p>
+          </div>
+          <div>
+            <p>Minimo stake</p>
+            <p>0.00</p>
+          </div>
+          <BaseButton
+            label="Retirar"
+            @click="$router.push({ path: '/acciones/withdraw' })"
+          ></BaseButton>
+        </article>
+      </section>
+      <section class="acciones__card acciones__move" v-if="!show">
+        <section class="acciones__move__img">
+          <article class="acciones__card__img me-3">
+            <img src="/src/assets/images/eth.png" alt="" />
+          </article>
+          <article>
+            <h2>Nodo Etherium</h2>
+            <h3>ETH</h3>
+          </article>
+        </section>
+        <section class="acciones__move__data"> 
+          <h5>Periodo de tiempo</h5>
+          <p>6 Meses</p>
+          <h5>Porcentaje mensual</h5>
+          <p>0,3%</p>
+        </section>
+        <article class="acciones__card__text">
+          <h4>Estado del programa</h4>
+          <div>
+            <p>Total tokens stakes</p>
+            <p>0.00</p>
+          </div>
+          <div>
+            <p>Stake total</p>
+            <p>0.00</p>
+          </div>
+          <div>
+            <p>Minimo stake</p>
+            <p>0.00</p>
+          </div>
+          <BaseButton
+            label="Retirar"
+            @click="$router.push({ path: '/acciones/withdraw' })"
+          ></BaseButton>
+        </article>
+      </section>
+      <section class="acciones__card acciones__move" v-if="!show">
+        <section class="acciones__move__img">
+          <article class="acciones__card__img me-3">
+            <img src="/src/assets/images/binance.png" alt="" />
+          </article>
+          <article>
+            <h2>Nodo Binance</h2>
+            <h3>BNB</h3>
           </article>
         </section>
         <section class="acciones__move__data"> 
@@ -124,12 +298,17 @@ export default {
   &__card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 30px;
+    background: #F6F8FA;
+    margin-bottom: 20px;
+    padding: 25px;
     @media (max-width: 1000px) {
       grid-template-columns: 1fr;
     }
     &__img {
       max-height: 450px;
+      background: #FFFFFF;
+      border-radius: 8px;
       img {
         width: 100%;
         height: 100%;
@@ -192,10 +371,10 @@ export default {
     }
     &__img {
       display: flex;
+      margin-right: 20px;
       img {
         width: 80px;
         object-fit: cover;
-        margin-right: 20px;
       }
       h2,
       h3 {

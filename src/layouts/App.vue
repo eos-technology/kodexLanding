@@ -69,7 +69,7 @@ export default {
       { name: "Wallet", icon: "wallet", path: "/wallet" },
       { name: "Comissions", icon: "comissions", path: "/commissions" },
       { name: "Team", icon: "red", path: "/team" },
-      { name: "Staking", icon: "actions", path: "/actions" },
+      { name: "Liquidity", icon: "actions", path: "/actions" },
       { name: "Profile", icon: "profile", path: "/profile" },
     ];
     const route = useRoute();

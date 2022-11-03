@@ -77,12 +77,12 @@ const routes = [
       },
       {
         path: '/actions',
-        name:'Actions',
+        name:'Liquidity',
         component: () => import ('@/views/acciones/Index.vue'),
         children: [
           {
             path: '',
-            name:'Actions',
+            name:'Liquidity',
             component: () => import ('@/views/acciones/Acciones.vue')
           },
           {
