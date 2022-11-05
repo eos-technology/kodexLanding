@@ -1,6 +1,6 @@
 <template>
   <section class="newWallet">
-    <BtnBack></BtnBack>
+    <GoBack/>
     <section class="newWallet__container">
       <h3>Make payment</h3>
       <article class="newWallet__container__select" v-if="cart">
@@ -58,7 +58,7 @@
 
 <script>
 import QrcodeVue from "qrcode.vue";
-import BtnBack from "@/components/form/BtnBack.vue";
+import GoBack from "@/components/form/GoBack.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
@@ -69,7 +69,7 @@ export default {
   props: ["id"],
   components: {
     QrcodeVue,
-    BtnBack,
+    GoBack,
     BaseInput,
     BaseButton,
     SelectCoin,
