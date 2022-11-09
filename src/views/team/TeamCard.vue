@@ -21,7 +21,7 @@ export default {
   padding: 40px 20px 20px 20px;
   background-color: white;
   border-radius: 15px;
-  border-top: 5px solid #000;
+  border-top: 5px solid #132D7C;
   text-align: center;
   background: #F6F8FA;
   img {

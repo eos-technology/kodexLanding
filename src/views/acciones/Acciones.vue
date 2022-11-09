@@ -47,7 +47,7 @@
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Invertir ahora"
+          label="Conectar"
           @click="$router.push({ path: '/acciones/deposit' })"
         ></BaseButton>
       </article>
@@ -98,7 +98,7 @@
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Invertir ahora"
+          label="Conectar"
           @click="$router.push({ path: '/acciones/deposit' })"
         ></BaseButton>
       </article>
@@ -149,7 +149,7 @@
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Invertir ahora"
+          label="Conectar"
           @click="$router.push({ path: '/acciones/deposit' })"
         ></BaseButton>
       </article>

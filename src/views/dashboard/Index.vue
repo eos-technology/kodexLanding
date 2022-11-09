@@ -4,17 +4,17 @@
     <section class="dasboard__main">
       <article class="dasboard__main__img">
         <h2>Kodex Pay</h2>
-        <p class="dasboard__main__text">KodexPay was born from the need to allow businesses that only accepted Fiat to enter the new world of cryptocurrencies, we have easy and efficient processes that allow users to convert cryptos into Fiat quickly, we also have high quality standards that allow us to carry out seamless and fast integrations with different programming languages ​​and external platforms</p>
+        <p class="dasboard__main__text">KodexPay was born from the need to allow businesses that only accepted Fiat to
+          enter the new world of cryptocurrencies, we have easy and efficient processes that allow users to convert
+          cryptos into Fiat quickly, we also have high quality standards that allow us to carry out seamless and fast
+          integrations with different programming languages ​​and external platforms</p>
         <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
         <h2>Most used payment methods</h2>
         <article class="dasboard__main__data-chart">
-          <apexchart
-            :options="chartOptions"
-            :series="series"
-            :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"
-          ></apexchart>
+          <apexchart :options="chartOptions" :series="series"
+            :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"></apexchart>
         </article>
       </article>
     </section>
@@ -35,10 +35,7 @@
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
-              <img
-                src="/assets/icons/hand-coins-currency-color.svg"
-                alt=""
-              />
+              <img src="/assets/icons/hand-coins-currency-color.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
               <p>Clients</p>
@@ -56,11 +53,7 @@
           </article>
         </article>
         <article>
-          <apexchart
-            type="line"
-            :options="options"
-            :series="series2"
-          ></apexchart>
+          <apexchart type="line" :options="options" :series="series2"></apexchart>
         </article>
       </article>
       <article class="aside__list">
@@ -98,7 +91,7 @@ export default {
       dataLabels: {
         enabled: false,
       },
-      labels: ["Bitcoin - $2.1M", "USDT (TRC20) - $2M", "USDT (ERC20) - $1M", "Etherium - $800K", "BNB - $240K"],
+      labels: ["Bitcoin", "USDT (TRC20)", "USDT (ERC20)", "Etherium", "BNB"],
       fill: {
         type: "gradient",
       },
@@ -112,20 +105,10 @@ export default {
             labels: {
               show: true,
               name: {
-                show: true,
-                fontFamily: "Roboto",
-                offsetY: 20,
+                show: false,
               },
               value: {
                 show: false,
-                fontSize: "25px",
-                fontFamily: "Roboto",
-                fontWeight: 500,
-                color: "#DEE6EF",
-                offsetY: -15,
-                formatter: function (val) {
-                  return val;
-                },
               },
               total: {
                 show: true,
@@ -142,6 +125,13 @@ export default {
             },
           },
         },
+      },
+      legend: {
+        fontFamily: 'Kanit',
+        fontWeight: 400,
+        formatter: function (seriesName, opts) {
+          return [seriesName, " - ", ` <span class="apex-bold"> ${opts.w.globals.series[opts.seriesIndex]}M </span>`]
+        }
       },
       responsive: [
         {
@@ -207,7 +197,7 @@ export default {
       series2,
     };
   },
-  created () {
+  created() {
     this.getWallets()
   },
   methods: {
@@ -219,102 +209,178 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .dasboard {
   display: grid;
   grid-template-columns: 70% 1fr;
   grid-gap: 25px;
   margin-top: 30px;
+
   @media (max-width: 1200px) {
     grid-template-columns: 50% 1fr;
   }
+
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
+
   &__main {
-    &__text{
+    &__text {
       margin-bottom: 16px;
     }
+
     &__img {
       padding: 16px;
       border-radius: 8px;
       background: white;
+
       h2 {
+        color: #132D7C;
         margin-bottom: 15px;
+        font-size: 26px;
       }
+
       h3 {
         margin-bottom: 15px;
         font-size: 14px;
         font-weight: 300;
       }
+
+      p {
+        font-size: 14px;
+        color: #647188;
+      }
+
       img {
         width: 100%;
       }
     }
+
     &__data {
       margin-top: 25px;
       padding: 16px;
       border-radius: 8px;
       background: white;
+
       h2 {
+        color: #132D7C;
         margin-bottom: 15px;
+        font-size: 26px;
       }
+
       .vue-apexcharts {
         max-height: 500px;
       }
+
       &-chart {
         width: 450px;
-        @media (max-width: 700px){
-        width: 100%;
+
+        @media (max-width: 700px) {
+          width: 100%;
 
         }
       }
     }
   }
-}
-.aside {
-  &__card {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 24px;
-    &__img {
-      img {
-        width: 100%;
-      }
-      width: 100px;
-      margin-right: 20px;
-    }
-    &__text {
-      &__title-card {
-        font-size: 16px;
-      }
-      &__price {
-        font-size: 36px;
-        line-height: 40px;
-        font-weight: 500;
-      }
-    }
-  }
-  &__chart {
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 24px;
-    h3 {
-      font-size: 26px;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-    &__price {
+
+  .aside {
+    &__card {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
+      align-items: center;
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 24px;
+
+      &__img {
+        img {
+          width: 100%;
+        }
+
+        width: 100px;
+        margin-right: 20px;
+      }
+
+      &__text {
+        &__title-card {
+          font-size: 16px;
+          color: #647188;
+        }
+
+        &__price {
+          font-size: 36px;
+          line-height: 40px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    &__chart {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 24px;
+
+      h3 {
+        font-size: 26px;
+        font-weight: 400;
+        margin-bottom: 15px;
+      }
+
+      &__price {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        &__tab {
+          display: flex;
+          align-items: center;
+
+          &__contain {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            padding: 16px;
+            border-radius: 12px;
+            background: #f6f8fa;
+          }
+
+          &__name {
+            p {
+              color: #647188;
+              font-size: 12px;
+              font-weight: 300;
+            }
+
+            h5 {
+              font-size: 14px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    &__list {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 24px;
+
+      h3 {
+        font-size: 26px;
+        font-weight: 400;
+        margin-bottom: 15px;
+      }
+
       &__tab {
         display: flex;
         align-items: center;
+        margin-bottom: 15px;
+
         &__contain {
           display: flex;
           justify-content: center;
@@ -326,12 +392,14 @@ export default {
           border-radius: 12px;
           background: #f6f8fa;
         }
+
         &__name {
           p {
             color: #647188;
             font-size: 12px;
             font-weight: 300;
           }
+
           h5 {
             font-size: 14px;
             font-weight: 500;
@@ -340,42 +408,13 @@ export default {
       }
     }
   }
-  &__list {
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 24px;
-    h3 {
-      font-size: 26px;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-    &__tab {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      &__contain {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        margin-right: 15px;
-        padding: 16px;
-        border-radius: 12px;
-        background: #f6f8fa;
-      }
-      &__name {
-        p {
-          color: #647188;
-          font-size: 12px;
-          font-weight: 300;
-        }
-        h5 {
-          font-size: 14px;
-          font-weight: 500;
-        }
-      }
+  .apexcharts-legend-series{
+    display: flex;
+    align-items: center;
+  }
+  .apexcharts-legend-text {
+    .apex-bold {
+      font-weight: 500;
     }
   }
 }

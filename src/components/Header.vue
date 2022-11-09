@@ -178,7 +178,7 @@ export default {
       justify-content: center;
       height: 100%;
       margin-right: 15px;
-      padding: 16px;
+      padding: 5px 16px;
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;

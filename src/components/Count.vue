@@ -31,7 +31,7 @@ export default {
   }
   .flip-card {
     font-size: 26px;
-    font-weight: 400;
+    font-weight: 300;
   }
   .flip-clock__piece {
     display: flex;

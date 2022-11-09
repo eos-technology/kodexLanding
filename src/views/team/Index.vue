@@ -2,7 +2,7 @@
   <Header></Header>
   <section class="team">
     <section class="team__title">
-      <BtnBack></BtnBack>
+      <BtnBack back="/team"></BtnBack>
       <InputSearch
         v-model="search"
         v-on:keyup.enter="searchUser(search)"

@@ -3,7 +3,7 @@
   <section class="commissions">
     <section class="commissions__aside">
       <article class="commissions__aside__total">
-        <p>Total balance</p>
+        <p class="text-center">Total balance</p>
         <h2>$ {{ comissions.data.reduce((a, b) => a + b, 0) }}</h2>
         <BaseButton
           label="Withdraw"
@@ -30,7 +30,7 @@
     <section class="commissions__table">
       <article class="commissions__table__actions">
         <InputSearch></InputSearch>
-        <BaseInput type="date" v-model="payload.date"></BaseInput>
+        <BaseInput type="date" v-model="payload.date" class="date"></BaseInput>
       </article>
       <article class="commissions__table__container">
         <article class="commissions__table__table">
@@ -42,11 +42,10 @@
             <p>Status</p>
             <p>Quantity</p>
           </article>
-          <section v-if="!transactions.data" class="vacio">
+          <section v-if="transactions.data.length == 0" class="vacio">
             <img
               src="@/assets/images/vacio/vacioWallet.png"
               alt=""
-              v-if="!transactions"
             />
             <h5>You still have no transactions</h5>
           </section>
@@ -196,6 +195,9 @@ export default {
   @media (max-width: 700px) {
     grid-template-columns: 1fr;
     padding: 0;
+  }
+  .date{
+    color: #7F8894;
   }
   &__aside {
     padding: 16px;
