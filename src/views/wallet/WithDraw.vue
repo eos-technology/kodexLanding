@@ -1,6 +1,6 @@
 <template>
   <section class="withdraw">
-    <BtnBack></BtnBack>
+    <go-back/>
     <section class="withdraw__container">
       <h3>Withdraw money</h3>
       <article class="withdraw__container__select">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import BtnBack from "@/components/form/BtnBack.vue";
+import GoBack from "@/components/form/GoBack.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
@@ -39,7 +39,7 @@ import { ref } from '@vue/reactivity';
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
 import { mapActions, mapGetters } from 'vuex';
 export default {
-  components: { BtnBack, BaseInput, BaseButton, SelectCoin, PopUpSuccess },
+  components: {  BaseInput, BaseButton, SelectCoin, PopUpSuccess, GoBack },
   setup() {
     const coins = [
       { name: "btc" },

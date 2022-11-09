@@ -1,41 +1,61 @@
 <template>
   <section class="header">
-    <h2 style="color:#132D7C; text-transform: capitalize">{{ $route.name }}</h2>
+    <h2 style="color: #132d7c; text-transform: capitalize" class="title">
+      {{ $route.name }}
+    </h2>
     <article class="header__container" v-if="user && user.username">
-      <article class="header__container-tab active" @click="$router.push({ name: 'Purchase-Token' })">
+      <article
+        class="header__container-tab active"
+        @click="$router.push({ name: 'Purchase-Token' })"
+      >
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
           <h5>BUY KXP</h5>
-          <p>$0.5 USD</p>
+          <p class="header__container-tab-p">$0.05</p>
         </div>
       </article>
-      <article class="header__container-tab copy" @click="copyURL(`https://my.kodexpay.com/#/auth/login/register/${user.username}`)">
+      <article
+        class="header__container-tab copy"
+        @click="
+          copyURL(
+            `https://my.kodexpay.com/#/auth/login/register/${user.username}`
+          )
+        "
+      >
         <img src="/assets/icons/copy.svg" alt="" />
         <h5>COPY LINK</h5>
       </article>
-        <a href="https://support.kodexpay.com" target="_blank" style="text-decoration:none; color:black">
-      <article
-        class="header__container-tab"
+      <a
+        href="https://support.kodexpay.com"
+        target="_blank"
+        style="text-decoration: none; color: black"
       >
+        <article class="header__container-tab">
           <img src="/src/assets/icons/support.svg" alt="" />
           <h5>SUPPORT</h5>
-      </article>
-        </a>
+        </article>
+      </a>
       <!-- <article class="header__container-tab">
         <img src="/assets/icons/bell-not.svg" alt="" />
       </article> -->
-      <article class="header__container-tab avatar" @click="show = !show" v-if="user">
-        <img src="/assets/icons/avatar.png"  alt="" />
+      <article
+        class="header__container-tab avatar"
+        @click="show = !show"
+        v-if="user"
+      >
+        <img src="/assets/icons/avatar.png" alt="" />
         <div>
           <p>{{ user.username }}</p>
           <h5>VERIFIED</h5>
-        </div>        
+        </div>
         <div class="dropdown">
-          <div id="myDropdown" class="dropdown-content" :class="show ? 'show' : ''">
-            <a @click="$router.push({ path: `/profile` })" href="#"
-              >Profile</a
-            >
-            <hr>
+          <div
+            id="myDropdown"
+            class="dropdown-content"
+            :class="show ? 'show' : ''"
+          >
+            <a @click="$router.push({ path: `/profile` })" href="#">Profile</a>
+            <hr />
             <a href="#" @click="close()"
               ><img
                 class="dropdown__imgMenu"
@@ -50,46 +70,46 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
 import { ref } from "vue";
 export default {
   setup() {
-  const show = ref(false);
+    const show = ref(false);
 
     const copyURL = async (mytext) => {
       try {
         await navigator.clipboard.writeText(mytext);
-        openNotification('Copiado exitosamente')
+        openNotification("Copiado exitosamente");
       } catch ($e) {
-        openNotification('En estos momentos no es posible copiar')
+        openNotification("En estos momentos no es posible copiar");
       }
     };
     return {
       copyURL,
-      show
+      show,
     };
   },
-  data () {
+  data() {
     return {
-      showClose: false
-    }
+      showClose: false,
+    };
   },
   methods: {
-    ...mapActions('auth', ['logout']),
-    close () {
-      this.logout().then(() =>{
-        this.$router.push({ name: 'Login' })
-      })
+    ...mapActions("auth", ["logout"]),
+    close() {
+      this.logout().then(() => {
+        this.$router.push({ name: "Login" });
+      });
     },
   },
   computed: {
-    ...mapState('auth', ['user'])
-  }
+    ...mapState("auth", ["user"]),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-  .dropbtn {
+.dropbtn {
   position: relative;
   cursor: pointer;
 }
@@ -97,8 +117,6 @@ export default {
 .dropbtn:hover,
 .dropbtn:focus {
 }
-
-
 
 .dropdown-content {
   position: absolute;
@@ -128,7 +146,7 @@ export default {
 }
 
 .dropdown a:hover {
-  color:#0F215C;
+  color: #0f215c;
 }
 
 .show {
@@ -137,12 +155,11 @@ export default {
 .header {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   margin-top: 20px;
   padding: 16px;
   border-radius: 16px;
   background: white;
-  @media (max-width:700px) {
+  @media (max-width: 700px) {
     display: none !important;
   }
   @media (max-width: 900px) {
@@ -159,30 +176,33 @@ export default {
     }
   }
   &__container {
-    display: flex;
-    @media (max-width: 800px) {
-      align-items: center;
-      width: 100%;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    @media (max-width: 950px) {
+      grid-template-columns: repeat(2, 1fr);
     }
-    a{
-      @media (max-width: 700px){
+    a {
+      @media (max-width: 700px) {
         width: 100%;
       }
     }
     &-tab {
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      margin-right: 15px;
-      padding: 5px 16px;
+      padding: 8px 16px;
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;
-      @media (max-width:700px) {
+      &-p {
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 14px;
+        text-align: left;
+      }
+      @media (max-width: 700px) {
         margin-right: 0px;
       }
       &.copy {
@@ -198,7 +218,6 @@ export default {
         margin-bottom: 12px;
       }
       &.avatar {
-
         height: auto;
         > img {
           width: 40px;
@@ -227,15 +246,22 @@ export default {
   display: inline-block;
   &__imgMenu {
     margin-right: 10px;
-    &.avatar{
+    &.avatar {
     }
   }
-}.active {
+}
+.active {
   background: linear-gradient(180deg, #0d1c4e 0%, #000406 100%);
-  &__text > h5, p{
+  &__text > h5,
+  p {
     color: $white;
     margin-left: 12px;
     line-height: 14px;
   }
+}
+
+.title {
+  display: grid;
+  margin-right: 16px;
 }
 </style>

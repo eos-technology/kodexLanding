@@ -58,6 +58,7 @@ export default {
   }
   input{
     margin-bottom: 25px;
+    
   }
   a{
     color: #0F2460;

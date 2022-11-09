@@ -23,7 +23,13 @@ export default {
     height: 100%;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 70% 30%;
+    @media (max-width: 1360px){
+      grid-template-columns: 60% 40%;
+    }
+    @media (max-width: 1000px){
+      grid-template-columns: 55% 45%;
+    }
     @media (max-width: 700px){
       grid-template-columns: 1fr;
     }

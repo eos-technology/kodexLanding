@@ -10,7 +10,7 @@
           :isActive="walletActive.id"
           @click="walletActive = wallet"
           :wallet="wallet"
-          v-for="wallet in wallets"
+          v-for="(wallet) in wallets"
           :key="wallet.id"
         />
       </article>
@@ -45,7 +45,6 @@
                   address: walletActive.address ? walletActive.address : '',
                 },
               })
-              
             "
           >
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
@@ -69,9 +68,12 @@
       <section class="wallet__table">
         <article class="wallet__table__title">
           <h2>Transactions</h2>
-          <InputSearch class="wallet__table__search" placeholder="Buscar" />
+          <InputSearch class="wallet__table__search" placeholder="Search" />
         </article>
-        <article class="wallet__table__container" v-if="transactions.length > 0">
+        <article
+          class="wallet__table__container"
+          v-if="transactions.length > 0"
+        >
           <article class="wallet__table__table">
             <article class="wallet__table__table-header noId">
               <p>Hash</p>
@@ -94,7 +96,11 @@
           </article>
         </article>
         <section v-else class="vacio">
-          <img src="@/assets/images/vacio/vacioWallet.png" alt="" v-if="!transactions">
+          <img
+            src="@/assets/images/vacio/vacioWallet.png"
+            alt=""
+            v-if="!transactions"
+          />
           <h5>You still have no transactions</h5>
         </section>
         <CardTableWallet class="wallet__table__card" />
@@ -165,6 +171,7 @@ export default {
   },
   created() {
     this.getData();
+    this.walletActive = this.wallets[0]
   },
   methods: {
     ...mapActions("wallet", ["getWallets", "getTransactions"]),
@@ -347,10 +354,11 @@ export default {
         width: 100%;
       }
       input {
-        min-width: 300px;
-        @media (max-width: 700px) {
+        width: 40%;
+        min-width: 200px;
+        @media (max-width: 900px) {
           margin-top: 15px;
-          max-width: 100%;
+          width: 100%;
         }
       }
     }

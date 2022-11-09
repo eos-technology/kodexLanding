@@ -48,14 +48,14 @@ padding-top: 10px;
     width: 50%;
     padding: 20px;
     color: #647188;
-    border-bottom: 1px solid #647188;
+    border-bottom: 1px solid #EBEBEB;
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
     &.active{
       font-weight: 400;
       color: #000;
-      border-bottom: 3px solid #000;
+      border-bottom: 2px solid #222222;
     }
   }
 }
