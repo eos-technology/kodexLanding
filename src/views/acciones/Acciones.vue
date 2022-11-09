@@ -48,7 +48,7 @@
         </div>
         <BaseButton
           label="Conectar"
-          @click="$router.push({ path: '/acciones/deposit' })"
+          @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
     </section>
@@ -99,7 +99,7 @@
         </div>
         <BaseButton
           label="Conectar"
-          @click="$router.push({ path: '/acciones/deposit' })"
+          @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
     </section>
@@ -150,7 +150,7 @@
         </div>
         <BaseButton
           label="Conectar"
-          @click="$router.push({ path: '/acciones/deposit' })"
+          @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
     </section>
@@ -187,7 +187,7 @@
           </div>
           <BaseButton
             label="Retirar"
-            @click="$router.push({ path: '/acciones/withdraw' })"
+            @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>
       </section>
@@ -223,7 +223,7 @@
           </div>
           <BaseButton
             label="Retirar"
-            @click="$router.push({ path: '/acciones/withdraw' })"
+            @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>
       </section>
@@ -259,7 +259,7 @@
           </div>
           <BaseButton
             label="Retirar"
-            @click="$router.push({ path: '/acciones/withdraw' })"
+            @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>
       </section>
