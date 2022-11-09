@@ -227,6 +227,22 @@ a{
     @media (max-width:500px) {
       width: 100%;
     }
+    &.sBtn{
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 !important;
+    }
+    &.oBtn {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 !important;
+      border: 1px solid #132D7C;
+      color: #132D7C;
+    }
   }
   &__kodex {
     display: block;
@@ -267,13 +283,14 @@ a{
           font-weight: 300;
           line-height: 24px;
           text-align: center;
-          color: $secondary-color;
+          color: #647188;
         }
         h2 {
           font-size: 26px;
           font-weight: 500;
           line-height: 32px;
           text-align: center;
+          color: #132D7C;
         }
       }
       &__l {
@@ -335,6 +352,7 @@ a{
         background: #f6f8fa;
         @media (max-width:500px) {
         width: 100%;
+        margin-bottom: 20px;
       }
         div {
           display: flex;
@@ -351,16 +369,18 @@ a{
         }
         h3 {
           font-family: Kanit;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 400;
           line-height: 24px;
           text-align: left;
+          color: black;
         }
         p {
           font-size: 14px;
           font-weight: 300;
           line-height: 24px;
           letter-spacing: 0px;
+          color: #647188;
           text-align: left;
         }
       }
@@ -386,6 +406,7 @@ a{
       font-weight: 300;
       line-height: 24px;
       text-align: left;
+      color: #647188;
     }
   }
   &__right {
@@ -405,6 +426,7 @@ a{
       font-weight: 400;
       line-height: 24px;
       text-align: end;
+      color: #000;
     }
   }
 }

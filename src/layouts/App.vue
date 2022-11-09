@@ -27,23 +27,21 @@
 
         <h3 style="color: #647188">overview</h3>
         <article class="appLayout__sideBar__container">
-
           <div
             class="tabsContainer"
-
-            :class="$route.path === '/' ? 'active' : $route.path.includes(element.path) ? 'active' : ''"
             v-for="element in tabs"
+            :class="getActiveTab(element)"
             :key="element.name"
             @click="
               () => {
-                $router.push({ path: `/${element?.path ? element.path : ''}` });
+                $router.push({ path: `${element.path}` });
                 activeBar = false;
               }
             "
           >
             <img
               :src="`/assets/icons/${
-                $route.path.includes(element.path) ? 'white' : 'black'
+                getUrlColor(element)
               }/${element.icon}.svg`"
               alt=""
             />
@@ -61,26 +59,36 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { useRoute } from "vue-router";
+import { computed } from 'vue'
 import { mapActions } from "vuex";
 import HeaderPhone from "../components/HeaderPhone.vue";
 export default {
   setup() {
     const activeBar = ref(false);
     const tabs = [
-      { name: "Dashboard", icon: "dash"  },
-      { name: "Token", icon: "token", path: "token" },
-      { name: "Wallet", icon: "wallet", path: "wallet" },
-      { name: "Comissions", icon: "comissions", path: "commissions" },
-      { name: "Team", icon: "red", path: "team" },
-      { name: "Liquidity", icon: "actions", path: "actions" },
-      { name: "Profile", icon: "profile", path: "profile" },
+      { name: "Dashboard", icon: "dash", path: "/"  },
+      { name: "Token", icon: "token", path: "/token" },
+      { name: "Wallet", icon: "wallet", path: "/wallet" },
+      { name: "Comissions", icon: "comissions", path: "/comissions" },
+      { name: "Team", icon: "red", path: "/team" },
+      { name: "Liquidity", icon: "actions", path: "/liquidity" },
+      { name: "Profile", icon: "profile", path: "/profile" },
     ];
     const route = useRoute();
+    console.log(`output->`,route)
     const activeTab = ref(false);
+    const getActiveTab = (element) => {
+      return route.name.toLocaleLowerCase().includes(element.name.toLocaleLowerCase()) ? 'active' : ''
+    }
+    const getUrlColor = (element) => {
+      return route.name.toLocaleLowerCase().includes(element.name.toLocaleLowerCase()) ? 'white' : 'black'
+    }
     return {
       tabs,
       activeTab,
       activeBar,
+      getActiveTab,
+      getUrlColor
     };
   },
   created() {

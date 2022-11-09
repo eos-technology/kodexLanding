@@ -38,8 +38,8 @@ const routes = [
         component: () => import ('@/views/tokens/Purchase.vue')
       },
       {
-        path: 'commissions',
-        name:'comission',
+        path: 'comissions',
+        name:'comissions',
         component: () => import ('@/views/comission/Index.vue')
       },
       {
@@ -76,7 +76,7 @@ const routes = [
         ]
       },
       {
-        path: '/actions',
+        path: '/liquidity',
         name:'Liquidity',
         component: () => import ('@/views/acciones/Index.vue'),
         children: [
@@ -86,12 +86,12 @@ const routes = [
             component: () => import ('@/views/acciones/Acciones.vue')
           },
           {
-            path: '/acciones/withdraw',
+            path: '/liquidity/withdraw',
             name:'Withdraw Actions',
             component: () => import ('@/views/acciones/WithDraw.vue')
           },
           {
-            path: '/acciones/deposit',
+            path: '/liquidity/deposit',
             name:'Deposit Actions',
             component: () => import ('@/views/acciones/Deposit.vue')
           },
