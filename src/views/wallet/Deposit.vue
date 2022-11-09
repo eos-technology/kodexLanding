@@ -10,10 +10,15 @@
             <qrcode-vue :value="address" size="180" level="M" />
           </div>
           <div class="newWallet__container__select__contain-copy">
+            <div class="coin">
+              <img class="coin__img" src="@/assets/icons/tether.svg" alt="" />
+              <p class="coin__text">Tether USDT</p>
+            </div>
             <h4>Wallet address</h4>
             <Copy :text="address" class="w-100"></Copy>
             <p>
-              Take into account when making shipments the network rate please.
+              La transacción se ha creado con éxito, complete el pago para
+              enviar los tokens entre 1 a 24 horas
             </p>
           </div>
         </article>
@@ -56,8 +61,8 @@ export default {
 <style lang="scss" scoped>
 .newWallet {
   margin-top: 30px;
+  padding: 40px;
 
-  
   border-radius: 8px;
   background: white;
   &__container {
@@ -71,8 +76,8 @@ export default {
       font-weight: 500;
       line-height: 32px;
       text-align: left;
-      color: #132D7C;
-      margin:24px 0px;
+      color: #132d7c;
+      margin: 24px 0px;
     }
     &__select {
       margin-bottom: 20px;
@@ -89,8 +94,10 @@ export default {
         display: flex;
         align-items: center;
         width: 100%;
+        gap: 24px;
         @media (max-width: 1200px) {
           display: grid;
+          grid-template-columns: 1fr;
           justify-items: center;
           overflow: hidden;
         }
@@ -133,6 +140,25 @@ export default {
         }
       }
     }
+  }
+}
+
+.coin {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  &__img {
+    padding: 8px;
+    background: #f6f8fa;
+    border-radius: 8px;
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+    margin: 0 !important;
   }
 }
 </style>
