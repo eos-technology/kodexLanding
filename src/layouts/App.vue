@@ -27,7 +27,7 @@
 
         <h3 style="color: #647188">overview</h3>
         <article class="appLayout__sideBar__container">
-          {{$route.path}}
+
           <div
             class="tabsContainer"
 
