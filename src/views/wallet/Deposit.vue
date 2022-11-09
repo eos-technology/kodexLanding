@@ -62,9 +62,11 @@ export default {
 .newWallet {
   margin-top: 30px;
   padding: 40px;
-
   border-radius: 8px;
   background: white;
+  @media (max-width: 500px) {
+          padding: 20px;
+        }
   &__container {
     max-width: 750px;
     margin: 0 auto;
@@ -84,6 +86,9 @@ export default {
       padding: 25px;
       border-radius: 8px;
       border: 1px solid #ececee;
+      @media (max-width: 500px) {
+        padding: 12px;
+      }
       h4 {
         color: #647188;
         font-size: 16px;
@@ -93,16 +98,13 @@ export default {
       &__contain {
         display: flex;
         align-items: center;
-        width: 100%;
         gap: 24px;
         @media (max-width: 1200px) {
           display: grid;
           grid-template-columns: 1fr;
           justify-items: center;
-          overflow: hidden;
         }
         &-qr {
-          margin-right: 20px;
           padding: 15px;
           border-radius: 8px;
           background: #f6f8fa;
@@ -123,7 +125,8 @@ export default {
           }
           .copy {
             @media (max-width: 700px) {
-              width: 200px;
+              max-width: 230px;
+              width: 100%;
             }
           }
         }
