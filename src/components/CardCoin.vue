@@ -1,62 +1,69 @@
 <template>
-  <article class="walletCard" :id="wallet.currency" :class="isActive == wallet.id ? '' : 'inactive' ">
+  <article
+    class="walletCard"
+    :id="wallet.currency"
+    :class="isActive == wallet.id ? '' : 'inactive'"
+  >
     <h2>{{ wallet.name }}</h2>
-    <p> {{ wallet.asset.name }} ({{ wallet.asset.currency }})</p>
-    <h3 class="address"> {{ wallet.address }}</h3>
+    <p>{{ wallet.asset.name }} ({{ wallet.asset.currency }})</p>
+    <h3 class="address">{{ wallet.address }}</h3>
     <div class="row">
       <div class="col-6 walletCard-balance">
         <p>USDT: ${{ coinFormat(wallet.balance_usd) }}</p>
         <p>{{ wallet.asset.currency }}: ${{ coinFormat(wallet.balance) }}</p>
       </div>
       <div class="col-6 text-right">
-        <img style="max-width:50px" :src="wallet.asset.icon" alt="">
+        <img style="max-width: 50px" :src="wallet.asset.icon" alt="" />
       </div>
     </div>
   </article>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   props: {
     wallet: Object,
     isActive: {
-      default: null
-    }
+      default: null,
+    },
   },
   setup() {
     return {};
   },
   methods: {
-    ...mapActions('wallet', ['getBalance'])
+    ...mapActions("wallet", ["getBalance"]),
   },
   watch: {
     isActive: function (val) {
-      if(val == this.wallet.id) {
-        this.getBalance({address: this.wallet.address, currency: this.wallet.currency}).then(response => {
-          this.wallet.balance = response[0]
-          this.wallet.balance_usd = response[1]
-          this.bsc = response[2]
-        })
+      if (val == this.wallet.id) {
+        this.getBalance({
+          address: this.wallet.address,
+          currency: this.wallet.currency,
+        }).then((response) => {
+          this.wallet.balance = response[0];
+          this.wallet.balance_usd = response[1];
+          this.bsc = response[2];
+        });
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
-.inactive{
-  opacity: .5;
+.inactive {
+  opacity: 0.5;
 }
-.text-right{
+.text-right {
   text-align: right;
 }
-.address{
+.address {
   width: 230px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.walletCard:hover{
+.walletCard:hover {
   cursor: pointer;
 }
 .walletCard {
@@ -84,24 +91,25 @@ export default {
     }
   }
 }
-#usdt{
-  background: url('/images/wallets/usdt.png') !important;
+#usdt {
+  background: url("/images/wallets/usdt.png") !important;
   background-size: cover !important;
   background-repeat: no-repeat;
 }
 
-#bsc, #bnb{
-  background: url('/images/wallets/bsc.png') !important;
+#bsc,
+#bnb {
+  background: url("/images/wallets/bsc.png") !important;
   background-size: cover !important;
   background-repeat: no-repeat;
 }
-#btc{
-  background: url('/images/wallets/bitcoin.png') !important;
+#btc {
+  background: url("/images/wallets/bitcoin.png") !important;
   background-size: cover !important;
   background-repeat: no-repeat;
 }
-#kxp{
-  background: url('/images/wallets/kxp.png') !important;
+#kxp {
+  background: url("/images/wallets/kxp.png") !important;
   background-size: cover !important;
   background-repeat: no-repeat;
 }

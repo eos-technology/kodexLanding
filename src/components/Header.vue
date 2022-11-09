@@ -188,15 +188,14 @@ export default {
       }
     }
     &-tab {
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
       padding: 8px 16px;
       border-radius: 12px;
       background: #f6f8fa;
       cursor: pointer;
-      height: 56px;
       &-p {
         font-size: 10px;
         font-weight: 300;

@@ -24,23 +24,26 @@
             @click="activeBar = false"
           />
         </div>
+
         <h3 style="color: #647188">overview</h3>
         <article class="appLayout__sideBar__container">
+          {{$route.path}}
           <div
             class="tabsContainer"
-            :class="$route.path == element.path ? 'active' : ''"
+
+            :class="$route.path === '/' ? 'active' : $route.path.includes(element.path) ? 'active' : ''"
             v-for="element in tabs"
             :key="element.name"
             @click="
               () => {
-                $router.push({ path: element.path });
+                $router.push({ path: `/${element?.path ? element.path : ''}` });
                 activeBar = false;
               }
             "
           >
             <img
               :src="`/assets/icons/${
-                $route.path == element.path ? 'white' : 'black'
+                $route.path.includes(element.path) ? 'white' : 'black'
               }/${element.icon}.svg`"
               alt=""
             />
@@ -64,13 +67,13 @@ export default {
   setup() {
     const activeBar = ref(false);
     const tabs = [
-      { name: "Dashboard", icon: "dash", path: "/" },
-      { name: "Token", icon: "token", path: "/token" },
-      { name: "Wallet", icon: "wallet", path: "/wallet" },
-      { name: "Comissions", icon: "comissions", path: "/commissions" },
-      { name: "Team", icon: "red", path: "/team" },
-      { name: "Liquidity", icon: "actions", path: "/actions" },
-      { name: "Profile", icon: "profile", path: "/profile" },
+      { name: "Dashboard", icon: "dash"  },
+      { name: "Token", icon: "token", path: "token" },
+      { name: "Wallet", icon: "wallet", path: "wallet" },
+      { name: "Comissions", icon: "comissions", path: "commissions" },
+      { name: "Team", icon: "red", path: "team" },
+      { name: "Liquidity", icon: "actions", path: "actions" },
+      { name: "Profile", icon: "profile", path: "profile" },
     ];
     const route = useRoute();
     const activeTab = ref(false);
@@ -106,7 +109,7 @@ export default {
   height: 100%;
   padding-right: 30px;
   background: #f7f8fa;
-  &__close{
+  &__close {
     cursor: pointer;
   }
   @media (max-width: 700px) {
