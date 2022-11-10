@@ -2,6 +2,33 @@ $white: #ffffff;
 $main-font: 'Jost';
 $primary-color: #0f215c;
 $secondary-color: #647188;
+$black:#000;
+
+/* ------------------Fonts------------------ */
+
+.sp {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+  color: $secondary-color;
+}
+
+.pp {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+  color: $primary-color;
+}
+
+.titleh2{
+font-size: 36px;
+font-weight: 500;
+line-height: 40px;
+text-align: center;
+color: $black;
+}
 
 /* --------------Mixin------------------------*/
 

@@ -14,6 +14,10 @@ const messages = {
       cellphone:'Celular',
       terms:'Registrandome acepto',
       conditions:'términos y condiciones y políticas de privacidad',
+      back:'Regresar',
+      recover:'Recuperar contraseña',
+      recoverText:'Ingrese su dirección de correo electrónico a continuación y le enviaremos instrucciones para configurar una nueva',
+      send:'Enviar',
     },
   },
   en: {
@@ -31,6 +35,10 @@ const messages = {
       cellphone:'Cell phone',
       terms:'By registering I accept',
       conditions:'terms and conditions and privacy policies',
+      back:'Go back',
+      recover:'Recover password',
+      recoverText:"Enter your email address below and we'll send you instructions to set up a new one",
+      send:'Send',
     },
   },
 };

@@ -1,9 +1,9 @@
 <template>
   <article class="btnBack" @click="$router.back()">
     <div>
-      <img src="/assets/iconBase/arrow.svg" alt="" />
+      <img src="@/assets/icons/back.svg" alt="" />
     </div>
-    <p>Go Back</p>
+    <p>{{ $t("app.back") }}</p>
   </article>
 </template>
 
@@ -23,6 +23,7 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 48px;
   div {
     display: flex;
     align-items: center;
@@ -31,12 +32,13 @@ export default {
     height: 32px;
     padding: 10px;
     border-radius: 100%;
-    background: #f6f8fa;
-    margin-right: 10px;
   }
   p {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
   }
 }
 </style>

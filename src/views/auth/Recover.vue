@@ -1,13 +1,13 @@
 <template>
   <section class="recover">
-    <GoBack/>
-    <h2>Recover password</h2>
-    <p>
-      Enter your email address below and we'll <br> send you instructions to set up a new one
+    <GoBack />
+    <h2 class="titleh2">{{ $t("app.recover") }}</h2>
+    <p class="sp mb-4">
+      {{ $t("app.recoverText") }}
     </p>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <BaseButton @click="onSubmit" label="Send Email"></BaseButton>
+    <BaseButton @click="onSubmit" :label="$t('app.send')"></BaseButton>
   </section>
 </template>
 <script>
@@ -17,30 +17,33 @@ import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 import GoBack from "@/components/form/GoBack.vue";
 export default {
   components: { BaseInput, InputPass, BaseButton, Login, Register, GoBack },
-  data () {
-      return {
-          form: {
-            email: null
-          },
-          loading: false
-      }
+  data() {
+    return {
+      form: {
+        email: null,
+      },
+      loading: false,
+    };
   },
   methods: {
-      ...mapActions('auth', ['resetPassword']),
-      onSubmit () {
-        this.resetPassword(this.form).then(response => {
-            openNotification('Verifica tu correo para recuperar la contraseña', null)
-            this.$router.push({
-                name: 'Login'
-            })
-        })
-        this.loading = false
-      }
-  }
+    ...mapActions("auth", ["resetPassword"]),
+    onSubmit() {
+      this.resetPassword(this.form).then((response) => {
+        openNotification(
+          "Verifica tu correo para recuperar la contraseña",
+          null
+        );
+        this.$router.push({
+          name: "Login",
+        });
+      });
+      this.loading = false;
+    },
+  },
 };
 </script>
 
@@ -51,13 +54,8 @@ h2 {
   color: #000;
   margin-bottom: 15px;
 }
-p {
-  font-size: 14px;
-  color: #647188;
-}
 .recover {
   padding: 32px;
-
   label {
     display: block;
     font-size: 16px;
