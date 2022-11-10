@@ -1,5 +1,6 @@
 <template>
   <section class="recover">
+    <GoBack/>
     <h2>Recover password</h2>
     <p>
       Enter your email address below and we'll <br> send you instructions to set up a new one
@@ -17,8 +18,9 @@ import BaseButton from "../../components/form/BaseButton.vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
 import { mapActions } from 'vuex';
+import GoBack from "@/components/form/GoBack.vue";
 export default {
-  components: { BaseInput, InputPass, BaseButton, Login, Register },
+  components: { BaseInput, InputPass, BaseButton, Login, Register, GoBack },
   data () {
       return {
           form: {

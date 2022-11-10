@@ -11,6 +11,9 @@ const messages = {
       referral:'Refererido por',
       fullname:'Nombre completo',
       username:'Nombre de usuario',
+      cellphone:'Celular',
+      terms:'Registrandome acepto',
+      conditions:'términos y condiciones y políticas de privacidad',
     },
   },
   en: {
@@ -25,6 +28,9 @@ const messages = {
       referral:'Referral by',
       fullname:'Full names',
       username:'Username',
+      cellphone:'Cell phone',
+      terms:'By registering I accept',
+      conditions:'terms and conditions and privacy policies',
     },
   },
 };

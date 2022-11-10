@@ -4,13 +4,29 @@
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <label for=""><span>*</span> Celular</label>
+    <label for=""><span>*</span> {{$t('app.cellphone')}}</label>
     <FlagInput v-model="form.phone"></FlagInput>
     <label for=""><span>*</span> {{ $t("app.pass") }}</label>
     <InputPass
       v-model="form.password"
       :placeholder="$t('app.pass')"
     ></InputPass>
+    <div class="form-check mt-4 check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="flexCheckDefault"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        <p class="check__text">
+          {{$t('app.terms')}}
+          <a href="#" class="check__link"
+            >{{$t('app.conditions')}}</a
+          >
+        </p>
+      </label>
+    </div>
     <BaseButton :label="$t('app.signin')" @click="onSubmit()"></BaseButton>
     <div>
       <router-link to="/recover">{{ $t("app.forPass") }}</router-link>
@@ -87,4 +103,24 @@ export default {
     text-align: center;
   }
 }
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .check__text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+  }
+  .check__link {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #007bd1;
+  }
+}
+
 </style>
