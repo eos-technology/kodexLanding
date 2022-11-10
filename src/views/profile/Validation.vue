@@ -32,15 +32,16 @@
         </div>
         <div class="grid--item">
           <label for="country" class="grid--title"
-            ><span class="grid--span">*</span>Country</label
+            ><span class="grid--span"></span>Country</label
           >
-          <BaseInput
+          <!-- <BaseInput
             class="grid--btn"
             type="text"
             placeholder="Colombia"
             id="country"
             v-model="form.country"
-          />
+          /> -->
+          <SimpleSelectVue :options="['Colombia', 'Mexico']" v-model="form.country"></SimpleSelectVue>
         </div>
         <div class="grid--item">
           <label for="city" class="grid--title"
@@ -53,6 +54,7 @@
             id="city"
             v-model="form.city"
           />
+          
         </div>
       </div>
       <div class="grid--item">
@@ -67,15 +69,15 @@
           v-model="form.address"
         />
       </div>
-      <div class="grid--item">
+      <!-- <div class="grid--item">
         <div class="grid--btnDash">
           <p>
             <b>Drag</b> your image here, or <b>find it on your computer</b>
           </p>
           <p>Upload files up to 2mb</p>
         </div>
-      </div>
-
+      </div> -->
+      <DropZone></DropZone>
       <section class="data__actions">
         <BaseButton label="Cancel" class="transparent"></BaseButton>
         <BaseButton label="Enviar verificación"></BaseButton>
@@ -87,11 +89,15 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
+import SimpleSelectVue from "@/components/form/SimpleSelect.vue";
+import DropZone from '@/components/form/DropZone.vue'
 import { mapActions, mapState } from "vuex";
 export default {
   components: {
     BaseInput,
     BaseButton,
+    SimpleSelectVue,
+    DropZone
   },
   data() {
     return {
