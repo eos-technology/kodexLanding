@@ -21,9 +21,12 @@ import './assets/main.scss'
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 
+import { createI18n } from 'vue-i18n'
+import messages from '@/locales/index.js'
+
 loadFonts();
 
-const app = createApp(App)
+const app = createApp(App);
 
 app.config.globalProperties.mode = 'prod'
 
@@ -71,8 +74,18 @@ app.mixin({
     }
 })
 
-app.mount("#app");
+let userLang = 'es'
 
+
+const i18n = createI18n({
+  locale: userLang, // set locale
+  messages, // set locale messages
+  // If you need to specify other options, you can set other options
+  // ...
+});
+
+app.use(i18n);
+app.mount("#app");
 import axios from 'axios'
 axios.defaults.baseURL = app.config.globalProperties.apiUrl
 

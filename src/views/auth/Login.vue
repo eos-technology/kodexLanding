@@ -1,12 +1,12 @@
 <template>
   <section class="loginContainer">
-    <label for=""><span>*</span> Email</label>
+    <label for=""><span>*</span> {{$t('app.mail')}}</label>
     <BaseInput placeholder="example@mail.com" v-model="form.email"></BaseInput>
-    <label for=""><span>*</span> Password</label>
-    <InputPass placeholder="Password" v-model="form.password"></InputPass>
-    <BaseButton label="SingIn" @click="onSumbit()"></BaseButton>
+    <label for=""><span>*</span> {{$t('app.pass')}}</label>
+    <InputPass :placeholder="$t('app.pass')" v-model="form.password"></InputPass>
+    <BaseButton :label="$t('app.signin')" @click="onSumbit()"></BaseButton>
     <div>
-      <router-link to="/recover">Forgot my password</router-link>
+      <router-link to="/recover">{{$t('app.forPass')}}</router-link>
     </div>
   </section>
 </template>

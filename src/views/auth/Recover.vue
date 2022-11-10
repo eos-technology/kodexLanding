@@ -1,9 +1,9 @@
 <template>
-  <h2>Recover password</h2>
-  <p>
-    Enter your email address below and we'll <br> send you instructions to set up a new one
-  </p>
   <section class="recover">
+    <h2>Recover password</h2>
+    <p>
+      Enter your email address below and we'll <br> send you instructions to set up a new one
+    </p>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
     <BaseButton @click="onSubmit" label="Send Email"></BaseButton>

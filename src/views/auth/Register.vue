@@ -1,23 +1,21 @@
 <template>
   <section class="RegisterContainer">
-    <label for=""><span>*</span> Referral by</label>
-    <BaseInput v-model="form.user_parent" placeholder="Ariel Camacho"></BaseInput>
-    <label for=""><span>*</span> Full names</label>
+    <label for=""><span>*</span> {{ $t("app.fullname") }}</label>
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
-    <label for=""><span>*</span> Username</label>
-    <BaseInput v-model="form.username" placeholder="ArielCamacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <!-- <label for=""><span>*</span> Celular</label>
-    <FlagInput v-model="form.phone"></FlagInput> -->
-    <label for=""><span>*</span> Password</label>
-    <InputPass v-model="form.password" placeholder="Password"></InputPass>
-    <BaseButton label="SignUp" @click="onSubmit()"></BaseButton>
+    <label for=""><span>*</span> Celular</label>
+    <FlagInput v-model="form.phone"></FlagInput>
+    <label for=""><span>*</span> {{ $t("app.pass") }}</label>
+    <InputPass
+      v-model="form.password"
+      :placeholder="$t('app.pass')"
+    ></InputPass>
+    <BaseButton :label="$t('app.signin')" @click="onSubmit()"></BaseButton>
     <div>
-      <router-link to="/recover">Forgot my password</router-link>
+      <router-link to="/recover">{{ $t("app.forPass") }}</router-link>
     </div>
   </section>
-  
 </template>
 
 <script>
@@ -25,13 +23,13 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import InputPass from "@/components/form/InputPass.vue";
 import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
-import FlagInput from '@/components/form/FlagInput.vue';
-import { mapActions } from 'vuex';
+import FlagInput from "@/components/form/FlagInput.vue";
+import { mapActions } from "vuex";
 
 export default {
   components: { BaseInput, InputPass, BaseButton, FlagInput },
-  props: ['username'],
-  data () {
+  props: ["username"],
+  data() {
     return {
       form: {
         names: null,
@@ -39,24 +37,24 @@ export default {
         phone: null,
         email: null,
         password: null,
-        user_parent: null
-      }
-    }
+        user_parent: null,
+      },
+    };
   },
-  created () {
-    if(this.username) {
-      this.form.user_parent = this.username
+  created() {
+    if (this.username) {
+      this.form.user_parent = this.username;
     }
   },
   methods: {
-    ...mapActions('auth',['register']),
+    ...mapActions("auth", ["register"]),
     onSubmit() {
       this.register(this.form).then(() => {
-        openNotification()
-        this.$emit('ready')
-      })
-    }
-  }
+        openNotification();
+        this.$emit("ready");
+      });
+    },
+  },
 };
 </script>
 

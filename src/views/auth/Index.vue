@@ -1,9 +1,10 @@
 <template>
   <section class="loginToggle">
-    <a :class="active ? 'active': ''" @click="active = true">Login</a>
-    <a :class="!active ? 'active': ''" @click="active = false">Register</a>
+    <a :class="active ? 'active': ''" @click="active = true">{{$t('app.login')}}</a>
+    <a :class="!active ? 'active': ''" @click="active = false">
+    {{$t('app.register')}}</a>
   </section>
-  <h2>Welcome</h2>
+  <h2>{{$t('app.welcome')}}</h2>
   <Login v-if="active"></Login>
   <Register :username="username" v-if="!active" @ready="active = true"></Register>
 </template>
