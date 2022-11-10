@@ -66,6 +66,7 @@ const show = ref(false);
   }
 }
 
+
 .dropdown-content {
   position: absolute;
   right: 0;
@@ -84,10 +85,20 @@ const show = ref(false);
 }
 
 .dropdown-content a {
+  font-size: 15px;
+  height: 100%;
   text-decoration: none;
   border-radius: 8px;
   display: block;
   color: black;
+  padding: 10px;
+  &:hover{
+    background-color:#f6f8fa;
+  }
+}
+
+hr{
+  margin: 10px;
 }
 
 .dropdown a:hover {

@@ -387,6 +387,7 @@ export default {
 
 <style lang="scss" scoped>
 .data {
+  cursor: default;
   &--Title {
     margin-top: 48px;
     margin-bottom: 24px;

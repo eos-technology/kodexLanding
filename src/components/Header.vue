@@ -143,6 +143,13 @@ export default {
   border-radius: 8px;
   display: block;
   color: black;
+  padding: 10px;
+  &:hover{
+    background-color:#f6f8fa;
+  }
+}
+hr{
+  margin: 10px;
 }
 
 .dropdown a:hover {
