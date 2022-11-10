@@ -54,7 +54,7 @@
             class="dropdown-content"
             :class="show ? 'show' : ''"
           >
-            <a @click="$router.push({ path: `/profile` })" href="#">Profile</a>
+            <a @click="$router.push({ path: `/profile`})">Profile</a>
             <hr />
             <a href="#" @click="close()"
               ><img
