@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .copy {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-weight: 300;
   font-size: 12px;

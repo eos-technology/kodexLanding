@@ -31,7 +31,7 @@ export default {
     display: block;
     width: 100%;
     margin: 25px 0;
-    padding: 10px;
+    padding: 8px 16px;
     border-radius: 8px;
     background: linear-gradient(0deg, #132D7C, #132D7C), linear-gradient(180deg, #0F215C 0%, #007BD1 100%), #194EF0;
     color: white;

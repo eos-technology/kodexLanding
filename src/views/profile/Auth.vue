@@ -32,7 +32,7 @@
           <img src="/assets/images/qr.png" alt="">
         </div>
         <h4>Secret Key</h4>
-        <Copy></Copy>
+        <Copy text="JFSWQMTFGJ4G6Z3EIY2FQTDRGFCHQWLJ"></Copy>
         <h5>Google authenticator Token</h5>
         <BaseInput placeholder="Google authenticator Token"></BaseInput>
       </article>
@@ -69,12 +69,12 @@ export default {
 <style lang="scss" scoped>
 .auth {
   &--Title {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 32px;
-    margin-top: 32px;
+    margin-top: 48px;
     margin-bottom: 24px;
-    color: #000;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
   }
   &__container{
     display: grid;

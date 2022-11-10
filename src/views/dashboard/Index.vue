@@ -21,7 +21,7 @@
     <aside class="aside">
       <article class="aside__card">
         <div class="aside__card__img">
-          <img src="/assets/icons/bank.svg" alt="" />
+          <img src="@/assets/icons/newWallet.png" alt="" />
         </div>
         <div class="aside__card__text">
           <p class="aside__card__text__title-card">Wallet Balance</p>

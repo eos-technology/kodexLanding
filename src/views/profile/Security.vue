@@ -1,11 +1,23 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Security</h2>
+    <h2 class="data--Title">Change password</h2>
     <div class="info">
       <div class="grid">
         <div class="grid--item">
-          <label for="newPass" class="grid--title"
+          <label for="currentPass" class="grid--title"
             ><span class="grid--span">*</span>New password</label
+          >
+          <BaseInput
+            class="grid--btn"
+            type="password"
+            placeholder="********"
+            id="currentPass"
+            v-model="form.password"
+          />
+        </div>
+        <div class="grid--item">
+          <label for="newPass" class="grid--title"
+            ><span class="grid--span">*</span>Current password</label
           >
           <BaseInput
             class="grid--btn"
@@ -17,7 +29,7 @@
         </div>
         <div class="grid--item">
           <label for="Pass" class="grid--title"
-            ><span class="grid--span">*</span>Confirm password</label
+            ><span class="grid--span">*</span>Confirm new password</label
           >
           <BaseInput
             class="grid--btn"
@@ -32,83 +44,83 @@
         {{ message }}
       </div>
       <section class="data__actions">
-      <BaseButton label="Cancel" class="transparent"></BaseButton>
-      <BaseButton label="Update password" @click="onSubmit"></BaseButton>
-    </section>
+        <BaseButton label="Cancel" class="transparent"></BaseButton>
+        <BaseButton label="Save" @click="onSubmit"></BaseButton>
+      </section>
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapState } from 'vuex'
-import BaseInput from '@/components/form/BaseInput.vue';
+import { mapActions, mapState } from "vuex";
+import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 export default {
-  components: { BaseInput,BaseButton },
-    data () {
-        return {
-            loading: false,
-            r_password: null,
-            r_pin: null,
-            form: {
-                id: null,
-                password: null,
-                pin: null
-            },
-            message: null
-        }
-    },
-    methods: {
-        ...mapActions('interceptors', ['setError']),
-        ...mapActions('auth', ['password']),
-        onSubmit() {
-            this.loading = true
-            this.form.id = this.user.id
+  components: { BaseInput, BaseButton },
+  data() {
+    return {
+      loading: false,
+      r_password: null,
+      r_pin: null,
+      form: {
+        id: null,
+        password: null,
+        pin: null,
+      },
+      message: null,
+    };
+  },
+  methods: {
+    ...mapActions("interceptors", ["setError"]),
+    ...mapActions("auth", ["password"]),
+    onSubmit() {
+      this.loading = true;
+      this.form.id = this.user.id;
 
-            this.password(this.form).then(() => {
-                openNotification()
-                this.loading = false
-            })
-        },
-        validateAuth() {
-            this.$router.push({ name: 'Dashboard' })
-        }
+      this.password(this.form).then(() => {
+        openNotification();
+        this.loading = false;
+      });
     },
-    computed: {
-        ...mapState('auth', ['user'])
+    validateAuth() {
+      this.$router.push({ name: "Dashboard" });
     },
-    watch: {
-        r_password: function (val) {
-            if(val != this.form.password) {
-                this.message = 'Password do not match'
-            } else {
-                this.message = null
-            }
-        },
-        r_pin: function (val) {
-            if(val != this.form.pin) {
-                this.message = 'Pin do not match'
-            } else {
-                this.message = null
-            }
-        }
-    }
-}
+  },
+  computed: {
+    ...mapState("auth", ["user"]),
+  },
+  watch: {
+    r_password: function (val) {
+      if (val != this.form.password) {
+        this.message = "Password do not match";
+      } else {
+        this.message = null;
+      }
+    },
+    r_pin: function (val) {
+      if (val != this.form.pin) {
+        this.message = "Pin do not match";
+      } else {
+        this.message = null;
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .data {
   font-size: 14px;
-  @media (max-width:576px) {
+  @media (max-width: 576px) {
     margin: 8px auto;
     width: 100%;
   }
   &--Title {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 32px;
-    margin-top: 32px;
+    margin-top: 48px;
     margin-bottom: 24px;
-    color: #000;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
   }
 
   .info {
@@ -183,7 +195,7 @@ export default {
   .btnF {
     display: flex;
     justify-content: flex-end;
-    @media (max-width:576px) {
+    @media (max-width: 576px) {
       flex-direction: column;
       align-items: center;
     }
@@ -208,10 +220,10 @@ export default {
       color: white;
     }
   }
-  &__actions{
+  &__actions {
     display: flex;
     justify-content: end;
-    button{
+    button {
       width: auto;
       margin-left: 20px;
     }

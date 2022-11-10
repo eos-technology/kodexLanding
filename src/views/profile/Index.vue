@@ -21,7 +21,7 @@
             aria-selected="true"
           >
             <div class="nav-link-container">
-              <span>{{ element.title }}</span>
+              <span class="nav-link-span">{{ element.title }}</span>
             </div>
           </div>
         </li>
@@ -126,7 +126,7 @@ export default {
   &__menu {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #647188;
+    border-bottom: 1px solid #ececee;
     @media (max-width: 576px) {
       width: 100%;
     }
@@ -145,12 +145,23 @@ export default {
         transition: all 0.5;
         background: transparent;
         border: none;
+        font-family: Kanit;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: center;
+        &-span {
+        }
       }
 
       .nav-link.active {
-        border-bottom: 2px solid #040e2c;
-        color: black;
-        transition: all 0.5;
+        background: linear-gradient(0deg, #132d7c, #132d7c),
+          linear-gradient(180deg, #0f215c 0%, #007bd1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        border-bottom: 2px solid #132d7c;
       }
     }
   }

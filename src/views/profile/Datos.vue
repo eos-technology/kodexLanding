@@ -1,45 +1,48 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Personal information</h2>
     <div class="frame">
-      <img class="frame--avatar" :src="apiUrl + '/uploads/users/' + user.image" alt="" />
-      <button class="frame--upButton">Upload Photo</button>
+      <img
+        class="frame--avatar"
+        :src="apiUrl + '/uploads/users/' + user.image"
+        alt=""
+      />
+      <button class="frame--upButton">Subir imágen</button>
     </div>
     <div class="info">
-      <h2 class="info--title">Edit personal Information</h2>
+      <h2 class="info--title">Datos personales</h2>
       <div class="grid">
         <div class="grid--item">
           <label for="name" class="grid--title"
-            ><span class="grid--span">*</span>Names</label
+            >Nombres</label
           >
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="John"
+            placeholder="Nombres"
             id="name"
             v-model="user.names"
           />
         </div>
         <div class="grid--itemD">
           <label for="phone" class="grid--title"
-            ><span class="grid--span">*</span>Number phone</label
+            >Apellidos</label
           >
           <BaseInput
             class="grid--btn"
-            type="tel"
-            placeholder="+57 320 000 22 33"
+            type="text"
+            placeholder="Apellidos"
             id="phone"
             v-model="user.phone"
           />
         </div>
         <div class="grid--item">
           <label for="user" class="grid--title"
-            ><span class="grid--span">*</span>Username</label
+            >Usuario</label
           >
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Gasca"
+            placeholder="Usuario"
             id="user"
             :disabled="true"
             v-model="user.username"
@@ -47,21 +50,14 @@
         </div>
         <div class="grid--itemD">
           <label for="email" class="grid--title"
-            ><span class="grid--span">*</span>Email</label
+            ><span class="grid--span">*</span>Phone</label
           >
-          <BaseInput
-            class="grid--btn"
-            type="email"
-            placeholder="email@example.com"
-            id="email"
-            :disabled="true"
-            v-model="user.email"
-          />
+          <flag-input/>
         </div>
       </div>
       <section class="data__actions">
         <BaseButton label="Cancel" class="transparent"></BaseButton>
-        <BaseButton label="Update information" @click="onSubmit"></BaseButton>
+        <BaseButton label="Save" @click="onSubmit"></BaseButton>
       </section>
     </div>
   </div>
@@ -69,52 +65,45 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState } from "vuex";
+import FlagInput from '@/components/form/FlagInput.vue';
 
 export default {
-  components: { BaseInput, BaseButton },
-  created () {
-    this.getUserInfo()
+  components: { BaseInput, BaseButton, FlagInput },
+  created() {
+    this.getUserInfo();
   },
   methods: {
-    ...mapActions('auth', ['getUserInfo', 'updateUser']),
-    changeFiles(){
-        this.user.image = this.$refs.image.files[0]
+    ...mapActions("auth", ["getUserInfo", "updateUser"]),
+    changeFiles() {
+      this.user.image = this.$refs.image.files[0];
     },
     onSubmit() {
-      const formData = new FormData()
-      formData.append('id', this.user.id)
-      formData.append('username', this.user.username)
-      formData.append('image', this.user.image)
-      formData.append('names', this.user.names)
-      formData.append('email', this.user.email)
-      formData.append('phone', this.user.phone)
+      const formData = new FormData();
+      formData.append("id", this.user.id);
+      formData.append("username", this.user.username);
+      formData.append("image", this.user.image);
+      formData.append("names", this.user.names);
+      formData.append("email", this.user.email);
+      formData.append("phone", this.user.phone);
 
-      this.updateUser({data: formData, id: this.user.id}).then(() => {
-          this.getUserInfo()
-          openNotification()
-          this.loading = false
-      })
-    }
+      this.updateUser({ data: formData, id: this.user.id }).then(() => {
+        this.getUserInfo();
+        openNotification();
+        this.loading = false;
+      });
+    },
   },
   computed: {
-    ...mapState('auth', ['user'])
-  }
+    ...mapState("auth", ["user"]),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .data {
-  &--Title {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 32px;
-    margin-top: 32px;
-    margin-bottom: 24px;
-    color: #000;
-  }
-
   .frame {
+    margin: 48px 0;
     display: flex;
     align-items: center;
     @media (max-width: 576px) {
@@ -130,12 +119,16 @@ export default {
     }
 
     &--upButton {
-      padding: 4px 30px;
+      padding: 8px 16px;
       height: 40px;
       margin-left: 20px;
-      border: 1px solid #000;
-      border-radius: 12px;
+      border: 1px solid #132d7c;
+      background-color: transparent;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: 500;
+      line-height: 24px;
+      text-align: center;
     }
 
     &--deleteButton {
@@ -153,12 +146,11 @@ export default {
 
   .info {
     &--title {
-      font-size: 22px;
-      font-weight: 500;
+      font-size: 26px;
+      font-weight: 400;
       line-height: 32px;
-      margin-top: 32px;
+      text-align: left;
       margin-bottom: 24px;
-      color: #000;
       @media (max-width: 576px) {
         width: 90%;
       }
