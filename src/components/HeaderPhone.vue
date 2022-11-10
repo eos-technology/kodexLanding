@@ -22,15 +22,16 @@
           src="@/assets/icons/Avatar.svg"
           alt=""
         />
-  
-        <div id="myDropdown" class="dropdown-content" :class="show ? 'show' : ''">
-          <a @click="$router.push({ path: `/profile` })" href="#"
-            ><img
-              class="dropdown__imgMenu"
-              alt=""
-            />Profile</a
+
+        <div
+          id="myDropdown"
+          class="dropdown-content"
+          :class="show ? 'show' : ''"
+        >
+          <a @click="$router.push({ path: `/profile` })"
+            ><img class="dropdown__imgMenu" alt="" />Profile</a
           >
-          <hr>
+          <hr />
           <a href="#"
             ><img
               class="dropdown__imgMenu"
@@ -90,7 +91,7 @@ const show = ref(false);
 }
 
 .dropdown a:hover {
-  color:#0F215C;
+  color: #0f215c;
 }
 
 .show {
