@@ -3,9 +3,7 @@
     <h2 class="data--Title">KYC Verification</h2>
     <div class="info">
       <div v-if="kycInfo.id">
-        <h3>
-          Verification in progress
-        </h3>
+        <h3>Verification in progress</h3>
       </div>
       <div class="grid" v-else>
         <div class="grid--item">
@@ -70,9 +68,9 @@
       </div>
 
       <section class="data__actions">
-      <BaseButton label="Cancel" class="transparent"></BaseButton>
-      <BaseButton label="Send verification"></BaseButton>
-    </section>
+        <BaseButton label="Cancel" class="transparent"></BaseButton>
+        <BaseButton label="Send verification"></BaseButton>
+      </section>
     </div>
   </div>
 </template>
@@ -80,70 +78,70 @@
 <script>
 import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState } from "vuex";
 export default {
   components: {
     BaseInput,
-    BaseButton
+    BaseButton,
   },
-    data () {
-        return {
-            loading: false,
-            form: {
-                document: null,
-                country: null,
-                city: null,
-                address: null,
-                image: null
-            },
-            kycInfo: {}
-        }
+  data() {
+    return {
+      loading: false,
+      form: {
+        document: null,
+        country: null,
+        city: null,
+        address: null,
+        image: null,
+      },
+      kycInfo: {},
+    };
+  },
+  created() {
+    this.getVerificateKyc().then((response) => {
+      this.kycInfo = response;
+    });
+  },
+  methods: {
+    ...mapActions("auth", ["verificateKyc", "getUserInfo", "getVerificateKyc"]),
+    changeFiles() {
+      this.form.image = this.$refs.image.files[0];
     },
-    created () {
-        this.getVerificateKyc().then(response => {
-            this.kycInfo = response
-        })
-    },
-    methods: {
-        ...mapActions('auth', ['verificateKyc', 'getUserInfo', 'getVerificateKyc']),
-        changeFiles(){
-            this.form.image = this.$refs.image.files[0]
-        },
-        onSubmit() {
-            this.loading = true
+    onSubmit() {
+      this.loading = true;
 
-            const formData = new FormData()
-            formData.append('document', this.form.document)
-            formData.append('country', this.form.country)
-            formData.append('city', this.form.city)
-            formData.append('address', this.form.address)
-            formData.append('image', this.form.image)
+      const formData = new FormData();
+      formData.append("document", this.form.document);
+      formData.append("country", this.form.country);
+      formData.append("city", this.form.city);
+      formData.append("address", this.form.address);
+      formData.append("image", this.form.image);
 
-            this.verificateKyc(formData).then(() => {
-                this.getUserInfo()
-                this.getVerificateKyc().then(response => {
-                    this.kycInfo = response
-                })
-                openNotification()
-                this.loading = false
-            })
-        }
+      this.verificateKyc(formData).then(() => {
+        this.getUserInfo();
+        this.getVerificateKyc().then((response) => {
+          this.kycInfo = response;
+        });
+        openNotification();
+        this.loading = false;
+      });
     },
-    computed: {
-        ...mapState('auth', ['user'])
-    }
-}
+  },
+  computed: {
+    ...mapState("auth", ["user"]),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .data {
   &--Title {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 32px;
-    margin-top: 32px;
+    margin-top: 48px;
     margin-bottom: 24px;
-    color: #000;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
   }
 
   .info {
@@ -247,10 +245,10 @@ export default {
       color: white;
     }
   }
-  &__actions{
+  &__actions {
     display: flex;
     justify-content: end;
-    button{
+    button {
       width: auto;
       margin-left: 20px;
     }
