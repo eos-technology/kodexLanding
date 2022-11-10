@@ -68,6 +68,7 @@ export default {
 
 <style lang="scss" scoped>
 .auth {
+  cursor: default;
   &--Title {
     margin-top: 48px;
     margin-bottom: 24px;

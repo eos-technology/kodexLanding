@@ -102,6 +102,7 @@ export default {
 
 <style lang="scss" scoped>
 .data {
+  cursor: default;
   .frame {
     margin: 48px 0;
     display: flex;

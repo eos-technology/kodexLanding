@@ -109,6 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 .data {
+  cursor: default;
   font-size: 14px;
   @media (max-width: 576px) {
     margin: 8px auto;
