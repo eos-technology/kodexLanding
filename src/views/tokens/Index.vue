@@ -59,6 +59,7 @@
           </article>
           <article>
             <BaseButton
+              :disabled="true"
               @click="$router.push({ name: 'Purchase-Token' })"
               label="Buy KXP"
             ></BaseButton>
