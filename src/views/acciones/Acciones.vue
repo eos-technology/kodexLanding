@@ -6,25 +6,25 @@
         <img src="/src/assets/images/tron.png" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>Nodo Tron</h2>
+        <h2>{{$t('liquidity.node')}} Tron</h2>
         <h3>TRX</h3>
         <div>
-          <p>Inversión miníma</p>
+          <p>{{$t('liquidity.investment')}}</p>
           <p>1,000.00 KP</p>
         </div>
         <div>
-          <p>Porcentaje mensual</p>
+          <p>{{$t('liquidity.percent')}}</p>
           <p>0,3%</p>
         </div>
         <div>
-          <p>Plazo máximo</p>
+          <p>{{$t('liquidity.term')}}</p>
           <p>6 Meses</p>
         </div>
         <div>
-          <p>Fecha de retiros</p>
+          <p>{{$t('liquidity.date')}}</p>
           <p>05 de cada mes</p>
         </div>
-        <h5>Fondeado</h5>
+        <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
           <b-progress
             :value="valueProgress"
@@ -35,19 +35,19 @@
           <span>{{ valueProgress }}%</span>
         </article>
         <div>
-          <p>Recaudo total</p>
+          <p>{{$t('liquidity.collection')}}</p>
           <p>$0.00</p>
         </div>
         <div>
-          <p>Participantes disponibles</p>
+          <p>{{$t('liquidity.participants')}}</p>
           <p>20/100</p>
         </div>
         <div>
-          <p>Mes</p>
+          <p>{{$t('liquidity.month')}}</p>
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Conectar"
+          :label="`${$t('liquidity.conect')}`"
           @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
@@ -57,25 +57,25 @@
         <img src="/src/assets/images/eth.png" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>Nodo Etherium</h2>
+        <h2>{{$t('liquidity.node')}} Etherium</h2>
         <h3>ETH</h3>
         <div>
-          <p>Inversión miníma</p>
+          <p>{{$t('liquidity.investment')}}</p>
           <p>1,000.00 KP</p>
         </div>
         <div>
-          <p>Porcentaje mensual</p>
+          <p>{{$t('liquidity.percent')}}</p>
           <p>0,3%</p>
         </div>
         <div>
-          <p>Plazo máximo</p>
+          <p>{{$t('liquidity.term')}}</p>
           <p>6 Meses</p>
         </div>
         <div>
-          <p>Fecha de retiros</p>
+          <p>{{$t('liquidity.date')}}</p>
           <p>05 de cada mes</p>
         </div>
-        <h5>Fondeado</h5>
+        <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
           <b-progress
             :value="valueProgress"
@@ -86,19 +86,19 @@
           <span>{{ valueProgress }}%</span>
         </article>
         <div>
-          <p>Recaudo total</p>
+          <p>{{$t('liquidity.collection')}}</p>
           <p>$0.00</p>
         </div>
         <div>
-          <p>Participantes disponibles</p>
+          <p>{{$t('liquidity.participants')}}</p>
           <p>20/100</p>
         </div>
         <div>
-          <p>Mes</p>
+          <p>{{$t('liquidity.month')}}</p>
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Conectar"
+          :label="`${$t('liquidity.conect')}`"
           @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
@@ -108,25 +108,25 @@
         <img src="/src/assets/images/binance.png" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>Nodo Binance</h2>
+        <h2>{{$t('liquidity.node')}} Binance</h2>
         <h3>BNB</h3>
         <div>
-          <p>Inversión miníma</p>
+          <p>{{$t('liquidity.investment')}}</p>
           <p>1,000.00 KP</p>
         </div>
         <div>
-          <p>Porcentaje mensual</p>
+          <p>{{$t('liquidity.percent')}}</p>
           <p>0,3%</p>
         </div>
         <div>
-          <p>Plazo máximo</p>
+          <p>{{$t('liquidity.term')}}</p>
           <p>6 Meses</p>
         </div>
         <div>
-          <p>Fecha de retiros</p>
+          <p>{{$t('liquidity.date')}}</p>
           <p>05 de cada mes</p>
         </div>
-        <h5>Fondeado</h5>
+        <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
           <b-progress
             :value="valueProgress"
@@ -137,23 +137,24 @@
           <span>{{ valueProgress }}%</span>
         </article>
         <div>
-          <p>Recaudo total</p>
+          <p>{{$t('liquidity.collection')}}</p>
           <p>$0.00</p>
         </div>
         <div>
-          <p>Participantes disponibles</p>
+          <p>{{$t('liquidity.participants')}}</p>
           <p>20/100</p>
         </div>
         <div>
-          <p>Mes</p>
+          <p>{{$t('liquidity.month')}}</p>
           <p>0/6</p>
         </div>
         <BaseButton
-          label="Conectar"
+          :label="`${$t('liquidity.conect')}`"
           @click="$router.push({ path: '/liquidity/deposit' })"
         ></BaseButton>
       </article>
     </section>
+
     <article class="acciones__container">
       <section class="acciones__card acciones__move" v-if="!show">
         <section class="acciones__move__img">
@@ -161,32 +162,32 @@
             <img src="/src/assets/images/tron.png" alt="" />
           </article>
           <article>
-            <h2>Nodo Tron</h2>
+            <h2>{{$t('liquidity.node')}} Tron</h2>
             <h3>TRX</h3>
           </article>
         </section>
         <section class="acciones__move__data"> 
-          <h5>Periodo de tiempo</h5>
+          <h5>{{$t('liquidity.time')}}</h5>
           <p>6 Meses</p>
-          <h5>Porcentaje mensual</h5>
+          <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>
         <article class="acciones__card__text">
-          <h4>Estado del programa</h4>
+          <h4>{{$t('liquidity.status')}}</h4>
           <div>
-            <p>Total tokens stakes</p>
+            <p>{{$t('liquidity.total')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Stake total</p>
+            <p>{{$t('liquidity.stake')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Minimo stake</p>
+            <p>{{$t('liquidity.minimun')}}</p>
             <p>0.00</p>
           </div>
           <BaseButton
-            label="Retirar"
+            :label="`${$t('liquidity.withdraw')}`"
             @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>
@@ -197,32 +198,32 @@
             <img src="/src/assets/images/eth.png" alt="" />
           </article>
           <article>
-            <h2>Nodo Etherium</h2>
+            <h2>{{$t('liquidity.node')}} Etherium</h2>
             <h3>ETH</h3>
           </article>
         </section>
         <section class="acciones__move__data"> 
-          <h5>Periodo de tiempo</h5>
+          <h5>{{$t('liquidity.time')}}</h5>
           <p>6 Meses</p>
-          <h5>Porcentaje mensual</h5>
+          <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>
         <article class="acciones__card__text">
-          <h4>Estado del programa</h4>
+          <h4>{{$t('liquidity.status')}}</h4>
           <div>
-            <p>Total tokens stakes</p>
+            <p>{{$t('liquidity.total')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Stake total</p>
+            <p>{{$t('liquidity.stake')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Minimo stake</p>
+            <p>{{$t('liquidity.minimun')}}</p>
             <p>0.00</p>
           </div>
           <BaseButton
-            label="Retirar"
+            :label="`${$t('liquidity.withdraw')}`"
             @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>
@@ -233,32 +234,32 @@
             <img src="/src/assets/images/binance.png" alt="" />
           </article>
           <article>
-            <h2>Nodo Binance</h2>
+            <h2>{{$t('liquidity.node')}} Binance</h2>
             <h3>BNB</h3>
           </article>
         </section>
         <section class="acciones__move__data"> 
-          <h5>Periodo de tiempo</h5>
+          <h5>{{$t('liquidity.time')}}</h5>
           <p>6 Meses</p>
-          <h5>Porcentaje mensual</h5>
+          <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>
         <article class="acciones__card__text">
-          <h4>Estado del programa</h4>
+          <h4>{{$t('liquidity.status')}}</h4>
           <div>
-            <p>Total tokens stakes</p>
+            <p>{{$t('liquidity.total')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Stake total</p>
+            <p>{{$t('liquidity.stake')}}</p>
             <p>0.00</p>
           </div>
           <div>
-            <p>Minimo stake</p>
+            <p>{{$t('liquidity.minimun')}}</p>
             <p>0.00</p>
           </div>
           <BaseButton
-            label="Retirar"
+            :label="`${$t('liquidity.withdraw')}`"
             @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
         </article>

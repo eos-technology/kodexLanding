@@ -2,22 +2,22 @@
   <section class="newWallet">
     <GoBack />
     <section class="newWallet__container">
-      <h3>Make payment</h3>
+      <h3>{{$t('cart.title')}}</h3>
       <section class="newWallet__container__pay" v-if="cart">
         <article class="newWallet__container__pay-qr">
           <qrcode-vue :value="cart.wallet" size="200" level="M" />
         </article>
         <article class="newWallet__container__pay-data">
           <div>
-            <p>Status</p>
-            <p class="warning">Waiting for money</p>
+            <p>{{$t('cart.status')}}</p>
+            <p class="warning">{{$t('cart.wait')}}</p>
           </div>
           <div>
-            <p>Countdown</p>
+            <p>{{$t('cart.count')}}</p>
             <p>00:00</p>
           </div>
           <div>
-            <p>Verificaremos el pago de manera automatica una vez realizado la transacción.</p>
+            <p>{{$t('cart.verifi')}}</p>
             <p></p>
           </div>
         </article>
@@ -43,19 +43,18 @@
               <img src="/assets/images/usdt.png" />
             </div>
           </div>
-          <h5>Dirección de wallet</h5>
+          <h5>{{$t('cart.address')}}</h5>
           <Copy v-if="cart" :text="cart.wallet"></Copy>
           <p>
-            The transaction has been created successfully, complete the
-            payment to send the tokens between 1 to 24 hours
+            {{$t('cart.trans')}}
           </p>
         </section>
         <section class="text-center">
           {{ message }}
         </section>
         <section class="newWallet__container__change-actions">
-          <BaseButton @click="cancelPayment" label="Cancel" class="transparent"></BaseButton>
-          <BaseButton label="Verify payment" loadingTx="Verifying payment" @click="confirmPayment" />
+          <BaseButton @click="cancelPayment" :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+          <BaseButton :label="`${$t('cancel')}`" loadingTx="Verifying payment" @click="confirmPayment" />
         </section>
       </section>
     </section>

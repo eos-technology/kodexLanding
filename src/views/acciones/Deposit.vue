@@ -2,21 +2,21 @@
   <section class="withdraw">
     <BtnBack></BtnBack>
     <section class="withdraw__container">
-      <h3>Staking investment</h3>
+      <h3>{{$t('deposit.title')}}</h3>
       <article class="withdraw__container__select">
-        <h4>Select payment method</h4>
+        <h4>{{$t('deposit.select')}}</h4>
         <article class="withdraw__container__select__contain">
           <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
         <article class="withdraw__container__balance__contain">
-          <label for=""><span>*</span> Amount</label>
+          <label for=""><span>*</span> {{$t('deposit.amount')}}</label>
           <Baseinput  v-model="form.quantity" placeholder="$0.0"></BaseInput>
-          <p>Amount to transfer example: $0.00</p>
+          <p>{{$t('deposit.tranfer')}}</p>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancel" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.quantity > comissions.data.reduce((a, b) => a + b, 0) " label="Confirm staking" @click="onSubmit"></BaseButton>
+              <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.quantity > comissions.data.reduce((a, b) => a + b, 0) " :label="`${$t('deposit.confirm')}`" @click="onSubmit"></BaseButton>
           </article>  
         </article>
       </article>

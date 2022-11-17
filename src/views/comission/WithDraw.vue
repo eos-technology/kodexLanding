@@ -2,29 +2,29 @@
   <section class="withdraw">
     <BtnBack></BtnBack>
     <section class="withdraw__container">
-      <h3>Withdraw money</h3>
+      <h3>{{$t('comission.draw.title')}}</h3>
       <article class="withdraw__container__select">
-        <h4>Select destination wallet</h4>
+        <h4>{{$t('comission.select')}}</h4>
         <article class="withdraw__container__select__contain">
           <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
-        <h4>Wallet Balance</h4>
+        <h4>{{$t('comission.draw.balance')}}</h4>
         <h3>${{ comissions.data.reduce((a, b) => a + b, 0) }}</h3>
         <article class="withdraw__container__balance__contain">
-          <label for=""><span>*</span> Amount</label>
+          <label for=""><span>*</span> {{$t('comission.draw.amount')}}</label>
           <BaseInput v-model="form.quantity" placeholder="$0.0"></BaseInput>
-          <p>Amount to transfer example: $0.00</p>
+          <p>{{$t('comission.draw.tranfer')}}</p>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancel" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.quantity > comissions.data.reduce((a, b) => a + b, 0) " label="Request withdraw" @click="onSubmit"></BaseButton>
+              <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.quantity > comissions.data.reduce((a, b) => a + b, 0) " :label="`${$t('comission.draw.request')}`" @click="onSubmit"></BaseButton>
           </article>  
         </article>
       </article>
     </section>
   </section>
-  <PopUpSuccess title="Envio realizado con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
+  <PopUpSuccess :title="`${$t('comission.draw.popup')}`" img="check" :showPopUp="showPopUp"></PopUpSuccess>
   
 </template>
 

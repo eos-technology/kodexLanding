@@ -11,7 +11,10 @@
 import VueApexCharts from "vue3-apexcharts";
 export default {
     components: { apexchart: VueApexCharts },
-    setup() {
+    props: {
+    labels: Array
+    } ,
+    setup(props) {
         const series = [35000000, 16800000, 14000000, 3500000, 700000];
         const chartOptions = {
         chart: {
@@ -23,7 +26,7 @@ export default {
         dataLabels: {
             enabled: false,
         },
-        labels: ["For Publici Sale 50.0%", "Funders 24.0%", "For preSale 20.0%", "Advisor 5.0%", "Team 1.0%"],
+        labels: props.labels,
         fill: {
             type: "gradient",
         },

@@ -21,8 +21,8 @@
           :id="id"
         />
         <div  class="card-profile__title">
-          <b>Drag</b> your image here, or <b> find it on your computer</b>
-          <p class="card-profile__upload">Upload files up to 8gb</p>
+          <b>{{$t('drag.drag')}}</b> {{$t('drag.img')}} <b> {{$t('drag.find')}}</b>
+          <p class="card-profile__upload">{{$t('drag.upload')}}</p>
         </div>
         <span class="file-info">{{ dropzoneFile.name }}</span>
       </div>

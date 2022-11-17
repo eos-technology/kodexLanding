@@ -4,7 +4,7 @@
       <article class="wallet__balance__cards__container">
         <div class="wallet__drag" @click="$router.push({ name: `NewWallet` })">
           <img src="@/assets/icons/wallet.svg" alt="" />
-          <p class="wallet__drag-text"><b>Create</b> new <b>wallet</b></p>
+          <p class="wallet__drag-text" v-html="$t('wallet.wallet.create')"></p>
         </div>
         <CardCoin
           :isActive="walletActive.id"
@@ -18,7 +18,7 @@
     <section class="wallet__balance">
       <article class="wallet__balance__total">
         <div>
-          <p>Total balance</p>
+          <p>{{$t('wallet.wallet.total')}}</p>
           <h2 style="text-transform: uppercase">
             {{ walletActive.asset ? walletActive.asset.currency : "" }}
             {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}
@@ -35,7 +35,7 @@
         <article class="wallet__balance__total__actions">
           <div @click="$router.push({ name: `Withdraw` })">
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
-            <p>Withdraw</p>
+            <p>{{$t('wallet.wallet.draw')}}</p>
           </div>
           <div
             @click="
@@ -48,7 +48,7 @@
             "
           >
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
-            <p>Deposit</p>
+            <p>{{$t('wallet.wallet.deposit')}}</p>
           </div>
           <div
             @click="
@@ -61,14 +61,14 @@
             "
           >
             <img :src="`/assets/icons/trash-delete.svg`" alt="" />
-            <p>Delete</p>
+            <p>{{$t('wallet.wallet.delete')}}</p>
           </div>
         </article>
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">
-          <h2>Transactions</h2>
-          <InputSearch class="wallet__table__search" placeholder="Search" />
+          <h2>{{$t('wallet.wallet.trans')}}</h2>
+          <InputSearch class="wallet__table__search" :placeholder="$t('search')" />
         </article>
         <article
           class="wallet__table__container"
@@ -77,10 +77,10 @@
           <article class="wallet__table__table">
             <article class="wallet__table__table-header noId">
               <p>Hash</p>
-              <p>Time</p>
-              <p>from</p>
-              <p>To</p>
-              <p>Quantity</p>
+              <p>{{$t('wallet.wallet.table.time')}}</p>
+              <p>{{$t('wallet.wallet.table.from')}}</p>
+              <p>{{$t('wallet.wallet.table.to')}}</p>
+              <p>{{$t('wallet.wallet.table.quanty')}}</p>
             </article>
             <article
               class="wallet__table__table-row noId"
@@ -101,7 +101,7 @@
             alt=""
             v-if="!transactions"
           />
-          <h5>You still have no transactions</h5>
+          <h5>{{$t('wallet.wallet.notrans')}}</h5>
         </section>
         <CardTableWallet class="wallet__table__card" />
         <CardTableWallet class="wallet__table__card" />

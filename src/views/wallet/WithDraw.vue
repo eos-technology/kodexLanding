@@ -2,31 +2,31 @@
   <section class="withdraw">
     <go-back/>
     <section class="withdraw__container">
-      <h3>Withdraw money</h3>
+      <h3>{{$t('wallet.draw.draw')}}</h3>
       <article class="withdraw__container__select">
-        <h4>Select wallet address</h4>
+        <h4>{{$t('wallet.draw.select')}}</h4>
         <article class="withdraw__container__select__contain">
           <SelectCoin :coins="withdrawals" :defaultCoin="coin" @setCoin="selectWallet"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
-        <h4>Wallet Balance</h4>
+        <h4>{{$t('wallet.draw.balance')}}</h4>
         <h3>$0.00</h3>
         <article class="withdraw__container__balance__contain">
-          <label for=""><span>*</span> Amount</label>
+          <label for=""><span>*</span> {{$t('wallet.draw.amount')}}</label>
           <BaseInput v-model="form.quantity" placeholder="$0.0"></BaseInput>
-          <p>Amount to transfer example: $0.00</p>
-          <label for=""><span>*</span> Destination wallet</label>
-          <BaseInput v-model="form.to" placeholder="Wallet"></BaseInput>
+          <p>{{$t('wallet.draw.tranfer')}}</p>
+          <label for=""><span>*</span> {{$t('wallet.draw.destination')}}</label>
+          <BaseInput v-model="form.to" :placeholder="$t('wallet.draw.wallet')"></BaseInput>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancel" class="transparent"></BaseButton>
-              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.to == null" label="Send transaction" @click="sendData"></BaseButton>
+              <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+              <BaseButton :disabled="form.wallet_id == null || form.quantity == null || form.to == null" :label="`${$t('send')} transaction`" @click="sendData"></BaseButton>
           </article>  
         </article>
       </article>
     </section>
   </section>
-  <PopUpSuccess title="Envio realizado con éxito" img="check" :showPopUp="showPopUp"></PopUpSuccess>
+  <PopUpSuccess :title="$t('wallet.draw.popup')" img="check" :showPopUp="showPopUp"></PopUpSuccess>
   
 </template>
 
