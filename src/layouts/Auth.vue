@@ -1,61 +1,38 @@
 <template>
-  <section class="authLayout">
-    <article class="authLayout__img">
-      <img src="/assets/images/login.jpg" alt="">
-    </article>
-    <article class="authLayout__contain">
-        <img src="/assets/images/KodexPay.png" alt="">
-        <router-view />
+  <section class="auth">
+    <img class="auth__img" src="@/assets/images/logoKodex.svg" alt="">
+    <article class="auth__content">
+      
+      <router-view />
     </article>
   </section>
-    
 </template>
 
-<script>
-
-export default {
-};
+<script setup>
 </script>
 
 <style lang="scss" scoped>
-  .authLayout{
-    min-height: 100vh;
-    height: 100%;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    @media (max-width: 1360px){
-      grid-template-columns: 60% 40%;
-    }
-    @media (max-width: 1000px){
-      grid-template-columns: 55% 45%;
-    }
-    @media (max-width: 700px){
-      grid-template-columns: 1fr;
-    }
-    &__img{
-      @media (max-width: 700px){
-      display: none;
-    }
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    &__contain{
-      padding-top: 80px;
-      text-align: center;
-      background-color: white;
-      @media (max-width: 700px){
-      padding-top: 20px;
-    }
-      img{
-        max-width: 200px;
-        margin: 0 auto;
-      }
-    }
+.auth {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../assets/images/fondo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    max-width: 400px;
   }
+}
 </style>
 
 

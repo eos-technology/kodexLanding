@@ -1,5 +1,6 @@
 <template>
   <section class="RegisterContainer">
+    <GoBack/>
     <label for=""><span>*</span> {{ $t("app.fullname") }}</label>
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
@@ -41,9 +42,10 @@ import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
 import FlagInput from "@/components/form/FlagInput.vue";
 import { mapActions } from "vuex";
+import GoBack from "@/components/form/GoBack.vue";
 
 export default {
-  components: { BaseInput, InputPass, BaseButton, FlagInput },
+  components: { BaseInput, InputPass, BaseButton, FlagInput, GoBack },
   props: ["username"],
   data() {
     return {
@@ -76,7 +78,6 @@ export default {
 
 <style lang="scss" scoped>
 .RegisterContainer {
-  padding: 32px;
   text-align: start;
   label {
     display: block;

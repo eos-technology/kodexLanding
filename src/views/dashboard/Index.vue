@@ -217,7 +217,7 @@ export default {
   margin-top: 30px;
 
   @media (max-width: 1200px) {
-    grid-template-columns: 50% 1fr;
+    grid-template-columns: 50% 50%;
   }
 
   @media (max-width: 900px) {
@@ -277,7 +277,6 @@ export default {
 
         @media (max-width: 700px) {
           width: 100%;
-
         }
       }
     }

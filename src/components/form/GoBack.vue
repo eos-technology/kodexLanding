@@ -23,7 +23,7 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   div {
     display: flex;
     align-items: center;

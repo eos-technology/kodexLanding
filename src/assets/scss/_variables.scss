@@ -1,8 +1,10 @@
 $white: #ffffff;
 $main-font: 'Jost';
-$primary-color: #0f215c;
+$primary-color: #040e2c;
 $secondary-color: #647188;
-$black:#000;
+$black: #000;
+$red: #ff4e78;
+$btn-outline:#194EF0;
 
 /* ------------------Fonts------------------ */
 
@@ -22,12 +24,55 @@ $black:#000;
   color: $primary-color;
 }
 
-.titleh2{
-font-size: 36px;
-font-weight: 500;
-line-height: 40px;
-text-align: center;
-color: $black;
+.titleh2 {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: $primary-color;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: $primary-color;
+  }
+  &__span {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $red;
+  }
+}
+
+.link {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: $primary-color;
+  &--right {
+    text-align: right;
+  }
+  &--center{
+    text-align: center;
+  }
+}
+
+/* --------------Inputs------------------------*/
+
+.checkBox {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  color: $primary-color;
 }
 
 /* --------------Mixin------------------------*/

@@ -120,6 +120,11 @@ const routes = [
         component: () => import ('@/views/auth/Recover.vue')
       },
       {
+        path: '/register',
+        name:'Register',
+        component: () => import ('@/views/auth/Register.vue')
+      },
+      {
         path: '/newpass/:id/:hash',
         name:'NewPass',
         component: () => import ('@/views/auth/NewPass.vue'),

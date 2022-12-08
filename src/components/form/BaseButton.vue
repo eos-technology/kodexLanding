@@ -1,7 +1,7 @@
 <template>
   <button :disabled="$store.state.loading == true || disabled == true">
     <span v-if="$store.state.loading == false">
-      {{label}}
+      {{ label }}
     </span>
     <span v-else>
       {{ loadingTx }}
@@ -17,45 +17,62 @@ export default {
       default: "",
     },
     loadingTx: {
-      default: 'Loading'
+      default: "Loading",
     },
     disabled: {
-      default: false
-    }
+      default: false,
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  button{
-    display: block;
-    width: 100%;
-    margin: 25px 0;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background: linear-gradient(0deg, #132D7C, #132D7C), linear-gradient(180deg, #0F215C 0%, #007BD1 100%), #194EF0;
-    color: white;
-    font-weight: 600;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
+button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: linear-gradient(0deg, #132d7c, #132d7c),
+    linear-gradient(180deg, #0f215c 0%, #007bd1 100%), #194ef0;
+  color: white;
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 1s;
+  color: white;
+  &:hover {
+    background: rgba(19, 45, 124, 0.89);
     transition: all 1s;
-    color: white;
-    &:hover{
+  }
+  &.transparent {
+    border:1px solid $btn-outline;
+    color: $primary-color;
+    background: #fff;
+    background: none;
+    color: black;
+  }
+  &.outline {
+    border:1px solid $btn-outline;
+    color: $primary-color;
+    background: #fff;
+    &:hover {
       background: rgba(19, 45, 124, 0.89);
       transition: all 1s;
-    }
-    &.transparent{
-      background: none;
-      color: black;
+      color: white;
     }
   }
-  button:disabled,
-  button[disabled]{
-    opacity: .7;
-  }
-  button:disabled:hover,
-  button[disabled]:hover {
-    cursor: not-allowed;
-  }
+}
+button:disabled,
+button[disabled] {
+  opacity: 0.7;
+}
+button:disabled:hover,
+button[disabled]:hover {
+  cursor: not-allowed;
+}
 </style>

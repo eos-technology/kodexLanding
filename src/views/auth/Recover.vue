@@ -7,7 +7,7 @@
     </p>
     <label for=""><span>*</span> Email</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
-    <BaseButton @click="onSubmit" :label="$t('app.send')"></BaseButton>
+    <BaseButton class="recover__btn" @click="onSubmit" :label="$t('app.send')"></BaseButton>
   </section>
 </template>
 <script>
@@ -55,7 +55,6 @@ h2 {
   margin-bottom: 15px;
 }
 .recover {
-  padding: 32px;
   label {
     display: block;
     font-size: 16px;
@@ -66,6 +65,9 @@ h2 {
     span {
       color: #ff4e78;
     }
+  }
+  &__btn{
+    margin-top: 24px;
   }
 }
 </style>

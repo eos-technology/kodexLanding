@@ -1,6 +1,7 @@
 <template>
-  <h2>New password</h2>
-  <p>
+  <GoBack/>
+  <h2 class="titleh2">New password</h2>
+  <p class="sp">
     The password must cointain: 1 capital letter, 1 number, 1 special character, minimum characters
   </p>
   <section class="recover">
@@ -15,6 +16,7 @@
   </section>
 </template>
 <script>
+import GoBack from "@/components/form/GoBack.vue";
 import BaseInput from "@/components/form/BaseInput.vue";
 import InputPass from "@/components/form/InputPass.vue";
 import { ref } from "@vue/reactivity";
@@ -23,7 +25,7 @@ import Login from "./Login.vue";
 import Register from "./Register.vue";
 import { mapActions } from 'vuex';
 export default {
-  components: { BaseInput, InputPass, BaseButton, Login, Register },
+  components: { BaseInput, InputPass, BaseButton, Login, Register, GoBack },
   props: ['id', 'hash'],
   data () {
       return {
@@ -67,19 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  font-weight: 500;
-  font-size: 36px;
-  color: #000;
-  margin-bottom: 15px;
-}
-p {
-  font-size: 14px;
-  color: #647188;
-}
-.recover {
-  padding: 32px;
 
+.recover {
   label {
     display: block;
     font-size: 16px;
