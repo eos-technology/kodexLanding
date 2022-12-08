@@ -78,7 +78,8 @@ let userLang = 'es'
 
 
 const i18n = createI18n({
-  locale: userLang, // set locale
+  locale: userLang,
+  allowComposition: true, // set locale
   messages, // set locale messages
   // If you need to specify other options, you can set other options
   // ...

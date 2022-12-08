@@ -3,10 +3,10 @@
   <section class="commissions">
     <section class="commissions__aside">
       <article class="commissions__aside__total">
-        <p class="text-center">Total balance</p>
+        <p class="text-center">{{$t('comission.total')}}</p>
         <h2>$ {{ comissions.data.reduce((a, b) => a + b, 0) }}</h2>
         <BaseButton
-          label="Withdraw"
+          :label="`${$t('comission.withdraw')}`"
           :disabled="comissions.data.reduce((a, b) => a + b, 0) <= 0"
           @click="$router.push({ path: '/commissions/withdraw' })"
         ></BaseButton>
@@ -16,7 +16,7 @@
         <h2>$ {{ coinFormat(comissions.total) }}</h2>
       </article>
       <article class="commissions__aside__chart">
-        <h2>Comissions</h2>
+        <h2>{{$t('comission.title')}}</h2>
         <article class="">
           <apexchart
             :options="chartOptions"
@@ -36,18 +36,18 @@
         <article class="commissions__table__table">
           <article class="commissions__table__table-header">
             <p>ID</p>
-            <p>Type</p>
-            <p style="width: 300px">Description</p>
-            <p>Date</p>
-            <p>Status</p>
-            <p>Quantity</p>
+            <p>{{$t('comission.table.type')}}</p>
+            <p style="width: 300px">{{$t('comission.table.desc')}}</p>
+            <p>{{$t('comission.table.date')}}</p>
+            <p>{{$t('comission.table.status')}}</p>
+            <p>{{$t('comission.table.quanti')}}</p>
           </article>
           <section v-if="transactions.data.length == 0" class="vacio">
             <img
               src="@/assets/images/vacio/vacioWallet.png"
               alt=""
             />
-            <h5>You still have no transactions</h5>
+            <h5>{{$t('comission.notransactions')}}</h5>
           </section>
           <template v-if="transactions">
             <article

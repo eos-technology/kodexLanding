@@ -2,25 +2,25 @@
   <section class="withdraw">
     <BtnBack></BtnBack>
     <section class="withdraw__container">
-      <h3>Retirar dinero</h3>
+      <h3>{{$t('withdraw.title')}}</h3>
       <article class="withdraw__container__select">
-        <h4>Seleccione Wallet</h4>
+        <h4>{{$t('withdraw.select')}}</h4>
         <article class="withdraw__container__select__contain">
           <SelectCoin :coins="coins" :defaultCoin="coin" @setCoin="(e) => coin = e"></SelectCoin>
         </article>
       </article>
       <article class="withdraw__container__balance">
-        <h4>Wallet Balance</h4>
+        <h4>{{$t('withdraw.balance')}}</h4>
         <h3>$0.00</h3>
         <article class="withdraw__container__balance__contain">
-          <label for=""><span>*</span> Amount</label>
+          <label for=""><span>*</span> {{$t('withdraw.amount')}}</label>
           <BaseInput placeholder="$0.0"></BaseInput>
-          <p>Amount to transfer example: $0.00</p>
-          <label for=""><span>*</span> Destination wallet</label>
-          <BaseInput placeholder="Wallet"></BaseInput>
+          <p>{{$t('withdraw.tranfer')}}</p>
+          <label for=""><span>*</span> {{$t('withdraw.destination')}}</label>
+          <BaseInput :placeholder="`${$t('withdraw.wallet')}`"></BaseInput>
           <article class="withdraw__container__balance__contain__actions">
-              <BaseButton label="Cancelar" class="transparent"></BaseButton>
-              <BaseButton label="Enviar" @click="sendData"></BaseButton>
+              <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+              <BaseButton :label="`${$t('save')}`" @click="sendData"></BaseButton>
           </article>  
         </article>
       </article>

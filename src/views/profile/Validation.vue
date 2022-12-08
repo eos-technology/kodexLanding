@@ -1,34 +1,34 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">KYC verifications</h2>
+    <h2 class="data--Title">{{$t('validate.title')}}</h2>
     <div class="info">
       <div v-if="kycInfo.id">
-        <h3>Verification in progress</h3>
+        <h3>{{$t('validate.progres')}}</h3>
       </div>
       <div class="grid" v-else>
         <div class="grid--item">
-          <label for="name" class="grid--title">Nombres</label>
+          <label for="name" class="grid--title">{{$t('validate.name')}}</label>
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Nombres"
+            :placeholder="`${$t('validate.name')}`"
             id="name"
             v-model="form.name"
           />
         </div>
         <div class="grid--item">
-          <label for="lastname" class="grid--title">Apellidos</label>
+          <label for="lastname" class="grid--title">{{$t('validate.lastName')}}</label>
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Apellidos"
+            :placeholder="`${$t('validate.lastName')}`"
             id="lastname"
             v-model="form.document"
           />
         </div>
         <div class="grid--item">
           <label for="country" class="grid--title"
-            ><span class="grid--span"></span>Country</label
+            ><span class="grid--span"></span>{{$t('validate.country')}}</label
           >
           <!-- <BaseInput
             class="grid--btn"
@@ -43,22 +43,22 @@
           ></SimpleSelectVue>
         </div>
         <div class="grid--item">
-          <label for="city" class="grid--title">Ciudad de residencia</label>
+          <label for="city" class="grid--title">{{$t('validate.city')}}</label>
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Ciudad de residencia"
+            :placeholder="`${$t('validate.city')}`"
             id="city"
             v-model="form.city"
           />
         </div>
       </div>
       <div class="grid--item">
-        <label for="city" class="grid--title">Dirección de residencia</label>
+        <label for="city" class="grid--title">{{$t('validate.address')}}</label>
         <BaseInput
           class="grid--btn"
           type="text"
-          placeholder="Dirección de residencia"
+          :placeholder="`${$t('validate.address')}`"
           id="city"
           v-model="form.address"
         />
@@ -73,8 +73,8 @@
       </div> -->
       <DropZone></DropZone>
       <section class="data__actions">
-        <BaseButton label="Cancel" class="transparent"></BaseButton>
-        <BaseButton label="Enviar verificación"></BaseButton>
+        <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+        <BaseButton :label="`${$t('validate.send')}`"></BaseButton>
       </section>
     </div>
   </div>

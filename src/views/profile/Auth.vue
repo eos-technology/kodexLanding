@@ -1,45 +1,36 @@
 <template>
   <section class="auth">
-    <h2 class="auth--Title">Two-factor Authentication</h2>
+    <h2 class="auth--Title">{{$t('auth.title')}}</h2>
     <section class="auth__container">
       <article class="auth__container__text">
         <p>
-          Two factor authentication provides extra protection for your account
-          by requiring a special code. Note: You are only activating two factor
-          authentication for the main password.
+          {{$t('auth.desc')}}
         </p>
-        <p>Have a smart phone? Use Google Authenticator!</p>
+        <p>{{$t('auth.have')}}</p>
         <div>
           <img src="/assets/images/apple.jpg" alt="" />
           <img src="/assets/images/andrioid.jpg" alt="" />
         </div>
         <p class="grey">
-          Android, Google Play and the Google Play logo are trademarks of Google
-          Inc. Apple and the Apple logo are trademarks of Apple Inc., registered
-          in the U.S. and other countries. App Store is a service mark of Apple
-          Inc.
+          {{$t('auth.android')}}
         </p>
         <p>
-          To enable two factor authentication, scan the QR code on the right
-          using Google Authenticator. When you have successfully scanned the QR
-          code, enter the token from Google Authenticator into the "verify
-          token" field. We make sure you can generate tokens correctly before
-          enabling two factor auth.
+          {{$t('auth.enable')}}
         </p>
       </article>
       <article class="auth__container__qr">
         <div class="auth__container__qr--img">
           <img src="/assets/images/qr.png" alt="">
         </div>
-        <h4>Secret Key</h4>
+        <h4>{{$t('auth.key')}}</h4>
         <Copy text="JFSWQMTFGJ4G6Z3EIY2FQTDRGFCHQWLJ"></Copy>
-        <h5>Google authenticator Token</h5>
-        <BaseInput placeholder="Google authenticator Token"></BaseInput>
+        <h5>{{$t('auth.google')}}</h5>
+        <BaseInput :placeholder="`${$t('auth.google')}`"></BaseInput>
       </article>
     </section>
     <section class="auth__actions">
-      <BaseButton label="Cancel" class="transparent"></BaseButton>
-      <BaseButton label="Verificar token"></BaseButton>
+      <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+      <BaseButton :label="`${$t('save')} token`"></BaseButton>
     </section>
   </section>
 </template>

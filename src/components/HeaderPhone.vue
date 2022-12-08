@@ -36,7 +36,7 @@
             ><img
               class="dropdown__imgMenu"
               src="@/assets/icons/logout.svg"
-            />Logout</a
+            />{{$t('header.out')}}</a
           >
         </div>
       </div>

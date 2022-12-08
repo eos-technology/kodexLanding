@@ -6,43 +6,43 @@
         :src="apiUrl + '/uploads/users/' + user.image"
         alt=""
       />
-      <button class="frame--upButton">Subir imágen</button>
+      <button class="frame--upButton">{{$t('profile.img')}}</button>
     </div>
     <div class="info">
-      <h2 class="info--title">Datos personales</h2>
+      <h2 class="info--title">{{$t('profile.title')}}</h2>
       <div class="grid">
         <div class="grid--item">
           <label for="name" class="grid--title"
-            >Nombres</label
+            >{{$t('profile.name')}}</label
           >
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Nombres"
+            :placeholder="`${$t('profile.img')}`"
             id="name"
             v-model="user.names"
           />
         </div>
         <div class="grid--itemD">
           <label for="phone" class="grid--title"
-            >Apellidos</label
+            >{{$t('profile.lastName')}}</label
           >
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Apellidos"
+            :placeholder="`${$t('profile.img')}`"
             id="phone"
             v-model="user.phone"
           />
         </div>
         <div class="grid--item">
           <label for="user" class="grid--title"
-            >Usuario</label
+            >{{$t('profile.user')}}</label
           >
           <BaseInput
             class="grid--btn"
             type="text"
-            placeholder="Usuario"
+            :placeholder="`${$t('profile.user')}`"
             id="user"
             :disabled="true"
             v-model="user.username"
@@ -50,14 +50,14 @@
         </div>
         <div class="grid--itemD">
           <label for="email" class="grid--title"
-            ><span class="grid--span">*</span>Phone</label
+            ><span class="grid--span">*</span>{{$t('profile.phone')}}</label
           >
           <flag-input/>
         </div>
       </div>
       <section class="data__actions">
-        <BaseButton label="Cancel" class="transparent"></BaseButton>
-        <BaseButton label="Save" @click="onSubmit"></BaseButton>
+        <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+        <BaseButton :label="`${$t('save')}`" @click="onSubmit"></BaseButton>
       </section>
     </div>
   </div>

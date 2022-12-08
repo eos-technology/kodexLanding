@@ -10,7 +10,7 @@
       >
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
-          <h5>BUY KXP</h5>
+          <h5>{{$t('header.buy')}} KXP</h5>
           <p class="header__container-tab-p">$0.05</p>
         </div>
       </article>
@@ -23,7 +23,7 @@
         "
       >
         <img src="/assets/icons/copy.svg" alt="" />
-        <h5>COPY LINK</h5>
+        <h5>{{$t('header.copy')}}</h5>
       </article>
       <a
         href="https://support.kodexpay.com"
@@ -32,7 +32,7 @@
       >
         <article class="header__container-tab">
           <img src="/src/assets/icons/support.svg" alt="" />
-          <h5>SUPPORT</h5>
+          <h5>{{$t('header.sup')}}</h5>
         </article>
       </a>
       <!-- <article class="header__container-tab">
@@ -46,7 +46,7 @@
         <img src="/assets/icons/avatar.png" alt="" />
         <div>
           <p>{{ user.username }}</p>
-          <h5>VERIFIED</h5>
+          <h5>{{$t('header.verify')}}</h5>
         </div>
         <div class="dropdown">
           <div
@@ -60,7 +60,7 @@
               ><img
                 class="dropdown__imgMenu"
                 src="@/assets/icons/logout.svg"
-              />Logout</a
+              />{{$t('header.out')}}</a
             >
           </div>
         </div>

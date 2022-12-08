@@ -5,20 +5,20 @@
       <article class="token__main__img">
         <article class="token__main__img__r">
           <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
-          <h2>Learn more about KodexPay</h2>
-          <p>We can't wait to show you what we have prepared</p>
+          <h2>{{$t('token.learn')}}</h2>
+          <p>{{$t('token.wait')}}</p>
           <div class="token__social">
             <Social />
           </div>
           <div class="token__buttons">
             <a class="sBtn token__btn" href="https://kodexpay.com/whitepaper" target="_blank">
-              Whitepapper
+              {{$t('token.whitepapper')}}
             </a>
             <a href="https://bscscan.com/address/0x02a655942Dbb886c77bb22B270060c561300B0E2" target="_blank" class="oBtn token__btn">
-              Contract
+              {{$t('token.contract')}}
             </a>
             <a class="oBtn token__btn" href="https://support.kodexpay.com/faq" target="_blank">
-              FAQ
+              {{$t('token.faq')}}
             </a>
           </div>
         </article>
@@ -33,8 +33,8 @@
             </div>
             <div class="token__main__img__l__title-text">
               <p>
-                Opportunity to acquire
-                <span class="token__bold">KodexPay</span> for a price of
+                {{$t('token.oportunity')}}
+                <span class="token__bold">KodexPay</span> {{$t('token.price')}}
                 <span class="token__bold">$0.5 USD</span>
               </p>
             </div>
@@ -53,14 +53,15 @@
           </article>
           <article class="token__main__img__l__sold">
             <h4>
-              <span>$0.00</span> Sold out of
+              <span>$0.00</span> {{$t('token.sold')}}
               <span class="token__main__img__l__sold-bold">20000</span>
             </h4>
           </article>
           <article>
             <BaseButton
+              :disabled="true"
               @click="$router.push({ name: 'Purchase-Token' })"
-              label="Buy KXP"
+              :label="`${$t('token.buy')} KXP`"
             ></BaseButton>
           </article>
         </article>
@@ -70,11 +71,11 @@
         <article class="token__main__img__l align">
           <div class="align__left">
             <h2 class="align__left-title">KodexPay</h2>
-            <p class="align__left-text">Total liquidity</p>
-            <p class="align__left-text">Volume 24h</p>
-            <p class="align__left-text">Transactions 24th</p>
-            <p class="align__left-text">Burned $KXP</p>
-            <p class="align__left-text">Updated</p>
+            <p class="align__left-text">{{$t('token.liquidity')}}</p>
+            <p class="align__left-text">{{$t('token.volume')}} 24h</p>
+            <p class="align__left-text">{{$t('token.transactions')}} 24h</p>
+            <p class="align__left-text">{{$t('token.burned')}} $KXP</p>
+            <p class="align__left-text">{{$t('token.updated')}}</p>
           </div>
 
           <div class="align__right">
@@ -88,10 +89,10 @@
         </article>
 
         <article class="token__main__img__r">
-          <Distribution class="mb-4" />
+          <Distribution class="mb-4" :labels="[`${$t('token.distribution.public')}`, `${$t('token.distribution.funders')}`,`${$t('token.distribution.preSale')}`,`${$t('token.distribution.advisor')}`,`${$t('token.distribution.team')}`]" />
           <div class="row">
             <div class="col-12 col-md-6">
-              <h2 class="text-left">Total Tokens KXP</h2>
+              <h2 class="text-left">{{$t('token.totalToken')}} KXP</h2>
             </div>
             <div class="col-12 col-md-6">
               <h2 class="text-right">
@@ -106,64 +107,55 @@
       <article class="token__main__quarter">
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>RESEARCH</h3>
-          <p>Research of Market and Analysis Concept of ICO Utility token</p>
-          <h3>THE CONCEPT</h3>
+          <h3>{{$t('token.timeline.research')}}</h3>
+          <p>{{$t('token.timeline.researchDesc')}}</p>
+          <h3>{{$t('token.timeline.concept')}}</h3>
           <p>
-            Technical Research and Background Recruit Core Team White Paper
-            Concept.
+            {{$t('token.timeline.conceptDesc')}}
           </p>
-          <h3>PREPARATION</h3>
+          <h3>{{$t('token.timeline.prepration')}}</h3>
           <p>
-            Infrastructure preparation Project development plan Marketing
-            Campaign Promotions focus.
+            {{$t('token.timeline.preparationDesc')}}
           </p>
-          <h3>RECRUIT ADVISORS</h3>
-          <p>Recruit Advisors Marketing Campaign Promotions focus.</p>
+          <h3>{{$t('token.timeline.recruit')}}</h3>
+          <p>{{$t('token.timeline.recruitDesc')}}</p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>TOKEN LAUNCH</h3>
+          <h3>{{$t('token.timeline.token')}}</h3>
           <p>
-            Token launch by enabled community listing in pancakeswap and
-            differents exchanges.
+            {{$t('token.timeline.tokenDesc')}}
           </p>
-          <h3>IMPLEMENTATIONS</h3>
+          <h3>{{$t('token.timeline.implementations')}}</h3>
           <p>
-            Direct Implementation of KXP token within the payments
-            infrastructures
+            {{$t('token.timeline.implementationsDesc')}}
           </p>
-          <h3>DEVELOPMENT</h3>
-          <p>Research & Development movil platform for KXP</p>
-          <h3>UPDRADING ARCHITECTURES</h3>
+          <h3>{{$t('token.timeline.development')}}</h3>
+          <p>{{$t('token.timeline.developmentDesc')}}</p>
+          <h3>{{$t('token.timeline.uptrading')}}</h3>
           <p>
-            Tools development for upgrading the current Architectures to Mobile
-            Platforms
+            {{$t('token.timeline.uptradingDesc')}}
           </p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>KODEX PAYMENT</h3>
-          <p>Building a Safer Gaming Economy by means of KXP</p>
-          <h3>PRESENTING PLATFORM</h3>
+          <h3>{{$t('token.timeline.kodex')}}</h3>
+          <p>{{$t('token.timeline.kodexDesc')}}</p>
+          <h3>{{$t('token.timeline.presenting')}}</h3>
           <p>
-            Presenting an easy to use platform where KODEX PAYMENTS achievement
-            can be easily tokenized and traded and all acquire rewards by
-            payments.
+            {{$t('token.timeline.presentingDesc')}}
           </p>
-          <h3>DEVELOPMENT</h3>
-          <p>Research & Development movil platform for KXP</p>
+          <h3>{{$t('token.timeline.development')}}</h3>
+          <p>{{$t('token.timeline.developmentDesc')}}</p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>TOURNAMENTS AND EXPO</h3>
+          <h3>{{$t('token.timeline.tournaments')}}</h3>
           <p>
-            Launch the tournaments in the platform and Planning, focusing and
-            announcing one of the biggest ATRX Gaming decentralized
-            Expo/Conference.
+            {{$t('token.timeline.tournamentsDesc')}}
           </p>
         </article>
       </article>

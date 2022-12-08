@@ -21,7 +21,7 @@
             aria-selected="true"
           >
             <div class="nav-link-container">
-              <span class="nav-link-span">{{ element.title }}</span>
+              <span class="nav-link-span">{{ $t(`profile.tabs.${element.title}`) }}</span>
             </div>
           </div>
         </li>
@@ -76,25 +76,25 @@ export default {
     const tabsComissions = [
       {
         name: "data",
-        title: "Personal Information",
+        title: "info",
         component: Datos,
         icon: "user-edit",
       },
       {
         name: "security",
-        title: "Security",
+        title: "security",
         component: Security,
         icon: "lock-key",
       },
       {
         name: "validation",
-        title: "KYC Verification",
+        title: "verifi",
         component: ValidationVue,
         icon: "checklist",
       },
       {
         name: "uthentication",
-        title: "Two-factor Authentication",
+        title: "aut",
         component: Auth,
         icon: "checklist",
       },

@@ -2,9 +2,9 @@
   <section class="newWallet">
     <BtnBack back="/wallet"></BtnBack>
     <section class="newWallet__container">
-      <h3>Create wallet</h3>
+      <h3>{{$t('wallet.new.create')}}</h3>
       <article class="newWallet__container__select">
-        <h4>Select asset to create</h4>
+        <h4>{{$t('wallet.new.select')}}</h4>
         <article class="newWallet__container__select__contain">
           <SelectCoin
             :coins="uniqueAssets"
@@ -14,16 +14,16 @@
         </article>
       </article>
       <article class="newWallet__container__balance">
-        <h4>Wallet Balance</h4>
+        <h4>{{$t('wallet.new.balance')}}</h4>
         <h3>$0.00</h3>
         <article class="newWallet__container__balance__contain">
-          <label for=""><span>*</span> Wallet name</label>
-          <BaseInput v-model="form.name" placeholder="Name"></BaseInput>
+          <label for=""><span>*</span> {{$t('wallet.new.walletname')}}</label>
+          <BaseInput v-model="form.name" :placeholder="`${$t('wallet.new.name')}`"></BaseInput>
           <article class="newWallet__container__balance__contain__actions">
-            <BaseButton label="Cancel" class="transparent"></BaseButton>
+            <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
             <BaseButton
               :disabled="form.name == null || form.currency_id == null"
-              label="Create wallet"
+              :label="`${$t('wallet.new.create')}`"
               @click="onSubmit"
             >
             </BaseButton>
@@ -33,7 +33,7 @@
     </section>
   </section>
   <PopUpSuccess
-    title="Wallet created successfilly"
+    :title="`${$t('wallet.new.popup')}`"
     img="check"
     :showPopUp="showPopUp"
   ></PopUpSuccess>

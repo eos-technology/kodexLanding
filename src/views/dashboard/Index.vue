@@ -4,14 +4,11 @@
     <section class="dasboard__main">
       <article class="dasboard__main__img">
         <h2>Kodex Pay</h2>
-        <p class="dasboard__main__text">KodexPay was born from the need to allow businesses that only accepted Fiat to
-          enter the new world of cryptocurrencies, we have easy and efficient processes that allow users to convert
-          cryptos into Fiat quickly, we also have high quality standards that allow us to carry out seamless and fast
-          integrations with different programming languages ​​and external platforms</p>
+        <p class="dasboard__main__text">{{$t('dashborad.description')}}</p>
         <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
       <article class="dasboard__main__data">
-        <h2>Most used payment methods</h2>
+        <h2>{{$t('dashborad.pay')}}</h2>
         <article class="dasboard__main__data-chart">
           <apexchart :options="chartOptions" :series="series"
             :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"></apexchart>
@@ -24,21 +21,21 @@
           <img src="@/assets/icons/newWallet.png" alt="" />
         </div>
         <div class="aside__card__text">
-          <p class="aside__card__text__title-card">Wallet Balance</p>
+          <p class="aside__card__text__title-card">{{$t('dashborad.balance')}}</p>
           <p class="aside__card__text__price">$
             {{ coinFormat(sumUsd) }}
           </p>
         </div>
       </article>
       <article class="aside__chart">
-        <h3>KodexPay Stats</h3>
+        <h3>{{$t('dashborad.stadistics')}}</h3>
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
               <img src="/assets/icons/hand-coins-currency-color.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>Clients</p>
+              <p>{{$t('dashborad.clients')}}</p>
               <h5>100+</h5>
             </div>
           </article>
@@ -47,7 +44,7 @@
               <img src="/assets/icons/hand-coins-currency.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>Transactions</p>
+              <p>{{$t('dashborad.transactions')}}</p>
               <h5>$2M</h5>
             </div>
           </article>
@@ -57,13 +54,13 @@
         </article>
       </article>
       <article class="aside__list">
-        <h3>Recent clients</h3>
+        <h3>{{$t('dashborad.Recentclients')}}</h3>
         <article class="aside__list__tab" v-for="x in 5" :key="x">
           <div class="aside__list__tab__contain">
             <img src="/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
-            <p>Trade</p>
+            <p>{{$t('dashborad.trade')}}</p>
             <h5>$0.00</h5>
           </div>
         </article>

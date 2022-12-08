@@ -6,7 +6,7 @@
       <InputSearch
         v-model="search"
         v-on:keyup.enter="searchUser(search)"
-        placeholder="Search by username"
+        :placeholder="`${$t('searchUser')}`"
       ></InputSearch>
     </section>
     <section class="team__container" v-if="team.users">
@@ -19,7 +19,7 @@
           alt=""
           v-if="!transactions"
         />
-        <h5>You don’t have referrals yet</h5>
+        <h5>{{$t('referals')}}</h5>
       </section>
       <article class="team__container__workers first">
         <TeamCard

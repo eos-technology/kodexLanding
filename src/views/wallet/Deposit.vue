@@ -2,9 +2,9 @@
   <section class="newWallet">
     <GoBack />
     <section class="newWallet__container">
-      <h2 class="newWallet__container-title">Recibir</h2>
+      <h2 class="newWallet__container-title">{{$t('wallet.deposit')}}</h2>
       <article class="newWallet__container__select">
-        <h4>Select wallet</h4>
+        <h4>{{$t('wallet.select')}}</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
             <qrcode-vue :value="address" size="180" level="M" />
@@ -14,17 +14,16 @@
               <img class="coin__img" src="@/assets/icons/tether.svg" alt="" />
               <p class="coin__text">Tether USDT</p>
             </div>
-            <h4>Wallet address</h4>
+            <h4>{{$t('wallet.address')}}</h4>
             <Copy :text="address" class="w-100"></Copy>
             <p>
-              La transacción se ha creado con éxito, complete el pago para
-              enviar los tokens entre 1 a 24 horas
+              {{$t('wallet.time')}}
             </p>
           </div>
         </article>
         <article class="newWallet__container__select__actions">
-          <BaseButton label="Cancelar" class="transparent"></BaseButton>
-          <BaseButton label="Verificar pago"></BaseButton>
+          <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+          <BaseButton :label="`${$t('cancel')}`"></BaseButton>
         </article>
       </article>
     </section>

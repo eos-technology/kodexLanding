@@ -1,11 +1,11 @@
 <template>
   <div class="data">
-    <h2 class="data--Title">Change password</h2>
+    <h2 class="data--Title">{{$t('security.title')}}</h2>
     <div class="info">
       <div class="grid">
         <div class="grid--item">
           <label for="currentPass" class="grid--title"
-            ><span class="grid--span">*</span>New password</label
+            ><span class="grid--span">*</span>{{$t('security.new')}}</label
           >
           <BaseInput
             class="grid--btn"
@@ -17,7 +17,7 @@
         </div>
         <div class="grid--item">
           <label for="newPass" class="grid--title"
-            ><span class="grid--span">*</span>Current password</label
+            ><span class="grid--span">*</span>{{$t('security.current')}}</label
           >
           <BaseInput
             class="grid--btn"
@@ -29,7 +29,7 @@
         </div>
         <div class="grid--item">
           <label for="Pass" class="grid--title"
-            ><span class="grid--span">*</span>Confirm new password</label
+            ><span class="grid--span">*</span>{{$t('security.confirm')}}</label
           >
           <BaseInput
             class="grid--btn"
@@ -41,11 +41,11 @@
         </div>
       </div>
       <div v-if="message">
-        {{ message }}
+        {{ $t(message) }}
       </div>
       <section class="data__actions">
-        <BaseButton label="Cancel" class="transparent"></BaseButton>
-        <BaseButton label="Save" @click="onSubmit"></BaseButton>
+        <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
+        <BaseButton :label="`${$t('save')}`" @click="onSubmit"></BaseButton>
       </section>
     </div>
   </div>
@@ -91,14 +91,14 @@ export default {
   watch: {
     r_password: function (val) {
       if (val != this.form.password) {
-        this.message = "Password do not match";
+        this.message = "dontMatch";
       } else {
         this.message = null;
       }
     },
     r_pin: function (val) {
       if (val != this.form.pin) {
-        this.message = "Pin do not match";
+        this.message = "pinmatch";
       } else {
         this.message = null;
       }
