@@ -30,11 +30,11 @@
 
     <article class="captcha"></article>
 
-    <BaseButton :label="$t('app.login')"/>
+    <BaseButton @click="onSumbit()" :label="$t('app.login')"/>
 
     <p class="sp">Or</p>
 
-    <BaseButton class="outline" :label="$t('app.signin')" @click="onSumbit()"></BaseButton>
+    <BaseButton class="outline" :label="$t('app.signin')" ></BaseButton>
   </section>
 </template>
 
@@ -58,7 +58,6 @@ export default {
     ...mapActions("auth", ["login"]),
     onSumbit() {
       this.login(this.form).then((response) => {
-        console.log("RESPONSE");
         this.$router.push({
           name: "Dashboard",
         });
