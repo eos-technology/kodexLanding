@@ -30,9 +30,9 @@ export default {
 input {
   width: 100%;
   padding: 14px;
-  border-radius: 8px;
   color: #000626;
-  background: #ffffff;
+  background: #F6F8FA;
+border-radius: 8px;
   border: none;
   border-radius: 12px;
   outline: none;

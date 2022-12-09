@@ -4,21 +4,22 @@
       <article class="wallet__balance__cards__container">
         <div class="wallet__drag" @click="$router.push({ name: `NewWallet` })">
           <img src="@/assets/icons/wallet.svg" alt="" />
-          <p class="wallet__drag-text" v-html="$t('wallet.wallet.create')"></p>
+          <p class="wallet__drag-text">Crear nueva wallet</p>
         </div>
         <CardCoin
           :isActive="walletActive.id"
           @click="walletActive = wallet"
           :wallet="wallet"
-          v-for="(wallet) in wallets"
+          v-for="wallet in wallets"
           :key="wallet.id"
         />
       </article>
     </article>
+
     <section class="wallet__balance">
       <article class="wallet__balance__total">
         <div>
-          <p>{{$t('wallet.wallet.total')}}</p>
+          <p>{{ $t("wallet.wallet.total") }}</p>
           <h2 style="text-transform: uppercase">
             {{ walletActive.asset ? walletActive.asset.currency : "" }}
             {{ walletActive.balance ? coinFormat(walletActive.balance) : 0 }}
@@ -35,7 +36,7 @@
         <article class="wallet__balance__total__actions">
           <div @click="$router.push({ name: `Withdraw` })">
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
-            <p>{{$t('wallet.wallet.draw')}}</p>
+            <p>{{ $t("wallet.wallet.draw") }}</p>
           </div>
           <div
             @click="
@@ -48,7 +49,7 @@
             "
           >
             <img :src="`/assets/icons/Money-Deposit.svg`" alt="" />
-            <p>{{$t('wallet.wallet.deposit')}}</p>
+            <p>{{ $t("wallet.wallet.deposit") }}</p>
           </div>
           <div
             @click="
@@ -61,14 +62,17 @@
             "
           >
             <img :src="`/assets/icons/trash-delete.svg`" alt="" />
-            <p>{{$t('wallet.wallet.delete')}}</p>
+            <p>{{ $t("wallet.wallet.delete") }}</p>
           </div>
         </article>
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">
-          <h2>{{$t('wallet.wallet.trans')}}</h2>
-          <InputSearch class="wallet__table__search" :placeholder="$t('search')" />
+          <h2 class="titleh2">Movimientos</h2>
+          <InputSearch
+            class="wallet__table__search"
+            :placeholder="$t('search')"
+          />
         </article>
         <article
           class="wallet__table__container"
@@ -77,10 +81,10 @@
           <article class="wallet__table__table">
             <article class="wallet__table__table-header noId">
               <p>Hash</p>
-              <p>{{$t('wallet.wallet.table.time')}}</p>
-              <p>{{$t('wallet.wallet.table.from')}}</p>
-              <p>{{$t('wallet.wallet.table.to')}}</p>
-              <p>{{$t('wallet.wallet.table.quanty')}}</p>
+              <p>{{ $t("wallet.wallet.table.time") }}</p>
+              <p>{{ $t("wallet.wallet.table.from") }}</p>
+              <p>{{ $t("wallet.wallet.table.to") }}</p>
+              <p>{{ $t("wallet.wallet.table.quanty") }}</p>
             </article>
             <article
               class="wallet__table__table-row noId"
@@ -101,7 +105,7 @@
             alt=""
             v-if="!transactions"
           />
-          <h5>{{$t('wallet.wallet.notrans')}}</h5>
+          <h5>{{ $t("wallet.wallet.notrans") }}</h5>
         </section>
         <CardTableWallet class="wallet__table__card" />
         <CardTableWallet class="wallet__table__card" />
@@ -171,7 +175,7 @@ export default {
   },
   created() {
     this.getData();
-    this.walletActive = this.wallets[0]
+    this.walletActive = this.wallets[0];
   },
   methods: {
     ...mapActions("wallet", ["getWallets", "getTransactions"]),
@@ -222,12 +226,8 @@ export default {
   width: 300px;
 }
 .wallet {
-  margin-top: 30px;
-  padding: 40px;
-  border-radius: 8px;
-  background: white;
   display: grid;
-  grid-template-columns: 35% 1fr;
+  grid-template-columns: 28% 1fr;
   grid-gap: 20px;
   @media (max-width: 1300px) {
     grid-template-columns: 1fr;
@@ -251,7 +251,12 @@ export default {
     }
   }
   &__balance {
-    padding: 25px;
+    background: #FFFFFF;
+/* Border/Divider-Complementario */
+padding: 24px;
+gap: 24px;
+border: 1px solid #ECECEE;
+border-radius: 16px;
     grid-gap: 40px;
     border-radius: 24px;
     overflow: hidden;
@@ -321,7 +326,6 @@ export default {
       &__container {
         height: 100%;
         overflow-y: scroll;
-        padding: 20px;
         @include scroll;
         @media (max-width: 1200px) {
           overflow-y: auto;

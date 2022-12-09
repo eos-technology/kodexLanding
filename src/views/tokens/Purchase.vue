@@ -121,7 +121,6 @@
 <script>
 import Header from "@/components/Header.vue";
 import GoBack from "@/components/form/GoBack.vue";
-import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoinToken from "@/components/base/SelectCoinToken.vue";
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
@@ -132,7 +131,6 @@ import { mapActions, mapState } from "vuex";
 export default {
   components: {
     GoBack,
-    BaseInput,
     BaseButton,
     SelectCoinToken,
     PopUpSuccess,

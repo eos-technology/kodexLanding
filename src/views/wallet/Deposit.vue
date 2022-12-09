@@ -1,10 +1,9 @@
 <template>
+  <GoBack class="m-0" />
   <section class="newWallet">
-    <GoBack />
     <section class="newWallet__container">
-      <h2 class="newWallet__container-title">{{$t('wallet.deposit')}}</h2>
+      <h2 class="newWallet__container-title">{{ $t("wallet.deposit") }}</h2>
       <article class="newWallet__container__select">
-        <h4>{{$t('wallet.select')}}</h4>
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
             <qrcode-vue :value="address" size="180" level="M" />
@@ -14,17 +13,20 @@
               <img class="coin__img" src="@/assets/icons/tether.svg" alt="" />
               <p class="coin__text">Tether USDT</p>
             </div>
-            <h4>{{$t('wallet.address')}}</h4>
+            <h4>{{ $t("wallet.address") }}</h4>
             <Copy :text="address" class="w-100"></Copy>
             <p>
-              {{$t('wallet.time')}}
+              {{ $t("wallet.time") }}
             </p>
           </div>
         </article>
-        <article class="newWallet__container__select__actions">
-          <BaseButton :label="`${$t('cancel')}`" class="transparent"></BaseButton>
-          <BaseButton :label="`${$t('cancel')}`"></BaseButton>
-        </article>
+      </article>
+      <article class="newWallet__container__select__actions">
+        <BaseButton
+          :label="`${$t('cancel')}`"
+          class="transparent"
+        ></BaseButton>
+        <BaseButton label="Verificar pago"></BaseButton>
       </article>
     </section>
   </section>
@@ -59,16 +61,19 @@ export default {
 
 <style lang="scss" scoped>
 .newWallet {
-  margin-top: 30px;
-  padding: 40px;
-  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid #ececee;
+  border-radius: 24px;
   background: white;
+  width: 75%;
+  margin: 0 auto;
   @media (max-width: 500px) {
-          padding: 20px;
-        }
+    padding: 20px;
+  }
   &__container {
-    max-width: 750px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     h3 {
       margin-bottom: 20px;
     }
@@ -78,13 +83,8 @@ export default {
       line-height: 32px;
       text-align: left;
       color: #132d7c;
-      margin: 24px 0px;
     }
     &__select {
-      margin-bottom: 20px;
-      padding: 25px;
-      border-radius: 8px;
-      border: 1px solid #ececee;
       @media (max-width: 500px) {
         padding: 12px;
       }
@@ -112,6 +112,7 @@ export default {
           }
         }
         &-copy {
+          width: 100%;
           h4 {
             font-weight: 400;
             font-size: 16px;
@@ -134,7 +135,7 @@ export default {
         display: flex;
         justify-content: flex-end;
         button {
-          width: 110px;
+          width: fit-content;
           margin-left: 15px;
           @media (max-width: 700px) {
             font-size: 12px;
@@ -163,4 +164,5 @@ export default {
     margin: 0 !important;
   }
 }
+
 </style>
