@@ -2,40 +2,52 @@
   <Header></Header>
   <section class="dasboard">
     <section class="dasboard__main">
-      <article class="dasboard__main__img">
+      <article class="dasboard__main__data">
         <h2>Kodex Pay</h2>
-        <p class="dasboard__main__text">{{$t('dashborad.description')}}</p>
+        <p class="dasboard__main__text">{{ $t("dashborad.description") }}</p>
         <img src="/src/assets/icons/imgMain.png" alt="" />
       </article>
+
       <article class="dasboard__main__data">
-        <h2>{{$t('dashborad.pay')}}</h2>
+        <h2>Kodex Pay to USD Chart</h2>
+      </article>
+
+      <article class="dasboard__main__data">
+        <h2>{{ $t("dashborad.pay") }}</h2>
         <article class="dasboard__main__data-chart">
-          <apexchart :options="chartOptions" :series="series"
-            :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"></apexchart>
+          <apexchart
+            :options="chartOptions"
+            :series="series"
+            :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"
+          ></apexchart>
         </article>
       </article>
     </section>
-    <aside class="aside">
+
+    <!-- <aside class="aside">
       <article class="aside__card">
         <div class="aside__card__img">
           <img src="@/assets/icons/newWallet.png" alt="" />
         </div>
         <div class="aside__card__text">
-          <p class="aside__card__text__title-card">{{$t('dashborad.balance')}}</p>
-          <p class="aside__card__text__price">$
+          <p class="aside__card__text__title-card">
+            {{ $t("dashborad.balance") }}
+          </p>
+          <p class="aside__card__text__price">
+            $
             {{ coinFormat(sumUsd) }}
           </p>
         </div>
       </article>
       <article class="aside__chart">
-        <h3>{{$t('dashborad.stadistics')}}</h3>
+        <h3>{{ $t("dashborad.stadistics") }}</h3>
         <article class="aside__chart__price">
           <article class="aside__chart__price__tab">
             <div class="aside__chart__price__tab__contain">
               <img src="/assets/icons/hand-coins-currency-color.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>{{$t('dashborad.clients')}}</p>
+              <p>{{ $t("dashborad.clients") }}</p>
               <h5>100+</h5>
             </div>
           </article>
@@ -44,35 +56,39 @@
               <img src="/assets/icons/hand-coins-currency.svg" alt="" />
             </div>
             <div class="aside__chart__price__tab__name">
-              <p>{{$t('dashborad.transactions')}}</p>
+              <p>{{ $t("dashborad.transactions") }}</p>
               <h5>$2M</h5>
             </div>
           </article>
         </article>
         <article>
-          <apexchart type="line" :options="options" :series="series2"></apexchart>
+          <apexchart
+            type="line"
+            :options="options"
+            :series="series2"
+          ></apexchart>
         </article>
       </article>
       <article class="aside__list">
-        <h3>{{$t('dashborad.Recentclients')}}</h3>
+        <h3>{{ $t("dashborad.Recentclients") }}</h3>
         <article class="aside__list__tab" v-for="x in 5" :key="x">
           <div class="aside__list__tab__contain">
             <img src="/assets/icons/hand-coins-currency-black.svg" alt="" />
           </div>
           <div class="aside__list__tab__name">
-            <p>{{$t('dashborad.trade')}}</p>
+            <p>{{ $t("dashborad.trade") }}</p>
             <h5>$0.00</h5>
           </div>
         </article>
       </article>
-    </aside>
+    </aside> -->
   </section>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import VueApexCharts from "vue3-apexcharts";
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   components: { Header, apexchart: VueApexCharts },
@@ -124,11 +140,17 @@ export default {
         },
       },
       legend: {
-        fontFamily: 'Kanit',
+        fontFamily: "Kanit",
         fontWeight: 400,
         formatter: function (seriesName, opts) {
-          return [seriesName, " - ", ` <span class="apex-bold"> ${opts.w.globals.series[opts.seriesIndex]}M </span>`]
-        }
+          return [
+            seriesName,
+            " - ",
+            ` <span class="apex-bold"> ${
+              opts.w.globals.series[opts.seriesIndex]
+            }M </span>`,
+          ];
+        },
       },
       responsive: [
         {
@@ -195,73 +217,38 @@ export default {
     };
   },
   created() {
-    this.getWallets()
+    this.getWallets();
   },
   methods: {
     ...mapActions("wallet", ["getWallets", "getTransactions"]),
   },
   computed: {
-    ...mapGetters('wallet', ['sumUsd'])
-  }
+    ...mapGetters("wallet", ["sumUsd"]),
+  },
 };
 </script>
 
 <style lang="scss" >
 .dasboard {
-  display: grid;
-  grid-template-columns: 70% 1fr;
-  grid-gap: 25px;
-  margin-top: 30px;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: 50% 50%;
-  }
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
-
   &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     &__text {
-      margin-bottom: 16px;
-    }
-
-    &__img {
-      padding: 16px;
-      border-radius: 8px;
-      background: white;
-
-      h2 {
-        color: #132D7C;
-        margin-bottom: 15px;
-        font-size: 26px;
-      }
-
-      h3 {
-        margin-bottom: 15px;
-        font-size: 14px;
-        font-weight: 300;
-      }
-
-      p {
-        font-size: 14px;
-        color: #647188;
-      }
-
-      img {
-        width: 100%;
-      }
     }
 
     &__data {
-      margin-top: 25px;
-      padding: 16px;
+      padding: 24px;
       border-radius: 8px;
       background: white;
+      border: 1px solid #ececee;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
 
       h2 {
-        color: #132D7C;
-        margin-bottom: 15px;
+        color: #132d7c;
         font-size: 26px;
       }
 
@@ -404,7 +391,7 @@ export default {
       }
     }
   }
-  .apexcharts-legend-series{
+  .apexcharts-legend-series {
     display: flex;
     align-items: center;
   }

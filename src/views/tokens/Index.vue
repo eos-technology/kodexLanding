@@ -5,20 +5,32 @@
       <article class="token__main__img">
         <article class="token__main__img__r">
           <img class="token__img" src="/src/assets/icons/img-nbg.png" alt="" />
-          <h2>{{$t('token.learn')}}</h2>
-          <p>{{$t('token.wait')}}</p>
+          <h2>{{ $t("token.learn") }}</h2>
+          <p>{{ $t("token.wait") }}</p>
           <div class="token__social">
             <Social />
           </div>
           <div class="token__buttons">
-            <a class="sBtn token__btn" href="https://kodexpay.com/whitepaper" target="_blank">
-              {{$t('token.whitepapper')}}
+            <a
+              class="sBtn token__btn"
+              href="https://kodexpay.com/whitepaper"
+              target="_blank"
+            >
+              {{ $t("token.whitepapper") }}
             </a>
-            <a href="https://bscscan.com/address/0x02a655942Dbb886c77bb22B270060c561300B0E2" target="_blank" class="oBtn token__btn">
-              {{$t('token.contract')}}
+            <a
+              href="https://bscscan.com/address/0x02a655942Dbb886c77bb22B270060c561300B0E2"
+              target="_blank"
+              class="oBtn token__btn"
+            >
+              {{ $t("token.contract") }}
             </a>
-            <a class="oBtn token__btn" href="https://support.kodexpay.com/faq" target="_blank">
-              {{$t('token.faq')}}
+            <a
+              class="oBtn token__btn"
+              href="https://support.kodexpay.com/faq"
+              target="_blank"
+            >
+              {{ $t("token.faq") }}
             </a>
           </div>
         </article>
@@ -33,8 +45,9 @@
             </div>
             <div class="token__main__img__l__title-text">
               <p>
-                {{$t('token.oportunity')}}
-                <span class="token__bold">KodexPay</span> {{$t('token.price')}}
+                {{ $t("token.oportunity") }}
+                <span class="token__bold">KodexPay</span>
+                {{ $t("token.price") }}
                 <span class="token__bold">$0.5 USD</span>
               </p>
             </div>
@@ -53,7 +66,7 @@
           </article>
           <article class="token__main__img__l__sold">
             <h4>
-              <span>$0.00</span> {{$t('token.sold')}}
+              <span>$0.00</span> {{ $t("token.sold") }}
               <span class="token__main__img__l__sold-bold">20000</span>
             </h4>
           </article>
@@ -71,11 +84,11 @@
         <article class="token__main__img__l align">
           <div class="align__left">
             <h2 class="align__left-title">KodexPay</h2>
-            <p class="align__left-text">{{$t('token.liquidity')}}</p>
-            <p class="align__left-text">{{$t('token.volume')}} 24h</p>
-            <p class="align__left-text">{{$t('token.transactions')}} 24h</p>
-            <p class="align__left-text">{{$t('token.burned')}} $KXP</p>
-            <p class="align__left-text">{{$t('token.updated')}}</p>
+            <p class="align__left-text">{{ $t("token.liquidity") }}</p>
+            <p class="align__left-text">{{ $t("token.volume") }} 24h</p>
+            <p class="align__left-text">{{ $t("token.transactions") }} 24h</p>
+            <p class="align__left-text">{{ $t("token.burned") }} $KXP</p>
+            <p class="align__left-text">{{ $t("token.updated") }}</p>
           </div>
 
           <div class="align__right">
@@ -89,15 +102,22 @@
         </article>
 
         <article class="token__main__img__r">
-          <Distribution class="mb-4" :labels="[`${$t('token.distribution.public')}`, `${$t('token.distribution.funders')}`,`${$t('token.distribution.preSale')}`,`${$t('token.distribution.advisor')}`,`${$t('token.distribution.team')}`]" />
+          <Distribution
+            class="mb-4"
+            :labels="[
+              `${$t('token.distribution.public')}`,
+              `${$t('token.distribution.funders')}`,
+              `${$t('token.distribution.preSale')}`,
+              `${$t('token.distribution.advisor')}`,
+              `${$t('token.distribution.team')}`,
+            ]"
+          />
           <div class="row">
             <div class="col-12 col-md-6">
-              <h2 class="text-left">{{$t('token.totalToken')}} KXP</h2>
+              <h2 class="text-left">{{ $t("token.totalToken") }} KXP</h2>
             </div>
             <div class="col-12 col-md-6">
-              <h2 class="text-right">
-                $70.000.000
-              </h2>
+              <h2 class="text-right">$70.000.000</h2>
             </div>
           </div>
         </article>
@@ -107,55 +127,55 @@
       <article class="token__main__quarter">
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>{{$t('token.timeline.research')}}</h3>
-          <p>{{$t('token.timeline.researchDesc')}}</p>
-          <h3>{{$t('token.timeline.concept')}}</h3>
+          <h3>{{ $t("token.timeline.research") }}</h3>
+          <p>{{ $t("token.timeline.researchDesc") }}</p>
+          <h3>{{ $t("token.timeline.concept") }}</h3>
           <p>
-            {{$t('token.timeline.conceptDesc')}}
+            {{ $t("token.timeline.conceptDesc") }}
           </p>
-          <h3>{{$t('token.timeline.prepration')}}</h3>
+          <h3>{{ $t("token.timeline.prepration") }}</h3>
           <p>
-            {{$t('token.timeline.preparationDesc')}}
+            {{ $t("token.timeline.preparationDesc") }}
           </p>
-          <h3>{{$t('token.timeline.recruit')}}</h3>
-          <p>{{$t('token.timeline.recruitDesc')}}</p>
+          <h3>{{ $t("token.timeline.recruit") }}</h3>
+          <p>{{ $t("token.timeline.recruitDesc") }}</p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>{{$t('token.timeline.token')}}</h3>
+          <h3>{{ $t("token.timeline.token") }}</h3>
           <p>
-            {{$t('token.timeline.tokenDesc')}}
+            {{ $t("token.timeline.tokenDesc") }}
           </p>
-          <h3>{{$t('token.timeline.implementations')}}</h3>
+          <h3>{{ $t("token.timeline.implementations") }}</h3>
           <p>
-            {{$t('token.timeline.implementationsDesc')}}
+            {{ $t("token.timeline.implementationsDesc") }}
           </p>
-          <h3>{{$t('token.timeline.development')}}</h3>
-          <p>{{$t('token.timeline.developmentDesc')}}</p>
-          <h3>{{$t('token.timeline.uptrading')}}</h3>
+          <h3>{{ $t("token.timeline.development") }}</h3>
+          <p>{{ $t("token.timeline.developmentDesc") }}</p>
+          <h3>{{ $t("token.timeline.uptrading") }}</h3>
           <p>
-            {{$t('token.timeline.uptradingDesc')}}
+            {{ $t("token.timeline.uptradingDesc") }}
           </p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>{{$t('token.timeline.kodex')}}</h3>
-          <p>{{$t('token.timeline.kodexDesc')}}</p>
-          <h3>{{$t('token.timeline.presenting')}}</h3>
+          <h3>{{ $t("token.timeline.kodex") }}</h3>
+          <p>{{ $t("token.timeline.kodexDesc") }}</p>
+          <h3>{{ $t("token.timeline.presenting") }}</h3>
           <p>
-            {{$t('token.timeline.presentingDesc')}}
+            {{ $t("token.timeline.presentingDesc") }}
           </p>
-          <h3>{{$t('token.timeline.development')}}</h3>
-          <p>{{$t('token.timeline.developmentDesc')}}</p>
+          <h3>{{ $t("token.timeline.development") }}</h3>
+          <p>{{ $t("token.timeline.developmentDesc") }}</p>
         </article>
 
         <article class="token__main__quarter__card">
           <div><img src="@/assets/icons/kodexColor.svg" alt="" /></div>
-          <h3>{{$t('token.timeline.tournaments')}}</h3>
+          <h3>{{ $t("token.timeline.tournaments") }}</h3>
           <p>
-            {{$t('token.timeline.tournamentsDesc')}}
+            {{ $t("token.timeline.tournamentsDesc") }}
           </p>
         </article>
       </article>
@@ -183,15 +203,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text-right{
+.text-right {
   text-align: right !important;
 }
-a{
+a {
   text-decoration: none;
   padding-top: 15px !important;
 }
 .token {
-  margin-top: 30px;
   &__img {
     margin-bottom: 16px;
   }
@@ -206,20 +225,20 @@ a{
     display: flex;
     justify-content: space-between;
     row-gap: 16px;
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       width: 100%;
       flex-direction: column;
     }
   }
   &__btn {
     width: 100%;
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-right: 12px;
     }
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       width: 100%;
     }
-    &.sBtn{
+    &.sBtn {
       height: 40px;
       display: flex;
       justify-content: center;
@@ -232,25 +251,24 @@ a{
       justify-content: center;
       align-items: center;
       padding: 0 !important;
-      border: 1px solid #132D7C;
-      color: #132D7C;
+      border: 1px solid #132d7c;
+      color: #132d7c;
     }
   }
   &__kodex {
     display: block;
     margin: 0 auto;
     margin-bottom: 12px;
-    @media (max-width:500px) {
+    @media (max-width: 500px) {
       width: 100%;
     }
   }
   &__main {
-    padding: 40px;
+    padding:24px;
     border-radius: 8px;
-    background: white;
-    @media (max-width:500px) {
-      padding: 10px;
-    }
+    background: #fff;
+    border: 1px solid #ececee;
+    border-radius: 16px;
     &__img {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -282,7 +300,7 @@ a{
           font-weight: 500;
           line-height: 32px;
           text-align: center;
-          color: #132D7C;
+          color: #132d7c;
         }
       }
       &__l {
@@ -333,7 +351,7 @@ a{
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
-      @media (max-width:500px) {
+      @media (max-width: 500px) {
         flex-direction: column;
       }
       &__card {
@@ -342,10 +360,10 @@ a{
         padding: 25px;
         border-radius: 25px;
         background: #f6f8fa;
-        @media (max-width:500px) {
-        width: 100%;
-        margin-bottom: 20px;
-      }
+        @media (max-width: 500px) {
+          width: 100%;
+          margin-bottom: 20px;
+        }
         div {
           display: flex;
           align-items: center;

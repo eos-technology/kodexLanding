@@ -3,18 +3,39 @@
     <h2 style="color: #132d7c; text-transform: capitalize" class="title">
       {{ $route.name }}
     </h2>
+
     <article class="header__container" v-if="user && user.username">
+      <a
+        href="https://support.kodexpay.com"
+        target="_blank"
+        style="text-decoration: none; color: black"
+      >
+        <article class="header__container-tab support">
+          <img src="/src/assets/icons/support.svg" alt="" />
+          <h5>SUPPORT</h5>
+        </article>
+      </a>
+
       <article
         class="header__container-tab active"
         @click="$router.push({ name: 'Purchase-Token' })"
       >
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
-          <h5>{{$t('header.buy')}} KXP</h5>
+          <h5>BUY KXP</h5>
           <p class="header__container-tab-p">$0.05</p>
         </div>
       </article>
-      <article
+
+      <article class="header__container-tab green">
+        <img src="@/assets/icons/walletcoin.svg" alt="" />
+        <div>
+          <p class="green__title">WALLET</p>
+          <p class="green__text">$0.00</p>
+        </div>
+      </article>
+
+      <!-- <article
         class="header__container-tab copy"
         @click="
           copyURL(
@@ -24,21 +45,12 @@
       >
         <img src="/assets/icons/copy.svg" alt="" />
         <h5>{{$t('header.copy')}}</h5>
-      </article>
-      <a
-        href="https://support.kodexpay.com"
-        target="_blank"
-        style="text-decoration: none; color: black"
-      >
-        <article class="header__container-tab">
-          <img src="/src/assets/icons/support.svg" alt="" />
-          <h5>{{$t('header.sup')}}</h5>
-        </article>
-      </a>
+      </article> -->
+
       <!-- <article class="header__container-tab">
         <img src="/assets/icons/bell-not.svg" alt="" />
       </article> -->
-      <article
+      <!-- <article
         class="header__container-tab avatar"
         @click="show = !show"
         v-if="user"
@@ -64,7 +76,7 @@
             >
           </div>
         </div>
-      </article>
+      </article> -->
     </article>
   </section>
 </template>
@@ -144,11 +156,11 @@ export default {
   display: block;
   color: black;
   padding: 10px;
-  &:hover{
-    background-color:#f6f8fa;
+  &:hover {
+    background-color: #f6f8fa;
   }
 }
-hr{
+hr {
   margin: 10px;
 }
 
@@ -162,10 +174,7 @@ hr{
 .header {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  padding: 16px;
-  border-radius: 16px;
-  background: white;
+  padding: 16px 0px;
   @media (max-width: 700px) {
     display: none !important;
   }
@@ -183,25 +192,15 @@ hr{
     }
   }
   &__container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    @media (max-width: 950px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    a {
-      @media (max-width: 700px) {
-        width: 100%;
-      }
-    }
+    display: flex;
+    gap: 8px;
     &-tab {
-      height: 56px;
       display: flex;
       align-items: center;
-      justify-content: center;
       padding: 8px 16px;
       border-radius: 12px;
-      background: #f6f8fa;
+      gap: 8px;
+      height: 100%;
       cursor: pointer;
       &-p {
         font-size: 10px;
@@ -229,17 +228,11 @@ hr{
         > img {
           width: 40px;
           height: 40px;
-          margin-right: 15px;
         }
       }
       img {
         width: 20px;
         height: 20px;
-      }
-      p {
-        color: #647188;
-        font-size: 12px;
-        font-weight: 300;
       }
       h5 {
         font-size: 10px;
@@ -262,8 +255,28 @@ hr{
   &__text > h5,
   p {
     color: $white;
-    margin-left: 12px;
     line-height: 14px;
+  }
+}
+
+.support {
+  background: #ffffff;
+  border: 1px solid #ececee;
+}
+
+.green {
+  background: #0ec564;
+  &__title {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #040e2c;
+  }
+  &__text {
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 14px;
+    color: #040e2c;
   }
 }
 
