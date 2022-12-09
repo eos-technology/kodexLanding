@@ -10,7 +10,7 @@
       <img style="max-width: 50px" :src="asset.logo" alt="" />
       <div class="coin">
         <p class="coin__title">{{ asset.name }}</p>
-        <p class="coin__text text-start">NAME</p>
+        <p class="coin__text text-start">{{ asset.symbol }}</p>
       </div>
     </div>
   </section>
@@ -34,16 +34,16 @@ export default {
       typeof: String,
     },
   },
-  setup(props, { emit }) {
-    const coinSelected = ref("btc");
-    const selectCoin = (coin) => {
-      coinSelected.value = coin;
-      emit("setCoin", coinSelected.value);
-    };
+  data () {
     return {
-      coinSelected,
-      selectCoin,
-    };
+      coinSelected: null
+    }
+  },
+  methods: {
+    selectCoin (coin) {
+      this.coinSelected = coin;
+      this.$emit("setCoin", this.coinSelected);
+    }
   },
 };
 </script>

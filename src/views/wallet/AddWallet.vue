@@ -1,92 +1,90 @@
 <template>
-  <Header />
-  <GoBack class="mb-0"></GoBack>
-  <div class="accordion" role="tablist">
-    <h2 class="titleh3">Añadir Wallet</h2>
-    <b-card no-body class="mb-1">
-      <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-1
-          ><div class="payment">
-            <div class="payment__num"><p>1</p></div>
-            <h4 class="titleh4">Seleccionar Wallet</h4>
+  <div>
+    <Header />
+      <GoBack class="mb-0"></GoBack>
+      <div class="accordion" role="tablist" v-if="uniqueAssets.length > 0">
+        <h2 class="titleh3">{{ $t('wallet.wallet.create') }}</h2>
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block v-b-toggle.accordion-1
+              ><div class="payment">
+                <div class="payment__num"><p>1</p></div>
+                <h4 class="titleh4">{{ $t('wallet.new.select') }}</h4>
+              </div></b-button
+            >
+          </b-card-header>
+          <b-collapse
+            id="accordion-1"
+            visible
+            accordion="my-accordion"
+            role="tabpanel"
+          >
+            <b-card-body>
+              <section class="newWallet__container">
+          <article class="newWallet__container__select">
+            <article class="newWallet__container__select__contain">
+              <SelectCoinToken
+                :coins="uniqueAssets"
+                :defaultCoin="coin"
+                @setCoin="selectAsset"
+              ></SelectCoinToken>
+            </article>
+            <article class="newWallet__container__balance__contain__actions">
+              <BaseButton
+                :label="$t('token.purchase.continue')"
+                @click="walletName = true"
+              >
+              </BaseButton>
+            </article>
+          </article>
+        </section>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+
+        <b-card no-body class="mb-1">
+          <b-card-header header-tag="header" class="p-1" role="tab">
+            <b-button block @click="walletName = !walletName" variant="info"
+              ><div class="payment">
+            <div class="payment__num"><p>2</p></div>
+            <h4 class="titleh4">{{ $t('wallet.new.wallet') }}</h4>
           </div></b-button
-        >
-      </b-card-header>
-      <b-collapse
-        id="accordion-1"
-        visible
-        accordion="my-accordion"
-        role="tabpanel"
-      >
-        <b-card-body>
-          <section class="newWallet__container">
-      <InputSearch placeholder="Buscar método de pago" />
-      <article class="newWallet__container__select">
-        <article class="newWallet__container__select__contain">
-          <SelectCoinToken
-            :coins="coins"
-            :defaultCoin="coin"
-            @setCoin="selectAsset"
-          ></SelectCoinToken>
-        </article>
-        <article class="newWallet__container__balance__contain__actions">
-          <BaseButton label="Cancel" class="transparent"></BaseButton>
-          <BaseButton
-            :disabled="form.payment_method == null"
-            label="Confirm"
-            @click="onSubmit"
-          >
-          </BaseButton>
-        </article>
-      </article>
-    </section>
-        </b-card-body>
-      </b-collapse>
-    </b-card>
+            >
+          </b-card-header>
+          <b-collapse v-model="walletName" accordion="my-accordion" role="tabpanel">
+            <b-card-body>
+              <article class="balance">
+            <div class="balance__box">
+              <p class="balance__title">{{ $t('wallet.new.balance') }}</p>
+              <p class="balance__price">$0.00</p>
+            </div>
+            <div class="label">
+              <label class="label__text" for="wallet">
+                <span class="label__span">*</span> {{ $t('wallet.new.name') }}</label
+              >
+              <BaseInput id="wallet" v-model="form.name" label="KXP" />
+            </div>
+            <article class="newWallet__container__balance__contain__actions">
+              <BaseButton :label="$t('token.purchase.cancel')" class="transparent"></BaseButton>
+              <BaseButton
+                :label="$t('wallet.wallet.create')"
+                @click="onSubmit"
+              >
+              </BaseButton>
+            </article>
+          </article>
+            </b-card-body>
+          </b-collapse>
+        </b-card>
+      </div>
+      <NoWallet v-else />
 
-    <b-card no-body class="mb-1">
-      <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-2 variant="info"
-          ><div class="payment">
-        <div class="payment__num"><p>2</p></div>
-        <h4 class="titleh4">Datos Wallet</h4>
-      </div></b-button
-        >
-      </b-card-header>
-      <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <article class="balance">
-        <div class="balance__box">
-          <p class="balance__title">Wallet Balance</p>
-          <p class="balance__price">$0.00</p>
-        </div>
-        <div class="label">
-          <label class="label__text" for="wallet">
-            <span class="label__span">*</span> Nombre de la wallet</label
-          >
-          <BaseInput id="wallet" label="Nombre" />
-        </div>
-        <article class="newWallet__container__balance__contain__actions">
-          <BaseButton label="Cancel" class="transparent"></BaseButton>
-          <BaseButton
-            label="Crear Wallet"
-            @click="onSubmit"
-          >
-          </BaseButton>
-        </article>
-      </article>
-        </b-card-body>
-      </b-collapse>
-    </b-card>
+      <PopUpSuccess
+        title="Wallet creada con éxito"
+        img="check"
+        :showPopUp="showPopUp"
+      ></PopUpSuccess>
   </div>
-
-
-
-  <PopUpSuccess
-    title="Wallet creada con éxito"
-    img="check"
-    :showPopUp="showPopUp"
-  ></PopUpSuccess>
 </template>
 
 <script>
@@ -97,8 +95,9 @@ import SelectCoinToken from "@/components/base/SelectCoinToken.vue";
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
 import InputSearch from "@/components/form/InputSearch.vue";
 import Copy from "@/components/base/Copy.vue";
+import NoWallet from './NoWallet.vue'
 
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   components: {
     GoBack,
@@ -108,44 +107,37 @@ export default {
     PopUpSuccess,
     InputSearch,
     Copy,
+    NoWallet
   },
   data() {
     return {
-      assets: [
-        {
-          id: "usdt",
-          icon: "https://i.ibb.co/N9GSBx7/usdt.png",
-          name: "USDT (TRC20)",
-        },
-      ],
       form: {
-        title: "Token Purchase",
-        price: null,
-        model: "Tokens",
-        model_id: null,
-        payment_method: null,
         currency_id: null,
-        name: null,
+        name: null
       },
       showPopUp: false,
+      walletName: false
     };
   },
   created() {
-    this.getCoins();
+    this.getAssets();
   },
   methods: {
-    ...mapActions("cart", ["storeCart", "getCoins"]),
+    ...mapActions("wallet", ["getAssets", "storeWallet"]),
     onSubmit() {
-      this.storeCart(this.form).then((response) => {
-        this.$router.push({ name: "Cart", params: { id: response } });
+      this.storeWallet(this.form).then((response) => {
+        this.$router.push({ name: "Wallet" });
       });
     },
     selectAsset(asset) {
-      this.form.payment_method = asset;
+
+      let token = this.uniqueAssets.findIndex(el => el.token == asset)
+      this.form.currency_id = this.uniqueAssets[token].id;
     },
   },
   computed: {
     ...mapState("cart", ["coins"]),
+    ...mapGetters('wallet', ['uniqueAssets'])
   },
 };
 </script>

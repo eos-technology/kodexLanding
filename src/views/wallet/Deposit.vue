@@ -3,30 +3,23 @@
   <section class="newWallet">
     <section class="newWallet__container">
       <h2 class="newWallet__container-title">{{ $t("wallet.deposit") }}</h2>
-      <article class="newWallet__container__select">
+      <article class="newWallet__container__select" v-if="wallet != null">
         <article class="newWallet__container__select__contain">
           <div class="newWallet__container__select__contain-qr">
-            <qrcode-vue :value="address" size="180" level="M" />
+            <qrcode-vue :value="wallet.address" size="180" level="M" />
           </div>
           <div class="newWallet__container__select__contain-copy">
             <div class="coin">
-              <img class="coin__img" src="@/assets/icons/tether.svg" alt="" />
-              <p class="coin__text">Tether USDT</p>
+              <img class="coin__img" style="max-width: 50px" :src="wallet.asset.icon" alt="" />
+              <p class="coin__text">{{ wallet.asset.name }}</p>
             </div>
             <h4>{{ $t("wallet.address") }}</h4>
-            <Copy :text="address" class="w-100"></Copy>
+            <Copy :text="wallet.address" class="w-100"></Copy>
             <p>
               {{ $t("wallet.time") }}
             </p>
           </div>
         </article>
-      </article>
-      <article class="newWallet__container__select__actions">
-        <BaseButton
-          :label="`${$t('cancel')}`"
-          class="transparent"
-        ></BaseButton>
-        <BaseButton label="Verificar pago"></BaseButton>
       </article>
     </section>
   </section>
@@ -38,24 +31,24 @@ import BaseInput from "@/components/form/BaseInput.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import QrcodeVue from "qrcode.vue";
-import { ref } from "@vue/reactivity";
 import Copy from "@/components/base/Copy.vue";
+import { mapState } from 'vuex';
 export default {
   props: ["address"],
   components: { QrcodeVue, GoBack, BaseInput, BaseButton, SelectCoin, Copy },
-  setup() {
-    const coins = [
-      { name: "btc" },
-      { name: "usdt" },
-      { name: "trx" },
-      { name: "USDT" },
-    ];
-    const coin = ref("coin");
+  data () {
     return {
-      coins,
-      coin,
-    };
+      wallet: null  
+    }
   },
+  created () {
+    if(this.address) {
+      this.wallet = this.wallets.find(el => el.address == this.address)
+    }
+  },
+  computed: {
+    ...mapState('wallet', ['wallets'])
+  }
 };
 </script>
 

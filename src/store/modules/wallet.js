@@ -12,14 +12,19 @@ export default {
     uniqueAssets (state) {
       const ids = state.wallets.map(ele => ele.asset_id)
 
-      console.log('IDS', ids)
-      
       let arrayData = []
+      console.log({ ids })
       for (let i = 0; i < state.assets.length; i++) {
         const element = state.assets[i];
         
         if(!ids.includes(element.id)) {
-          arrayData.push(element)
+          arrayData.push({
+            token: element.currency,
+            logo: element.icon,
+            name: element.name,
+            symbol: element.token,
+            id: element.id
+          })
         }
 
       }

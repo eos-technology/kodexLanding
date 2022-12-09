@@ -23,7 +23,7 @@
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
           <h5>BUY KXP</h5>
-          <p class="header__container-tab-p">$0.05</p>
+          <p class="header__container-tab-p">$3.0 USD</p>
         </div>
       </article>
 

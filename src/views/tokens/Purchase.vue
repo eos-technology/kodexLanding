@@ -2,143 +2,146 @@
   <Header />
   <GoBack class="mb-0"></GoBack>
   <div class="accordion" role="tablist">
-    <h2 class="titleh3">Comprar Token (KXP)</h2>
+    <h2 class="titleh3">{{ $t('token.purchase.buyToken') }} (KXP)</h2>
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-1
+        <b-button block @click="visibleSelect = !visibleSelect"
           ><div class="payment">
             <div class="payment__num"><p>1</p></div>
-            <h4 class="titleh4">Select payment method</h4>
+            <h4 class="titleh4">{{ $t('token.purchase.paymentMethod') }}</h4>
           </div></b-button
         >
       </b-card-header>
       <b-collapse
         id="accordion-1"
-        visible
+        v-model="visibleSelect"
         accordion="my-accordion"
         role="tabpanel"
       >
         <b-card-body>
           <section class="newWallet__container">
-      <InputSearch placeholder="Buscar método de pago" />
-      <article class="newWallet__container__select">
-        <article class="newWallet__container__select__contain">
-          <SelectCoinToken
-            :coins="coins"
-            :defaultCoin="coin"
-            @setCoin="selectAsset"
-          ></SelectCoinToken>
-        </article>
-        <article class="newWallet__container__balance__contain__actions">
-          <BaseButton label="Cancel" class="transparent"></BaseButton>
-          <BaseButton
-            :disabled="form.payment_method == null"
-            label="Confirm"
-            @click="onSubmit"
-          >
-          </BaseButton>
-        </article>
-      </article>
-    </section>
+            <article class="newWallet__container__select">
+              <article class="newWallet__container__select__contain">
+                <SelectCoinToken
+                  :coins="coins"
+                  :defaultCoin="coin"
+                  @setCoin="selectAsset"
+                ></SelectCoinToken>
+              </article>
+              <article class="newWallet__container__balance__contain__actions">
+                <BaseButton :label="$t('token.purchase.cancel')" class="transparent"></BaseButton>
+                <BaseButton
+                  :disabled="form.payment_method == null && cart != null"
+                  :label="$t('token.purchase.continue')"
+                  @click="onSubmit()"
+                >
+                </BaseButton>
+              </article>
+            </article>
+          </section>
         </b-card-body>
       </b-collapse>
     </b-card>
 
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-2 variant="info"
+        <b-button
+          block
+          @click="visiblePay = !visiblePay"
+          variant="info"
+          :disabled="cart == null"
           ><div class="payment">
-        <div class="payment__num"><p>2</p></div>
-        <h4 class="titleh4">Select payment method</h4>
-      </div></b-button
+            <div class="payment__num"><p>2</p></div>
+            <h4 class="titleh4">{{ $t('token.purchase.makePay') }}</h4>
+          </div></b-button
         >
       </b-card-header>
-      <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-        <b-card-body>
+      <b-collapse v-model="visiblePay" accordion="my-accordion" role="tabpanel">
+        <b-card-body v-if="cart != null">
           <section class="qr">
-        <section class="d-flex gap-4">
-          <img
-            style="width: 308px; height: 308px"
-            src="@/assets/images/qr.png"
-            alt=""
-          />
+            <section class="d-flex gap-4">
+              <qrcode-vue :value="cart.wallet" size="200" level="M" />
 
-          <section class="qr__info w-100">
-            <article class="qr__header d-flex flex-column gap-2">
-              <div class="d-flex justify-content-between">
-                <p class="qr__header--text">Status</p>
-                <div class="d-flex gap-2 align-items-center">
-                  <div
-                    style="
-                      width: 8px;
-                      height: 8px;
-                      background: #ffab1b;
-                      border-radius: 50%;
-                    "
-                    class="qr__info__box"
-                  ></div>
-                  <p class="qr__header--textB">Waiting for money</p>
-                </div>
-              </div>
+              <section class="qr__info w-100">
+                <article class="qr__header d-flex flex-column gap-2">
+                  <!-- <div class="d-flex justify-content-between">
+                    <p class="qr__header--text">{{$t('cart.status')}}</p>
+                    <div class="d-flex gap-2 align-items-center">
+                      <div
+                        style="
+                          width: 8px;
+                          height: 8px;
+                          background: #ffab1b;
+                          border-radius: 50%;
+                        "
+                        class="qr__info__box"
+                      ></div>
+                      <p class="qr__header--textB">Waiting for money</p>
+                    </div>
+                  </div> -->
 
-              <div class="d-flex justify-content-between">
-                <p class="qr__header--text">Countdown</p>
+                  <!-- <div class="d-flex justify-content-between">
+                <p class="qr__header--text">{{$t('cart.count')}}</p>
                 <p class="qr__header--textB">00:00</p>
-              </div>
+              </div> -->
 
-              <p class="qr__header--text">
-                Verificaremos el pago de manera automatica una vez realizado la
-                transacción.
-              </p>
-            </article>
+                  <p class="qr__header--text">
+                    {{$t('cart.verifi')}}
+                  </p>
+                </article>
 
-            <article class="qr__main">
-              <div class="d-flex gap-3">
-                <img src="@/assets/icons/tetherWhite.svg" alt="" />
-                <div>
-                  <p class="qr__main--text">USDT</p>
-                  <p class="qr__main--price">$3.00</p>
-                </div>
-              </div>
+                <article class="qr__main">
+                  <div class="d-flex gap-3">
+                    <img src="@/assets/icons/tetherWhite.svg" alt="" />
+                    <div>
+                      <p class="qr__main--text">USD</p>
+                      <p class="qr__main--price">$3.00</p>
+                    </div>
+                  </div>
 
-              <img src="@/assets/icons/arrow.svg" alt="" />
+                  <img src="@/assets/icons/arrow.svg" alt="" />
 
-              <div class="d-flex gap-3">
-                <div>
-                  <p class="qr__main--text text-end">USDT</p>
-                  <p class="qr__main--price text-end">$3.00</p>
-                </div>
-                <img src="@/assets/icons/kodexWhite.svg" alt="" />
-              </div>
-            </article>
+                  <div class="d-flex gap-3">
+                    <div>
+                      <p class="qr__main--text text-end">KXP</p>
+                      <p class="qr__main--price text-end">$1.00</p>
+                    </div>
+                    <img src="@/assets/icons/kodexWhite.svg" alt="" />
+                  </div>
+                </article>
 
-            <article class="qr__footer">
-              <p class="qr__footer--title">Dirección de wallet</p>
-              <Copy text="TJXoCK3EMxGWPqi2niklfBF7y0865kCrT" />
-              <p class="sp text-start">
-                La transacción se ha creado con éxito, complete el pago para
-                enviar los tokens entre 1 a 24 horas
-              </p>
+                <article class="qr__footer">
+                  <p class="qr__footer--title">{{ $t('cart.address') }}</p>
+                  <Copy v-if="cart" :text="cart.wallet"></Copy>
+                  <p class="sp text-start">
+                   {{ $t('cart.trans') }}
+                  </p>
+                </article>
+                <section class="text-center">
+                  {{ message }}
+                </section>
+              </section>
+            </section>
+
+            <article class="newWallet__container__balance__contain__actions">
+              <BaseButton
+                :label="$t('token.purchase.cancel')"
+                :disabled="cart == null"
+                class="transparent"
+                @click="cancelPayment()"
+              ></BaseButton>
+              <BaseButton
+                :disabled="cart == null"
+                :label="$t('token.purchase.confirmPay')"
+                @click="confirmPayment()"
+              >
+              </BaseButton>
             </article>
           </section>
-        </section>
-
-        <article class="newWallet__container__balance__contain__actions">
-          <BaseButton label="Cancel" class="transparent"></BaseButton>
-          <BaseButton
-            :disabled="form.payment_method == null"
-            label="Confirm"
-            @click="onSubmit"
-          >
-          </BaseButton>
-        </article>
-      </section>
         </b-card-body>
       </b-collapse>
     </b-card>
   </div>
-
-
 
   <PopUpSuccess
     title="Wallet creada con éxito"
@@ -148,6 +151,7 @@
 </template>
 
 <script>
+import QrcodeVue from "qrcode.vue";
 import Header from "@/components/Header.vue";
 import GoBack from "@/components/form/GoBack.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
@@ -159,6 +163,7 @@ import Copy from "@/components/base/Copy.vue";
 import { mapActions, mapState } from "vuex";
 export default {
   components: {
+    QrcodeVue,
     GoBack,
     BaseButton,
     SelectCoinToken,
@@ -169,13 +174,8 @@ export default {
   },
   data() {
     return {
-      assets: [
-        {
-          id: "usdt",
-          icon: "https://i.ibb.co/N9GSBx7/usdt.png",
-          name: "USDT (TRC20)",
-        },
-      ],
+      visiblePay: false,
+      visibleSelect: true,
       form: {
         title: "Token Purchase",
         price: null,
@@ -186,24 +186,62 @@ export default {
         name: null,
       },
       showPopUp: false,
+      loading: false,
+      message: null
     };
   },
   created() {
     this.getCoins();
+    if(this.cart != null) {
+      this.visibleSelect = false
+      this.visiblePay = true
+    }
   },
   methods: {
-    ...mapActions("cart", ["storeCart", "getCoins"]),
+    ...mapActions("cart", ["storeCart", "getCoins", 'getCart', 'checkPayment', 'destroyCart']),
     onSubmit() {
       this.storeCart(this.form).then((response) => {
-        this.$router.push({ name: "Cart", params: { id: response } });
+        this.getDataPayment(response)
       });
     },
     selectAsset(asset) {
       this.form.payment_method = asset;
     },
+    getDataPayment(id) {
+      this.loading = true;
+      this.getCart(id).then(() => {
+        this.loading = false;
+        this.visibleSelect = false
+        this.visiblePay = true
+      });
+    },
+    cancelPayment() {
+      this.loading = true;
+      this.destroyCart(this.cart.id).then(() => {
+        openNotification("Compra cancelada");
+        this.loading = false;
+        this.$router.push({ name: "Tokens" });
+      });
+    },
+    confirmPayment() {
+      this.loading = true;
+      this.checkPayment(this.cart.id).then((response) => {
+        this.message = response;
+        this.loading = false;
+        if (response == "success") {
+          this.getUserInfo();
+          openNotification(
+            "Purchase made successfully",
+            "The tokens will be sent to your wallet as soon as possible"
+          );
+          this.getData();
+          this.$router.push({ name: "Tokens" });
+        }
+      });
+    },
   },
   computed: {
-    ...mapState("cart", ["coins"]),
+    ...mapState("cart", ["coins", 'cart']),
   },
 };
 </script>
@@ -373,10 +411,10 @@ export default {
   }
 }
 
-.accordion{
+.accordion {
   padding: 24px;
   background: #fff;
-  border: 1px solid #ECECEE;
-border-radius: 24px;
+  border: 1px solid #ececee;
+  border-radius: 24px;
 }
 </style>

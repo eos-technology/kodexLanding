@@ -28,13 +28,11 @@
       <router-link to="/recover" class="link link--right" href="">{{ $t("app.forPass") }}</router-link>
     </article>
 
-    <article class="captcha"></article>
-
     <BaseButton @click="onSumbit()" :label="$t('app.login')"/>
 
-    <p class="sp">Or</p>
+    <p class="sp">{{ $t('app.or') }}</p>
 
-    <BaseButton class="outline" :label="$t('app.signin')" ></BaseButton>
+    <BaseButton @click="$router.push({ name: 'Register' })" class="outline" :label="$t('app.signin')" ></BaseButton>
   </section>
 </template>
 

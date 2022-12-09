@@ -6,7 +6,8 @@ export default {
     carts: [],
     chart: null,
     transactions: [],
-    coins: []
+    coins: [],
+    cart: null
   },
   getters: {},
   mutations: {
@@ -36,6 +37,9 @@ export default {
     },
     GET_TRANSACTIONS (state, data) {
       state.transactions = data
+    },
+    DELETE_CART (state, data) {
+      state.cart = null
     }
   },
   actions: {
@@ -66,6 +70,7 @@ export default {
     },
     async destroyCart (context, id) {
       const response = await axios.get(`/api/v1/cart/delete/${id}`)
+      context.commit('DELETE_CART', response.data)
       return response.data
     },
     async getTransactions (context, payload) {

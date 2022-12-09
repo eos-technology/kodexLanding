@@ -1,13 +1,13 @@
 <template>
-  <go-back class="m-0" />
+  <GoBack class="m-0" />
   <section class="withdraw">
     <section class="withdraw__container">
       <h3 class="titleh3">{{ $t("wallet.draw.draw") }}</h3>
       <article class="withdraw__container__select">
-        <img src="@/assets/icons/btcWhite.svg" alt="" />
+        <img :src="wallet.asset.icon" style="max-width: 60px" alt="" />
         <div>
-          <p>Bitcoin Wallet Balance</p>
-          <p>$0.00</p>
+          <p>{{ wallet.asset.name }} Wallet Balance</p>
+          <p>${{ coinFormat(wallet.balance) }}</p>
         </div>
       </article>
       <article class="withdraw__container__balance">
@@ -34,7 +34,7 @@
                 form.to == null
               "
               :label="`${$t('send')}`"
-              @click="sendData"
+              @click="onsubmit()"
             ></BaseButton>
           </article>
         </article>
@@ -55,45 +55,30 @@ import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoin from "@/components/base/SelectCoin.vue";
 import { ref } from "@vue/reactivity";
 import PopUpSuccess from "@/components/base/PopUpSuccess.vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   components: { BaseInput, BaseButton, SelectCoin, PopUpSuccess, GoBack },
-  setup() {
-    const coins = [
-      { name: "btc" },
-      { name: "usdt" },
-      { name: "trx" },
-      { name: "USDT" },
-    ];
-    const showPopUp = ref(false);
-    const coin = ref("coin");
-    const sendData = () => {
-      showPopUp.value = true;
-    };
-    return {
-      coins,
-      coin,
-      showPopUp,
-      sendData,
-    };
-  },
+  props: ['address'],
   data() {
     return {
+      showPopUp: false,
       form: {
         wallet_id: null,
         quantity: null,
         to: null,
       },
+      wallet: null
     };
   },
   created() {
     this.getWallets();
+    if(this.address) {
+      this.wallet = this.wallets.find(el => el.address == this.address)
+      this.form.wallet_id = this.wallet.id
+    }
   },
   methods: {
     ...mapActions("wallet", ["getWallets", "sendTransaction"]),
-    selectWallet(asset) {
-      this.form.wallet_id = asset;
-    },
     onsubmit() {
       this.sendTransaction(this.form).then(() => {
         openNotification("Withdraw success");
@@ -102,7 +87,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("wallet", ["withdrawals"]),
+    ...mapState("wallet", ['wallets']),
   },
 };
 </script>

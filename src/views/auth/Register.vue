@@ -1,10 +1,10 @@
 <template>
   <section class="RegisterContainer">
     <GoBack/>
-    <h2 class="titleh2 mb-4">Bienvenidos</h2>
+    <h2 class="titleh2 mb-4">{{ $t("app.welcome") }}</h2>
     <label for=""><span>*</span> {{ $t("app.fullname") }}</label>
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
-    <label for=""><span>*</span> Email</label>
+    <label for=""><span>*</span> {{ $t("app.mail") }}</label>
     <BaseInput v-model="form.email" placeholder="example@mail.com"></BaseInput>
     <label for=""><span>*</span> {{$t('app.cellphone')}}</label>
     <FlagInput v-model="form.phone"></FlagInput>

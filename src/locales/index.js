@@ -1,13 +1,13 @@
 const messages = {
   es: {
     app: {
-      login:'Acceso',
+      login:'Iniciar sesión',
       register:'Registrarse',
-      welcome: 'Bienvenida',
+      welcome: 'Bienvenido',
       welcomeMsg: 'Por favor ingrese su nombre de usuario y contraseña para ingresar',
-      mail:'Correo',
+      mail:'Correo electrónico',
       pass:'Contraseña',
-      forPass:'¿Olvidé mi clave?',
+      forPass:'Olvidé mi clave',
       signin:'Registrarse',
       referral:'Refererido por',
       fullname:'Nombre completo',
@@ -20,6 +20,7 @@ const messages = {
       recoverText:'Ingrese su dirección de correo electrónico a continuación y le enviaremos instrucciones para configurar una nueva',
       send:'Enviar',
       remember:'Recordarme',
+      or: 'O'
     },
     dashborad: {
       description: "KodexPay nació de la necesidad de permitir que las empresas que solo aceptaban Fiat ingresa al nuevo mundo de las criptomonedas, contamos con procesos fáciles y eficientes que permiten a los usuarios convertir cryptos en Fiat rápidamente, también contamos con altos estándares de calidad que nos permiten llevar a cabo sin problemas y rápido integraciones con diferentes lenguajes de programación y plataformas externas",
@@ -77,6 +78,14 @@ const messages = {
         preSale: "Preventa 20.0%",
         advisor: "Tutor 5.0%",
         team: "Equipo 1.0%"
+      },
+      purchase: {
+        buyToken: 'Comprar token',
+        paymentMethod: 'Seleccionar método de pago',
+        continue: 'Continuar',
+        cancel: 'Cancelar',
+        confirmPay: 'Verificar pago',
+        makePay: 'Realizar y confirmar pago'
       }
     },
     liquidity: {
@@ -203,19 +212,20 @@ const messages = {
       new: {
         create: "Crear billetera",
         select: "Seleccionar activo para crear",
-        balance: "Saldo de la cartera",
+        balance: "Saldo de la billetera",
         walletname: "Nombre de la billetera",
         name: "Nombre",
-        create: "Crear billetera",
-        popup: "Monedero creado con éxito"
+        popup: "Monedero creado con éxito",
+        wallet: 'Información de la billetera'
       },
       wallet: {
-        crete: "<b>Crear</b> Nueva <b>billetera</b>",
+        create: "Crear Nueva billetera",
         total: "Balance total",
         draw: "Retirar",
         deposit: "Depósito",
         delete: "Borrar",
         trans: "transacción",
+        movements: 'Movimientos',
         table: {
           time: "Tiempo",
           from: "De",
@@ -233,6 +243,11 @@ const messages = {
         destination: "Monedero de destino",
         wallet: "Cartera",
         popup: "Envio realizado con éxito"
+      },
+      noCreate: {
+        noCreate: 'No es posible crear más wallet.',
+        noText: 'Ya ha superado el limite de creación de wallet',
+        backToStart: 'Regresar al inicio'
       }
     },
     header: {

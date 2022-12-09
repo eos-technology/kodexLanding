@@ -1,5 +1,4 @@
 <template>
-  <go-back class="m-0" />
   <section class="withdraw">
     <section class="withdraw__container">
       <img
@@ -8,11 +7,11 @@
         alt=""
       />
       <div>
-        <h3 class="titleh3">No es posible crear más wallet.</h3>
-        <p class="pp">Ya ha superado el limite de creación de wallet</p>
+        <h3 class="titleh3">{{ $t('wallet.noCreate.noCreate') }}</h3>
+        <p class="pp">{{ $t('wallet.noCreate.noText') }}</p>
       </div>
 
-      <BaseButton style="width:fit-content" label="Volver a inicio" />
+      <BaseButton @click="$router.push({ name: 'Wallet' })" style="width:fit-content" :label="$t('wallet.noCreate.backToStart')" />
     </section>
   </section>
 </template>

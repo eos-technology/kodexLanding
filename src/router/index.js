@@ -34,7 +34,7 @@ const routes = [
       },
       {
         path: 'token/purchase',
-        name:'Buy token',
+        name:'Purchase-Token',
         component: () => import ('@/views/tokens/Purchase.vue')
       },
       {
@@ -58,18 +58,14 @@ const routes = [
             component: () => import ('@/views/wallet/Wallet.vue')
           },
           {
-            path: '/wallet/withdraw',
+            path: '/wallet/withdraw/:address',
             name:'Withdraw',
-            component: () => import ('@/views/wallet/WithDraw.vue')
-          },
-          {
-            path: '/wallet/noWallet',
-            name:'No Wallet',
-            component: () => import ('@/views/wallet/NoWallet.vue')
+            component: () => import ('@/views/wallet/WithDraw.vue'),
+            props: true
           },
           {
             path: '/wallet/new',
-            name:'Add Wallet',
+            name:'NewWallet',
             component: () => import ('@/views/wallet/AddWallet.vue')
           },
           {
@@ -109,28 +105,28 @@ const routes = [
     component: () => import('@/layouts/Auth.vue'),
     children: [
       {
-        path: 'login/:register?/:username?',
+        path: 'login',
         name:'Login',
-        component: () => import ('@/views/auth/Index.vue'),
-        props: true
+        component: () => import ('@/views/auth/Index.vue')
       },
       {
-        path: '/verification',
+        path: 'verification',
         name:'Verification',
         component: () => import ('@/views/auth/Verification.vue')
       },
       {
-        path: '/recover',
+        path: 'recover',
         name:'Recover',
         component: () => import ('@/views/auth/Recover.vue')
       },
       {
-        path: '/register',
+        path: 'register/:username?',
         name:'Register',
-        component: () => import ('@/views/auth/Register.vue')
+        component: () => import ('@/views/auth/Register.vue'),
+        props: true
       },
       {
-        path: '/newpass/:id/:hash',
+        path: 'newpass/:id/:hash',
         name:'NewPass',
         component: () => import ('@/views/auth/NewPass.vue'),
         props: true
@@ -149,7 +145,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const loggedIn = store.state.auth.user
 
-  const publicPages = ['Login', 'Verification', 'Recover', 'NewPass']
+  const publicPages = ['Login', 'Verification', 'Recover', 'NewPass', 'Register']
 
   const authRequired = !publicPages.includes(to.name)
 

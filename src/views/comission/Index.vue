@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <section class="commissions">
     <section class="commissions__aside">
       <article class="commissions__aside__total">

@@ -38,22 +38,22 @@
                     alt=""
                   />
                   <div>
-                    <p class="profile--title">CAMILO</p>
-                    <p class="profile--text">VERIFIED</p>
+                    <p class="profile--title">{{ user.username }}</p>
+                    <p class="profile--text">{{ user.validated == 0 ? 'UNVERIFIED' : 'VERIFIED' }}</p>
                   </div>
                 </div>
                 <!-- <img src="@/assets/images/arrow-right.svg" alt="" /> -->
               </div>
 
-              <div class="profile__btns">
+              <div class="profile__btns" @click="$router.push({ name: 'Purchase-Token' })">
                 <div class="profile__btns--box profile__btns--box-blue">
                   <img src="@/assets/icons/money.svg" alt="" />
                   <div>
                     <p class="profile__btns--title">BUY KXP</p>
-                    <p class="profile__btns--text">$0.05</p>
+                    <p class="profile__btns--text">$3.0</p>
                   </div>
                 </div>
-                <div class="profile__btns--box">
+                <div class="profile__btns--box" @click="copyURL('https://my.kodexpay.com/#/auth/register/'+user.username)">
                   <img
                     style="width: 16px"
                     src="@/assets/icons/link.svg"
@@ -83,13 +83,14 @@
               </div>
             </article>
           </article>
-          <div class="logout">
+          <div class="logout" @click="close()">
             <p class="logout__text">Cerrar sesión</p>
             <img class="logout__img" src="@/assets/icons/log.svg" alt="" />
           </div>
         </section>
       </article>
       <section class="sectionApp">
+        <Header></Header>
         <router-view></router-view>
       </section>
     </section>
@@ -100,8 +101,9 @@
 import { ref } from "@vue/reactivity";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import HeaderPhone from "../components/HeaderPhone.vue";
+import Header from "@/components/Header.vue";
 export default {
   setup() {
     const activeBar = ref(false);
@@ -115,7 +117,6 @@ export default {
       { name: "Profile", icon: "profile", path: "/profile" },
     ];
     const route = useRoute();
-    console.log(`output->`, route);
     const activeTab = ref(false);
     const getActiveTab = (element) => {
       return route.name
@@ -124,13 +125,6 @@ export default {
         ? "active"
         : "";
     };
-    // const getUrlColor = (element) => {
-    //   return route.name
-    //     .toLocaleLowerCase()
-    //     .includes(element.name.toLocaleLowerCase())
-    //     ? "white"
-    //     : "black";
-    // };
     return {
       tabs,
       activeTab,
@@ -143,9 +137,25 @@ export default {
     this.getUserInfo();
   },
   methods: {
-    ...mapActions("auth", ["getUserInfo"]),
+    ...mapActions("auth", ["getUserInfo", 'logout']),
+    async copyURL (mytext) {
+      try {
+        await navigator.clipboard.writeText(mytext);
+        openNotification('Copied successfully')
+      } catch ($e) {
+        openNotification('Sorry, we cant copy this now')
+      }
+    },
+    close () {
+      this.logout().then(() => {
+        this.$router.push({ name: 'Login' })
+      })
+    }
   },
-  components: { HeaderPhone },
+  components: { HeaderPhone, Header },
+  computed: {
+    ...mapState('auth', ['user'])
+  }
 };
 </script>
 

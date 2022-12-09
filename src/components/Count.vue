@@ -1,7 +1,7 @@
 <template>
   <section id="MainCount">
     <Countdown
-      deadline="2023-01-25"
+      deadline="2023-06-25"
       mainColor="#000"
       mainFlipBackgroundColor="#fff"
       secondFlipBackgroundColor="#fff"

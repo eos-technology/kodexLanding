@@ -4,7 +4,7 @@
       <article class="wallet__balance__cards__container">
         <div class="wallet__drag" @click="$router.push({ name: `NewWallet` })">
           <img src="@/assets/icons/wallet.svg" alt="" />
-          <p class="wallet__drag-text">Crear nueva wallet</p>
+          <p class="wallet__drag-text">{{ $t('wallet.wallet.create') }}</p>
         </div>
         <CardCoin
           :isActive="walletActive.id"
@@ -34,7 +34,7 @@
           </p>
         </div>
         <article class="wallet__balance__total__actions">
-          <div @click="$router.push({ name: `Withdraw` })">
+          <div @click="$router.push({ name: `Withdraw`, params: { address: walletActive.address ? walletActive.address : '' } })">
             <img :src="`/assets/icons/Money-Withdraw.svg`" alt="" />
             <p>{{ $t("wallet.wallet.draw") }}</p>
           </div>
@@ -68,7 +68,7 @@
       </article>
       <section class="wallet__table">
         <article class="wallet__table__title">
-          <h2 class="titleh2">Movimientos</h2>
+          <h2 class="titleh2">{{ $t('wallet.wallet.movements') }}</h2>
           <InputSearch
             class="wallet__table__search"
             :placeholder="$t('search')"
@@ -161,12 +161,6 @@ export default {
           key: "quantity",
           label: "Quantity",
         },
-      ],
-      balanceActions: [
-        { icon: "Money-Withdraw", name: "Retirar", route: "withdraw" },
-        { icon: "Money-Deposit", name: "Depositar", route: "deposit" },
-        { icon: "create", name: "Create", route: "new" },
-        /* { icon: "trash-delete", name: "Delete" }, */
       ],
       walletActive: {
         id: null,

@@ -5,7 +5,7 @@
     </a>
   </div>
   <div class="social">
-    <a href="https://facebook.com/KodexPay" target="_blank">
+    <a href="https://instagram.com/KodexPay" target="_blank">
       <img class="social__img" src="@/assets/icons/instagram.svg" alt="" />
     </a>
   </div>
@@ -20,7 +20,7 @@
     </a>
   </div>
   <div class="social">
-    <a href="https://facebook.com/KodexPay" target="_blank">
+    <a href="https://coinmarketcap.com/currencies/kodexpay/" target="_blank">
       <img class="social__img" src="@/assets/icons/rednew.svg" alt="" />
     </a>
   </div>

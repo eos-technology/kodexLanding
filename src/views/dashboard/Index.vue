@@ -9,10 +9,8 @@
       </article>
 
       <article class="dasboard__main__data">
-        <h2>Kodex Pay to USD Chart</h2>
+        <h2>KodexPay to USD Chart</h2>
         <img src="@/assets/images/chart.png" alt="" />
-        <h2>Kodex Pay to USD Converter</h2>
-        <img src="@/assets/images/inf.png" alt="" />
       </article>
 
       <article class="grid">
@@ -26,7 +24,7 @@
             ></apexchart>
           </article>
           <div class="coins">
-            <div v-for="item in coins" class="coin">
+            <div v-for="item in coins" :key="item" class="coin">
               <div
                 class="coin__color"
                 :style="`background:${item.color}`"
