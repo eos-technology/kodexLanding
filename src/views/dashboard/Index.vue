@@ -10,16 +10,47 @@
 
       <article class="dasboard__main__data">
         <h2>Kodex Pay to USD Chart</h2>
+        <img src="@/assets/images/chart.png" alt="" />
+        <h2>Kodex Pay to USD Converter</h2>
+        <img src="@/assets/images/inf.png" alt="" />
       </article>
 
-      <article class="dasboard__main__data">
-        <h2>{{ $t("dashborad.pay") }}</h2>
-        <article class="dasboard__main__data-chart">
-          <apexchart
-            :options="chartOptions"
-            :series="series"
-            :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"
-          ></apexchart>
+      <article class="grid">
+        <article class="dasboard__main__data">
+          <h2>{{ $t("dashborad.pay") }}</h2>
+          <article class="dasboard__main__data-chart">
+            <apexchart
+              :options="chartOptions"
+              :series="series"
+              :labels="['Apple', 'Mango', 'Banana', 'Papaya', 'Orange']"
+            ></apexchart>
+          </article>
+          <div class="coins">
+            <div v-for="item in coins" class="coin">
+              <div
+                class="coin__color"
+                :style="`background:${item.color}`"
+              ></div>
+              <p class="coin__title">{{item.title}}</p>
+              <p class="coin__price">{{item.price}}</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="dasboard__main__data">
+          <h2>Transacciones recientes</h2>
+          <div>
+            <div v-for="item in data" class="item">
+              <div class="item__box">
+                <img :src="`src/assets/icons/${item.img}.svg`" alt="" />
+                <div>
+                  <p class="item__title">{{ item.title }}</p>
+                  <p class="item__text">{{ item.text }}</p>
+                </div>
+              </div>
+              <p class="item__price">$0.00</p>
+            </div>
+          </div>
         </article>
       </article>
     </section>
@@ -93,6 +124,24 @@ import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   components: { Header, apexchart: VueApexCharts },
   setup() {
+    const coins = [
+      { color: "#007BD1", title: "BITCOIN", price: "$0.00M" },
+      { color: "#7500D1", title: "KODEXPAY", price: "$0.00M" },
+      { color: "#D100BC", title: "TETHER", price: "$0.00M" },
+      { color: "#09A12A", title: "ETHERIUM", price: "$0.00M" },
+      { color: "#0D4C26", title: "BITCOIN CASH", price: "$0.00M" },
+      { color: "#D13200", title: "BINANCE", price: "$0.00M" },
+    ];
+    const data = [
+      { img: "btcIcon", title: "Bitcoin", text: "BTC" },
+      { img: "kodexIcon", title: "KodexPay", text: "KXP" },
+      { img: "theterIcon", title: "Theter", text: "USDT" },
+      { img: "cashIcon", title: "Bitcoin cash", text: "BCH" },
+      { img: "bnbIcon", title: "Binance", text: "BNB" },
+      { img: "kodexIcon", title: "KodexPay", text: "KXP" },
+      { img: "etheriumIcon", title: "Ethereium", text: "ETH" },
+      { img: "etheriumIcon", title: "Ethereium", text: "ETH" },
+    ];
     const series = [44, 55, 41, 17, 15];
     const chartOptions = {
       chart: {
@@ -140,6 +189,7 @@ export default {
         },
       },
       legend: {
+        show: false,
         fontFamily: "Kanit",
         fontWeight: 400,
         formatter: function (seriesName, opts) {
@@ -214,6 +264,8 @@ export default {
       chartOptions,
       options,
       series2,
+      data,
+      coins,
     };
   },
   created() {
@@ -229,14 +281,76 @@ export default {
 </script>
 
 <style lang="scss" >
+.coins {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  .coin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    background: linear-gradient(0deg, #f5fafd, #f5fafd),
+      linear-gradient(0deg, rgba(0, 123, 209, 0.04), rgba(0, 123, 209, 0.04)),
+      #ffffff;
+    border: 1px solid #ececee;
+    border-radius: 9px;
+    &__title {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 24px;
+      text-align: center;
+    }
+    &__price {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: center;
+    }
+    &__color{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid #ececee;
+  gap: 8px;
+  padding-bottom: 8px;
+  &__box {
+    display: flex;
+    gap: 16px;
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #040e2c;
+  }
+  &__text {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    color: #647188;
+  }
+  &__price {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #040e2c;
+  }
+}
+
 .dasboard {
   &__main {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    &__text {
-    }
-
     &__data {
       padding: 24px;
       border-radius: 8px;
@@ -257,7 +371,8 @@ export default {
       }
 
       &-chart {
-        width: 450px;
+        width: 310px;
+        margin: 0 auto;
 
         @media (max-width: 700px) {
           width: 100%;
@@ -400,5 +515,11 @@ export default {
       font-weight: 500;
     }
   }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 </style>
