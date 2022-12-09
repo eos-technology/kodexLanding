@@ -6,12 +6,14 @@ export default {
     access_token: null,
     user: null,
     abilities: [],
-    routeApi: ''
+    routeApi: '',
+    lang: 'en'
   },
   getters: {},
   mutations: {
     SET_USER_DATA (state, data) {
       state.user = data
+      state.lang = data.lang
     },
     SET_ACCESS_TOKEN (state, data) {
       state.access_token = data.token
@@ -28,9 +30,18 @@ export default {
     },
     UPDATE_USER (state, user) {
       state.user = user
+    },
+    CHANGE_LANG (state, data) {
+      state.lang = data
+      state.user.lang = data
+      axios.defaults.headers.common['Accept-Language'] = state.lang;
     }
   },
   actions: {
+    async chageLang (context, data ) {
+      /* const response = await axios.post('/app/v1/user/update/lang', data) */
+      context.commit('CHANGE_LANG', data.lang)
+    },
     async login (context, data) {
         const response = await axios.post('/api/v1/signin', data)
         context.commit('SET_ACCESS_TOKEN', response.data)

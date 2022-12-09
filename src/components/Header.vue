@@ -7,16 +7,15 @@
     <article class="header__container" v-if="user && user.username">
       <article class="lang">
         <div class="lang__box__select">
-          <img :src="`src/assets/svg/${language}.svg`" alt="" />
+          <img :src="`src/assets/svg/${lang}.svg`" alt="" />
           <select
             class="lang__box-lang lang__text"
             name="lang"
             id="lang"
-            @change="dataIcon($event.target.value)"
             v-model="lang"
+            @change="handleChange($event)"
           >
-            <!-- @change="handleChange($event)" -->
-            <option class="lang__text" value="us">EN</option>
+            <option class="lang__text" value="en">EN</option>
             <option class="lang__text" value="es">ES</option>
           </select>
         </div>
@@ -105,36 +104,14 @@ import { mapActions, mapState } from "vuex";
 import { ref } from "vue";
 
 export default {
-  setup() {
-    const language = ref("us");
-
-    const dataIcon = (value) => {
-      language.value = value;
-    };
-    const show = ref(false);
-
-    const copyURL = async (mytext) => {
-      try {
-        await navigator.clipboard.writeText(mytext);
-        openNotification("Copiado exitosamente");
-      } catch ($e) {
-        openNotification("En estos momentos no es posible copiar");
-      }
-    };
-    return {
-      copyURL,
-      show,
-      dataIcon,
-      language,
-    };
-  },
   data() {
     return {
       showClose: false,
+      lang: 'en',
     };
   },
   methods: {
-    ...mapActions("auth", ["logout"], ["chageLang"]),
+    ...mapActions("auth", ["logout", 'chageLang']),
     handleChange(event) {
       let form = { lang: event.target.value };
       this.chageLang(form).then(() => {
@@ -147,14 +124,8 @@ export default {
       });
     },
   },
-  data() {
-    const lang = "en";
-    return {
-      lang: lang,
-    };
-  },
   created() {
-    this.lang = this.user ? this.user.lang : "en";
+    this.lang = this.user && this.user.lang ? this.user.lang : "en";
   },
   computed: {
     ...mapState("auth", ["user"]),

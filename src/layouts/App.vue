@@ -34,7 +34,7 @@
                 <div class="profile__box">
                   <img
                     style="width: 40px; height: 40px"
-                    src="@/assets/images/user.png"
+                    :src="apiUrl + '/uploads/users/' + user.image"
                     alt=""
                   />
                   <div>
