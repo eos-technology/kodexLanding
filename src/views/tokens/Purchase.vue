@@ -1,13 +1,25 @@
 <template>
   <Header />
   <GoBack class="mb-0"></GoBack>
-  <section class="newWallet">
+  <div class="accordion" role="tablist">
     <h2 class="titleh3">Comprar Token (KXP)</h2>
-    <section class="newWallet__container">
-      <div class="payment">
-        <div class="payment__num"><p>1</p></div>
-        <h4 class="titleh4">Select payment method</h4>
-      </div>
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.accordion-1
+          ><div class="payment">
+            <div class="payment__num"><p>1</p></div>
+            <h4 class="titleh4">Select payment method</h4>
+          </div></b-button
+        >
+      </b-card-header>
+      <b-collapse
+        id="accordion-1"
+        visible
+        accordion="my-accordion"
+        role="tabpanel"
+      >
+        <b-card-body>
+          <section class="newWallet__container">
       <InputSearch placeholder="Buscar método de pago" />
       <article class="newWallet__container__select">
         <article class="newWallet__container__select__contain">
@@ -28,14 +40,22 @@
         </article>
       </article>
     </section>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
 
-    <section class="newWallet__container">
-      <div class="payment">
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.accordion-2 variant="info"
+          ><div class="payment">
         <div class="payment__num"><p>2</p></div>
         <h4 class="titleh4">Select payment method</h4>
-      </div>
-
-      <section class="qr">
+      </div></b-button
+        >
+      </b-card-header>
+      <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <section class="qr">
         <section class="d-flex gap-4">
           <img
             style="width: 308px; height: 308px"
@@ -49,7 +69,12 @@
                 <p class="qr__header--text">Status</p>
                 <div class="d-flex gap-2 align-items-center">
                   <div
-                    style="width: 8px; height: 8px; background: #ffab1b; border-radius: 50%;"
+                    style="
+                      width: 8px;
+                      height: 8px;
+                      background: #ffab1b;
+                      border-radius: 50%;
+                    "
                     class="qr__info__box"
                   ></div>
                   <p class="qr__header--textB">Waiting for money</p>
@@ -108,8 +133,12 @@
           </BaseButton>
         </article>
       </section>
-    </section>
-  </section>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+  </div>
+
+
 
   <PopUpSuccess
     title="Wallet creada con éxito"
@@ -290,20 +319,20 @@ export default {
   background: #ffffff;
   border: 1px solid #ececee;
   border-radius: 16px;
-  &__header{
-&--text{
-font-size: 16px;
-font-weight: 300;
-line-height: 24px;
-text-align: left;
-color: $secondary-color;
-}
-&--textB{
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-color: #040E2C;
-}
+  &__header {
+    &--text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 24px;
+      text-align: left;
+      color: $secondary-color;
+    }
+    &--textB {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: #040e2c;
+    }
   }
   &__info {
     display: flex;
@@ -342,5 +371,12 @@ color: #040E2C;
       color: #040e2c;
     }
   }
+}
+
+.accordion{
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #ECECEE;
+border-radius: 24px;
 }
 </style>

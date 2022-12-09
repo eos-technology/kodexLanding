@@ -70,7 +70,7 @@ const routes = [
           {
             path: '/wallet/new',
             name:'Add Wallet',
-            component: () => import ('@/views/wallet/NewWallet.vue')
+            component: () => import ('@/views/wallet/AddWallet.vue')
           },
           {
             path: '/wallet/deposit/:address',

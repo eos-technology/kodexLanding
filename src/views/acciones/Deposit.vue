@@ -1,12 +1,25 @@
 <template>
+  <Header />
   <GoBack class="mb-0"></GoBack>
-  <section class="newWallet">
+  <div class="accordion" role="tablist">
     <h2 class="titleh3">Wallet</h2>
-    <section class="newWallet__container">
-      <div class="payment">
-        <div class="payment__num"><p>1</p></div>
-        <h4 class="titleh4">Seleccionar Wallet</h4>
-      </div>
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.accordion-1
+          ><div class="payment">
+            <div class="payment__num"><p>1</p></div>
+            <h4 class="titleh4">Seleccionar Wallet</h4>
+          </div></b-button
+        >
+      </b-card-header>
+      <b-collapse
+        id="accordion-1"
+        visible
+        accordion="my-accordion"
+        role="tabpanel"
+      >
+        <b-card-body>
+          <section class="newWallet__container">
       <InputSearch placeholder="Buscar método de pago" />
       <article class="newWallet__container__select">
         <article class="newWallet__container__select__contain">
@@ -18,16 +31,31 @@
         </article>
         <article class="newWallet__container__balance__contain__actions">
           <BaseButton label="Cancel" class="transparent"></BaseButton>
-          <BaseButton label="Confirm" @click="onSubmit"> </BaseButton>
+          <BaseButton
+            :disabled="form.payment_method == null"
+            label="Confirm"
+            @click="onSubmit"
+          >
+          </BaseButton>
         </article>
       </article>
     </section>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
 
-    <section class="newWallet__container">
-      <div class="payment">
+    <b-card no-body class="mb-1">
+      <b-card-header header-tag="header" class="p-1" role="tab">
+        <b-button block v-b-toggle.accordion-2 variant="info"
+          ><div class="payment">
         <div class="payment__num"><p>2</p></div>
         <h4 class="titleh4">Especificar la suma</h4>
-      </div>
+      </div></b-button
+        >
+      </b-card-header>
+      <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+        <b-card-body>
+          <section class="newWallet__container">
 
       <article class="balance">
         <div class="balance__box">
@@ -39,6 +67,7 @@
             <span class="label__span">*</span> Nombre de la wallet</label
           >
           <BaseInput id="wallet" label="Nombre" />
+          <p class="sp text-start">Amount to transfer example: $0.00</p>
         </div>
         <article class="newWallet__container__balance__contain__actions">
           <BaseButton label="Cancel" class="transparent"></BaseButton>
@@ -46,7 +75,12 @@
         </article>
       </article>
     </section>
-  </section>
+        </b-card-body>
+      </b-collapse>
+    </b-card>
+  </div>
+
+
 
   <PopUpSuccess
     title="Wallet creada con éxito"
@@ -308,5 +342,11 @@ export default {
     text-align: left;
     color: #040e2c;
   }
+}
+.accordion{
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #ECECEE;
+border-radius: 24px;
 }
 </style>

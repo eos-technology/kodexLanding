@@ -136,3 +136,52 @@ $btn-outline: #194ef0;
 .oBtn {
   @include oBtn;
 }
+
+/* -------------------Vue Bootstrap------------------------*/
+
+.card {
+  padding: 0px;
+  background: #ffffff;
+
+  outline: none;
+  border: none;
+  &-header {
+    background: #ffffff;
+    border-bottom: none;
+  }
+}
+
+.btn-secondary {
+  background: #fff;
+  width: 100%;
+  color: #040e2c;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  padding: 0;
+  border: 1px solid #ececee;
+  border-radius: 16px;
+  padding: 16px 24px;
+  &-info {
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    border-radius: 16px;
+    padding: 16px 24px;
+    border: 1px solid #ececee;
+    border-radius: 16px;
+  }
+}
+
+.btn:hover {
+  outline: none;
+  border: none;
+  background-color: #fff;
+  border-color: none;
+}
+
+.card-body {
+  padding: 0;
+}
