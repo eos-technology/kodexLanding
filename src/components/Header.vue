@@ -5,6 +5,23 @@
     </h2>
 
     <article class="header__container" v-if="user && user.username">
+      <article class="lang">
+        <div class="lang__box__select">
+          <img :src="`src/assets/svg/${language}.svg`" alt="" />
+          <select
+            class="lang__box-lang lang__text"
+            name="lang"
+            id="lang"
+            @change="dataIcon($event.target.value)"
+            v-model="lang"
+          >
+            <!-- @change="handleChange($event)" -->
+            <option class="lang__text" value="us">EN</option>
+            <option class="lang__text" value="es">ES</option>
+          </select>
+        </div>
+      </article>
+
       <a
         href="https://support.kodexpay.com"
         target="_blank"
@@ -12,7 +29,7 @@
       >
         <article class="header__container-tab support">
           <img src="/src/assets/icons/support.svg" alt="" />
-          <h5>SUPPORT</h5>
+          <h5>{{ $t("header.sup") }}</h5>
         </article>
       </a>
 
@@ -22,7 +39,7 @@
       >
         <img src="/src/assets/icons/money.svg" alt="" />
         <div class="active__text">
-          <h5>BUY KXP</h5>
+          <h5 class="text-uppercase">{{ $t("token.buy") }} KXP</h5>
           <p class="header__container-tab-p">$3.0 USD</p>
         </div>
       </article>
@@ -81,11 +98,19 @@
   </section>
 </template>
 
+
+
 <script>
 import { mapActions, mapState } from "vuex";
 import { ref } from "vue";
+
 export default {
   setup() {
+    const language = ref("us");
+
+    const dataIcon = (value) => {
+      language.value = value;
+    };
     const show = ref(false);
 
     const copyURL = async (mytext) => {
@@ -99,6 +124,8 @@ export default {
     return {
       copyURL,
       show,
+      dataIcon,
+      language,
     };
   },
   data() {
@@ -107,12 +134,27 @@ export default {
     };
   },
   methods: {
-    ...mapActions("auth", ["logout"]),
+    ...mapActions("auth", ["logout"], ["chageLang"]),
+    handleChange(event) {
+      let form = { lang: event.target.value };
+      this.chageLang(form).then(() => {
+        window.location.reload();
+      });
+    },
     close() {
       this.logout().then(() => {
         this.$router.push({ name: "Login" });
       });
     },
+  },
+  data() {
+    const lang = "en";
+    return {
+      lang: lang,
+    };
+  },
+  created() {
+    this.lang = this.user ? this.user.lang : "en";
   },
   computed: {
     ...mapState("auth", ["user"]),
@@ -283,5 +325,53 @@ hr {
 .title {
   display: grid;
   margin-right: 16px;
+}
+
+.lang {
+  &__text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #040E2C;
+  }
+  &__subtitle {
+    text-transform: capitalize;
+  }
+  &__box {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    &__select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #fff;
+      border: 1px solid #ececee;
+      border-radius: 12px;
+    }
+    &-lang {
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: #f6f8fa;
+    border-radius: 8px;
+    &-img {
+      background-color: black;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      padding: 4px;
+    }
+  }
 }
 </style>

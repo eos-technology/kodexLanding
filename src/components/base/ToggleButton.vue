@@ -1,10 +1,10 @@
 <template>
   <article class="toggleButton">
     <button :class="show ? 'active' : ''" @click="$emit('update:show', !show)">
-      Detalles
+      {{$t('liquidity.details')}}
     </button>
     <button :class="!show ? 'active' : ''" @click="$emit('update:show', !show)">
-      Movimiento
+      {{$t('liquidity.movements')}}
     </button>
   </article>
 </template>

@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <GoBack class="mb-0"></GoBack>
   <div class="accordion" role="tablist">
     <h2 class="titleh3">{{ $t('token.purchase.buyToken') }} (KXP)</h2>
@@ -152,7 +151,6 @@
 
 <script>
 import QrcodeVue from "qrcode.vue";
-import Header from "@/components/Header.vue";
 import GoBack from "@/components/form/GoBack.vue";
 import BaseButton from "@/components/form/BaseButton.vue";
 import SelectCoinToken from "@/components/base/SelectCoinToken.vue";
@@ -168,7 +166,6 @@ export default {
     BaseButton,
     SelectCoinToken,
     PopUpSuccess,
-    Header,
     InputSearch,
     Copy,
   },

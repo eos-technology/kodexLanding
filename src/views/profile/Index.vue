@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <section class="perfil">
     <article class="perfil__menu">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -68,10 +67,9 @@ import Datos from "./Datos.vue";
 import Security from "./Security.vue";
 import ValidationVue from "./Validation.vue";
 import { ref } from "@vue/reactivity";
-import Header from "@/components/Header.vue";
 import Auth from "./Auth.vue";
 export default {
-  components: { Header, Auth },
+  components: { Auth },
   setup() {
     const tabsComissions = [
       {

@@ -221,11 +221,10 @@ export default {
 }
 .wallet {
   display: grid;
-  grid-template-columns: 28% 1fr;
-  grid-gap: 20px;
+  grid-template-columns:328px 1fr;
+  gap: 20px;
   @media (max-width: 1300px) {
     grid-template-columns: 1fr;
-    padding: 0;
   }
   &__drag {
     min-width: 300px;
@@ -320,6 +319,7 @@ border-radius: 16px;
       &__container {
         height: 100%;
         overflow-y: scroll;
+        padding-right: 8px;
         @include scroll;
         @media (max-width: 1200px) {
           overflow-y: auto;

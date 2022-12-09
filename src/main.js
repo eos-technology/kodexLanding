@@ -21,8 +21,8 @@ import './assets/main.scss'
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 
-import { createI18n } from 'vue-i18n'
-import messages from '@/locales/index.js'
+import i18n from '@/plugins/i18n'
+
 
 loadFonts();
 
@@ -43,6 +43,7 @@ app.use(VueTelInput)
 app.use(router)
 app.use(store)
 app.use(VueApexCharts)
+app.use(i18n)
 
 app.mixin({
     data () {
@@ -74,16 +75,9 @@ app.mixin({
     }
 })
 
-let userLang = 'es'
+// let userLang = 'en'
 
 
-const i18n = createI18n({
-  locale: userLang,
-  allowComposition: true, // set locale
-  messages, // set locale messages
-  // If you need to specify other options, you can set other options
-  // ...
-});
 
 app.use(i18n);
 app.mount("#app");

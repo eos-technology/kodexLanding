@@ -27,7 +27,7 @@
               />
             </div>
 
-            <h3 style="color: #647188">profile</h3>
+            <h3 style="color: #647188">{{$t('app.profile')}}</h3>
 
             <article class="profile">
               <div class="profile__btn">
@@ -49,7 +49,7 @@
                 <div class="profile__btns--box profile__btns--box-blue">
                   <img src="@/assets/icons/money.svg" alt="" />
                   <div>
-                    <p class="profile__btns--title">BUY KXP</p>
+                    <p class="profile__btns--title text-uppercase">{{$t('token.buy')}} KXP</p>
                     <p class="profile__btns--text">$3.0</p>
                   </div>
                 </div>
@@ -59,12 +59,12 @@
                     src="@/assets/icons/link.svg"
                     alt=""
                   />
-                  <p class="profile__btns--title">REFERIDOS</p>
+                  <p class="profile__btns--title text-uppercase" >{{$t('app.referrals')}}</p>
                 </div>
               </div>
             </article>
 
-            <h3 style="color: #647188">overview</h3>
+            <h3 style="color: #647188">{{$t('app.overview')}}</h3>
             <article class="appLayout__sideBar__container">
               <div
                 class="tabsContainer"
@@ -84,7 +84,7 @@
             </article>
           </article>
           <div class="logout" @click="close()">
-            <p class="logout__text">Cerrar sesión</p>
+            <p class="logout__text">{{$t('header.out')}}</p>
             <img class="logout__img" src="@/assets/icons/log.svg" alt="" />
           </div>
         </section>

@@ -11,7 +11,7 @@
         <p class="pp">{{ $t('wallet.noCreate.noText') }}</p>
       </div>
 
-      <BaseButton @click="$router.push({ name: 'Wallet' })" style="width:fit-content" :label="$t('wallet.noCreate.backToStart')" />
+      <BaseButton @click="$router.push({ path: '/wallet' })" style="width:fit-content" :label="$t('wallet.noCreate.backToStart')" />
     </section>
   </section>
 </template>

@@ -1,6 +1,7 @@
 const messages = {
   es: {
     app: {
+      profile:'Perfil',
       login:'Iniciar sesión',
       register:'Registrarse',
       welcome: 'Bienvenido',
@@ -20,7 +21,9 @@ const messages = {
       recoverText:'Ingrese su dirección de correo electrónico a continuación y le enviaremos instrucciones para configurar una nueva',
       send:'Enviar',
       remember:'Recordarme',
-      or: 'O'
+      or: 'O',
+      referrals:'Referidos',
+      overview:'Visión general'
     },
     dashborad: {
       description: "KodexPay nació de la necesidad de permitir que las empresas que solo aceptaban Fiat ingresa al nuevo mundo de las criptomonedas, contamos con procesos fáciles y eficientes que permiten a los usuarios convertir cryptos en Fiat rápidamente, también contamos con altos estándares de calidad que nos permiten llevar a cabo sin problemas y rápido integraciones con diferentes lenguajes de programación y plataformas externas",
@@ -98,13 +101,17 @@ const messages = {
       collection: "Recaudo total",
       participants: "Participantes disponibles",
       month: "Mes",
+      months: "Meses",
       time: "Periodo de tiempo",
       conect: "Conectar",
       status: "Estado del programa",
       total: "Total tokens stakes",
       stake: "Stake total",
       minimun: "Minimo stake",
-      withdraw: "Retirar"
+      withdraw: "Retirar",
+      eachMonth:'de cada mes',
+      details:'Detalles',
+      movements:'Movimientos',
     },
     profile: {
       img: "Subir imágen",
@@ -253,7 +260,7 @@ const messages = {
     header: {
       buy: "COMPRAR",
       copy: "COPIAR LINK",
-      sup: "APOYO",
+      sup: "SOPORTE",
       verify: "VERIFICADA",
       out: "Cerrar sesión"
     },
@@ -267,6 +274,7 @@ const messages = {
 
   en: {
     app: { 
+      profile:'Profile',
       login:'Login',
       register:'Register',
       welcome: 'Welcome',
@@ -286,6 +294,8 @@ const messages = {
       recoverText:"Enter your email address below and we'll send you instructions to set up a new one",
       send:'Send',
       remember:'Remember me',
+      referrals:'Referrals',
+      overview:'Overview'
     },
     dashborad: {
       description: "KodexPay was born from the need to allow businesses that only accepted Fiat to enter the new world of cryptocurrencies, we have easy and efficient processes that allow users to convert cryptos into Fiat quickly, we also have high quality standards that allow us to carry out seamless and fast integrations with different programming languages ​​and external platforms",
@@ -355,13 +365,17 @@ const messages = {
       collection: "Total collection",
       participants: "Available participants",
       month: "Month",
+      months: "Months",
       time: "Time frame",
       conect: "Conect",
       status: "Program Status",
       total: "Total tokens stakes",
       stake: "Total stake",
       minimun: "Minimum stake",
-      withdraw: "Withdraw"
+      withdraw: "Withdraw",
+      eachMonth:'of each month',
+      details:'Details',
+      movements:'Movements',
     },
     profile: {
       img: "Upload image",
@@ -476,12 +490,13 @@ const messages = {
         popup: "Wallet created successfilly"
       },
       wallet: {
-        crete: "<b>Create</b> new <b>wallet</b>",
+        create: "Create new wallet",
         total: "Total balance",
         draw: "Withdraw",
         deposit: "Deposit",
         delete: "Delete",
         trans: "Transactions",
+        movements: 'Movements',
         table: {
           time: "Time",
           from: "from",

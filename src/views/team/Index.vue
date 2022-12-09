@@ -1,8 +1,6 @@
 <template>
-  <Header></Header>
   <section class="team">
     <section class="team__title">
-      <BtnBack back="/team"></BtnBack>
       <InputSearch
         v-model="search"
         v-on:keyup.enter="searchUser(search)"
@@ -35,13 +33,11 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import BtnBack from "@/components/form/BtnBack.vue";
 import InputSearch from "@/components/form/InputSearch.vue";
 import TeamCard from "./TeamCard.vue";
 import { mapActions, mapState } from "vuex";
 export default {
-  components: { Header, BtnBack, InputSearch, TeamCard },
+  components: { InputSearch, TeamCard },
   created() {
     this.getData(this.user.username);
   },
@@ -69,10 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 .team {
-  margin-top: 30px;
-  padding: 40px;
-  border-radius: 8px;
+  padding: 24px;
+  border-radius: 24px;
   background: white;
+  border: 1px solid #ECECEE;
   &__title {
     display: flex;
     justify-content: space-between;

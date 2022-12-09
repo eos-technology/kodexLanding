@@ -18,11 +18,11 @@
         </div>
         <div>
           <p>{{$t('liquidity.term')}}</p>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
         </div>
         <div>
           <p>{{$t('liquidity.date')}}</p>
-          <p>05 de cada mes</p>
+          <p>05 {{$t('liquidity.eachMonth')}}</p>
         </div>
         <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
@@ -69,11 +69,11 @@
         </div>
         <div>
           <p>{{$t('liquidity.term')}}</p>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
         </div>
         <div>
           <p>{{$t('liquidity.date')}}</p>
-          <p>05 de cada mes</p>
+          <p>05 {{$t('liquidity.eachMonth')}}</p>
         </div>
         <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
@@ -120,11 +120,11 @@
         </div>
         <div>
           <p>{{$t('liquidity.term')}}</p>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
         </div>
         <div>
           <p>{{$t('liquidity.date')}}</p>
-          <p>05 de cada mes</p>
+          <p>05 {{$t('liquidity.eachMonth')}}</p>
         </div>
         <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
@@ -168,7 +168,7 @@
         </section>
         <section class="acciones__move__data"> 
           <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
           <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>
@@ -204,7 +204,7 @@
         </section>
         <section class="acciones__move__data"> 
           <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
           <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>
@@ -240,7 +240,7 @@
         </section>
         <section class="acciones__move__data"> 
           <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 Meses</p>
+          <p>6 {{$t('liquidity.months')}}</p>
           <h5>{{$t('liquidity.percent')}}</h5>
           <p>0,3%</p>
         </section>

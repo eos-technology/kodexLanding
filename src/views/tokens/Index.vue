@@ -183,7 +183,6 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
 import Count from "@/components/Count.vue";
 import { ref } from "@vue/reactivity";
 import BaseButton from "../../components/form/BaseButton.vue";
@@ -191,7 +190,7 @@ import TimeLine from "../../components/TimeLine.vue";
 import Distribution from "./Distribution.vue";
 import Social from "@/components/base/Social.vue";
 export default {
-  components: { Header, Count, BaseButton, TimeLine, Distribution, Social },
+  components: {  Count, BaseButton, TimeLine, Distribution, Social },
   setup() {
     const valueProgress = ref(2);
     return {

@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <section class="dasboard">
     <section class="dasboard__main">
       <article class="dasboard__main__data">
@@ -9,7 +8,7 @@
       </article>
 
       <article class="dasboard__main__data">
-        <h2>KodexPay to USD Chart</h2>
+        <h2 class="titleh2 text-start">KodexPay to USD Chart</h2>
         <img src="@/assets/images/chart.png" alt="" />
       </article>
 
@@ -115,12 +114,11 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
 import VueApexCharts from "vue3-apexcharts";
 import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
-  components: { Header, apexchart: VueApexCharts },
+  components: { apexchart: VueApexCharts },
   setup() {
     const coins = [
       { color: "#007BD1", title: "BITCOIN", price: "$0.00M" },
