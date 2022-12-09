@@ -289,9 +289,9 @@ export default {
 
 <style lang="scss" scoped>
 .acciones {
-  margin-top: 30px;
-  padding: 40px;
-  border-radius: 8px;
+  padding: 24px;
+  border: 1px solid #ECECEE;
+  border-radius: 24px;
   background: white;
   @media (max-width: 1000px){
     padding: 40px 20px;
@@ -400,7 +400,7 @@ export default {
   }
   .toggleButton {
     max-width: 300px;
-    margin: 20px auto;
+    margin: 0px auto 24px;
   }
 }
 </style>

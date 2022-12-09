@@ -20,25 +20,26 @@ export default {
       default: "",
     },
     disabled: {
-      default: false
-    }
+      default: false,
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  input{
-    width: 100%;
-    padding: 14px;
-    border-radius: 8px;
-    color: #000626;
-    background-color: #F6F8FA;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    &::placeholder{
-      font-weight: 300;
-      color: #7F8894;
-    }
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  color: #000626;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+  &::placeholder {
+    font-weight: 300;
+    color: #7f8894;
   }
+}
 </style>

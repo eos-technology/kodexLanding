@@ -42,7 +42,7 @@
                     <p class="profile--text">VERIFIED</p>
                   </div>
                 </div>
-                <img src="@/assets/images/arrow-right.svg" alt="" />
+                <!-- <img src="@/assets/images/arrow-right.svg" alt="" /> -->
               </div>
 
               <div class="profile__btns">

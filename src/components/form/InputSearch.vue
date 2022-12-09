@@ -22,9 +22,14 @@ export default {
 <style lang="scss" scoped>
 input {
   padding-left: 40px;
-  min-width: 300px;
-  background-image: url('/assets/iconBase/Search.svg');
+  max-width: 300px;
+  background-image: url("/assets/iconBase/Search.svg");
   background-repeat: no-repeat;
   background-position: 1% center;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+  color: $secondary-color;
 }
 </style>

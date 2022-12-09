@@ -32,11 +32,11 @@ const routes = [
         name:'Tokens',
         component: () => import ('@/views/tokens/Index.vue')
       },
-/*       {
+      {
         path: 'token/purchase',
-        name:'Purchase-Token',
+        name:'Buy token',
         component: () => import ('@/views/tokens/Purchase.vue')
-      }, */
+      },
       {
         path: 'comissions',
         name:'comissions',

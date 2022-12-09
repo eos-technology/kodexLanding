@@ -113,9 +113,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .perfil {
-  margin-top: 30px;
-  padding: 40px;
-  border-radius: 8px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid #ECECEE;
   background: white;
   font-size: 14px;
   @media (max-width: 576px) {

@@ -50,7 +50,7 @@ button {
     transition: all 1s;
   }
   &.transparent {
-    border:1px solid $btn-outline;
+    border:none;
     color: $primary-color;
     background: #fff;
     background: none;

@@ -1,6 +1,7 @@
 <template>
   <section class="RegisterContainer">
     <GoBack/>
+    <h2 class="titleh2 mb-4">Bienvenidos</h2>
     <label for=""><span>*</span> {{ $t("app.fullname") }}</label>
     <BaseInput v-model="form.names" placeholder="Ariel Camacho"></BaseInput>
     <label for=""><span>*</span> Email</label>
@@ -29,9 +30,7 @@
       </label>
     </div>
     <BaseButton :label="$t('app.signin')" @click="onSubmit()"></BaseButton>
-    <div>
-      <router-link to="/recover">{{ $t("app.forPass") }}</router-link>
-    </div>
+
   </section>
 </template>
 

@@ -4,7 +4,7 @@ $primary-color: #040e2c;
 $secondary-color: #647188;
 $black: #000;
 $red: #ff4e78;
-$btn-outline:#194EF0;
+$btn-outline: #194ef0;
 
 /* ------------------Fonts------------------ */
 
@@ -30,6 +30,22 @@ $btn-outline:#194EF0;
   line-height: 40px;
   text-align: center;
   color: $primary-color;
+}
+
+.titleh3 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 32px;
+  text-align: left;
+  color: #132d7c;
+}
+
+.titleh4 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #132d7c;
 }
 
 .label {
@@ -59,7 +75,7 @@ $btn-outline:#194EF0;
   &--right {
     text-align: right;
   }
-  &--center{
+  &--center {
     text-align: center;
   }
 }
