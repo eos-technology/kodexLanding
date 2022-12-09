@@ -63,6 +63,11 @@ const routes = [
             component: () => import ('@/views/wallet/WithDraw.vue')
           },
           {
+            path: '/wallet/noWallet',
+            name:'No Wallet',
+            component: () => import ('@/views/wallet/NoWallet.vue')
+          },
+          {
             path: '/wallet/new',
             name:'Add Wallet',
             component: () => import ('@/views/wallet/NewWallet.vue')
@@ -87,7 +92,7 @@ const routes = [
           },
           {
             path: '/liquidity/withdraw',
-            name:'Withdraw Actions',
+            name:'Comisiones',
             component: () => import ('@/views/acciones/WithDraw.vue')
           },
           {

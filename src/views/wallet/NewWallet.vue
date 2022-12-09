@@ -302,5 +302,19 @@ export default {
     background: #f6f8fa;
     border-radius: 16px;
   }
+  &__title {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+    color: $secondary-color;
+  }
+  &__price {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    color: #040e2c;
+  }
 }
 </style>
