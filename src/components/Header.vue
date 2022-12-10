@@ -185,6 +185,7 @@ hr {
   display: block;
 }
 .header {
+  height: 78px;
   display: flex;
   justify-content: space-between;
   padding: 16px 0px;

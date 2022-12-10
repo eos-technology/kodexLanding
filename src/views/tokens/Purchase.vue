@@ -58,8 +58,8 @@
       <b-collapse v-model="visiblePay" accordion="my-accordion" role="tabpanel">
         <b-card-body v-if="cart != null">
           <section class="qr">
-            <section class="d-flex gap-4">
-              <qrcode-vue :value="cart.wallet" size="200" level="M" />
+            <section class="d-flex gap-4 qr__set">
+              <qrcode-vue :value="cart.wallet" size="200" level="M" class="mx-auto"/>
 
               <section class="qr__info w-100">
                 <article class="qr__header d-flex flex-column gap-2">
@@ -407,6 +407,21 @@ export default {
     }
   }
 }
+
+.qr__set{
+  @media (max-width:700px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.qr__main{
+  @media (max-width:700px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
 
 .accordion {
   padding: 24px;
