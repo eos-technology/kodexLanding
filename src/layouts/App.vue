@@ -27,7 +27,7 @@
               />
             </div>
 
-            <h3 style="color: #647188">{{$t('app.profile')}}</h3>
+            <h3 style="color: #647188">{{ $t("app.profile") }}</h3>
 
             <article class="profile">
               <div class="profile__btn">
@@ -39,32 +39,48 @@
                   />
                   <div>
                     <p class="profile--title">{{ user.username }}</p>
-                    <p class="profile--text">{{ user.validated == 0 ? 'UNVERIFIED' : 'VERIFIED' }}</p>
+                    <p class="profile--text">
+                      {{ user.validated == 0 ? "UNVERIFIED" : "VERIFIED" }}
+                    </p>
                   </div>
                 </div>
                 <!-- <img src="@/assets/images/arrow-right.svg" alt="" /> -->
               </div>
 
-              <div class="profile__btns" @click="$router.push({ name: 'Purchase-Token' })">
+              <div
+                class="profile__btns"
+                @click="$router.push({ name: 'Purchase-Token' })"
+              >
                 <div class="profile__btns--box profile__btns--box-blue">
                   <img src="@/assets/icons/money.svg" alt="" />
                   <div>
-                    <p class="profile__btns--title text-uppercase">{{$t('token.buy')}} KXP</p>
+                    <p class="profile__btns--title text-uppercase">
+                      {{ $t("token.buy") }} KXP
+                    </p>
                     <p class="profile__btns--text">$3.0</p>
                   </div>
                 </div>
-                <div class="profile__btns--box" @click="copyURL('https://my.kodexpay.com/#/auth/register/'+user.username)">
+                <div
+                  class="profile__btns--box"
+                  @click="
+                    copyURL(
+                      'https://my.kodexpay.com/#/auth/register/' + user.username
+                    )
+                  "
+                >
                   <img
                     style="width: 16px"
                     src="@/assets/icons/link.svg"
                     alt=""
                   />
-                  <p class="profile__btns--title text-uppercase" >{{$t('app.referrals')}}</p>
+                  <p class="profile__btns--title text-uppercase">
+                    {{ $t("app.referrals") }}
+                  </p>
                 </div>
               </div>
             </article>
 
-            <h3 style="color: #647188">{{$t('app.overview')}}</h3>
+            <h3 style="color: #647188">{{ $t("app.overview") }}</h3>
             <article class="appLayout__sideBar__container">
               <div
                 class="tabsContainer"
@@ -84,7 +100,7 @@
             </article>
           </article>
           <div class="logout" @click="close()">
-            <p class="logout__text">{{$t('header.out')}}</p>
+            <p class="logout__text">{{ $t("header.out") }}</p>
             <img class="logout__img" src="@/assets/icons/log.svg" alt="" />
           </div>
         </section>
@@ -137,25 +153,25 @@ export default {
     this.getUserInfo();
   },
   methods: {
-    ...mapActions("auth", ["getUserInfo", 'logout']),
-    async copyURL (mytext) {
+    ...mapActions("auth", ["getUserInfo", "logout"]),
+    async copyURL(mytext) {
       try {
         await navigator.clipboard.writeText(mytext);
-        openNotification('Copied successfully')
+        openNotification("Copied successfully");
       } catch ($e) {
-        openNotification('Sorry, we cant copy this now')
+        openNotification("Sorry, we cant copy this now");
       }
     },
-    close () {
+    close() {
       this.logout().then(() => {
-        this.$router.push({ name: 'Login' })
-      })
-    }
+        this.$router.push({ name: "Login" });
+      });
+    },
   },
   components: { HeaderPhone, Header },
   computed: {
-    ...mapState('auth', ['user'])
-  }
+    ...mapState("auth", ["user"]),
+  },
 };
 </script>
 
@@ -210,6 +226,7 @@ export default {
       width: 100vw;
       z-index: 5;
       transition: all 0.5s;
+      border-radius: 0;
     }
     &-close {
       @media (max-width: 700px) {
@@ -238,6 +255,7 @@ export default {
       position: fixed;
       min-height: 100%;
       @media (max-height: 700px) {
+  
       }
     }
     h1 {
