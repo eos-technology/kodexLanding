@@ -16,17 +16,24 @@ axios.interceptors.response.use(
 	},
 	(error) => {
 		store.state.loading = false
+		
 		if(error.request.status == 401) {
-			router.push({ path: '/auth/login', replace: true })
+			router.push({ name: 'Login', replace: true })
 		}
+
 		if(error.response.data.message) {
 			store.state.interceptors.interceptor_errors.push(error.response.data.message)
+			
+			openNotification('Upps...', error.response.data.message, 'error')
 		} else {
 			error.response.data.errors.forEach(element => {
 				store.state.interceptors.interceptor_errors.push(element.message)
+				
+				if(error.request.status != 401) {
+					openNotification('Upps...', store.state.interceptors.interceptor_errors, 'warning')
+				}
 			});
 		}
-		openNotification('Upps...', store.state.interceptors.interceptor_errors, 'warning')
 	}
 );
 

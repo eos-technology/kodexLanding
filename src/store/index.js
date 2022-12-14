@@ -20,6 +20,7 @@ import lesson from './modules/lesson'
 import copy from './modules/copy'
 import range from './modules/range'
 import withdraw from './modules/withdraw'
+import liquidity from './modules/liquidity'
 
 import vuexPersistence from '../plugins/vue-persistence'
 
@@ -66,7 +67,8 @@ export default createStore({
     lesson,
     copy,
     range,
-    withdraw
+    withdraw,
+    liquidity
   },
   plugins: [vuexPersistence.plugin]
 })

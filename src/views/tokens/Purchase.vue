@@ -29,6 +29,7 @@
               </article>
               <article class="newWallet__container__balance__contain__actions">
                 <BaseButton :label="$t('token.purchase.cancel')" class="transparent"></BaseButton>
+                  <!-- disabled -->
                 <BaseButton
                   :disabled="form.payment_method == null && cart != null"
                   :label="$t('token.purchase.continue')"
@@ -176,10 +177,9 @@ export default {
       form: {
         title: "Token Purchase",
         price: null,
-        model: "Tokens",
+        model_type: "Token",
         model_id: null,
         payment_method: null,
-        currency_id: null,
         name: null,
       },
       showPopUp: false,
@@ -198,7 +198,7 @@ export default {
     ...mapActions("cart", ["storeCart", "getCoins", 'getCart', 'checkPayment', 'destroyCart']),
     onSubmit() {
       this.storeCart(this.form).then((response) => {
-        this.getDataPayment(response)
+        this.getDataPayment(response.id)
       });
     },
     selectAsset(asset) {

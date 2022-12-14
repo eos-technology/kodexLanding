@@ -1,264 +1,94 @@
 <template>
   <section class="acciones">
     <ToggleButton v-model:show="show"></ToggleButton>
-    <section class="acciones__card" v-if="show">
+    
+    <div v-if="show">
+    <section class="acciones__card" v-for="node in nodes" :key="node.id">
       <article class="acciones__card__img">
-        <img src="/src/assets/images/tron.png" alt="" />
+        <img :src="node.image" alt="" />
       </article>
       <article class="acciones__card__text">
-        <h2>{{$t('liquidity.node')}} Tron</h2>
-        <h3>TRX</h3>
+        <h2>{{$t('liquidity.node')}} {{ node.name }}</h2>
+        <h3>{{ node.network }}</h3>
         <div>
           <p>{{$t('liquidity.investment')}}</p>
-          <p>1,000.00 KP</p>
+          <p>{{ coinFormat(node.invest) }} KXP</p>
         </div>
         <div>
           <p>{{$t('liquidity.percent')}}</p>
-          <p>0,3%</p>
+          <p>{{ node.percentage }}%</p>
         </div>
         <div>
           <p>{{$t('liquidity.term')}}</p>
-          <p>6 {{$t('liquidity.months')}}</p>
+          <p>{{ node.maximum }} {{$t('liquidity.months')}}</p>
         </div>
         <div>
           <p>{{$t('liquidity.date')}}</p>
-          <p>05 {{$t('liquidity.eachMonth')}}</p>
+          <p>{{ node.withdraw }} {{$t('liquidity.eachMonth')}}</p>
         </div>
         <h5>{{$t('liquidity.anchor')}}</h5>
         <article class="acciones__card__text__progress">
           <b-progress
-            :value="valueProgress"
+            :value="calcProgress(node.objetive, node.total)"
             :max="100"
             animated
             variant="Primary"
           ></b-progress>
-          <span>{{ valueProgress }}%</span>
+          <span>{{ calcProgress(node.objetive, node.total) }}%</span>
         </article>
         <div>
           <p>{{$t('liquidity.collection')}}</p>
-          <p>$0.00</p>
+          <p>${{ node.total }}</p>
         </div>
-        <div>
+        <!-- <div>
           <p>{{$t('liquidity.participants')}}</p>
-          <p>20/100</p>
-        </div>
-        <div>
+          <p>{{ node.users }}/100</p>
+        </div> -->
+        <!-- <div>
           <p>{{$t('liquidity.month')}}</p>
           <p>0/6</p>
-        </div>
+        </div> -->
         <BaseButton
           :label="`${$t('liquidity.conect')}`"
-          @click="$router.push({ path: '/liquidity/deposit' })"
+          @click="$router.push({ name: 'Deposit-Liquidity', params: { id: node.id } })"
         ></BaseButton>
       </article>
     </section>
-    <section class="acciones__card" v-if="show">
-      <article class="acciones__card__img">
-        <img src="/src/assets/images/eth.png" alt="" />
-      </article>
-      <article class="acciones__card__text">
-        <h2>{{$t('liquidity.node')}} Etherium</h2>
-        <h3>ETH</h3>
-        <div>
-          <p>{{$t('liquidity.investment')}}</p>
-          <p>1,000.00 KP</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.percent')}}</p>
-          <p>0,3%</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.term')}}</p>
-          <p>6 {{$t('liquidity.months')}}</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.date')}}</p>
-          <p>05 {{$t('liquidity.eachMonth')}}</p>
-        </div>
-        <h5>{{$t('liquidity.anchor')}}</h5>
-        <article class="acciones__card__text__progress">
-          <b-progress
-            :value="valueProgress"
-            :max="100"
-            animated
-            variant="Primary"
-          ></b-progress>
-          <span>{{ valueProgress }}%</span>
-        </article>
-        <div>
-          <p>{{$t('liquidity.collection')}}</p>
-          <p>$0.00</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.participants')}}</p>
-          <p>20/100</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.month')}}</p>
-          <p>0/6</p>
-        </div>
-        <BaseButton
-          :label="`${$t('liquidity.conect')}`"
-          @click="$router.push({ path: '/liquidity/deposit' })"
-        ></BaseButton>
-      </article>
-    </section>
-    <section class="acciones__card" v-if="show">
-      <article class="acciones__card__img">
-        <img src="/src/assets/images/binance.png" alt="" />
-      </article>
-      <article class="acciones__card__text">
-        <h2>{{$t('liquidity.node')}} Binance</h2>
-        <h3>BNB</h3>
-        <div>
-          <p>{{$t('liquidity.investment')}}</p>
-          <p>1,000.00 KP</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.percent')}}</p>
-          <p>0,3%</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.term')}}</p>
-          <p>6 {{$t('liquidity.months')}}</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.date')}}</p>
-          <p>05 {{$t('liquidity.eachMonth')}}</p>
-        </div>
-        <h5>{{$t('liquidity.anchor')}}</h5>
-        <article class="acciones__card__text__progress">
-          <b-progress
-            :value="valueProgress"
-            :max="100"
-            animated
-            variant="Primary"
-          ></b-progress>
-          <span>{{ valueProgress }}%</span>
-        </article>
-        <div>
-          <p>{{$t('liquidity.collection')}}</p>
-          <p>$0.00</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.participants')}}</p>
-          <p>20/100</p>
-        </div>
-        <div>
-          <p>{{$t('liquidity.month')}}</p>
-          <p>0/6</p>
-        </div>
-        <BaseButton
-          :label="`${$t('liquidity.conect')}`"
-          @click="$router.push({ path: '/liquidity/deposit' })"
-        ></BaseButton>
-      </article>
-    </section>
+    </div>
 
-    <article class="acciones__container">
-      <section class="acciones__card acciones__move" v-if="!show">
+    <article class="acciones__container" v-if="!show">
+      <section class="acciones__card acciones__move" v-for="active in actives" :key="active.id">
         <section class="acciones__move__img">
           <article class="acciones__card__img me-3">
-            <img src="/src/assets/images/tron.png" alt="" />
+            <img :src="active.node.image" alt="" />
           </article>
           <article>
-            <h2>{{$t('liquidity.node')}} Tron</h2>
-            <h3>TRX</h3>
+            <h2>{{$t('liquidity.node')}} {{ active.node.name }}</h2>
+            <h3>{{ active.node.network }}</h3>
           </article>
         </section>
         <section class="acciones__move__data"> 
           <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 {{$t('liquidity.months')}}</p>
+          <p>{{ active.node.maximum }} {{$t('liquidity.months')}}</p>
           <h5>{{$t('liquidity.percent')}}</h5>
-          <p>0,3%</p>
+          <p>{{ active.node.percentage }}%</p>
         </section>
         <article class="acciones__card__text">
           <h4>{{$t('liquidity.status')}}</h4>
           <div>
             <p>{{$t('liquidity.total')}}</p>
-            <p>0.00</p>
+            <p>{{ coinFormat(active.balance) }}</p>
           </div>
           <div>
             <p>{{$t('liquidity.stake')}}</p>
-            <p>0.00</p>
+            <p>{{ coinFormat(active.earns) }}</p>
           </div>
           <div>
             <p>{{$t('liquidity.minimun')}}</p>
-            <p>0.00</p>
+            <p>{{ coinFormat(active.total_earns) }}</p>
           </div>
           <BaseButton
-            :label="`${$t('liquidity.withdraw')}`"
-            @click="$router.push({ path: '/liquidity/withdraw' })"
-          ></BaseButton>
-        </article>
-      </section>
-      <section class="acciones__card acciones__move" v-if="!show">
-        <section class="acciones__move__img">
-          <article class="acciones__card__img me-3">
-            <img src="/src/assets/images/eth.png" alt="" />
-          </article>
-          <article>
-            <h2>{{$t('liquidity.node')}} Etherium</h2>
-            <h3>ETH</h3>
-          </article>
-        </section>
-        <section class="acciones__move__data"> 
-          <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 {{$t('liquidity.months')}}</p>
-          <h5>{{$t('liquidity.percent')}}</h5>
-          <p>0,3%</p>
-        </section>
-        <article class="acciones__card__text">
-          <h4>{{$t('liquidity.status')}}</h4>
-          <div>
-            <p>{{$t('liquidity.total')}}</p>
-            <p>0.00</p>
-          </div>
-          <div>
-            <p>{{$t('liquidity.stake')}}</p>
-            <p>0.00</p>
-          </div>
-          <div>
-            <p>{{$t('liquidity.minimun')}}</p>
-            <p>0.00</p>
-          </div>
-          <BaseButton
-            :label="`${$t('liquidity.withdraw')}`"
-            @click="$router.push({ path: '/liquidity/withdraw' })"
-          ></BaseButton>
-        </article>
-      </section>
-      <section class="acciones__card acciones__move" v-if="!show">
-        <section class="acciones__move__img">
-          <article class="acciones__card__img me-3">
-            <img src="/src/assets/images/binance.png" alt="" />
-          </article>
-          <article>
-            <h2>{{$t('liquidity.node')}} Binance</h2>
-            <h3>BNB</h3>
-          </article>
-        </section>
-        <section class="acciones__move__data"> 
-          <h5>{{$t('liquidity.time')}}</h5>
-          <p>6 {{$t('liquidity.months')}}</p>
-          <h5>{{$t('liquidity.percent')}}</h5>
-          <p>0,3%</p>
-        </section>
-        <article class="acciones__card__text">
-          <h4>{{$t('liquidity.status')}}</h4>
-          <div>
-            <p>{{$t('liquidity.total')}}</p>
-            <p>0.00</p>
-          </div>
-          <div>
-            <p>{{$t('liquidity.stake')}}</p>
-            <p>0.00</p>
-          </div>
-          <div>
-            <p>{{$t('liquidity.minimun')}}</p>
-            <p>0.00</p>
-          </div>
-          <BaseButton
+            :disabled="true"
             :label="`${$t('liquidity.withdraw')}`"
             @click="$router.push({ path: '/liquidity/withdraw' })"
           ></BaseButton>
@@ -270,21 +100,36 @@
 
 <script>
 import Header from "@/components/Header.vue";
-import { ref } from "@vue/reactivity";
 import BaseButton from "@/components/form/BaseButton.vue";
 import ToggleButton from "@/components/base/ToggleButton.vue";
-
+import { mapActions, mapState } from 'vuex';
 export default {
-  components: { Header, BaseButton, ToggleButton },
-  setup() {
-    const show = ref(true);
-    const valueProgress = ref(45);
-    return {
-      valueProgress,
-      show,
-    };
+  components: {
+    Header,
+    BaseButton,
+    ToggleButton
   },
-};
+  data () {
+    return {
+      show: true
+    }
+  },
+  created () {
+    this.getNodesActives()
+    this.getActiveNodes()
+  },
+  methods: {
+    ...mapActions('liquidity', ['getNodesActives', 'getActiveNodes']),
+    calcProgress (total, value) {
+      let percentage = (value * (100) ) / total
+
+      return percentage
+    }
+  },
+  computed: {
+    ...mapState('liquidity', ['nodes', 'actives'])
+  }
+}
 </script>
 
 <style lang="scss" scoped>

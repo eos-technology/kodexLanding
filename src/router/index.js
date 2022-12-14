@@ -78,7 +78,7 @@ const routes = [
       },
       {
         path: '/liquidity',
-        name:'Liquidity',
+        name:'Liquidity-Router',
         component: () => import ('@/views/acciones/Index.vue'),
         children: [
           {
@@ -92,9 +92,10 @@ const routes = [
             component: () => import ('@/views/acciones/WithDraw.vue')
           },
           {
-            path: '/liquidity/deposit',
-            name:'Deposit Actions',
-            component: () => import ('@/views/acciones/Deposit.vue')
+            path: '/liquidity/:id/deposit',
+            name:'Deposit-Liquidity',
+            component: () => import ('@/views/acciones/Deposit.vue'),
+            props: true
           },
         ]
       },
